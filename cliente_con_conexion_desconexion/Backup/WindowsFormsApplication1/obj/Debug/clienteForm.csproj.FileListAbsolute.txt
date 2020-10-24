@@ -1,0 +1,8 @@
+C:\Users\Galder\Documents\SO\Ejercicio Guia\cliente_con_conexion_desconexion\Backup\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.exe
+C:\Users\Galder\Documents\SO\Ejercicio Guia\cliente_con_conexion_desconexion\Backup\WindowsFormsApplication1\bin\Debug\WindowsFormsApplication1.pdb
+C:\Users\Galder\Documents\SO\Ejercicio Guia\cliente_con_conexion_desconexion\Backup\WindowsFormsApplication1\obj\Debug\clienteForm.csprojAssemblyReference.cache
+C:\Users\Galder\Documents\SO\Ejercicio Guia\cliente_con_conexion_desconexion\Backup\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Form1.resources
+C:\Users\Galder\Documents\SO\Ejercicio Guia\cliente_con_conexion_desconexion\Backup\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Properties.Resources.resources
+C:\Users\Galder\Documents\SO\Ejercicio Guia\cliente_con_conexion_desconexion\Backup\WindowsFormsApplication1\obj\Debug\clienteForm.csproj.GenerateResource.cache
+C:\Users\Galder\Documents\SO\Ejercicio Guia\cliente_con_conexion_desconexion\Backup\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.exe
+C:\Users\Galder\Documents\SO\Ejercicio Guia\cliente_con_conexion_desconexion\Backup\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.pdb
