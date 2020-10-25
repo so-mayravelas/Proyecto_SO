@@ -106,8 +106,75 @@ int main(int argc, char *argv[])
 			
 			if (codigo ==0) //petici?n de desconexi?n
 				terminar=1;
+			else if (codigo == 1) {//Iniciar sesion
+				char password[20];
+				p = strtok(NULL, "/");				// Ya tenemos el nombre
+				strcpy(password, p);
+				sprintf(respuesta, "Error:Nombre de usuario o contraseña no conciden");
+				sprintf(consulta, "SELECT Username,Contraseña FROM Jugadores");
+				err = mysql_query(conn, consulta);
+				if (err != 0) {
+					printf("Error al consultar datos de la base %u %s\n",
+						mysql_errno(conn), mysql_error(conn));
+					exit(1);
+				}
+				resultado = mysql_store_result(conn);
+				row = mysql_fetch_row(resultado);
+				while (row != NULL)
+				{
+					if (strcmp(nombre, row[0]) == 0 && strcmp(password, row[1]) == 0)
+						sprintf(respuesta, "Has iniciado sesion");
+				}
 
-			else if (codigo ==1){ //parejas con las que ha jugado un jugador
+			
+			}
+			else if (codigo == 2) {//Registarse
+				char password[20];
+				p = strtok(NULL, "/");				// Ya tenemos el nombre
+				strcpy(password, p);
+				sprintf(respuesta, "Registrado");
+				sprintf(consulta, "SELECT Username FROM Jugadores");
+				err = mysql_query(conn, consulta);
+				if (err != 0) {
+					printf("Error al consultar datos de la base %u %s\n",
+						mysql_errno(conn), mysql_error(conn));
+					exit(1);
+				}
+				resultado = mysql_store_result(conn);
+				row = mysql_fetch_row(resultado);
+				while (row != NULL) {
+					if (strcmp(row[0] , nombre)==0) {
+						sprintf(repetido, "Error:Username ya registrado");
+					}
+					row = mysql_fetch_row(resultado);
+				}
+				if (strcmp(repetido, "Registrado") == 0) {
+					int newID = 0;
+					sprintf(consulta, "SELECT ID FROM Jugadores");
+					if (err != 0) {
+						printf("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
+						exit(1);
+					}
+					resultado = mysql_store_result(conn);
+					row = mysql_fetch_row(resultado);
+					while (row != NULL)
+					{
+						if (newID < atoi(row[0]))
+						{
+							newID = atoi(row[0]) + 1;
+						}
+					}
+					sprintf(consulta, "INSERT INTO Jugadores (ID,Username,Contraseña) VALUES (%d,'%s','%s')",newID,nombre,password);
+					err = mysql_query(conn, consulta);
+					if (err != 0) {
+						printf("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
+						exit(1);
+					}
+
+				}
+			}
+
+			else if (codigo ==3){ //parejas con las que ha jugado un jugador
 
 					//peticion id del jugador
 					strcpy(consulta, "SELECT ID FROM Jugadores WHERE Username='");
@@ -193,7 +260,7 @@ int main(int argc, char *argv[])
 					}
 				
 				
-			else if (codigo == 2) {
+			else if (codigo == 4) {
 				///consulta
 
 				int cont;
@@ -231,7 +298,7 @@ int main(int argc, char *argv[])
 						nPartidas=0;
 						p = strtok( NULL, "/");	
 						strcpy(Usuario2,p);
-						sprintf(consulta, "SELECT Referencia.ID_Partida FROM (Jugadores,Referencia) WHERE Referencia.ID_Partida IN(SELECT Referencia.ID_Partida FROM(Jugadores, Referencia) WHERE Jugadores.Username = '%s' AND Jugadores.ID = Referencia.ID_Jugador) AND Referencia.ID_Pareja IN(SELECT Referencia.ID_Pareja FROM(Jugadores, Referencia) WHERE Jugadores.Username = '%s' AND Jugadores.ID = Referencia.ID_Jugador) AND Jugadores.Username = '%s' AND Referencia.ID_Jugador = Jugadores.ID", nombre, nombre, Usuario2);
+						sprintf(consulta, "SELECT Referencia.ID_Partida FROM (Jugadores,Referencia) WHERE Referencia.ID_Partida IN(SELECT Referencia.ID_Partida FROM(Jugadores, Referencia) WHERE Jugadores.Username = '%s' AND Jugadores.ID = Referencia.ID_Jugador AND Referencia.Pareja =IN( SELECT Referencia.Pareja FROM(Jugadores, Referencia) WHERE Jugadores.Username = '%s' AND Jugadores.ID = Referencia.ID_Jugador) AND Referencia.ID_Partida =IN( SELECT Referencia.ID_Partida FROM(Jugadores, Referencia) WHERE Jugadores.Username = '%s' AND Jugadores.ID = Referencia.ID_Jugador)) AND Jugadores.Username = '%s' AND Referencia.ID_Jugador = Jugadores.ID", Usuario1, Usuario1, Usuario1, Usuario2);
 						// hacemos la consulta 
 						err = mysql_query(conn, consulta);
 						if (err != 0) {
