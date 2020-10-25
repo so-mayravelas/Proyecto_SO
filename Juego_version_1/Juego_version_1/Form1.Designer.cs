@@ -33,6 +33,7 @@
             this.Registro_button3 = new System.Windows.Forms.Button();
             this.Iniciar_button4 = new System.Windows.Forms.Button();
             this.Consultas_groupBox1 = new System.Windows.Forms.GroupBox();
+            this.TBConsultaAndoni = new System.Windows.Forms.TextBox();
             this.nombre_textBox3 = new System.Windows.Forms.TextBox();
             this.Consulta_Mayra = new System.Windows.Forms.RadioButton();
             this.Consulta_Andoni = new System.Windows.Forms.RadioButton();
@@ -43,14 +44,13 @@
             this.label4 = new System.Windows.Forms.Label();
             this.usuario_textBox1 = new System.Windows.Forms.TextBox();
             this.contraseña_textBox2 = new System.Windows.Forms.TextBox();
-            this.TBConsultaAndoni = new System.Windows.Forms.TextBox();
             this.Consultas_groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // Conectar_button1
             // 
             this.Conectar_button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Conectar_button1.Location = new System.Drawing.Point(45, 41);
+            this.Conectar_button1.Location = new System.Drawing.Point(60, 41);
             this.Conectar_button1.Name = "Conectar_button1";
             this.Conectar_button1.Size = new System.Drawing.Size(99, 33);
             this.Conectar_button1.TabIndex = 0;
@@ -62,7 +62,7 @@
             // Desconectar_button2
             // 
             this.Desconectar_button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Desconectar_button2.Location = new System.Drawing.Point(186, 41);
+            this.Desconectar_button2.Location = new System.Drawing.Point(223, 41);
             this.Desconectar_button2.Name = "Desconectar_button2";
             this.Desconectar_button2.Size = new System.Drawing.Size(113, 33);
             this.Desconectar_button2.TabIndex = 1;
@@ -111,6 +111,13 @@
             this.Consultas_groupBox1.TabIndex = 8;
             this.Consultas_groupBox1.TabStop = false;
             this.Consultas_groupBox1.Text = "Peticion";
+            // 
+            // TBConsultaAndoni
+            // 
+            this.TBConsultaAndoni.Location = new System.Drawing.Point(224, 119);
+            this.TBConsultaAndoni.Name = "TBConsultaAndoni";
+            this.TBConsultaAndoni.Size = new System.Drawing.Size(119, 20);
+            this.TBConsultaAndoni.TabIndex = 10;
             // 
             // nombre_textBox3
             // 
@@ -205,13 +212,6 @@
             this.contraseña_textBox2.Name = "contraseña_textBox2";
             this.contraseña_textBox2.Size = new System.Drawing.Size(156, 20);
             this.contraseña_textBox2.TabIndex = 12;
-            // 
-            // TBConsultaAndoni
-            // 
-            this.TBConsultaAndoni.Location = new System.Drawing.Point(224, 119);
-            this.TBConsultaAndoni.Name = "TBConsultaAndoni";
-            this.TBConsultaAndoni.Size = new System.Drawing.Size(119, 20);
-            this.TBConsultaAndoni.TabIndex = 10;
             // 
             // Form1
             // 
