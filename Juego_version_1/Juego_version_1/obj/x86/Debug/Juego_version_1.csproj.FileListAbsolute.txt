@@ -18,3 +18,11 @@ E:\Programacion\Virtual Box KALI\SO\Proyecto_SO\Juego_version_1\Juego_version_1\
 E:\Programacion\Virtual Box KALI\SO\Proyecto_SO\Juego_version_1\Juego_version_1\obj\x86\Debug\Juego_version_1.pdb
 E:\Programacion\Virtual Box KALI\SO\Proyecto_SO\Juego_version_1\Juego_version_1\bin\Debug\Juego_version_1.exe
 E:\Programacion\Virtual Box KALI\SO\Proyecto_SO\Juego_version_1\Juego_version_1\bin\Debug\Juego_version_1.pdb
+C:\Users\Galder\Documents\SO\Mus\ProyectoGit\Proyecto_SO\Juego_version_1\Juego_version_1\bin\Debug\Juego_version_1.exe
+C:\Users\Galder\Documents\SO\Mus\ProyectoGit\Proyecto_SO\Juego_version_1\Juego_version_1\bin\Debug\Juego_version_1.pdb
+C:\Users\Galder\Documents\SO\Mus\ProyectoGit\Proyecto_SO\Juego_version_1\Juego_version_1\obj\x86\Debug\Juego_version_1.csprojAssemblyReference.cache
+C:\Users\Galder\Documents\SO\Mus\ProyectoGit\Proyecto_SO\Juego_version_1\Juego_version_1\obj\x86\Debug\Juego_version_1.Form1.resources
+C:\Users\Galder\Documents\SO\Mus\ProyectoGit\Proyecto_SO\Juego_version_1\Juego_version_1\obj\x86\Debug\Juego_version_1.Properties.Resources.resources
+C:\Users\Galder\Documents\SO\Mus\ProyectoGit\Proyecto_SO\Juego_version_1\Juego_version_1\obj\x86\Debug\Juego_version_1.csproj.GenerateResource.cache
+C:\Users\Galder\Documents\SO\Mus\ProyectoGit\Proyecto_SO\Juego_version_1\Juego_version_1\obj\x86\Debug\Juego_version_1.exe
+C:\Users\Galder\Documents\SO\Mus\ProyectoGit\Proyecto_SO\Juego_version_1\Juego_version_1\obj\x86\Debug\Juego_version_1.pdb

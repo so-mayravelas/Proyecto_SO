@@ -24,7 +24,7 @@ namespace Juego_version_1
             //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
             //al que deseamos conectarnos
             IPAddress direc = IPAddress.Parse("192.168.56.102");
-            IPEndPoint ipep = new IPEndPoint(direc, 9050);
+            IPEndPoint ipep = new IPEndPoint(direc, 9250);
 
 
             //Creamos el socket 
@@ -62,7 +62,7 @@ namespace Juego_version_1
         private void Registro_button3_Click(object sender, EventArgs e)
         {
             //Cuando un usuario quiera registrarse le tendremos que agregar a la BBDD 
-            string mensaje = "1/" + Convert.ToString(usuario_textBox1.Text) + "/" +  Convert.ToString(contraseña_textBox2.Text);
+            string mensaje = "3/" + Convert.ToString(usuario_textBox1.Text) + "/" +  Convert.ToString(contraseña_textBox2.Text);
             // Enviamos al servidor el usuario que queremos registrar y guardar en BBDD
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
@@ -95,7 +95,7 @@ namespace Juego_version_1
         private void Consulta_Galder_CheckedChanged(object sender, EventArgs e)
         {
             // Realizamos la consulta escogida
-            string mensaje = "3/" + Convert.ToString(nombre_textBox3.Text);
+            string mensaje = "1/" + Convert.ToString(nombre_textBox3.Text);
             // Enviamos al servidor el nombre del usuario
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);

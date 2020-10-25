@@ -21,6 +21,7 @@ int main(int argc, char *argv[])
 	int err;
 	// Estructura especial para almacenar resultados de consultas 
 	MYSQL_RES* resultado;
+	MYSQL_RES* resultado2;
 	MYSQL_ROW row;
 	int nPartidas = 0;
 	char Usuario1[20];
@@ -57,7 +58,7 @@ int main(int argc, char *argv[])
 	//htonl formatea el numero que recibe al formato necesario
 	serv_adr.sin_addr.s_addr = htonl(INADDR_ANY);
 	// establecemos el puerto de escucha
-	serv_adr.sin_port = htons(9050);
+	serv_adr.sin_port = htons(9250);
 	if (bind(sock_listen, (struct sockaddr *) &serv_adr, sizeof(serv_adr)) < 0)
 		printf ("Error al bind");
 	
@@ -79,6 +80,7 @@ int main(int argc, char *argv[])
 		while (terminar ==0)
 		{
 			// Ahora recibimos la petici?n
+			sprintf(respuesta,"");
 			ret=read(sock_conn,peticion, sizeof(peticion));
 			printf ("Recibido\n");
 			
@@ -98,6 +100,7 @@ int main(int argc, char *argv[])
 			if (codigo !=0)
 			{
 				p = strtok( NULL, "/");				// Ya tenemos el nombre
+				strcpy(nombre,p);
 				printf ("Codigo: %d, Nombre: %s\n", codigo, nombre);
 			}
 			
@@ -173,19 +176,20 @@ int main(int argc, char *argv[])
 									exit(1);
 								}
 
-								resultado = mysql_store_result(conn);
-								row = mysql_fetch_row(resultado);
+								resultado2 = mysql_store_result(conn);
+								row = mysql_fetch_row(resultado2);
 								ID_P = 2;
-								strcat(respuesta, nombre);
-								strcat(respuesta, "/");
+									strcat(respuesta, row[0]);
+									strcat(respuesta, "/");
 								printf("%s", row[0]);
 								printf("\n");
 
 							}
+														
 							row = mysql_fetch_row(resultado);
 						}
 					}
-					respuesta[strlen(respuesta - 1)] = "/0";
+					//respuesta[strlen(respuesta - 1)] = "/0";
 					}
 				
 				
@@ -224,9 +228,10 @@ int main(int argc, char *argv[])
 			}
 			else //quiere saber si es alto
 			{
+						nPartidas=0;
 						p = strtok( NULL, "/");	
 						strcpy(Usuario2,p);
-						sprintf(consulta, "SELECT Referencia.ID_P FROM (Jugadores,Referencia) WHERE Referencia.ID_P IN(SELECT Referencia.ID_P FROM(Jugadores, Referencia) WHERE Jugadores.Username = '%s' AND Jugadores.ID = Referencia.ID_J) AND Referencia.Pareja IN(SELECT Referencia.Pareja FROM(Jugadores, Referencia) WHERE Jugadores.Username = '%s' AND Jugadores.ID = Referencia.ID_J) AND Jugadores.Username = '%s' AND Referencia.ID_J = Jugadores.ID", nombre, nombre, Usuario2);
+						sprintf(consulta, "SELECT Referencia.ID_Partida FROM (Jugadores,Referencia) WHERE Referencia.ID_Partida IN(SELECT Referencia.ID_Partida FROM(Jugadores, Referencia) WHERE Jugadores.Username = '%s' AND Jugadores.ID = Referencia.ID_Jugador) AND Referencia.ID_Pareja IN(SELECT Referencia.ID_Pareja FROM(Jugadores, Referencia) WHERE Jugadores.Username = '%s' AND Jugadores.ID = Referencia.ID_Jugador) AND Jugadores.Username = '%s' AND Referencia.ID_Jugador = Jugadores.ID", nombre, nombre, Usuario2);
 						// hacemos la consulta 
 						err = mysql_query(conn, consulta);
 						if (err != 0) {
