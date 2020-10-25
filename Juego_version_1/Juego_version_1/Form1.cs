@@ -138,5 +138,6 @@ namespace Juego_version_1
             mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
             MessageBox.Show(mensaje);
         }
+
     }
 }
