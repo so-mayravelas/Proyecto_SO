@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
 	//htonl formatea el numero que recibe al formato necesario
 	serv_adr.sin_addr.s_addr = htonl(INADDR_ANY);
 	// establecemos el puerto de escucha
-	serv_adr.sin_port = htons(9250);
+	serv_adr.sin_port = htons(9000);
 	if (bind(sock_listen, (struct sockaddr *) &serv_adr, sizeof(serv_adr)) < 0)
 		printf ("Error al bind");
 	
@@ -110,7 +110,7 @@ int main(int argc, char *argv[])
 				char password[20];
 				p = strtok(NULL, "/");				// Ya tenemos el nombre
 				strcpy(password, p);
-				sprintf(respuesta, "Error:Nombre de usuario o contraseña no conciden");
+				sprintf(respuesta, "Error:Nombre de usuario o contrasena no conciden");
 				sprintf(consulta, "SELECT Username,Contraseña FROM Jugadores");
 				err = mysql_query(conn, consulta);
 				if (err != 0) {
@@ -144,11 +144,11 @@ int main(int argc, char *argv[])
 				row = mysql_fetch_row(resultado);
 				while (row != NULL) {
 					if (strcmp(row[0] , nombre)==0) {
-						sprintf(repetido, "Error:Username ya registrado");
+						sprintf(respuesta, "Error:Username ya registrado");
 					}
 					row = mysql_fetch_row(resultado);
 				}
-				if (strcmp(repetido, "Registrado") == 0) {
+				if (strcmp(respuesta, "Registrado") == 0) {
 					int newID = 0;
 					sprintf(consulta, "SELECT ID FROM Jugadores");
 					if (err != 0) {
@@ -265,7 +265,7 @@ int main(int argc, char *argv[])
 
 				int cont;
 				//Construimos la consulta
-				strcpy(consulta, "SELECT partida.Idganador FROM JBD.partida ");
+				strcpy(consulta, "SELECT Partidas.Idganador FROM Partidas ");
 				// hacemos la consulta 
 				err = mysql_query(conn, consulta);
 				if (err != 0)
