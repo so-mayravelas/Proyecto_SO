@@ -58,12 +58,11 @@ namespace Juego_version_1
             server.Shutdown(SocketShutdown.Both);
             server.Close();
         }
-      
         //Para que un usuario se pueda registrar
         private void Registro_button3_Click(object sender, EventArgs e)
         {
             //Cuando un usuario quiera registrarse le tendremos que agregar a la BBDD 
-            string mensaje = "1/" + usuario_textBox1 + "/" + contraseña_textBox2;
+            string mensaje = "1/" + Convert.ToString(usuario_textBox1.Text) + "/" +  Convert.ToString(contraseña_textBox2.Text);
             // Enviamos al servidor el usuario que queremos registrar y guardar en BBDD
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
@@ -80,7 +79,7 @@ namespace Juego_version_1
         private void Iniciar_button4_Click(object sender, EventArgs e)
         {
             // Quiere realizar un inicio de sesión
-            string mensaje = "2/" + usuario_textBox1 + "/" + contraseña_textBox2 ;
+            string mensaje = "2/" +  Convert.ToString(usuario_textBox1.Text) + "/" + Convert.ToString(contraseña_textBox2.Text) ;
             // Enviamos al servidor el nombre del usuario y la contraseña
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
@@ -96,7 +95,7 @@ namespace Juego_version_1
         private void Consulta_Galder_CheckedChanged(object sender, EventArgs e)
         {
             // Realizamos la consulta escogida
-            string mensaje = "3/" + nombre_textBox3;
+            string mensaje = "3/" + Convert.ToString(nombre_textBox3.Text);
             // Enviamos al servidor el nombre del usuario
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
@@ -112,7 +111,7 @@ namespace Juego_version_1
         private void Consulta_Mayra_CheckedChanged(object sender, EventArgs e)
         {
             // Quiere realizar la consulta escogida
-            string mensaje = "4/" + nombre_textBox3;
+            string mensaje = "4/" + Convert.ToString(nombre_textBox3.Text);
             // Enviamos al servidor el nombre del usuario
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
@@ -128,7 +127,7 @@ namespace Juego_version_1
         private void Consulta_Andoni_CheckedChanged(object sender, EventArgs e)
         {
             // Quiere realizar la consulta escogida
-            string mensaje = "5/" + nombre_textBox3 + "/" + TBConsultaAndoni;
+            string mensaje = "5/" + Convert.ToString(nombre_textBox3.Text) + "/" + Convert.ToString(TBConsultaAndoni.Text);
             // Enviamos al servidor los nombres de usuario
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
