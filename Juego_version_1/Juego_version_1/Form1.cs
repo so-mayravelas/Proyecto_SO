@@ -139,5 +139,7 @@ namespace Juego_version_1
             MessageBox.Show(mensaje);
         }
 
+        
+
     }
 }
