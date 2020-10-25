@@ -1,0 +1,9 @@
+C:\Users\paola\AppData\Local\Temporary Projects\Juego_version_1\obj\x86\Debug\Juego_version_1.Form1.resources
+C:\Users\paola\AppData\Local\Temporary Projects\Juego_version_1\obj\x86\Debug\Juego_version_1.Properties.Resources.resources
+C:\Users\paola\AppData\Local\Temporary Projects\Juego_version_1\obj\x86\Debug\Juego_version_1.csproj.GenerateResource.Cache
+C:\Users\paola\AppData\Local\Temporary Projects\Juego_version_1\bin\Debug\Juego_version_1.exe
+C:\Users\paola\AppData\Local\Temporary Projects\Juego_version_1\bin\Debug\Juego_version_1.pdb
+C:\Users\paola\AppData\Local\Temporary Projects\Juego_version_1\obj\x86\Debug\Juego_version_1.exe
+C:\Users\paola\AppData\Local\Temporary Projects\Juego_version_1\obj\x86\Debug\Juego_version_1.pdb
+C:\Users\paola\Desktop\UPC\QT1ACTUAL\SO\SEMANA3\JUEGOVERSION1\Juego_version_1\Juego_version_1\obj\x86\Debug\Juego_version_1.exe
+C:\Users\paola\Desktop\UPC\QT1ACTUAL\SO\SEMANA3\JUEGOVERSION1\Juego_version_1\Juego_version_1\obj\x86\Debug\Juego_version_1.pdb
