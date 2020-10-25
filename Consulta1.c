@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
 		exit (1);
 	}
 	//inicializar la conexion, indicamos claves de acceso
-	conn = mysql_real_connect (conn, "localhost", "root", "mysql", "JBD",0, NULL, 0);
+	conn = mysql_real_connect (conn, "localhost", "root", "mysql", "mus",0, NULL, 0);
 	if (conn==NULL) {
 		printf ("Error al inicializar la conexion: %u %s\n", 
 				mysql_errno(conn), mysql_error(conn));
@@ -29,7 +29,7 @@ int main(int argc, char *argv[]) {
 	}
 	
 	//indicamos la base de datos con la que queremos trabajar 
-	err=mysql_query(conn, "use JBD;");
+	err=mysql_query(conn, "use mus;");
 	if (err!=0)
 	{
 		printf ("Error al crear la base de datos %u %s\n", 
@@ -41,7 +41,11 @@ int main(int argc, char *argv[]) {
 	
 	int cont;
 	//Construimos la consulta
-	strcpy (consulta,"SELECT partida.Idganador FROM JBD.partida ");
+
+
+	strcpy (consulta,"SELECT Partidas.ID_ParejaGanadora FROM mus.Partidas ");
+	strcpy(consulta, "SELECT partidas.ID_ParejaGanadora FROM Partidas,jugadores,Referencia WHERE Jugadores.Username ='%s'AND Jugadores.ID=Referencia.ID_Jugador AND Referencia.ID_Partida=Partidas.ID:PaejaGanadora"); 
+
 	// hacemos la consulta 
 	err=mysql_query (conn, consulta); 
 	if (err!=0) 

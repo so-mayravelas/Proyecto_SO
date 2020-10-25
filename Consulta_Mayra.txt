@@ -1,0 +1,6 @@
+Usuarios WHERE Usuarios.Username = '%s'", nombre
+
+
+Usuarios WHERE Usuarios.Username = '%s'", nombre
+
+Usuarios WHERE Usuarios.Username = '%s'", nombre
