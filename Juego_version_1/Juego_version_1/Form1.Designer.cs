@@ -33,6 +33,7 @@
             this.Registro_button3 = new System.Windows.Forms.Button();
             this.Iniciar_button4 = new System.Windows.Forms.Button();
             this.Consultas_groupBox1 = new System.Windows.Forms.GroupBox();
+            this.nombre_textBox3 = new System.Windows.Forms.TextBox();
             this.Consulta_Mayra = new System.Windows.Forms.RadioButton();
             this.Consulta_Andoni = new System.Windows.Forms.RadioButton();
             this.Consulta_Galder = new System.Windows.Forms.RadioButton();
@@ -42,7 +43,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.usuario_textBox1 = new System.Windows.Forms.TextBox();
             this.contraseña_textBox2 = new System.Windows.Forms.TextBox();
-            this.nombre_textBox3 = new System.Windows.Forms.TextBox();
+            this.TBConsultaAndoni = new System.Windows.Forms.TextBox();
             this.Consultas_groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,6 +98,7 @@
             // Consultas_groupBox1
             // 
             this.Consultas_groupBox1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.Consultas_groupBox1.Controls.Add(this.TBConsultaAndoni);
             this.Consultas_groupBox1.Controls.Add(this.nombre_textBox3);
             this.Consultas_groupBox1.Controls.Add(this.Consulta_Mayra);
             this.Consultas_groupBox1.Controls.Add(this.Consulta_Andoni);
@@ -109,6 +111,13 @@
             this.Consultas_groupBox1.TabIndex = 8;
             this.Consultas_groupBox1.TabStop = false;
             this.Consultas_groupBox1.Text = "Peticion";
+            // 
+            // nombre_textBox3
+            // 
+            this.nombre_textBox3.Location = new System.Drawing.Point(126, 30);
+            this.nombre_textBox3.Name = "nombre_textBox3";
+            this.nombre_textBox3.Size = new System.Drawing.Size(169, 20);
+            this.nombre_textBox3.TabIndex = 9;
             // 
             // Consulta_Mayra
             // 
@@ -197,12 +206,12 @@
             this.contraseña_textBox2.Size = new System.Drawing.Size(156, 20);
             this.contraseña_textBox2.TabIndex = 12;
             // 
-            // nombre_textBox3
+            // TBConsultaAndoni
             // 
-            this.nombre_textBox3.Location = new System.Drawing.Point(126, 30);
-            this.nombre_textBox3.Name = "nombre_textBox3";
-            this.nombre_textBox3.Size = new System.Drawing.Size(169, 20);
-            this.nombre_textBox3.TabIndex = 9;
+            this.TBConsultaAndoni.Location = new System.Drawing.Point(224, 119);
+            this.TBConsultaAndoni.Name = "TBConsultaAndoni";
+            this.TBConsultaAndoni.Size = new System.Drawing.Size(119, 20);
+            this.TBConsultaAndoni.TabIndex = 10;
             // 
             // Form1
             // 
@@ -244,6 +253,7 @@
         private System.Windows.Forms.TextBox usuario_textBox1;
         private System.Windows.Forms.TextBox contraseña_textBox2;
         private System.Windows.Forms.TextBox nombre_textBox3;
+        private System.Windows.Forms.TextBox TBConsultaAndoni;
     }
 }
 

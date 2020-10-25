@@ -97,7 +97,7 @@ namespace Juego_version_1
         {
             // Realizamos la consulta escogida
             string mensaje = "3/" + nombre_textBox3;
-            // Enviamos al servidor el nombre del usuario y la contraseña
+            // Enviamos al servidor el nombre del usuario
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
 
@@ -113,7 +113,7 @@ namespace Juego_version_1
         {
             // Quiere realizar la consulta escogida
             string mensaje = "4/" + nombre_textBox3;
-            // Enviamos al servidor el nombre del usuario y la contraseña
+            // Enviamos al servidor el nombre del usuario
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
 
@@ -128,8 +128,8 @@ namespace Juego_version_1
         private void Consulta_Andoni_CheckedChanged(object sender, EventArgs e)
         {
             // Quiere realizar la consulta escogida
-            string mensaje = "5/" + nombre_textBox3;
-            // Enviamos al servidor el nombre del usuario y la contraseña
+            string mensaje = "5/" + nombre_textBox3 + "/" + TBConsultaAndoni;
+            // Enviamos al servidor los nombres de usuario
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
 
