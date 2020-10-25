@@ -153,6 +153,7 @@
             // Consulta_Galder
             // 
             this.Consulta_Galder.AutoSize = true;
+            this.Consulta_Galder.Checked = true;
             this.Consulta_Galder.Location = new System.Drawing.Point(116, 68);
             this.Consulta_Galder.Name = "Consulta_Galder";
             this.Consulta_Galder.Size = new System.Drawing.Size(100, 17);
@@ -180,6 +181,7 @@
             this.enviar_button5.TabIndex = 5;
             this.enviar_button5.Text = "Enviar";
             this.enviar_button5.UseVisualStyleBackColor = true;
+            this.enviar_button5.Click += new System.EventHandler(this.enviar_button5_Click);
             // 
             // label1
             // 

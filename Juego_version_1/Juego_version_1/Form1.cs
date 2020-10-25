@@ -14,9 +14,12 @@ namespace Juego_version_1
     public partial class Form1 : Form
     {
         Socket server;
+        int opcion = 1;
         public Form1()
         {
+            
             InitializeComponent();
+
         }
 
         private void Conectar_button1_Click(object sender, EventArgs e)
@@ -24,7 +27,7 @@ namespace Juego_version_1
             //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
             //al que deseamos conectarnos
             IPAddress direc = IPAddress.Parse("192.168.56.102");
-            IPEndPoint ipep = new IPEndPoint(direc, 9250);
+            IPEndPoint ipep = new IPEndPoint(direc, 9000);
 
 
             //Creamos el socket 
@@ -94,50 +97,65 @@ namespace Juego_version_1
         //No me acuerdo bien la consulta
         private void Consulta_Galder_CheckedChanged(object sender, EventArgs e)
         {
-            // Realizamos la consulta escogida
-            string mensaje = "3/" + Convert.ToString(nombre_textBox3.Text);
-            // Enviamos al servidor el nombre del usuario
-            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
-
-            //Recibimos la respuesta del servidor
-            byte[] msg2 = new byte[80];
-            server.Receive(msg2);
-            mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-            MessageBox.Show(mensaje);
+            opcion = 1;
         }
         //Consulta Mayra 
         //Consultamos el número de partidas jugadas por el usuario"Pepito que esta en el nombre"
         private void Consulta_Mayra_CheckedChanged(object sender, EventArgs e)
         {
-            // Quiere realizar la consulta escogida
-            string mensaje = "4/" + Convert.ToString(nombre_textBox3.Text);
-            // Enviamos al servidor el nombre del usuario
-            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
-
-            //Recibimos la respuesta del servidor
-            byte[] msg2 = new byte[80];
-            server.Receive(msg2);
-            mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-            MessageBox.Show(mensaje);
+            opcion = 2;
         }
         //Consulta Andoni
         //No me acuerdo la consulta completa
         private void Consulta_Andoni_CheckedChanged(object sender, EventArgs e)
         {
-            // Quiere realizar la consulta escogida
-            string mensaje = "5/" + Convert.ToString(nombre_textBox3.Text) + "/" + Convert.ToString(TBConsultaAndoni.Text);
-            // Enviamos al servidor los nombres de usuario
-            byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
-
-            //Recibimos la respuesta del servidor
-            byte[] msg2 = new byte[80];
-            server.Receive(msg2);
-            mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-            MessageBox.Show(mensaje);
+            opcion = 3;
         }
 
+        private void enviar_button5_Click(object sender, EventArgs e)
+        {
+            switch (opcion)
+            {
+                case 1:
+                    // Realizamos la consulta escogida
+                    string mensaje = "3/" + Convert.ToString(nombre_textBox3.Text);
+                    // Enviamos al servidor el nombre del usuario
+                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                    server.Send(msg);
+
+                    //Recibimos la respuesta del servidor
+                    byte[] msg2 = new byte[80];
+                    server.Receive(msg2);
+                    mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
+                    MessageBox.Show(mensaje);
+                    break;
+                case 2:
+                    // Quiere realizar la consulta escogida
+                    string mensaje = "4/" + Convert.ToString(nombre_textBox3.Text);
+                    // Enviamos al servidor el nombre del usuario
+                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                    server.Send(msg);
+
+                    //Recibimos la respuesta del servidor
+                    byte[] msg2 = new byte[80];
+                    server.Receive(msg2);
+                    mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
+                    MessageBox.Show(mensaje);
+                    break;
+                case 3:
+                    // Quiere realizar la consulta escogida
+                    string mensaje = "5/" + Convert.ToString(nombre_textBox3.Text) + "/" + Convert.ToString(TBConsultaAndoni.Text);
+                    // Enviamos al servidor los nombres de usuario
+                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                    server.Send(msg);
+
+                    //Recibimos la respuesta del servidor
+                    byte[] msg2 = new byte[80];
+                    server.Receive(msg2);
+                    mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
+                    MessageBox.Show(mensaje);
+                    break;
+            }
+        }
     }
 }
