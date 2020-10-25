@@ -111,7 +111,7 @@ int main(int argc, char *argv[])
 				p = strtok(NULL, "/");				// Ya tenemos el nombre
 				strcpy(password, p);
 				sprintf(respuesta, "Error:Nombre de usuario o contrasena no conciden");
-				sprintf(consulta, "SELECT Username,Contraseña FROM Jugadores");
+				sprintf(consulta, "SELECT * FROM Jugadores WHERE Username='%s' AND Contraseña='%s'",nombre,password);
 				err = mysql_query(conn, consulta);
 				if (err != 0) {
 					printf("Error al consultar datos de la base %u %s\n",
@@ -120,6 +120,7 @@ int main(int argc, char *argv[])
 				}
 				resultado = mysql_store_result(conn);
 				row = mysql_fetch_row(resultado);
+				printf(row[0]);
 				while (row != NULL)
 				{
 					if (strcmp(nombre, row[0]) == 0 && strcmp(password, row[1]) == 0)

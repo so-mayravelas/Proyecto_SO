@@ -114,43 +114,46 @@ namespace Juego_version_1
 
         private void enviar_button5_Click(object sender, EventArgs e)
         {
+            string mensaje;
+            byte[] msg;
+            byte[] msg2;
             switch (opcion)
             {
                 case 1:
                     // Realizamos la consulta escogida
-                    string mensaje = "3/" + Convert.ToString(nombre_textBox3.Text);
+                    mensaje = "3/" + Convert.ToString(nombre_textBox3.Text);
                     // Enviamos al servidor el nombre del usuario
-                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                    msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                     server.Send(msg);
 
                     //Recibimos la respuesta del servidor
-                    byte[] msg2 = new byte[80];
+                    msg2 = new byte[80];
                     server.Receive(msg2);
                     mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
                     MessageBox.Show(mensaje);
                     break;
                 case 2:
                     // Quiere realizar la consulta escogida
-                    string mensaje = "4/" + Convert.ToString(nombre_textBox3.Text);
+                    mensaje = "4/" + Convert.ToString(nombre_textBox3.Text);
                     // Enviamos al servidor el nombre del usuario
-                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                    msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                     server.Send(msg);
 
                     //Recibimos la respuesta del servidor
-                    byte[] msg2 = new byte[80];
+                    msg2 = new byte[80];
                     server.Receive(msg2);
                     mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
                     MessageBox.Show(mensaje);
                     break;
                 case 3:
                     // Quiere realizar la consulta escogida
-                    string mensaje = "5/" + Convert.ToString(nombre_textBox3.Text) + "/" + Convert.ToString(TBConsultaAndoni.Text);
+                    mensaje = "5/" + Convert.ToString(nombre_textBox3.Text) + "/" + Convert.ToString(TBConsultaAndoni.Text);
                     // Enviamos al servidor los nombres de usuario
-                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                    msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                     server.Send(msg);
 
                     //Recibimos la respuesta del servidor
-                    byte[] msg2 = new byte[80];
+                    msg2 = new byte[80];
                     server.Receive(msg2);
                     mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
                     MessageBox.Show(mensaje);
