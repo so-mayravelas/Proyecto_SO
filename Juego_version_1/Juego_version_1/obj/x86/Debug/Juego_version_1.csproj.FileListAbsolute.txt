@@ -7,3 +7,5 @@ C:\Users\paola\AppData\Local\Temporary Projects\Juego_version_1\obj\x86\Debug\Ju
 C:\Users\paola\AppData\Local\Temporary Projects\Juego_version_1\obj\x86\Debug\Juego_version_1.pdb
 C:\Users\paola\Desktop\UPC\QT1ACTUAL\SO\SEMANA3\JUEGOVERSION1\Juego_version_1\Juego_version_1\obj\x86\Debug\Juego_version_1.exe
 C:\Users\paola\Desktop\UPC\QT1ACTUAL\SO\SEMANA3\JUEGOVERSION1\Juego_version_1\Juego_version_1\obj\x86\Debug\Juego_version_1.pdb
+C:\Users\Andoni Coronel\Documents\Estudios\EETAC UPC\Doble Grado-IngSisAer+IngSisTel\3º\3A\Sistemas Operativos\Proyecto_SO\Juego_version_1\Juego_version_1\obj\x86\Debug\Juego_version_1.exe
+C:\Users\Andoni Coronel\Documents\Estudios\EETAC UPC\Doble Grado-IngSisAer+IngSisTel\3º\3A\Sistemas Operativos\Proyecto_SO\Juego_version_1\Juego_version_1\obj\x86\Debug\Juego_version_1.pdb
