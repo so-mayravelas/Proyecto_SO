@@ -307,12 +307,14 @@ int main(int argc, char *argv[])
 					}
 				}
 			}
-			else //quiere saber si es alto
+			else if (codigo == 5)  //Consulta de Andoni
 			{
 						nPartidas=0;
+						strcpy(Usuario1,nombre);
 						p = strtok( NULL, "/");	
 						strcpy(Usuario2,p);
-						sprintf(consulta, "SELECT Referencia.ID_Partida FROM (Jugadores,Referencia) WHERE Referencia.ID_Partida IN(SELECT Referencia.ID_Partida FROM(Jugadores, Referencia) WHERE Jugadores.Username = '%s' AND Jugadores.ID = Referencia.ID_Jugador AND Referencia.Pareja =IN( SELECT Referencia.Pareja FROM(Jugadores, Referencia) WHERE Jugadores.Username = '%s' AND Jugadores.ID = Referencia.ID_Jugador) AND Referencia.ID_Partida =IN( SELECT Referencia.ID_Partida FROM(Jugadores, Referencia) WHERE Jugadores.Username = '%s' AND Jugadores.ID = Referencia.ID_Jugador)) AND Jugadores.Username = '%s' AND Referencia.ID_Jugador = Jugadores.ID", Usuario1, Usuario1, Usuario1, Usuario2);
+						printf("%s, %s\n", Usuario1, Usuario2);
+						sprintf (consulta,"SELECT Referencia.ID_Partida FROM (Jugadores, Referencia) WHERE Referencia.ID_Partida IN(SELECT Referencia.ID_Partida FROM(Jugadores, Referencia) WHERE Jugadores.Username = '%s' AND Jugadores.ID = Referencia.ID_Jugador) AND Jugadores.Username = '%s' AND Referencia.ID_Jugador = Jugadores.ID", Usuario1, Usuario2);
 						// hacemos la consulta 
 						err = mysql_query(conn, consulta);
 						if (err != 0) {
@@ -325,15 +327,49 @@ int main(int argc, char *argv[])
 						row = mysql_fetch_row(resultado);
 						if (row == NULL)
 							printf("No se han obtenido datos en la consulta\n");
-						else {
-							while (row != NULL) {
-								printf("%d\n", row);
-								nPartidas++;
-								row = mysql_fetch_row(resultado);
+						else{
+							printf("No va mal\n");
+							while (row !=NULL) {
+								int Pa = atoi (row[0]);
+								char consulta1 [500];
+								char consulta2 [500];
+								int errJ1;
+								int errJ2;
+								MYSQL_RES *resultadoJ1;
+								MYSQL_ROW rowJ1;
+								MYSQL_RES *resultadoJ2;
+								MYSQL_ROW rowJ2;
+								
+								sprintf (consulta1,"SELECT Referencia.ID_Pareja FROM (Jugadores, Referencia) WHERE Referencia.ID_Partida = %d AND Jugadores.Username = '%s' AND Referencia.ID_Jugador = Jugadores.ID", Pa, Usuario1);
+								sprintf (consulta2,"SELECT Referencia.ID_Pareja FROM (Jugadores, Referencia) WHERE Referencia.ID_Partida = %d AND Jugadores.Username = '%s' AND Referencia.ID_Jugador = Jugadores.ID", Pa, Usuario2);
+								errJ1=mysql_query (conn, consulta1);
+								if (errJ1 != 0){
+									printf ("Error al consultar datos de la base %u %s\n",
+											mysql_errno(conn), mysql_error(conn));
+									exit (1);
+								}
+								resultadoJ1 = mysql_store_result (conn);
+								rowJ1 = mysql_fetch_row (resultadoJ1);
+								int Pj1 = atoi (rowJ1[0]);
+								
+								errJ2=mysql_query (conn, consulta2);
+								if (errJ2 != 0){
+									printf ("Error al consultar datos de la base %u %s\n",
+											mysql_errno(conn), mysql_error(conn));
+									exit (1);
+								}
+								resultadoJ2 = mysql_store_result (conn);
+								rowJ2 = mysql_fetch_row (resultadoJ2);
+								int Pj2 = atoi (rowJ2[0]);
+								
+								if (Pj1 == Pj2){
+									nPartidas++;
+								}
+								row = mysql_fetch_row (resultado);
 							}
-
+							
 						}
-						sprintf(respuesta,"%d",nPartidas);
+						sprintf(respuesta,"Numero de partidas que la pareja de %s y %s ha jugado: %d", Usuario1, Usuario2, nPartidas);
 			}
 				
 			if (codigo !=0)
