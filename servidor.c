@@ -123,8 +123,9 @@ int main(int argc, char *argv[])
 				printf(row[0]);
 				while (row != NULL)
 				{
-					if (strcmp(nombre, row[0]) == 0 && strcmp(password, row[1]) == 0)
+					if (strcmp(nombre, row[1]) == 0 && strcmp(password, row[2]) == 0)
 						sprintf(respuesta, "Has iniciado sesion");
+					row = mysql_fetch_row(resultado);
 				}
 
 			
@@ -135,6 +136,7 @@ int main(int argc, char *argv[])
 				strcpy(password, p);
 				sprintf(respuesta, "Registrado");
 				sprintf(consulta, "SELECT Username FROM Jugadores");
+
 				err = mysql_query(conn, consulta);
 				if (err != 0) {
 					printf("Error al consultar datos de la base %u %s\n",
@@ -143,28 +145,39 @@ int main(int argc, char *argv[])
 				}
 				resultado = mysql_store_result(conn);
 				row = mysql_fetch_row(resultado);
+
+				printf(row[0]);
+				printf("\n");
 				while (row != NULL) {
 					if (strcmp(row[0] , nombre)==0) {
 						sprintf(respuesta, "Error:Username ya registrado");
 					}
 					row = mysql_fetch_row(resultado);
+
 				}
 				if (strcmp(respuesta, "Registrado") == 0) {
+
 					int newID = 0;
-					sprintf(consulta, "SELECT ID FROM Jugadores");
+					sprintf(consulta, "SELECT ID FROM Jugadores;");
+					err = mysql_query(conn, consulta);
 					if (err != 0) {
 						printf("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
 						exit(1);
 					}
 					resultado = mysql_store_result(conn);
 					row = mysql_fetch_row(resultado);
+
 					while (row != NULL)
 					{
-						if (newID < atoi(row[0]))
+
+						if (newID <= atoi(row[0]))
 						{
 							newID = atoi(row[0]) + 1;
 						}
+						row = mysql_fetch_row(resultado);
 					}
+					printf("%d",newID);
+					printf("\n");
 					sprintf(consulta, "INSERT INTO Jugadores (ID,Username,Contraseña) VALUES (%d,'%s','%s')",newID,nombre,password);
 					err = mysql_query(conn, consulta);
 					if (err != 0) {

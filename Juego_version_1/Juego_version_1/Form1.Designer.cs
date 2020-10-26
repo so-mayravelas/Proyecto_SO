@@ -125,7 +125,6 @@
             this.nombre_textBox3.Name = "nombre_textBox3";
             this.nombre_textBox3.Size = new System.Drawing.Size(169, 20);
             this.nombre_textBox3.TabIndex = 9;
-            this.nombre_textBox3.TextChanged += new System.EventHandler(this.nombre_textBox3_TextChanged);
             // 
             // Consulta_Mayra
             // 
@@ -213,6 +212,7 @@
             // 
             this.contraseña_textBox2.Location = new System.Drawing.Point(125, 161);
             this.contraseña_textBox2.Name = "contraseña_textBox2";
+            this.contraseña_textBox2.PasswordChar = '·';
             this.contraseña_textBox2.Size = new System.Drawing.Size(156, 20);
             this.contraseña_textBox2.TabIndex = 12;
             // 

@@ -112,10 +112,6 @@ namespace Juego_version_1
             opcion = 3;
         }
 
-<<<<<<< HEAD
-        
-
-=======
         private void enviar_button5_Click(object sender, EventArgs e)
         {
             string mensaje;
@@ -164,6 +160,5 @@ namespace Juego_version_1
                     break;
             }
         }
->>>>>>> 2507270c371cfe1bb8ae4c5b848be97e3c97f3c2
     }
 }
