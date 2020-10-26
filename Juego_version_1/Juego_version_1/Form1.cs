@@ -14,7 +14,7 @@ namespace Juego_version_1
     public partial class Form1 : Form
     {
         Socket server;
-        int opcion = 1;
+        int opcion = 0;
         public Form1()
         {
             
@@ -91,25 +91,30 @@ namespace Juego_version_1
             byte[] msg2 = new byte[80];
             server.Receive(msg2);
             mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
+            if (mensaje == "Has iniciado sesion")
+                opcion = -1;
             MessageBox.Show(mensaje);
         }
         //Consulta Galder
         //No me acuerdo bien la consulta
         private void Consulta_Galder_CheckedChanged(object sender, EventArgs e)
         {
+            if(opcion!=0)
             opcion = 1;
         }
         //Consulta Mayra 
         //Consultamos el número de partidas jugadas por el usuario"Pepito que esta en el nombre"
         private void Consulta_Mayra_CheckedChanged(object sender, EventArgs e)
         {
-            opcion = 2;
+            if (opcion != 0)
+                opcion = 2;
         }
         //Consulta Andoni
         //No me acuerdo la consulta completa
         private void Consulta_Andoni_CheckedChanged(object sender, EventArgs e)
         {
-            opcion = 3;
+            if (opcion != 0)
+                opcion = 3;
         }
 
         private void enviar_button5_Click(object sender, EventArgs e)
