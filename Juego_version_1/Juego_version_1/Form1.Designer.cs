@@ -44,6 +44,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.usuario_textBox1 = new System.Windows.Forms.TextBox();
             this.contraseña_textBox2 = new System.Windows.Forms.TextBox();
+            this.Servicios = new System.Windows.Forms.RadioButton();
             this.Consultas_groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -98,6 +99,7 @@
             // Consultas_groupBox1
             // 
             this.Consultas_groupBox1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.Consultas_groupBox1.Controls.Add(this.Servicios);
             this.Consultas_groupBox1.Controls.Add(this.TBConsultaAndoni);
             this.Consultas_groupBox1.Controls.Add(this.nombre_textBox3);
             this.Consultas_groupBox1.Controls.Add(this.Consulta_Mayra);
@@ -107,7 +109,7 @@
             this.Consultas_groupBox1.Controls.Add(this.enviar_button5);
             this.Consultas_groupBox1.Location = new System.Drawing.Point(45, 282);
             this.Consultas_groupBox1.Name = "Consultas_groupBox1";
-            this.Consultas_groupBox1.Size = new System.Drawing.Size(363, 202);
+            this.Consultas_groupBox1.Size = new System.Drawing.Size(363, 240);
             this.Consultas_groupBox1.TabIndex = 8;
             this.Consultas_groupBox1.TabStop = false;
             this.Consultas_groupBox1.Text = "Peticion";
@@ -136,7 +138,6 @@
             this.Consulta_Mayra.TabStop = true;
             this.Consulta_Mayra.Text = "Partidas jugadas por el \"usuario\"";
             this.Consulta_Mayra.UseVisualStyleBackColor = true;
-            this.Consulta_Mayra.CheckedChanged += new System.EventHandler(this.Consulta_Mayra_CheckedChanged);
             // 
             // Consulta_Andoni
             // 
@@ -148,7 +149,6 @@
             this.Consulta_Andoni.TabStop = true;
             this.Consulta_Andoni.Text = "Consulta Andoni";
             this.Consulta_Andoni.UseVisualStyleBackColor = true;
-            this.Consulta_Andoni.CheckedChanged += new System.EventHandler(this.Consulta_Andoni_CheckedChanged);
             // 
             // Consulta_Galder
             // 
@@ -161,7 +161,6 @@
             this.Consulta_Galder.TabStop = true;
             this.Consulta_Galder.Text = "Consulta Galder";
             this.Consulta_Galder.UseVisualStyleBackColor = true;
-            this.Consulta_Galder.CheckedChanged += new System.EventHandler(this.Consulta_Galder_CheckedChanged);
             // 
             // label2
             // 
@@ -175,7 +174,7 @@
             // 
             // enviar_button5
             // 
-            this.enviar_button5.Location = new System.Drawing.Point(126, 157);
+            this.enviar_button5.Location = new System.Drawing.Point(126, 189);
             this.enviar_button5.Name = "enviar_button5";
             this.enviar_button5.Size = new System.Drawing.Size(75, 23);
             this.enviar_button5.TabIndex = 5;
@@ -216,11 +215,22 @@
             this.contraseña_textBox2.Size = new System.Drawing.Size(156, 20);
             this.contraseña_textBox2.TabIndex = 12;
             // 
+            // Servicios
+            // 
+            this.Servicios.AutoSize = true;
+            this.Servicios.Location = new System.Drawing.Point(116, 145);
+            this.Servicios.Name = "Servicios";
+            this.Servicios.Size = new System.Drawing.Size(151, 17);
+            this.Servicios.TabIndex = 11;
+            this.Servicios.TabStop = true;
+            this.Servicios.Text = "Consulta cuantos servicios";
+            this.Servicios.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(428, 506);
+            this.ClientSize = new System.Drawing.Size(428, 534);
             this.Controls.Add(this.contraseña_textBox2);
             this.Controls.Add(this.usuario_textBox1);
             this.Controls.Add(this.label4);
@@ -257,6 +267,7 @@
         private System.Windows.Forms.TextBox contraseña_textBox2;
         private System.Windows.Forms.TextBox nombre_textBox3;
         private System.Windows.Forms.TextBox TBConsultaAndoni;
+        private System.Windows.Forms.RadioButton Servicios;
     }
 }
 
