@@ -31,3 +31,4 @@ C:\Users\paola\Desktop\UPC\QT1ACTUAL\SO\SO\Proyecto_SO\Juego_version_1\Juego_ver
 C:\Users\paola\Desktop\UPC\QT1ACTUAL\SO\SO\Proyecto_SO\Juego_version_1\Juego_version_1\obj\x86\Debug\Juego_version_1.Form1.resources
 C:\Users\paola\Desktop\UPC\QT1ACTUAL\SO\SO\Proyecto_SO\Juego_version_1\Juego_version_1\obj\x86\Debug\Juego_version_1.Properties.Resources.resources
 C:\Users\paola\Desktop\UPC\QT1ACTUAL\SO\SO\Proyecto_SO\Juego_version_1\Juego_version_1\obj\x86\Debug\Juego_version_1.csproj.GenerateResource.Cache
+C:\Users\paola\Desktop\UPC\QT1ACTUAL\SO\SO\Proyecto_SO\Juego_version_1\Juego_version_1\obj\x86\Debug\Juego_version_1.csprojResolveAssemblyReference.cache
