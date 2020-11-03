@@ -111,7 +111,7 @@ int main(int argc, char *argv[])
 				p = strtok(NULL, "/");				// Ya tenemos el nombre
 				strcpy(password, p);
 				sprintf(respuesta, "Error:Nombre de usuario o contrasena no conciden");
-				sprintf(consulta, "SELECT Username,Contraseña FROM Jugadores");
+				sprintf(consulta, "SELECT * FROM Jugadores WHERE Username='%s' AND Contraseña='%s'",nombre,password);
 				err = mysql_query(conn, consulta);
 				if (err != 0) {
 					printf("Error al consultar datos de la base %u %s\n",
@@ -120,10 +120,12 @@ int main(int argc, char *argv[])
 				}
 				resultado = mysql_store_result(conn);
 				row = mysql_fetch_row(resultado);
+				printf(row[0]);
 				while (row != NULL)
 				{
-					if (strcmp(nombre, row[0]) == 0 && strcmp(password, row[1]) == 0)
+					if (strcmp(nombre, row[1]) == 0 && strcmp(password, row[2]) == 0)
 						sprintf(respuesta, "Has iniciado sesion");
+					row = mysql_fetch_row(resultado);
 				}
 
 			
@@ -134,6 +136,7 @@ int main(int argc, char *argv[])
 				strcpy(password, p);
 				sprintf(respuesta, "Registrado");
 				sprintf(consulta, "SELECT Username FROM Jugadores");
+
 				err = mysql_query(conn, consulta);
 				if (err != 0) {
 					printf("Error al consultar datos de la base %u %s\n",
@@ -142,28 +145,39 @@ int main(int argc, char *argv[])
 				}
 				resultado = mysql_store_result(conn);
 				row = mysql_fetch_row(resultado);
+
+				printf(row[0]);
+				printf("\n");
 				while (row != NULL) {
 					if (strcmp(row[0] , nombre)==0) {
 						sprintf(respuesta, "Error:Username ya registrado");
 					}
 					row = mysql_fetch_row(resultado);
+
 				}
 				if (strcmp(respuesta, "Registrado") == 0) {
+
 					int newID = 0;
-					sprintf(consulta, "SELECT ID FROM Jugadores");
+					sprintf(consulta, "SELECT ID FROM Jugadores;");
+					err = mysql_query(conn, consulta);
 					if (err != 0) {
 						printf("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
 						exit(1);
 					}
 					resultado = mysql_store_result(conn);
 					row = mysql_fetch_row(resultado);
+
 					while (row != NULL)
 					{
-						if (newID < atoi(row[0]))
+
+						if (newID <= atoi(row[0]))
 						{
 							newID = atoi(row[0]) + 1;
 						}
+						row = mysql_fetch_row(resultado);
 					}
+					printf("%d",newID);
+					printf("\n");
 					sprintf(consulta, "INSERT INTO Jugadores (ID,Username,Contraseña) VALUES (%d,'%s','%s')",newID,nombre,password);
 					err = mysql_query(conn, consulta);
 					if (err != 0) {
@@ -293,12 +307,14 @@ int main(int argc, char *argv[])
 					}
 				}
 			}
-			else //quiere saber si es alto
+			else if (codigo == 5)  //Consulta de Andoni
 			{
 						nPartidas=0;
+						strcpy(Usuario1,nombre);
 						p = strtok( NULL, "/");	
 						strcpy(Usuario2,p);
-						sprintf(consulta, "SELECT Referencia.ID_Partida FROM (Jugadores,Referencia) WHERE Referencia.ID_Partida IN(SELECT Referencia.ID_Partida FROM(Jugadores, Referencia) WHERE Jugadores.Username = '%s' AND Jugadores.ID = Referencia.ID_Jugador AND Referencia.Pareja =IN( SELECT Referencia.Pareja FROM(Jugadores, Referencia) WHERE Jugadores.Username = '%s' AND Jugadores.ID = Referencia.ID_Jugador) AND Referencia.ID_Partida =IN( SELECT Referencia.ID_Partida FROM(Jugadores, Referencia) WHERE Jugadores.Username = '%s' AND Jugadores.ID = Referencia.ID_Jugador)) AND Jugadores.Username = '%s' AND Referencia.ID_Jugador = Jugadores.ID", Usuario1, Usuario1, Usuario1, Usuario2);
+						printf("%s, %s\n", Usuario1, Usuario2);
+						sprintf (consulta,"SELECT Referencia.ID_Partida FROM (Jugadores, Referencia) WHERE Referencia.ID_Partida IN(SELECT Referencia.ID_Partida FROM(Jugadores, Referencia) WHERE Jugadores.Username = '%s' AND Jugadores.ID = Referencia.ID_Jugador) AND Jugadores.Username = '%s' AND Referencia.ID_Jugador = Jugadores.ID", Usuario1, Usuario2);
 						// hacemos la consulta 
 						err = mysql_query(conn, consulta);
 						if (err != 0) {
@@ -311,15 +327,49 @@ int main(int argc, char *argv[])
 						row = mysql_fetch_row(resultado);
 						if (row == NULL)
 							printf("No se han obtenido datos en la consulta\n");
-						else {
-							while (row != NULL) {
-								printf("%d\n", row);
-								nPartidas++;
-								row = mysql_fetch_row(resultado);
+						else{
+							printf("No va mal\n");
+							while (row !=NULL) {
+								int Pa = atoi (row[0]);
+								char consulta1 [500];
+								char consulta2 [500];
+								int errJ1;
+								int errJ2;
+								MYSQL_RES *resultadoJ1;
+								MYSQL_ROW rowJ1;
+								MYSQL_RES *resultadoJ2;
+								MYSQL_ROW rowJ2;
+								
+								sprintf (consulta1,"SELECT Referencia.ID_Pareja FROM (Jugadores, Referencia) WHERE Referencia.ID_Partida = %d AND Jugadores.Username = '%s' AND Referencia.ID_Jugador = Jugadores.ID", Pa, Usuario1);
+								sprintf (consulta2,"SELECT Referencia.ID_Pareja FROM (Jugadores, Referencia) WHERE Referencia.ID_Partida = %d AND Jugadores.Username = '%s' AND Referencia.ID_Jugador = Jugadores.ID", Pa, Usuario2);
+								errJ1=mysql_query (conn, consulta1);
+								if (errJ1 != 0){
+									printf ("Error al consultar datos de la base %u %s\n",
+											mysql_errno(conn), mysql_error(conn));
+									exit (1);
+								}
+								resultadoJ1 = mysql_store_result (conn);
+								rowJ1 = mysql_fetch_row (resultadoJ1);
+								int Pj1 = atoi (rowJ1[0]);
+								
+								errJ2=mysql_query (conn, consulta2);
+								if (errJ2 != 0){
+									printf ("Error al consultar datos de la base %u %s\n",
+											mysql_errno(conn), mysql_error(conn));
+									exit (1);
+								}
+								resultadoJ2 = mysql_store_result (conn);
+								rowJ2 = mysql_fetch_row (resultadoJ2);
+								int Pj2 = atoi (rowJ2[0]);
+								
+								if (Pj1 == Pj2){
+									nPartidas++;
+								}
+								row = mysql_fetch_row (resultado);
 							}
-
+							
 						}
-						sprintf(respuesta,"%d",nPartidas);
+						sprintf(respuesta,"Numero de partidas que la pareja de %s y %s ha jugado: %d", Usuario1, Usuario2, nPartidas);
 			}
 				
 			if (codigo !=0)
