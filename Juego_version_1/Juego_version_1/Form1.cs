@@ -22,7 +22,7 @@ namespace Juego_version_1
             //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
             //al que deseamos conectarnos
             IPAddress direc = IPAddress.Parse("192.168.56.102");
-            IPEndPoint ipep = new IPEndPoint(direc, 9000);
+            IPEndPoint ipep = new IPEndPoint(direc, 9030);
 
 
             //Creamos el socket 
@@ -116,29 +116,7 @@ namespace Juego_version_1
                 loged=true;
             MessageBox.Show(mensaje);
         }
-<<<<<<< HEAD
-        //Consulta Galder
-        //No me acuerdo bien la consulta
-        private void Consulta_Galder_CheckedChanged(object sender, EventArgs e)
-        {
-            opcion = 1;
-        }
-        //Consulta Mayra 
-        //Consultamos el número de partidas jugadas por el usuario"Pepito que esta en el nombre"
-        private void Consulta_Mayra_CheckedChanged(object sender, EventArgs e)
-        {
-            opcion = 2;
-        }
-        //Consulta Andoni
-        //No me acuerdo la consulta completa
-        private void Consulta_Andoni_CheckedChanged(object sender, EventArgs e)
-        {
-            opcion = 3;
-        }
 
-
-=======
->>>>>>> 09354d524dcc305d31a4993d9d4d49bdbc8dab45
         private void enviar_button5_Click(object sender, EventArgs e)
         {
             string mensaje;
@@ -206,10 +184,5 @@ namespace Juego_version_1
             }
             
         }
-
-<<<<<<< HEAD
-=======
-
->>>>>>> 09354d524dcc305d31a4993d9d4d49bdbc8dab45
     }
 }
