@@ -45,7 +45,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.usuario_textBox1 = new System.Windows.Forms.TextBox();
             this.contraseña_textBox2 = new System.Windows.Forms.TextBox();
-            this.Conectados = new System.Windows.Forms.RadioButton();
+            this.listaClientes = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.Consultas_groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,7 +101,6 @@
             // Consultas_groupBox1
             // 
             this.Consultas_groupBox1.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.Consultas_groupBox1.Controls.Add(this.Conectados);
             this.Consultas_groupBox1.Controls.Add(this.Servicios);
             this.Consultas_groupBox1.Controls.Add(this.TBConsultaAndoni);
             this.Consultas_groupBox1.Controls.Add(this.nombre_textBox3);
@@ -228,22 +228,31 @@
             this.contraseña_textBox2.Size = new System.Drawing.Size(156, 20);
             this.contraseña_textBox2.TabIndex = 12;
             // 
-            // Conectados
+            // listaClientes
             // 
-            this.Conectados.AutoSize = true;
-            this.Conectados.Location = new System.Drawing.Point(116, 168);
-            this.Conectados.Name = "Conectados";
-            this.Conectados.Size = new System.Drawing.Size(183, 17);
-            this.Conectados.TabIndex = 12;
-            this.Conectados.TabStop = true;
-            this.Conectados.Text = "Consulta los usuarios conectados";
-            this.Conectados.UseVisualStyleBackColor = true;
+            this.listaClientes.AutoSize = true;
+            this.listaClientes.Location = new System.Drawing.Point(439, 81);
+            this.listaClientes.Name = "listaClientes";
+            this.listaClientes.Size = new System.Drawing.Size(0, 13);
+            this.listaClientes.TabIndex = 13;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.label5.Location = new System.Drawing.Point(408, 47);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(234, 20);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Lista de Clientes Conectados:";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(428, 534);
+            this.ClientSize = new System.Drawing.Size(654, 534);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.listaClientes);
             this.Controls.Add(this.contraseña_textBox2);
             this.Controls.Add(this.usuario_textBox1);
             this.Controls.Add(this.label4);
@@ -281,7 +290,8 @@
         private System.Windows.Forms.TextBox nombre_textBox3;
         private System.Windows.Forms.TextBox TBConsultaAndoni;
         private System.Windows.Forms.RadioButton Servicios;
-        private System.Windows.Forms.RadioButton Conectados;
+        private System.Windows.Forms.Label listaClientes;
+        private System.Windows.Forms.Label label5;
     }
 }
 

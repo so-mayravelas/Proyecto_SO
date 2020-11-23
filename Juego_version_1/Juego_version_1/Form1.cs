@@ -8,17 +8,20 @@ using System.Text;
 using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
+using System.Threading;
 
 namespace Juego_version_1
 {
     public partial class Form1 : Form
     {
         Socket server;
+        Thread atender;
         bool loged=false;
         public Form1()
         {
             
             InitializeComponent();
+            CheckForIllegalCrossThreadCalls = false;
             //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
             //al que deseamos conectarnos
             IPAddress direc = IPAddress.Parse("192.168.56.102");
@@ -40,6 +43,9 @@ namespace Juego_version_1
                 MessageBox.Show("No he podido conectar con el servidor");
                 return;
             }
+            ThreadStart ts = delegate { AtenderServidor(); };
+            atender = new Thread(ts);
+            atender.Start();
 
         }
 
@@ -91,12 +97,6 @@ namespace Juego_version_1
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
 
-            //Recibimos la respuesta del servidor para saber si nos hemos registrado
-            byte[] msg2 = new byte[80];
-            server.Receive(msg2);
-            mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-            MessageBox.Show(mensaje);
-
         }
 
         //Si ya estamos registardos o nos acabos de registra ya podemos ingresar ya estaremso dados de alta en la BBDD
@@ -108,13 +108,6 @@ namespace Juego_version_1
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
 
-            //Recibimos la respuesta del servidor
-            byte[] msg2 = new byte[80];
-            server.Receive(msg2);
-            mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-            if (mensaje == "Has iniciado sesion")
-                loged=true;
-            MessageBox.Show(mensaje);
         }
 
         private void enviar_button5_Click(object sender, EventArgs e)
@@ -129,12 +122,6 @@ namespace Juego_version_1
                 // Enviamos al servidor el nombre del usuario
                 msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                 server.Send(msg);
-
-                //Recibimos la respuesta del servidor
-                msg2 = new byte[80];
-                server.Receive(msg2);
-                mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-                MessageBox.Show(mensaje);
             }
             else if (Consulta_Mayra.Checked == true && loged == true)
             {
@@ -144,11 +131,6 @@ namespace Juego_version_1
                 msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                 server.Send(msg);
 
-                //Recibimos la respuesta del servidor
-                msg2 = new byte[80];
-                server.Receive(msg2);
-                mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-                MessageBox.Show(mensaje);
             }
             else if (Consulta_Andoni.Checked == true && loged == true)
             {
@@ -158,11 +140,6 @@ namespace Juego_version_1
                 msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                 server.Send(msg);
 
-                //Recibimos la respuesta del servidor
-                msg2 = new byte[80];
-                server.Receive(msg2);
-                mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-                MessageBox.Show(mensaje);
             }
             else if (Servicios.Checked==true && loged == true)
             {
@@ -172,31 +149,91 @@ namespace Juego_version_1
                 msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                 server.Send(msg);
 
-                //Recibimos la respuesta del servidor
-                msg2 = new byte[80];
-                server.Receive(msg2);
-                mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-                MessageBox.Show(mensaje);
             }
-            else if (Conectados.Checked == true && loged == true)
-            {
-                // Quiere realizar la consulta escogida
-                mensaje = "7/";
-                // Enviamos al servidor los nombres de usuario
-                msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                server.Send(msg);
 
-                //Recibimos la respuesta del servidor
-                msg2 = new byte[80];
-                server.Receive(msg2);
-                mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
-                MessageBox.Show(mensaje);
-            }
             else
             {
                 MessageBox.Show("Inicie sesion para hacer alguna consulta");
             }
             
         }
+        private void AtenderServidor()
+        {
+            while (true)
+            {
+                byte[] msg = new byte[80];
+                string mensajeC;
+                string[] mensaje;
+                int identificador;
+                server.Receive(msg);
+                mensajeC = Encoding.ASCII.GetString(msg).Split('\0')[0];
+                mensaje = mensajeC.Split('/');
+                identificador = Convert.ToInt32(mensaje[0]);
+                switch (identificador)
+                {
+                    case 1://log in
+                        
+                        if (mensaje[1].Equals("si"))
+                        {
+                            loged = true;
+                            MessageBox.Show("Has iniciado sesion correctamente");
+                        }
+                        else
+                        {
+                            MessageBox.Show("No has iniciado sesion correctamente");
+                        }
+                        break;
+                    case 2://registrarse
+
+
+                        if (mensaje[1] == "si")
+                        {
+                            loged = true;
+                            MessageBox.Show("Te has registrado correctamente");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error: Usuario ya en uso");
+                        }
+                        break;
+                    case 3://servicio Galder
+                        string lista="";
+                        
+                        
+                        for (int i=1;i<mensaje.Length;i++)
+                        {
+                            
+                            lista = lista + mensaje[i] + "\n";
+                        }
+                        MessageBox.Show(lista);
+                        break;
+                    case 4://servicio Mayra
+
+                        MessageBox.Show(mensaje[1]);
+                        break;
+                    case 5://servicio Andoni
+
+                        MessageBox.Show(mensaje[1]);
+                        break;
+                    case 6://cuantos servicios
+
+                        MessageBox.Show(mensaje[1]);
+                        break;
+                    case 7://Lista clientes
+                        lista = "";
+
+
+                        for (int i = 1; i < mensaje.Length; i++)
+                        {
+
+                            lista = lista + mensaje[i] + "\n";
+                        }
+                        listaClientes.Text= lista;
+                        break;
+
+                }
+            }
+        }
     }
 }
+
