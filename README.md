@@ -10,3 +10,8 @@ Communicated Mayra Vela
 Exclusion mutua en:
 -Contador de servicios
 -Lista de clientes
+# Version 3
+Uploaded Mayra Vela
+Revised Andoni Coronel
+Communicated Galder Arcellares
+-Lista de conectados con notificaciones
