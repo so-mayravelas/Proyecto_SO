@@ -21,8 +21,23 @@ typedef struct{
 	Conectado conectados[100];
 	int num;
 } ListaConectados;
-ListaConectados milista;
-
+ListaConectados milistaConectados;
+typedef struct {
+	char nombre1[20];
+	int pareja1;
+	char nombre2[20];
+	int pareja2;
+	char nombre3[20];
+	int pareja3;
+	char nombre4[20];
+	int pareja4;
+	int empezada;
+} Partida;
+typedef struct {
+	Partida partidas[100];
+	int num;
+} ListaPartidas;
+ListaPartidas milistaPartidas;
 
 //Declaracion lista para guardar los conectados
 
@@ -76,24 +91,9 @@ void DameConectados(ListaConectados *lista, char *conectados[512]){
 	for(i=0;i<lista->num;i++)
 	{
 		sprintf(conectados, "%s/%s", conectados, lista->conectados[i].nombre);
-		pthread_mutex_unlock(&mutex);//Ya puedes interrumpir
+		
 	}
-	
-}
-void DameSockets(ListaConectados *lista, char *sockets[20]){
-	//Pone en conectados los nombres de todos los conectados separados
-	//por /.
-	//Ejemplo: "Pedro/Mayra/Luis"
-	pthread_mutex_lock(&mutex);//No me interrumpas ahora
-	int i;
-	sprintf(sockets,"");
-	for(i=0;i<lista->num;i++)
-	{
-		sprintf(sockets, "%s/%d", sockets, lista->conectados[i].socket);
-		pthread_mutex_unlock(&mutex);//Ya puedes interrumpir
-	}
-
-	
+	pthread_mutex_unlock(&mutex);//Ya puedes interrumpir
 }
 
 int DamePosicion(ListaConectados *lista, char nombre[20]){
@@ -131,6 +131,184 @@ void DameUser(ListaConectados *lista, int socket, char nombre[20]){
 	else
 		printf("No se ha encontrado ningún usuario con ese socket");
 }
+int CrearPartida(ListaPartidas* lista) {
+	//añade nuevo conectado y retorna 0 si okey o 0 si la lista ya estaba llena
+	if (lista->num == 100)
+		return -1;
+	else
+	{
+		pthread_mutex_lock(&mutex);//No me interrumpas ahora
+		lista->partidas[lista->num]->empezada = 0;
+		lista->partidas[lista->num]->pareja1 = -1;
+		lista->partidas[lista->num]->pareja2 = -1;
+		lista->partidas[lista->num]->pareja3 = -1;
+		lista->partidas[lista->num]->pareja4 = -1;
+		lista->num++;
+		pthread_mutex_unlock(&mutex);//Ya puedes interrumpir
+			return num-1;
+		
+
+
+	}
+}
+int EliminarPartida(ListaPartidas* lista, int partida) {
+	//Retorna 0 si se ha eliminado y -1 si el usuario no esta en la lista
+	//lista ya es un puntero a la lista y por ello la pongo tal cual sin &
+
+
+
+		pthread_mutex_lock(&mutex);//No me interrumpas ahora
+		for (int i = partida; i < num; i++;) {
+			lista->partidas[i] = lista->partidas[i + 1];
+		}
+		lista->num--;
+		pthread_mutex_unlock(&mutex);//Ya puedes interrumpir
+		return 0;
+
+
+}
+int EntrarPartida(ListaPartidas* lista, char nombre[20], int pareja, int numPartida) {
+	//añade nuevo conectado y retorna 0 si okey o 0 si la lista ya estaba llena
+
+		pthread_mutex_lock(&mutex);//No me interrumpas ahora
+		if (lista->partidas[numPartida]->pareja1==-1)
+		{
+			strcpy(lista->partidas[numPartida].nombre, nombre);
+
+			lista->partidas[numPartida].pareja1 = pareja;
+			pthread_mutex_unlock(&mutex);//Ya puedes interrumpir
+			return 0;
+			
+		}
+		else if (lista->partidas[numPartida]->pareja2 == -1)
+		{
+			strcpy(lista->partidas[numPartida].nombre, nombre);
+
+			lista->partidas[numPartida].pareja2 = pareja;
+			pthread_mutex_unlock(&mutex);//Ya puedes interrumpir
+			return 0;
+
+		}
+		else if (lista->partidas[numPartida]->pareja3 == -1)
+		{
+			strcpy(lista->partidas[numPartida].nombre, nombre);
+
+			lista->partidas[numPartida].pareja3= pareja;
+			pthread_mutex_unlock(&mutex);//Ya puedes interrumpir
+			return 0;
+
+		}
+		else if (lista->partidas[numPartida]->pareja4 == -1)
+		{
+			strcpy(lista->partidas[numPartida].nombre, nombre);
+
+			lista->partidas[numPartida].pareja4 = pareja;
+			pthread_mutex_unlock(&mutex);//Ya puedes interrumpir
+			return 0;
+
+		}
+		else
+		{
+			pthread_mutex_unlock(&mutex);//Ya puedes interrumpir
+			return -1;
+		}
+
+
+	
+}
+
+int SalirPartida(ListaPartidas* lista, char nombre[20],int partida) {
+	//Retorna 0 si se ha eliminado y -1 si el usuario no esta en la lista
+	//lista ya es un puntero a la lista y por ello la pongo tal cual sin &
+	int pos = DamePosicion(lista, nombre);
+	if (pos == -1)
+		return -1;
+	else
+	{
+
+		pthread_mutex_lock(&mutex);//No me interrumpas ahora
+		switch (pos)
+		{
+			1:
+			lista->partidas[partida].pareja1 = -1;
+			break;
+			2:
+			lista->partidas[partida].pareja1 = -1;
+			break;
+			3:
+			lista->partidas[partida].pareja1 = -1;
+			break;
+			4:
+			lista->partidas[partida].pareja1 = -1;
+			break;
+		}
+
+		pthread_mutex_unlock(&mutex);//Ya puedes interrumpir
+		return 0;
+	}
+
+}
+
+void JugadoresEnPartida(ListaPartidas* lista, char* conectados[512],int partida) {
+	//Pone en conectados los nombres de todos los conectados separados
+	//por /.
+	//Ejemplo: "Pedro/Mayra/Luis"
+	pthread_mutex_lock(&mutex);//No me interrumpas ahora
+	int i;
+	sprintf(conectados, "");
+	if(lista->partidas[partida].pareja1!=-1){
+		sprintf(conectados, "%s/%s", conectados, lista->partidas[partida].nombre1);
+		
+	}
+	if (lista->partidas[partida].pareja2 != -1) {
+		sprintf(conectados, "%s/%s", conectados, lista->partidas[partida].nombre2);
+
+	}
+	if (lista->partidas[partida].pareja3 != -1) {
+		sprintf(conectados, "%s/%s", conectados, lista->partidas[partida].nombre3);
+
+	}
+	if (lista->partidas[partida].pareja4 != -1) {
+		sprintf(conectados, "%s/%s", conectados, lista->partidas[partida].nombre4);
+
+	}
+	pthread_mutex_unlock(&mutex);//Ya puedes interrumpir
+
+}
+int CambiarPareja(ListaPartidas* lista, char nombre[20], int pareja, int numPartida) {
+	if (strcmp(nombre, lista->partidas[numPartida]->nombre1) {
+		lista->partidas[numPartida]->pareja1=pareja;
+	}
+	else if (strcmp(nombre, lista->partidas[numPartida]->nombre1) {
+		lista->partidas[numPartida]->pareja2 = pareja;
+	}
+	else if (strcmp(nombre, lista->partidas[numPartida]->nombre1) {
+		lista->partidas[numPartida]->pareja3 = pareja;
+	}
+	else if (strcmp(nombre, lista->partidas[numPartida]->nombre1) {
+		lista->partidas[numPartida]->pareja4 = pareja;
+	}
+}
+void EnviarAPatida(char nombre[20],char mensaje[200],int numPartida) {
+	char respuesta[20];
+	int sock_conn;
+	if(milistaPartidas.partidas[numPartida].nombre1!=nombre){
+		sock_conn=milistaConectados.conectados[DamePosicion(milistaConectados, milistaPartidas.partidas[numPartida].nombre1)].socket;
+		write(sock_conn, mensaje, strlen(mensaje));
+	}
+	if (milistaPartidas.partidas[numPartida].nombre2 != nombre) {
+		sock_conn = milistaConectados.conectados[DamePosicion(milistaConectados, milistaPartidas.partidas[numPartida].nombre2)].socket;
+		write(sock_conn, mensaje, strlen(mensaje));
+	}
+	if (milistaPartidas.partidas[numPartida].nombre3 != nombre) {
+		sock_conn = milistaConectados.conectados[DamePosicion(milistaConectados, milistaPartidas.partidas[numPartida].nombre3)].socket;
+		write(sock_conn, mensaje, strlen(mensaje));
+	}
+	if (milistaPartidas.partidas[numPartida].nombre4 != nombre) {
+		sock_conn = milistaConectados.conectados[DamePosicion(milistaConectados, milistaPartidas.partidas[numPartida].nombre4)].socket;
+		write(sock_conn, mensaje, strlen(mensaje));
+	}
+}
 void NotificacionConectados()
 {
 
@@ -138,7 +316,7 @@ void NotificacionConectados()
 	char respuesta[20];
 	char respuesta2[20];
 	
-	DameConectados(&milista, &respuesta);
+	DameConectados(&milistaConectados, &respuesta);
 	printf("wert:%s",respuesta);
 	if (respuesta==NULL)
 		sprintf(respuesta2, "7/None");
@@ -148,9 +326,9 @@ void NotificacionConectados()
 		printf("Resultado: %s", respuesta2);
 	}
 	int sock_conn;
-	for (int i=0;i<=milista.num;i++){
+	for (int i=0;i<=milistaConectados.num;i++){
 		
-		sock_conn =milista.conectados[i].socket ;
+		sock_conn =milistaConectados.conectados[i].socket ;
 		printf("Socket:%d\n",sock_conn);
 		
 		write (sock_conn,respuesta2, strlen(respuesta2));
@@ -217,14 +395,17 @@ void* AtenderCliente (void* sock)
 		
 		
 		
-		if (codigo !=0 && codigo !=6 && codigo !=7)
+		if (codigo !=0 && codigo !=6 && codigo !=7 && codigo != 8)
 		{
 			p = strtok( NULL, "/");				// Ya tenemos el nombre
 			strcpy(nombre,p);
 			printf ("Codigo: %d, Nombre: %s\n", codigo, nombre);
 		}
 		
-		if (codigo ==0) //petici?n de desconexi?n
+		if (codigo == 0) //petici?n de desconexi?n
+			char nombre[20];
+			DameUser(milista, sock_conn, nombre);
+			EliminaConectado(milista, milista.conectados[DamePosicion(milista, nombre)]);
 			terminar=1;
 		else if (codigo == 1) {//Iniciar sesion
 			char password[20];
@@ -515,6 +696,70 @@ void* AtenderCliente (void* sock)
 				printf("Resultado: %s\n", respuesta);
 			}
 			
+		}
+		else if (codigo == 8) {
+			char miNombre[20];
+			char respuestaOtro[20];
+			int sock_conn2;
+			DameConectados(&milista, respuesta);
+			p = strtok(NULL, "/");				// Ya tenemos la peticion
+			int numPartida = atoi(p);
+			p = strtok(NULL, "/");				// Ya tenemos el numero de la partida
+			int peticion = atoi(p);
+			p = strtok(NULL, "/");				// Ya tenemos el numero de la partida
+			nombre = p;
+			DameUser(&milistaConectados, sock_conn, miNombre);
+			switch (peticion)
+			{
+				1:
+					if (numPartida == -1) {
+						numPartida = CrearPartida(&milistaPartidas);
+						sprintf(respuesta, "8/1/%d/%s",  numPartida, miNombre);
+					}
+					int pos = DamePosicion(&milistaConectados, nombre);
+					sock_conn2 = milistaConectados.conectados[pos].socket;
+					sprintf(respuestaOtro, "8/1/%d/%s", numPartida, miNombre);
+					write(sock_conn2, respuestaOtro, strlen(respuestaOtro));
+					break;
+				2:
+					int pareja = 0;
+					int err = EntrarPartida(&milistaConectados, miNombre, pareja, numPartida);
+					if (err == 0) {
+						sprintf(respuestaOtro, "8/2/%d/%s", numPartida, miNombre);
+						EnviarAPatida(miNombre, respuestaOtro, numPartida);
+					}
+					else if (err == -1) {
+						int pos = DamePosicion(&milistaConectados, nombre);
+						sock_conn2 = milistaConectados.conectados[pos].socket;
+						sprintf(respuestaOtro, "8/3/%d/%s", numPartida, nombre);
+						sprintf(respuesta, "8/6/%d/%s", numPartida, miNombre);
+						write(sock_conn2, respuestaOtro, strlen(respuestaOtro));
+					}
+
+					break;
+				3:
+					int pos = DamePosicion(&milistaConectados, nombre);
+					sock_conn2 = milistaConectados.conectados[pos].socket;
+					sprintf(respuestaOtro, "8/3/%d/%s", numPartida, nombre);
+					write(sock_conn2, respuestaOtro, strlen(respuestaOtro));
+					break;
+				4:
+					SalirPartida(milistaPartidas, miNombre, numPartida);
+					sprintf(respuestaOtro, "8/4/%d/%s", numPartida, miNombre);
+					EnviarAPatida(miNombre, respuestaOtro, numPartida);
+					break;
+				5:
+					int pareja=atoi(nombre)
+					CambiarPareja(milistaPartidas, miNombre, pareja, numPartida);
+					sprintf(respuestaOtro, "8/5/%d/%s", numPartida, miNombre);
+					EnviarAPatida(miNombre, respuestaOtro, numPartida);
+					break;
+					
+
+			default:
+				break;
+			}
+
 		}
 		
 		if (codigo !=0)
