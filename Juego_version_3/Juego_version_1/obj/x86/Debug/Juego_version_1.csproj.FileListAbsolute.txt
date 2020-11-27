@@ -41,3 +41,11 @@ C:\Users\Andoni Coronel\Documents\Estudios\EETAC UPC\Doble Grado-IngSisAer+IngSi
 C:\Users\Andoni Coronel\Documents\Estudios\EETAC UPC\Doble Grado-IngSisAer+IngSisTel\3º\3A\Sistemas Operativos\Proyecto_SO\Juego_version_1\Juego_version_1\obj\x86\Debug\Juego_version_1.csproj.GenerateResource.Cache
 >>>>>>> 09354d524dcc305d31a4993d9d4d49bdbc8dab45
 C:\Users\Andoni Coronel\Documents\Estudios\EETAC UPC\Doble Grado-IngSisAer+IngSisTel\3º\3A\Sistemas Operativos\Proyecto_SO\Juego_version_1\Juego_version_1\obj\x86\Debug\Juego_version_1.csprojResolveAssemblyReference.cache
+C:\Users\Andoni Coronel\Documents\Estudios\EETAC UPC\Doble Grado-IngSisAer+IngSisTel\3º\3A\Sistemas Operativos\Proyecto_SO\Juego_version_3\Juego_version_1\obj\x86\Debug\Juego_version_1.exe
+C:\Users\Andoni Coronel\Documents\Estudios\EETAC UPC\Doble Grado-IngSisAer+IngSisTel\3º\3A\Sistemas Operativos\Proyecto_SO\Juego_version_3\Juego_version_1\obj\x86\Debug\Juego_version_1.pdb
+C:\Users\Andoni Coronel\Documents\Estudios\EETAC UPC\Doble Grado-IngSisAer+IngSisTel\3º\3A\Sistemas Operativos\Proyecto_SO\Juego_version_3\Juego_version_1\bin\Debug\Juego_version_1.exe
+C:\Users\Andoni Coronel\Documents\Estudios\EETAC UPC\Doble Grado-IngSisAer+IngSisTel\3º\3A\Sistemas Operativos\Proyecto_SO\Juego_version_3\Juego_version_1\bin\Debug\Juego_version_1.pdb
+C:\Users\Andoni Coronel\Documents\Estudios\EETAC UPC\Doble Grado-IngSisAer+IngSisTel\3º\3A\Sistemas Operativos\Proyecto_SO\Juego_version_3\Juego_version_1\obj\x86\Debug\Juego_version_1.csprojResolveAssemblyReference.cache
+C:\Users\Andoni Coronel\Documents\Estudios\EETAC UPC\Doble Grado-IngSisAer+IngSisTel\3º\3A\Sistemas Operativos\Proyecto_SO\Juego_version_3\Juego_version_1\obj\x86\Debug\Juego_version_1.Form1.resources
+C:\Users\Andoni Coronel\Documents\Estudios\EETAC UPC\Doble Grado-IngSisAer+IngSisTel\3º\3A\Sistemas Operativos\Proyecto_SO\Juego_version_3\Juego_version_1\obj\x86\Debug\Juego_version_1.Properties.Resources.resources
+C:\Users\Andoni Coronel\Documents\Estudios\EETAC UPC\Doble Grado-IngSisAer+IngSisTel\3º\3A\Sistemas Operativos\Proyecto_SO\Juego_version_3\Juego_version_1\obj\x86\Debug\Juego_version_1.csproj.GenerateResource.Cache

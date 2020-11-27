@@ -47,7 +47,10 @@
             this.contraseña_textBox2 = new System.Windows.Forms.TextBox();
             this.listaClientes = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.ConectadosGrid = new System.Windows.Forms.DataGridView();
+            this.InvitarButton = new System.Windows.Forms.Button();
             this.Consultas_groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ConectadosGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // Conectar_button1
@@ -109,7 +112,7 @@
             this.Consultas_groupBox1.Controls.Add(this.Consulta_Galder);
             this.Consultas_groupBox1.Controls.Add(this.label2);
             this.Consultas_groupBox1.Controls.Add(this.enviar_button5);
-            this.Consultas_groupBox1.Location = new System.Drawing.Point(45, 282);
+            this.Consultas_groupBox1.Location = new System.Drawing.Point(39, 282);
             this.Consultas_groupBox1.Name = "Consultas_groupBox1";
             this.Consultas_groupBox1.Size = new System.Drawing.Size(363, 240);
             this.Consultas_groupBox1.TabIndex = 8;
@@ -240,17 +243,39 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.label5.Location = new System.Drawing.Point(408, 47);
+            this.label5.Location = new System.Drawing.Point(525, 27);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(234, 20);
+            this.label5.Size = new System.Drawing.Size(103, 20);
             this.label5.TabIndex = 14;
-            this.label5.Text = "Lista de Clientes Conectados:";
+            this.label5.Text = "Conectados:";
+            // 
+            // ConectadosGrid
+            // 
+            this.ConectadosGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ConectadosGrid.Location = new System.Drawing.Point(529, 50);
+            this.ConectadosGrid.Name = "ConectadosGrid";
+            this.ConectadosGrid.Size = new System.Drawing.Size(99, 150);
+            this.ConectadosGrid.TabIndex = 15;
+            // 
+            // InvitarButton
+            // 
+            this.InvitarButton.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.InvitarButton.Location = new System.Drawing.Point(529, 206);
+            this.InvitarButton.Name = "InvitarButton";
+            this.InvitarButton.Size = new System.Drawing.Size(99, 31);
+            this.InvitarButton.TabIndex = 16;
+            this.InvitarButton.Text = "Invitar";
+            this.InvitarButton.UseVisualStyleBackColor = false;
+            this.InvitarButton.Click += new System.EventHandler(this.InvitarButton_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(654, 534);
+            this.Controls.Add(this.InvitarButton);
+            this.Controls.Add(this.ConectadosGrid);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.listaClientes);
             this.Controls.Add(this.contraseña_textBox2);
@@ -266,6 +291,7 @@
             this.Text = "Form1";
             this.Consultas_groupBox1.ResumeLayout(false);
             this.Consultas_groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ConectadosGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -292,6 +318,8 @@
         private System.Windows.Forms.RadioButton Servicios;
         private System.Windows.Forms.Label listaClientes;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridView ConectadosGrid;
+        private System.Windows.Forms.Button InvitarButton;
     }
 }
 
