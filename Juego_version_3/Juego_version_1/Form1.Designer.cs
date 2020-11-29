@@ -256,6 +256,7 @@
             this.ConectadosGrid.Name = "ConectadosGrid";
             this.ConectadosGrid.Size = new System.Drawing.Size(99, 150);
             this.ConectadosGrid.TabIndex = 15;
+            this.ConectadosGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ConectadosGrid_CellClick);
             // 
             // InvitarButton
             // 

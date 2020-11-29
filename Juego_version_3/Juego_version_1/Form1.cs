@@ -297,7 +297,7 @@ namespace Juego_version_1
         {
             ConectadosGrid.Rows[num].Cells[0].Style.BackColor = Color.White;
             num = e.RowIndex; //Vector de filas
-            ConectadosGrid.Rows[num].Cells[0].Style.BackColor = Color.Blue; //La celda seleccionada se pondrá de color azul
+            ConectadosGrid.Rows[num].Cells[0].Style.BackColor = Color.Green; //La celda seleccionada se pondrá de color azul
             ConectadosGrid.ClearSelection();
             iseleccionado = num; //Nos da la posición del avión seleccionado en el dataGrid
         }
@@ -306,11 +306,11 @@ namespace Juego_version_1
         {
             string mensaje;
             byte[] msg;
-
-            if (iseleccionado != 0 && loged == true) //Solo si no se seleccionan los títulos (posición 0)
+            if (loged == true) //Solo si no se seleccionan los títulos (posición 0)
             {
                 // Quiere realizar la consulta escogida
-                mensaje = "8/" + ListaConectados[iseleccionado];
+                MessageBox.Show(iseleccionado.ToString());
+                mensaje = "8/1/-1/" + ListaConectados[iseleccionado-1];
                 // Enviamos al servidor los nombres de usuario
                 msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                 if (conectado == true)
@@ -321,6 +321,7 @@ namespace Juego_version_1
                 MessageBox.Show("Elige el usuario al que quieres invitar", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
     }
 }
 

@@ -50,3 +50,11 @@ C:\Users\Andoni Coronel\Documents\Estudios\EETAC UPC\Doble Grado-IngSisAer+IngSi
 C:\Users\Andoni Coronel\Documents\Estudios\EETAC UPC\Doble Grado-IngSisAer+IngSisTel\3º\3A\Sistemas Operativos\Proyecto_SO\Juego_version_3\Juego_version_1\obj\x86\Debug\Juego_version_1.Properties.Resources.resources
 C:\Users\Andoni Coronel\Documents\Estudios\EETAC UPC\Doble Grado-IngSisAer+IngSisTel\3º\3A\Sistemas Operativos\Proyecto_SO\Juego_version_3\Juego_version_1\obj\x86\Debug\Juego_version_1.csproj.GenerateResource.Cache
 >>>>>>> andoni
+C:\Users\Galder\Documents\SO\Mus\ProyectoGit\Proyecto_SO\Juego_version_3\Juego_version_1\bin\Debug\Juego_version_1.exe
+C:\Users\Galder\Documents\SO\Mus\ProyectoGit\Proyecto_SO\Juego_version_3\Juego_version_1\bin\Debug\Juego_version_1.pdb
+C:\Users\Galder\Documents\SO\Mus\ProyectoGit\Proyecto_SO\Juego_version_3\Juego_version_1\obj\x86\Debug\Juego_version_1.csprojAssemblyReference.cache
+C:\Users\Galder\Documents\SO\Mus\ProyectoGit\Proyecto_SO\Juego_version_3\Juego_version_1\obj\x86\Debug\Juego_version_1.Form1.resources
+C:\Users\Galder\Documents\SO\Mus\ProyectoGit\Proyecto_SO\Juego_version_3\Juego_version_1\obj\x86\Debug\Juego_version_1.Properties.Resources.resources
+C:\Users\Galder\Documents\SO\Mus\ProyectoGit\Proyecto_SO\Juego_version_3\Juego_version_1\obj\x86\Debug\Juego_version_1.csproj.GenerateResource.cache
+C:\Users\Galder\Documents\SO\Mus\ProyectoGit\Proyecto_SO\Juego_version_3\Juego_version_1\obj\x86\Debug\Juego_version_1.exe
+C:\Users\Galder\Documents\SO\Mus\ProyectoGit\Proyecto_SO\Juego_version_3\Juego_version_1\obj\x86\Debug\Juego_version_1.pdb
