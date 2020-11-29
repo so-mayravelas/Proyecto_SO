@@ -15,6 +15,8 @@ namespace Juego_version_1
     public partial class Form1 : Form
     {
         List<String> ListaConectados = new List<String>();
+        delegate void DelegadoGrid(List<String> Conectados);
+        delegate void DelegadoIS();
         String MiUsuario;
         Socket server;
         Thread atender;
@@ -26,7 +28,8 @@ namespace Juego_version_1
         {         
             InitializeComponent();
             Consultas_groupBox1.Visible = true;
-            CheckForIllegalCrossThreadCalls = false;
+            //CheckForIllegalCrossThreadCalls = false;
+
             //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
             //al que deseamos conectarnos
             IPAddress direc = IPAddress.Parse("192.168.56.102");
@@ -203,8 +206,8 @@ namespace Juego_version_1
                                 if (mensaje[1].Equals("si"))
                                 {
                                     loged = true;
-                                    Consultas_groupBox1.Visible = true;
-                                    MessageBox.Show("Has iniciado sesion correctamente");
+                                    DelegadoIS delegadoIS = new DelegadoIS(SesionIniciada);
+                                    ConectadosGrid.Invoke(delegadoIS);
                                 }
                                 else
                                 {
@@ -247,14 +250,16 @@ namespace Juego_version_1
                                 MessageBox.Show(mensaje[1]);
                                 break;
                             case 7://Lista clientes
-                                ListaConectados.Clear();
-
+                                List<String> Conectados = new List<String>();
+                                Conectados.Clear();
                                 for (int i = 1; i < mensaje.Length && mensaje[i] != ""; i++)
                                 {
                                     if (mensaje[i] != MiUsuario)
-                                        ListaConectados.Add(mensaje[i]);
+                                        Conectados.Add(mensaje[i]);
                                 }
-                                RellenarDataGrid();
+
+                                DelegadoGrid delegadoDG = new DelegadoGrid(RellenarDataGrid);
+                                ConectadosGrid.Invoke(delegadoDG, new object[] {Conectados});
                                 break;
                             case 8://Invitaciones
 
@@ -265,9 +270,15 @@ namespace Juego_version_1
                 }
             }
         }
-        //Funcion que actualiza la DataGrid con los Usuarios
-        public void RellenarDataGrid()
+        public void SesionIniciada()
         {
+            Consultas_groupBox1.Visible = true;
+            MessageBox.Show("Has iniciado sesion correctamente");
+        }
+        //Funcion que actualiza la DataGrid con los Usuarios
+        public void RellenarDataGrid(List<String> Conectados)
+        {
+            ListaConectados = Conectados;
             ConectadosGrid.DataSource = null; //Volvemos a rellenar el dataGrid
             ConectadosGrid.RowCount = ListaConectados.Count + 1; //Crea tantas filas como usuarios conectados hay
             ConectadosGrid.ColumnCount = 1; //Número de columnas
