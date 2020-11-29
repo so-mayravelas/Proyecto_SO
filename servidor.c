@@ -395,7 +395,7 @@ void* AtenderCliente (void* sock)
 		
 		
 		
-		if (codigo !=0 && codigo !=6 && codigo !=7 && codigo != 8)
+		if (codigo !=0 && codigo !=6 && codigo !=7 && codigo != 8 && codigo != 9)
 		{
 			p = strtok( NULL, "/");				// Ya tenemos el nombre
 			strcpy(nombre,p);
@@ -702,12 +702,14 @@ void* AtenderCliente (void* sock)
 			char respuestaOtro[20];
 			int sock_conn2;
 			DameConectados(&milista, respuesta);
-			p = strtok(NULL, "/");				// Ya tenemos la peticion
-			int numPartida = atoi(p);
-			p = strtok(NULL, "/");				// Ya tenemos el numero de la partida
+			p = strtok(NULL, "/");				// Conseguimos la peticion secundaria
 			int peticion = atoi(p);
-			p = strtok(NULL, "/");				// Ya tenemos el numero de la partida
-			nombre = p;
+
+			p = strtok(NULL, "/");				//Conseguimos el numero de partida
+			int numPartida = atoi(p);
+
+			p = strtok(NULL, "/");				// Conseguimos el nombre
+			strcpy(nombre,p);
 			DameUser(&milistaConectados, sock_conn, miNombre);
 			switch (peticion)
 			{
@@ -756,9 +758,18 @@ void* AtenderCliente (void* sock)
 					break;
 					
 
+						
 			default:
 				break;
 			}
+		else if (codigo == 9) {//chat
+			p = strtok(NULL, "/");				// Ya tenemos la peticion
+			int numPartida = atoi(p);
+			p = strtok(NULL, "/");				// Ya tenemos la peticion
+			strcpy(miNombre,p);
+			EnviarAPatida(miNombre, peticion, numPartida);
+
+}
 
 		}
 		
