@@ -14,20 +14,24 @@ namespace Juego_version_1
 {
     public partial class Form1 : Form
     {
+        List<Partida> Partidas = new List<Partida>();
         List<String> ListaConectados = new List<String>();
         delegate void DelegadoGrid(List<String> Conectados);
         delegate void DelegadoIS();
-        String MiUsuario;
+        delegate void DelegadoPreChat(int ID);
+        delegate void DelegadoChat(string usuario, string comentario);
+        delegate void DelegadoInvitacion(string partida, string usuario);
+        String MiUsuario, invitador;
         Socket server;
         Thread atender;
-        int iseleccionado = 0;
-        int num;
-        bool loged=false;
-        bool conectado = false;
+        int num, idpartidainvitacion, iseleccionado = 0;
+        bool loged = false, conectado = false;
         public Form1()
         {         
             InitializeComponent();
-            Consultas_groupBox1.Visible = true;
+            Consultas_groupBox1.Visible = false;
+            groupBoxInvitacion.Visible = false;
+            groupBoxChat.Visible = false;
             //CheckForIllegalCrossThreadCalls = false;
 
             //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
@@ -262,7 +266,28 @@ namespace Juego_version_1
                                 ConectadosGrid.Invoke(delegadoDG, new object[] {Conectados});
                                 break;
                             case 8://Invitaciones
+                                int subidentificador = Convert.ToInt32(mensaje[1]);
+                                if (subidentificador == 1)
+                                {
+                                    DelegadoInvitacion delegadoInv = new DelegadoInvitacion(mostrarInvitacion);
+                                    ConectadosGrid.Invoke(delegadoInv, new object[] { mensaje[2], mensaje[3] });
+                                }
+                                else if (subidentificador == 2)
+                                {
+                                    if (mensaje[3] != MiUsuario)
+                                    {
+                                        AñadirAPrtida(Convert.ToInt32(mensaje[2]), MiUsuario, mensaje[3]);
+                                        DelegadoPreChat DelegadoPC = new DelegadoPreChat(PreparacionChat);
+                                        ConectadosGrid.Invoke(DelegadoPC, new object[] { Convert.ToInt32(mensaje[2]) });
+                                    }
+                                }
+                                else if (subidentificador == 3)
+                                    MessageBox.Show(mensaje[3] + "ha rechazado la invitacion");
+                                break;
 
+                            case 9:
+                                    DelegadoChat delegadoCha = new DelegadoChat(ActualizarChat);
+                                    ConectadosGrid.Invoke(delegadoCha, new object[] { mensaje[2], mensaje[3] });
                                 break;
 
                         }
@@ -292,6 +317,16 @@ namespace Juego_version_1
                 ConectadosGrid.Rows[i + 1].Cells[0].Value = ListaConectados[i];
             }
         }
+        public void mostrarInvitacion(string partida, string usuario)
+        {
+            idpartidainvitacion = Convert.ToInt32(partida);
+            if (usuario != MiUsuario)
+            {
+                groupBoxInvitacion.Visible = true;
+                invitador = usuario;
+                labelInvitacion.Text = usuario + " te ha invitado";
+            }
+        }
         //Guardamos el usuario que hemos seleccionado en la DataGrid
         private void ConectadosGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -312,14 +347,88 @@ namespace Juego_version_1
                 MessageBox.Show(iseleccionado.ToString());
                 mensaje = "8/1/-1/" + ListaConectados[iseleccionado-1];
                 // Enviamos al servidor los nombres de usuario
+                labelInvitacion.Text = mensaje;
                 msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
                 if (conectado == true)
                     server.Send(msg);
             }
-            else if (loged == true)
-            {
+            else
                 MessageBox.Show("Elige el usuario al que quieres invitar", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        public void AñadirAPrtida(int ID, String miusuario, String usuario)
+        {
+            bool existe = false;
+            for (int i = 0; i < Partidas.Count; i++)
+            {
+                if (Partidas[i].DameID() == ID)
+                {
+                    if (Partidas[i].ExixteParticipante(miusuario) == false)
+                        Partidas[i].AñadirParticipante(miusuario);
+                    if (Partidas[i].ExixteParticipante(usuario) == false)
+                        Partidas[i].AñadirParticipante(usuario);
+                    existe = true;
+                }
             }
+            if (existe == false)
+            {
+                Partida p = new Partida();
+                p.PonID(ID);
+                p.AñadirParticipante(miusuario);
+                p.AñadirParticipante(usuario);
+                Partidas.Add(p);
+            }
+        }
+
+        private void buttonAceptar_Click(object sender, EventArgs e)
+        {
+            string mensaje;
+            byte[] msg;
+            AñadirAPrtida(Convert.ToInt32(idpartidainvitacion), MiUsuario, invitador);
+            mensaje = "8/2/" + Convert.ToString(idpartidainvitacion) + "/" + MiUsuario;
+            MessageBox.Show("El mensaje es:" + mensaje);
+            // Enviamos al servidor los nombres de usuario
+            msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            if (conectado == true)
+                server.Send(msg);
+            groupBoxInvitacion.Visible = false;
+            groupBoxChat.Visible = true;
+            PreparacionChat(idpartidainvitacion);
+        }
+
+        private void buttonRechazar_Click(object sender, EventArgs e)
+        {
+            string mensaje;
+            byte[] msg;
+            mensaje = "8/3/" + Convert.ToString(idpartidainvitacion) + "/" + invitador;
+            // Enviamos al servidor los nombres de usuario
+            msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            if (conectado == true)
+                server.Send(msg);
+            groupBoxInvitacion.Visible = false;
+        }
+
+        private void buttonChat_Click(object sender, EventArgs e)
+        {
+            string mensaje;
+            byte[] msg;
+            mensaje = "9/" + Convert.ToString(idpartidainvitacion) + "/" + MiUsuario + "/" + Convert.ToString(textBoxComentario.Text);
+            textBoxChat.Text = MiUsuario + ": " + Convert.ToString(textBoxComentario.Text) + Environment.NewLine;
+            // Enviamos al servidor los nombres de usuario
+            msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            if (conectado == true)
+                server.Send(msg);
+        }
+
+        public void PreparacionChat(int ID)
+        {
+            groupBoxChat.Visible = true;
+            labelChat.Text = "Partida: " + Convert.ToString(ID);
+        }
+
+        public void ActualizarChat(string Usuario, string comentario)
+        {
+            textBoxChat.Text = Usuario + ": " + comentario + Environment.NewLine;
         }
 
     }

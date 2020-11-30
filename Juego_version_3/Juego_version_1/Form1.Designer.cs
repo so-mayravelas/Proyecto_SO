@@ -49,8 +49,19 @@
             this.label5 = new System.Windows.Forms.Label();
             this.ConectadosGrid = new System.Windows.Forms.DataGridView();
             this.InvitarButton = new System.Windows.Forms.Button();
+            this.labelInvitacion = new System.Windows.Forms.Label();
+            this.buttonAceptar = new System.Windows.Forms.Button();
+            this.buttonRechazar = new System.Windows.Forms.Button();
+            this.groupBoxInvitacion = new System.Windows.Forms.GroupBox();
+            this.buttonChat = new System.Windows.Forms.Button();
+            this.textBoxChat = new System.Windows.Forms.TextBox();
+            this.textBoxComentario = new System.Windows.Forms.TextBox();
+            this.labelChat = new System.Windows.Forms.Label();
+            this.groupBoxChat = new System.Windows.Forms.GroupBox();
             this.Consultas_groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ConectadosGrid)).BeginInit();
+            this.groupBoxInvitacion.SuspendLayout();
+            this.groupBoxChat.SuspendLayout();
             this.SuspendLayout();
             // 
             // Conectar_button1
@@ -234,7 +245,7 @@
             // listaClientes
             // 
             this.listaClientes.AutoSize = true;
-            this.listaClientes.Location = new System.Drawing.Point(439, 81);
+            this.listaClientes.Location = new System.Drawing.Point(74, 49);
             this.listaClientes.Name = "listaClientes";
             this.listaClientes.Size = new System.Drawing.Size(0, 13);
             this.listaClientes.TabIndex = 13;
@@ -243,7 +254,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.label5.Location = new System.Drawing.Point(525, 27);
+            this.label5.Location = new System.Drawing.Point(572, 27);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(103, 20);
             this.label5.TabIndex = 14;
@@ -252,7 +263,7 @@
             // ConectadosGrid
             // 
             this.ConectadosGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ConectadosGrid.Location = new System.Drawing.Point(529, 50);
+            this.ConectadosGrid.Location = new System.Drawing.Point(576, 50);
             this.ConectadosGrid.Name = "ConectadosGrid";
             this.ConectadosGrid.Size = new System.Drawing.Size(99, 150);
             this.ConectadosGrid.TabIndex = 15;
@@ -261,7 +272,7 @@
             // InvitarButton
             // 
             this.InvitarButton.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.InvitarButton.Location = new System.Drawing.Point(529, 206);
+            this.InvitarButton.Location = new System.Drawing.Point(576, 206);
             this.InvitarButton.Name = "InvitarButton";
             this.InvitarButton.Size = new System.Drawing.Size(99, 31);
             this.InvitarButton.TabIndex = 16;
@@ -269,16 +280,108 @@
             this.InvitarButton.UseVisualStyleBackColor = false;
             this.InvitarButton.Click += new System.EventHandler(this.InvitarButton_Click);
             // 
+            // labelInvitacion
+            // 
+            this.labelInvitacion.AutoSize = true;
+            this.labelInvitacion.Location = new System.Drawing.Point(13, 28);
+            this.labelInvitacion.Name = "labelInvitacion";
+            this.labelInvitacion.Size = new System.Drawing.Size(35, 13);
+            this.labelInvitacion.TabIndex = 17;
+            this.labelInvitacion.Text = "label3";
+            // 
+            // buttonAceptar
+            // 
+            this.buttonAceptar.Location = new System.Drawing.Point(15, 55);
+            this.buttonAceptar.Name = "buttonAceptar";
+            this.buttonAceptar.Size = new System.Drawing.Size(72, 21);
+            this.buttonAceptar.TabIndex = 18;
+            this.buttonAceptar.Text = "Aceptar";
+            this.buttonAceptar.UseVisualStyleBackColor = true;
+            this.buttonAceptar.Click += new System.EventHandler(this.buttonAceptar_Click);
+            // 
+            // buttonRechazar
+            // 
+            this.buttonRechazar.Location = new System.Drawing.Point(16, 85);
+            this.buttonRechazar.Name = "buttonRechazar";
+            this.buttonRechazar.Size = new System.Drawing.Size(72, 21);
+            this.buttonRechazar.TabIndex = 19;
+            this.buttonRechazar.Text = "Rechazar";
+            this.buttonRechazar.UseVisualStyleBackColor = true;
+            this.buttonRechazar.Click += new System.EventHandler(this.buttonRechazar_Click);
+            // 
+            // groupBoxInvitacion
+            // 
+            this.groupBoxInvitacion.Controls.Add(this.buttonRechazar);
+            this.groupBoxInvitacion.Controls.Add(this.buttonAceptar);
+            this.groupBoxInvitacion.Controls.Add(this.labelInvitacion);
+            this.groupBoxInvitacion.Controls.Add(this.listaClientes);
+            this.groupBoxInvitacion.Location = new System.Drawing.Point(420, 52);
+            this.groupBoxInvitacion.Name = "groupBoxInvitacion";
+            this.groupBoxInvitacion.Size = new System.Drawing.Size(133, 129);
+            this.groupBoxInvitacion.TabIndex = 20;
+            this.groupBoxInvitacion.TabStop = false;
+            this.groupBoxInvitacion.Text = "Invitacion";
+            // 
+            // buttonChat
+            // 
+            this.buttonChat.Location = new System.Drawing.Point(195, 262);
+            this.buttonChat.Name = "buttonChat";
+            this.buttonChat.Size = new System.Drawing.Size(49, 21);
+            this.buttonChat.TabIndex = 24;
+            this.buttonChat.Text = "Enviar";
+            this.buttonChat.UseVisualStyleBackColor = true;
+            this.buttonChat.Click += new System.EventHandler(this.buttonChat_Click);
+            // 
+            // textBoxChat
+            // 
+            this.textBoxChat.Location = new System.Drawing.Point(23, 32);
+            this.textBoxChat.Multiline = true;
+            this.textBoxChat.Name = "textBoxChat";
+            this.textBoxChat.ReadOnly = true;
+            this.textBoxChat.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBoxChat.Size = new System.Drawing.Size(169, 213);
+            this.textBoxChat.TabIndex = 21;
+            // 
+            // textBoxComentario
+            // 
+            this.textBoxComentario.Location = new System.Drawing.Point(23, 263);
+            this.textBoxComentario.Name = "textBoxComentario";
+            this.textBoxComentario.Size = new System.Drawing.Size(169, 20);
+            this.textBoxComentario.TabIndex = 22;
+            // 
+            // labelChat
+            // 
+            this.labelChat.AutoSize = true;
+            this.labelChat.Location = new System.Drawing.Point(26, 12);
+            this.labelChat.Name = "labelChat";
+            this.labelChat.Size = new System.Drawing.Size(35, 13);
+            this.labelChat.TabIndex = 23;
+            this.labelChat.Text = "label3";
+            // 
+            // groupBoxChat
+            // 
+            this.groupBoxChat.Controls.Add(this.labelChat);
+            this.groupBoxChat.Controls.Add(this.buttonChat);
+            this.groupBoxChat.Controls.Add(this.textBoxComentario);
+            this.groupBoxChat.Controls.Add(this.textBoxChat);
+            this.groupBoxChat.Location = new System.Drawing.Point(425, 246);
+            this.groupBoxChat.Name = "groupBoxChat";
+            this.groupBoxChat.Size = new System.Drawing.Size(250, 295);
+            this.groupBoxChat.TabIndex = 25;
+            this.groupBoxChat.TabStop = false;
+            this.groupBoxChat.Text = "Chat";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(654, 534);
+            this.ClientSize = new System.Drawing.Size(697, 553);
+            this.Controls.Add(this.groupBoxChat);
+            this.Controls.Add(this.groupBoxInvitacion);
             this.Controls.Add(this.InvitarButton);
             this.Controls.Add(this.ConectadosGrid);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.listaClientes);
             this.Controls.Add(this.contraseña_textBox2);
             this.Controls.Add(this.usuario_textBox1);
             this.Controls.Add(this.label4);
@@ -293,6 +396,10 @@
             this.Consultas_groupBox1.ResumeLayout(false);
             this.Consultas_groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ConectadosGrid)).EndInit();
+            this.groupBoxInvitacion.ResumeLayout(false);
+            this.groupBoxInvitacion.PerformLayout();
+            this.groupBoxChat.ResumeLayout(false);
+            this.groupBoxChat.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -321,6 +428,15 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView ConectadosGrid;
         private System.Windows.Forms.Button InvitarButton;
+        private System.Windows.Forms.Label labelInvitacion;
+        private System.Windows.Forms.Button buttonAceptar;
+        private System.Windows.Forms.Button buttonRechazar;
+        private System.Windows.Forms.GroupBox groupBoxInvitacion;
+        private System.Windows.Forms.Button buttonChat;
+        private System.Windows.Forms.TextBox textBoxChat;
+        private System.Windows.Forms.TextBox textBoxComentario;
+        private System.Windows.Forms.Label labelChat;
+        private System.Windows.Forms.GroupBox groupBoxChat;
     }
 }
 
