@@ -428,7 +428,7 @@ namespace Juego_version_1
 
         public void ActualizarChat(string Usuario, string comentario)
         {
-            textBoxChat.Text = Usuario + ": " + comentario + Environment.NewLine;
+            textBoxChat.Text = textBoxChat.Text+ Usuario + ": " + comentario + Environment.NewLine;
         }
 
     }

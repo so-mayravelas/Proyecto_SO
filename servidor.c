@@ -147,7 +147,7 @@ int CrearPartida(ListaPartidas* lista) {
 		pthread_mutex_unlock(&mutex);//Ya puedes interrumpir
 			return lista->num-1;
 		
-
+			printf("num: %d\n",lista->num);
 
 	}
 }
@@ -171,10 +171,11 @@ int EntrarPartida(ListaPartidas* lista, char nombre[20], int pareja, int numPart
 	//añade nuevo conectado y retorna 0 si okey o 0 si la lista ya estaba llena
 
 		pthread_mutex_lock(&mutex);//No me interrumpas ahora
+		printf("pareja: %d\n",lista->partidas[numPartida].pareja1);
 		if (lista->partidas[numPartida].pareja1==-1)
 		{
 			strcpy(lista->partidas[numPartida].nombre1, nombre);
-
+			
 			lista->partidas[numPartida].pareja1 = pareja;
 			pthread_mutex_unlock(&mutex);//Ya puedes interrumpir
 			return 0;
@@ -716,10 +717,12 @@ void* AtenderCliente (void* sock)
 			switch (peticion)
 			{
 				case 1:
+					pareja=0;
 					if (numPartida == -1) {
 						numPartida = CrearPartida(&milistaPartidas);
 						sprintf(respuesta, "8/1/%d/%s",  numPartida, miNombre);
 					}
+					err = EntrarPartida(&milistaPartidas, miNombre, pareja, numPartida);		
 					int pos = DamePosicion(&milistaConectados, nombre);
 					sock_conn2 = milistaConectados.conectados[pos].socket;
 					sprintf(respuestaOtro, "8/1/%d/%s", numPartida, miNombre);
@@ -727,7 +730,8 @@ void* AtenderCliente (void* sock)
 					break;
 				case 2:
 					pareja = 0;
-					err = EntrarPartida(&milistaConectados, miNombre, pareja, numPartida);
+					err = EntrarPartida(&milistaPartidas, miNombre, pareja, numPartida);
+					printf("Err: %d",err);
 					if (err == 0) {
 						sprintf(respuestaOtro, "8/2/%d/%s", numPartida, miNombre);
 						EnviarAPatida(miNombre, respuestaOtro, numPartida);
@@ -770,6 +774,10 @@ void* AtenderCliente (void* sock)
 			p = strtok(NULL, "/");				// Ya tenemos la peticion
 			char miNombre[20];
 			strcpy(miNombre,p);
+			p = strtok(NULL, "/");				// Ya tenemos la peticion
+			char mensaje[20];
+			strcpy(mensaje,p);
+			sprintf(peticion,"%d/%d/%s/%s",codigo,numPartida,miNombre,mensaje);
 			EnviarAPatida(miNombre, peticion, numPartida);
 
 }
