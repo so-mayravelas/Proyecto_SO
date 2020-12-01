@@ -15,3 +15,9 @@ Uploaded Mayra Vela
 Revised Andoni Coronel
 Communicated Galder Arcellares
 -Lista de conectados con notificaciones
+
+# Version 4
+Uploaded Galder Arcellares
+Revised Mayra Vela
+Communicated Andoni Coronel
+-Invitacion,notificacion,chat
