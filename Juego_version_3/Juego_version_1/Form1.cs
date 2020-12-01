@@ -413,7 +413,7 @@ namespace Juego_version_1
             string mensaje;
             byte[] msg;
             mensaje = "9/" + Convert.ToString(idpartidainvitacion) + "/" + MiUsuario + "/" + Convert.ToString(textBoxComentario.Text);
-            textBoxChat.Text = MiUsuario + ": " + Convert.ToString(textBoxComentario.Text) + Environment.NewLine;
+            //textBoxChat.Text = MiUsuario + ": " + Convert.ToString(textBoxComentario.Text) + Environment.NewLine;
             // Enviamos al servidor los nombres de usuario
             msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             if (conectado == true)
@@ -428,6 +428,7 @@ namespace Juego_version_1
 
         public void ActualizarChat(string Usuario, string comentario)
         {
+            textBoxComentario.Text = "";
             textBoxChat.Text = textBoxChat.Text+ Usuario + ": " + comentario + Environment.NewLine;
         }
 
