@@ -1,6 +1,6 @@
 ﻿namespace Juego_version_1
 {
-    partial class Form1
+    partial class Formfunciones
     {
         /// <summary>
         /// Required designer variable.
@@ -371,7 +371,7 @@
             this.groupBoxChat.TabStop = false;
             this.groupBoxChat.Text = "Chat";
             // 
-            // Form1
+            // Formfunciones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -391,8 +391,10 @@
             this.Controls.Add(this.Registro_button3);
             this.Controls.Add(this.Desconectar_button2);
             this.Controls.Add(this.Conectar_button1);
-            this.Name = "Form1";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Name = "Formfunciones";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Formfunciones_Load);
             this.Consultas_groupBox1.ResumeLayout(false);
             this.Consultas_groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ConectadosGrid)).EndInit();

@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FontAwesome.Sharp, Version=5.15.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FontAwesome.Sharp.5.15.3\lib\net40\FontAwesome.Sharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,17 +49,44 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Partida.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="FormFinPartida.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormFinPartida.Designer.cs">
+      <DependentUpon>FormFinPartida.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPartida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPartida.Designer.cs">
+      <DependentUpon>FormPartida.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPrincipal.Designer.cs">
+      <DependentUpon>FormPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Partida.cs" />
+    <Compile Include="Formfunciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formfunciones.Designer.cs">
+      <DependentUpon>Formfunciones.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Formfunciones.resx">
+      <DependentUpon>Formfunciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFinPartida.resx">
+      <DependentUpon>FormFinPartida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPartida.resx">
+      <DependentUpon>FormPartida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPrincipal.resx">
+      <DependentUpon>FormPrincipal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -66,7 +96,9 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -76,6 +108,75 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reversocarta.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reversocartah.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Image1.jpg" />
+    <None Include="Resources\preguntas %282%29.png" />
+    <None Include="Resources\oros_giphy.gif" />
+    <None Include="Resources\mesa.jpg" />
+    <None Include="Resources\luz.png" />
+    <None Include="Resources\fq_log.png" />
+    <None Include="Resources\espadas_giphy.gif" />
+    <None Include="Resources\copas_giphy.gif" />
+    <None Include="Resources\BASTOS_giphy.gif" />
+    <None Include="Resources\12_oros.jpg" />
+    <None Include="Resources\12_espadas.jpg" />
+    <None Include="Resources\12_copas.jpg" />
+    <None Include="Resources\12_bastos.jpg" />
+    <None Include="Resources\11_oros.jpg" />
+    <None Include="Resources\11_espadas.jpg" />
+    <None Include="Resources\11_copas.jpg" />
+    <None Include="Resources\11_bastos.jpg" />
+    <None Include="Resources\10_oros.jpg" />
+    <None Include="Resources\10_espadas.jpg" />
+    <None Include="Resources\10_copas.jpg" />
+    <None Include="Resources\10_bastos.jpg" />
+    <None Include="Resources\9_oros.jpg" />
+    <None Include="Resources\9_espadas.jpg" />
+    <None Include="Resources\9_copas.jpg" />
+    <None Include="Resources\9_bastos.jpg" />
+    <None Include="Resources\8_oros.jpg" />
+    <None Include="Resources\8_espadas.jpg" />
+    <None Include="Resources\8_copas.jpg" />
+    <None Include="Resources\8_bastos.jpg" />
+    <None Include="Resources\7_oros.jpg" />
+    <None Include="Resources\7_espadas.jpg" />
+    <None Include="Resources\7_copas.jpg" />
+    <None Include="Resources\7_bastos.jpg" />
+    <None Include="Resources\6_oros.jpg" />
+    <None Include="Resources\6_espadas.jpg" />
+    <None Include="Resources\6_copas.jpg" />
+    <None Include="Resources\6_bastos.jpg" />
+    <None Include="Resources\5_oros.jpg" />
+    <None Include="Resources\5_espadas.jpg" />
+    <None Include="Resources\5_copas.jpg" />
+    <None Include="Resources\5_bastos.jpg" />
+    <None Include="Resources\4_oros.jpg" />
+    <None Include="Resources\4_espadas.jpg" />
+    <None Include="Resources\4_copas.jpg" />
+    <None Include="Resources\4_bastos.jpg" />
+    <None Include="Resources\3_oros.jpg" />
+    <None Include="Resources\3_espadas.jpg" />
+    <None Include="Resources\3_copas.jpg" />
+    <None Include="Resources\3_bastos.jpg" />
+    <None Include="Resources\2_oros.jpg" />
+    <None Include="Resources\2_espadas.jpg" />
+    <None Include="Resources\2_copas.jpg" />
+    <None Include="Resources\2_bastos.jpg" />
+    <None Include="Resources\1_oros.jpg" />
+    <None Include="Resources\1_espadas.jpg" />
+    <None Include="Resources\1_copas.jpg" />
+    <None Include="Resources\1_bastos.jpg" />
+    <None Include="Resources\0_detras.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

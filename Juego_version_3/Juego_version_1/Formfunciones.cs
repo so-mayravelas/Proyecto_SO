@@ -9,10 +9,11 @@ using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using FontAwesome.Sharp;
 
 namespace Juego_version_1
 {
-    public partial class Form1 : Form
+    public partial class Formfunciones : Form
     {
         List<Partida> Partidas = new List<Partida>();
         List<String> ListaConectados = new List<String>();
@@ -26,7 +27,9 @@ namespace Juego_version_1
         Thread atender;
         int num, idpartidainvitacion, iseleccionado = 0;
         bool loged = false, conectado = false;
-        public Form1()
+       
+        
+        public Formfunciones()
         {         
             InitializeComponent();
             Consultas_groupBox1.Visible = false;
@@ -61,6 +64,7 @@ namespace Juego_version_1
 
         }
 
+       
         private void Conectar_button1_Click(object sender, EventArgs e)
         {
             //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
@@ -289,6 +293,9 @@ namespace Juego_version_1
                                     DelegadoChat delegadoCha = new DelegadoChat(ActualizarChat);
                                     ConectadosGrid.Invoke(delegadoCha, new object[] { mensaje[2], mensaje[3] });
                                 break;
+                            
+
+
 
                         }
                     }
@@ -339,13 +346,14 @@ namespace Juego_version_1
         //Enviamos una invitacion al usuario seleccionado
         private void InvitarButton_Click(object sender, EventArgs e)
         {
+            
             string mensaje;
             byte[] msg;
             if (loged == true) //Solo si no se seleccionan los títulos (posición 0)
             {
                 // Quiere realizar la consulta escogida
                 MessageBox.Show(iseleccionado.ToString());
-                mensaje = "8/1/-1/" + ListaConectados[iseleccionado-1];
+                mensaje = "8/1/-1/" + ListaConectados[iseleccionado - 1];
                 // Enviamos al servidor los nombres de usuario
                 labelInvitacion.Text = mensaje;
                 msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
@@ -353,7 +361,12 @@ namespace Juego_version_1
                     server.Send(msg);
             }
             else
-                MessageBox.Show("Elige el usuario al que quieres invitar", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            {
+                DialogResult opcion = MessageBox.Show("Elige el usuario al que quieres invitar", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+            }
         }
 
         public void AñadirAPrtida(int ID, String miusuario, String usuario)
@@ -382,6 +395,8 @@ namespace Juego_version_1
 
         private void buttonAceptar_Click(object sender, EventArgs e)
         {
+            FormPartida frm = new FormPartida();
+            frm.Show();
             string mensaje;
             byte[] msg;
             AñadirAPrtida(Convert.ToInt32(idpartidainvitacion), MiUsuario, invitador);
@@ -394,6 +409,12 @@ namespace Juego_version_1
             groupBoxInvitacion.Visible = false;
             groupBoxChat.Visible = true;
             PreparacionChat(idpartidainvitacion);
+
+        }
+
+        private void Formfunciones_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void buttonRechazar_Click(object sender, EventArgs e)
@@ -430,6 +451,15 @@ namespace Juego_version_1
         {
             textBoxChat.Text = textBoxChat.Text+ Usuario + ": " + comentario + Environment.NewLine;
         }
+
+        private void FormFunciones_Load(object sender, EventArgs e)
+        {
+            this.Hide();
+            FormPartida formPartida = new FormPartida();
+            formPartida.Show();
+            
+        }
+
 
     }
 }
