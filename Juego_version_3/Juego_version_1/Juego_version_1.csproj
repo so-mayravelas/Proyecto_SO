@@ -61,6 +61,12 @@
     <Compile Include="FormPartida.Designer.cs">
       <DependentUpon>FormPartida.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPerfil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPerfil.Designer.cs">
+      <DependentUpon>FormPerfil.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -84,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormPartida.resx">
       <DependentUpon>FormPartida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPerfil.resx">
+      <DependentUpon>FormPerfil.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPrincipal.resx">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
@@ -119,7 +128,12 @@
     <None Include="Resources\logo.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Image1.jpg" />
+    <None Include="Resources\fondoprincipal11.jpg" />
+    <None Include="Resources\fondoprincipal1.png" />
+    <None Include="Resources\lets get away iPhone wallpapers  %283%29.png" />
+    <None Include="Resources\fondoprincipal1.jpg" />
+    <None Include="Resources\fondoprincipal.jpg" />
+    <None Include="Resources\Fondogif.gif" />
     <None Include="Resources\preguntas %282%29.png" />
     <None Include="Resources\oros_giphy.gif" />
     <None Include="Resources\mesa.jpg" />
