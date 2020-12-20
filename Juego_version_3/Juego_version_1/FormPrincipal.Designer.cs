@@ -30,6 +30,7 @@ namespace Juego_version_1
         private void InitializeComponent()
         {
             this.menupp_panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.submenufq_panel4 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -42,10 +43,9 @@ namespace Juego_version_1
             this.panel1 = new System.Windows.Forms.Panel();
             this.RegistrarButton1 = new FontAwesome.Sharp.IconButton();
             this.panelhijos_panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menupp_panel1.SuspendLayout();
-            this.submenufq_panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.submenufq_panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // menupp_panel1
@@ -63,10 +63,20 @@ namespace Juego_version_1
             this.menupp_panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menupp_panel1.ForeColor = System.Drawing.Color.White;
             this.menupp_panel1.Location = new System.Drawing.Point(0, 0);
-            this.menupp_panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.menupp_panel1.Name = "menupp_panel1";
-            this.menupp_panel1.Size = new System.Drawing.Size(300, 692);
+            this.menupp_panel1.Size = new System.Drawing.Size(200, 450);
             this.menupp_panel1.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Juego_version_1.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(197, 94);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // submenufq_panel4
             // 
@@ -74,28 +84,25 @@ namespace Juego_version_1
             this.submenufq_panel4.Controls.Add(this.panel5);
             this.submenufq_panel4.Controls.Add(this.otrosButton3);
             this.submenufq_panel4.Controls.Add(this.InstruccinesButton4);
-            this.submenufq_panel4.Location = new System.Drawing.Point(32, 378);
-            this.submenufq_panel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.submenufq_panel4.Location = new System.Drawing.Point(21, 246);
             this.submenufq_panel4.Name = "submenufq_panel4";
-            this.submenufq_panel4.Size = new System.Drawing.Size(268, 154);
+            this.submenufq_panel4.Size = new System.Drawing.Size(179, 100);
             this.submenufq_panel4.TabIndex = 0;
             // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.Teal;
-            this.panel6.Location = new System.Drawing.Point(8, 60);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel6.Location = new System.Drawing.Point(5, 39);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(12, 46);
+            this.panel6.Size = new System.Drawing.Size(8, 30);
             this.panel6.TabIndex = 3;
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.Teal;
-            this.panel5.Location = new System.Drawing.Point(8, 5);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel5.Location = new System.Drawing.Point(5, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(12, 46);
+            this.panel5.Size = new System.Drawing.Size(8, 30);
             this.panel5.TabIndex = 3;
             // 
             // otrosButton3
@@ -109,10 +116,9 @@ namespace Juego_version_1
             this.otrosButton3.IconColor = System.Drawing.Color.White;
             this.otrosButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.otrosButton3.IconSize = 25;
-            this.otrosButton3.Location = new System.Drawing.Point(8, 60);
-            this.otrosButton3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.otrosButton3.Location = new System.Drawing.Point(5, 39);
             this.otrosButton3.Name = "otrosButton3";
-            this.otrosButton3.Size = new System.Drawing.Size(256, 46);
+            this.otrosButton3.Size = new System.Drawing.Size(171, 30);
             this.otrosButton3.TabIndex = 2;
             this.otrosButton3.Text = "Otros";
             this.otrosButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -129,10 +135,9 @@ namespace Juego_version_1
             this.InstruccinesButton4.IconColor = System.Drawing.Color.White;
             this.InstruccinesButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.InstruccinesButton4.IconSize = 30;
-            this.InstruccinesButton4.Location = new System.Drawing.Point(12, 5);
-            this.InstruccinesButton4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.InstruccinesButton4.Location = new System.Drawing.Point(8, 3);
             this.InstruccinesButton4.Name = "InstruccinesButton4";
-            this.InstruccinesButton4.Size = new System.Drawing.Size(246, 46);
+            this.InstruccinesButton4.Size = new System.Drawing.Size(164, 30);
             this.InstruccinesButton4.TabIndex = 3;
             this.InstruccinesButton4.Text = "  Instrucciones";
             this.InstruccinesButton4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -143,19 +148,17 @@ namespace Juego_version_1
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.Teal;
-            this.panel2.Location = new System.Drawing.Point(4, 268);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel2.Location = new System.Drawing.Point(3, 174);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(12, 46);
+            this.panel2.Size = new System.Drawing.Size(8, 30);
             this.panel2.TabIndex = 1;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Teal;
-            this.panel3.Location = new System.Drawing.Point(4, 323);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel3.Location = new System.Drawing.Point(3, 210);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(12, 46);
+            this.panel3.Size = new System.Drawing.Size(8, 30);
             this.panel3.TabIndex = 2;
             // 
             // iconButton2
@@ -170,10 +173,9 @@ namespace Juego_version_1
             this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton2.IconSize = 30;
             this.iconButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton2.Location = new System.Drawing.Point(18, 323);
-            this.iconButton2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.iconButton2.Location = new System.Drawing.Point(12, 210);
             this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Size = new System.Drawing.Size(278, 46);
+            this.iconButton2.Size = new System.Drawing.Size(185, 30);
             this.iconButton2.TabIndex = 1;
             this.iconButton2.Text = "   FQ";
             this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -192,10 +194,9 @@ namespace Juego_version_1
             this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Solid;
             this.iconButton1.IconSize = 30;
             this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton1.Location = new System.Drawing.Point(18, 268);
-            this.iconButton1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.iconButton1.Location = new System.Drawing.Point(12, 174);
             this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Size = new System.Drawing.Size(232, 46);
+            this.iconButton1.Size = new System.Drawing.Size(155, 30);
             this.iconButton1.TabIndex = 1;
             this.iconButton1.Text = "Iniciar Sesion";
             this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -205,10 +206,9 @@ namespace Juego_version_1
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Teal;
-            this.panel1.Location = new System.Drawing.Point(4, 212);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel1.Location = new System.Drawing.Point(3, 138);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(12, 46);
+            this.panel1.Size = new System.Drawing.Size(8, 30);
             this.panel1.TabIndex = 0;
             // 
             // RegistrarButton1
@@ -222,10 +222,9 @@ namespace Juego_version_1
             this.RegistrarButton1.IconColor = System.Drawing.Color.White;
             this.RegistrarButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.RegistrarButton1.IconSize = 35;
-            this.RegistrarButton1.Location = new System.Drawing.Point(18, 212);
-            this.RegistrarButton1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.RegistrarButton1.Location = new System.Drawing.Point(12, 138);
             this.RegistrarButton1.Name = "RegistrarButton1";
-            this.RegistrarButton1.Size = new System.Drawing.Size(232, 46);
+            this.RegistrarButton1.Size = new System.Drawing.Size(155, 30);
             this.RegistrarButton1.TabIndex = 0;
             this.RegistrarButton1.Text = "Registrar";
             this.RegistrarButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -235,36 +234,24 @@ namespace Juego_version_1
             // panelhijos_panel2
             // 
             this.panelhijos_panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelhijos_panel2.Location = new System.Drawing.Point(300, 0);
-            this.panelhijos_panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panelhijos_panel2.Location = new System.Drawing.Point(200, 0);
             this.panelhijos_panel2.Name = "panelhijos_panel2";
-            this.panelhijos_panel2.Size = new System.Drawing.Size(900, 692);
+            this.panelhijos_panel2.Size = new System.Drawing.Size(600, 450);
             this.panelhijos_panel2.TabIndex = 0;
             this.panelhijos_panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2pantallaprincipal_Paint);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Juego_version_1.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(4, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(296, 145);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // FormPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 692);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.panelhijos_panel2);
             this.Controls.Add(this.menupp_panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormPrincipal";
             this.Text = "FormPrincipal";
             this.menupp_panel1.ResumeLayout(false);
-            this.submenufq_panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.submenufq_panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

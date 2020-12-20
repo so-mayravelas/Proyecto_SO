@@ -17,6 +17,7 @@ namespace Juego_version_1
     {
         List<Partida> Partidas = new List<Partida>();
         List<String> ListaConectados = new List<String>();
+        List<FormSalaPartida> formularios = new List<FormSalaPartida>();
         delegate void DelegadoGrid(List<String> Conectados);
         delegate void DelegadoIS();
         delegate void DelegadoPreChat(int ID);
@@ -25,6 +26,8 @@ namespace Juego_version_1
         String MiUsuario, invitador;
         Socket server;
         Thread atender;
+        Thread crearForm;
+        private static Mutex mut = new Mutex();
         int num, idpartidainvitacion, iseleccionado = 0;
         bool loged = false, conectado = false;
        
@@ -206,6 +209,7 @@ namespace Juego_version_1
                     mensaje = mensajeC.Split('/');
                     if (mensaje[0] != "")
                     {
+                        MessageBox.Show("El mensaje es:" + mensajeC);
                         identificador = Convert.ToInt32(mensaje[0]);
                         switch (identificador)
                         {
@@ -275,18 +279,65 @@ namespace Juego_version_1
                                 {
                                     DelegadoInvitacion delegadoInv = new DelegadoInvitacion(mostrarInvitacion);
                                     ConectadosGrid.Invoke(delegadoInv, new object[] { mensaje[2], mensaje[3] });
+                                    CrearPartida(mensaje[3], Convert.ToInt32(mensaje[2]));
+                                    if (mensaje[3] == MiUsuario)
+                                    {
+                                        ThreadStart ts = delegate { CrearForm(Convert.ToInt32(mensaje[2]), server); };
+                                        crearForm = new Thread(ts);
+                                        crearForm.Start();
+                                        //ActualizarPartidasEnForms(Convert.ToInt32(mensaje[2]));
+                                    }
                                 }
                                 else if (subidentificador == 2)
                                 {
-                                    if (mensaje[3] != MiUsuario)
+                                    if (mensaje[3] != "lleno")
                                     {
-                                        AñadirAPrtida(Convert.ToInt32(mensaje[2]), MiUsuario, mensaje[3]);
+                                        
+                                        if (mensaje[3] == MiUsuario)
+                                        {
+                                            MessageBox.Show("miUsuario==" + mensaje[3]);
+                                            ThreadStart ts = delegate { CrearForm(Convert.ToInt32(mensaje[2]), server); };
+                                            crearForm = new Thread(ts);
+                                            crearForm.Start();
+                                        }
+
+                                        AñadirAPartida(mensaje[3], Convert.ToInt32(mensaje[2]));
+                                        //ActualizarPartidasEnForms(Convert.ToInt32(mensaje[2]));
+                                        
                                         DelegadoPreChat DelegadoPC = new DelegadoPreChat(PreparacionChat);
                                         ConectadosGrid.Invoke(DelegadoPC, new object[] { Convert.ToInt32(mensaje[2]) });
                                     }
+                                    else
+                                    {
+                                        MessageBox.Show("La partida esta llena");
+                                    }
+
                                 }
                                 else if (subidentificador == 3)
                                     MessageBox.Show(mensaje[3] + "ha rechazado la invitacion");
+                                else if (subidentificador == 6)
+                                {
+                                    Partida p = new Partida();
+                                    p.PonID(Convert.ToInt32(mensaje[2]));
+                                    
+                                    if (mensaje[3] != "")
+                                    {
+                                        p.AñadirParticipante(mensaje[3], 0);
+                                    }
+                                    if (mensaje[4] != "")
+                                    {
+                                        p.AñadirParticipante(mensaje[4], 1);
+                                    }
+                                    if (mensaje[5] != "")
+                                    {
+                                        p.AñadirParticipante(mensaje[5], 2);
+                                    }
+                                    if (mensaje[6] != "")
+                                    {
+                                        p.AñadirParticipante(mensaje[6], 3);
+                                    }
+                                    ActualizarPartidasEnForms(Convert.ToInt32(mensaje[2]));
+                                }
                                 break;
 
                             case 9:
@@ -301,6 +352,19 @@ namespace Juego_version_1
                     }
                 }
             }
+        }
+        public void CrearForm(int numPartida, Socket sock)
+        {
+            FormSalaPartida frm = new FormSalaPartida(numPartida,sock);
+            formularios.Add(frm);
+            frm.ShowDialog();
+            formularios[numPartida].ActualizacionPartida(Partidas[numPartida]);
+
+        }
+        public void ActualizarPartidasEnForms(int numPartida)
+        {
+            formularios[numPartida].ActualizacionPartida(Partidas[numPartida]);
+
         }
         public void SesionIniciada()
         {
@@ -352,7 +416,7 @@ namespace Juego_version_1
             if (loged == true) //Solo si no se seleccionan los títulos (posición 0)
             {
                 // Quiere realizar la consulta escogida
-                MessageBox.Show(iseleccionado.ToString());
+
                 mensaje = "8/1/-1/" + ListaConectados[iseleccionado - 1];
                 // Enviamos al servidor los nombres de usuario
                 labelInvitacion.Text = mensaje;
@@ -369,39 +433,45 @@ namespace Juego_version_1
             }
         }
 
-        public void AñadirAPrtida(int ID, String miusuario, String usuario)
+        public void AñadirAPartida(String miusuario, int numPartida)
         {
-            bool existe = false;
-            for (int i = 0; i < Partidas.Count; i++)
-            {
-                if (Partidas[i].DameID() == ID)
+            for (int i = 0; i < 4; i++) {
+                MessageBox.Show("Canalla "+Partidas[numPartida].DameParticipante(1));
+                if (Partidas[numPartida].DameParticipante(1) == "")
                 {
-                    if (Partidas[i].ExixteParticipante(miusuario) == false)
-                        Partidas[i].AñadirParticipante(miusuario);
-                    if (Partidas[i].ExixteParticipante(usuario) == false)
-                        Partidas[i].AñadirParticipante(usuario);
-                    existe = true;
+                    Partidas[numPartida].AñadirParticipante(miusuario,1);
+                }
+                else if (Partidas[numPartida].DameParticipante(2) == "")
+                {
+                    Partidas[numPartida].AñadirParticipante(miusuario, 2);
+                }
+                else if (Partidas[numPartida].DameParticipante(3) == "")
+                {
+                    Partidas[numPartida].AñadirParticipante(miusuario, 3);
+                }
+                else if(Partidas[numPartida].DameParticipante(4) == "")
+                {
+                    Partidas[numPartida].AñadirParticipante(miusuario, 4);
                 }
             }
-            if (existe == false)
-            {
-                Partida p = new Partida();
-                p.PonID(ID);
-                p.AñadirParticipante(miusuario);
-                p.AñadirParticipante(usuario);
-                Partidas.Add(p);
-            }
         }
+        public void CrearPartida(String miusuario, int numPartida)
+        {
 
+                Partida p = new Partida();
+                p.PonID(numPartida);
+                p.AñadirParticipante(miusuario, numPartida);
+                Partidas.Add(p);
+
+        }
         private void buttonAceptar_Click(object sender, EventArgs e)
         {
-            FormPartida frm = new FormPartida();
-            frm.Show();
+
             string mensaje;
             byte[] msg;
-            AñadirAPrtida(Convert.ToInt32(idpartidainvitacion), MiUsuario, invitador);
+            AñadirAPartida(MiUsuario,Convert.ToInt32(idpartidainvitacion));
             mensaje = "8/2/" + Convert.ToString(idpartidainvitacion) + "/" + MiUsuario;
-            MessageBox.Show("El mensaje es:" + mensaje);
+
             // Enviamos al servidor los nombres de usuario
             msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             if (conectado == true)
@@ -409,11 +479,6 @@ namespace Juego_version_1
             groupBoxInvitacion.Visible = false;
             groupBoxChat.Visible = true;
             PreparacionChat(idpartidainvitacion);
-
-        }
-
-        private void Formfunciones_Load(object sender, EventArgs e)
-        {
 
         }
 
@@ -455,8 +520,7 @@ namespace Juego_version_1
         private void FormFunciones_Load(object sender, EventArgs e)
         {
             this.Hide();
-            FormPartida formPartida = new FormPartida();
-            formPartida.Show();
+
             
         }
 

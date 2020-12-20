@@ -50,7 +50,6 @@ int PonConectado (ListaConectados *lista, char nombre[20], int *socket){
 	{
 		pthread_mutex_lock(&mutex);//No me interrumpas ahora
 		strcpy(lista->conectados[lista->num].nombre, nombre);
-		printf("\nSocet:%d",*socket);
 		lista->conectados[lista->num].socket= *socket;
 		lista->num++;
 		pthread_mutex_unlock(&mutex);//Ya puedes interrumpir
@@ -146,9 +145,6 @@ int CrearPartida(ListaPartidas* lista) {
 		lista->num++;
 		pthread_mutex_unlock(&mutex);//Ya puedes interrumpir
 			return lista->num-1;
-		
-			printf("num: %d\n",lista->num);
-
 	}
 }
 int EliminarPartida(ListaPartidas* lista, int partida) {
@@ -171,7 +167,6 @@ int EntrarPartida(ListaPartidas* lista, char nombre[20], int pareja, int numPart
 	//añade nuevo conectado y retorna 0 si okey o 0 si la lista ya estaba llena
 
 		pthread_mutex_lock(&mutex);//No me interrumpas ahora
-		printf("pareja: %d\n",lista->partidas[numPartida].pareja1);
 		if (lista->partidas[numPartida].pareja1==-1)
 		{
 			strcpy(lista->partidas[numPartida].nombre1, nombre);
@@ -293,19 +288,19 @@ int CambiarPareja(ListaPartidas* lista, char nombre[20], int pareja, int numPart
 void EnviarAPatida(char nombre[20],char mensaje[200],int numPartida) {
 	char respuesta[20];
 	int sock_conn;
-	if(milistaPartidas.partidas[numPartida].nombre1!=nombre){
+	if(strcmp(milistaPartidas.partidas[numPartida].nombre1,nombre)){
 		sock_conn=milistaConectados.conectados[DamePosicion(&milistaConectados, milistaPartidas.partidas[numPartida].nombre1)].socket;
 		write(sock_conn, mensaje, strlen(mensaje));
 	}
-	if (milistaPartidas.partidas[numPartida].nombre2 != nombre) {
+	if (strcmp(milistaPartidas.partidas[numPartida].nombre2,nombre)) {
 		sock_conn = milistaConectados.conectados[DamePosicion(&milistaConectados, milistaPartidas.partidas[numPartida].nombre2)].socket;
 		write(sock_conn, mensaje, strlen(mensaje));
 	}
-	if (milistaPartidas.partidas[numPartida].nombre3 != nombre) {
+	if (strcmp(milistaPartidas.partidas[numPartida].nombre3,nombre)) {
 		sock_conn = milistaConectados.conectados[DamePosicion(&milistaConectados, milistaPartidas.partidas[numPartida].nombre3)].socket;
 		write(sock_conn, mensaje, strlen(mensaje));
 	}
-	if (milistaPartidas.partidas[numPartida].nombre4 != nombre) {
+	if (strcmp(milistaPartidas.partidas[numPartida].nombre4,nombre)) {
 		sock_conn = milistaConectados.conectados[DamePosicion(&milistaConectados, milistaPartidas.partidas[numPartida].nombre4)].socket;
 		write(sock_conn, mensaje, strlen(mensaje));
 	}
@@ -318,13 +313,11 @@ void NotificacionConectados()
 	char respuesta2[20];
 	
 	DameConectados(&milistaConectados, &respuesta);
-	printf("wert:%s",respuesta);
 	if (respuesta==NULL)
 		sprintf(respuesta2, "7/None");
 	else
 	{	
 		sprintf(respuesta2,"7%s",respuesta);
-		printf("Resultado: %s", respuesta2);
 	}
 	int sock_conn;
 	for (int i=0;i<=milistaConectados.num;i++){
@@ -375,7 +368,7 @@ void* AtenderCliente (void* sock)
 	}
 	
 	int terminar = 0;
-	printf("antes del while");
+
 	while (terminar == 0)
 	{
 		// Ahora recibimos la petici?n
@@ -453,8 +446,8 @@ void* AtenderCliente (void* sock)
 			resultado = mysql_store_result(conn);
 			row = mysql_fetch_row(resultado);
 			
-			printf(row[0]);
-			printf("\n");
+
+
 			while (row != NULL) {
 				if (strcmp(row[0] , nombre)==0) {
 					sprintf(respuesta, "2/no");
@@ -483,8 +476,6 @@ void* AtenderCliente (void* sock)
 					}
 					row = mysql_fetch_row(resultado);
 				}
-				printf("%d",newID);
-				printf("\n");
 				sprintf(consulta, "INSERT INTO Jugadores (ID,Username,Contraseña) VALUES (%d,'%s','%s')",newID,nombre,password);
 				err = mysql_query(conn, consulta);
 				if (err != 0) {
@@ -526,7 +517,6 @@ void* AtenderCliente (void* sock)
 			int ID_P = 2;
 			int ID_J = -1;
 			int jugadores[3][3];
-			printf("%s", "Parejas del jugador:\n");
 			if (row == NULL)
 				printf("No se han obtenido datos en la consulta\n");
 			else {
@@ -570,8 +560,6 @@ void* AtenderCliente (void* sock)
 						ID_P = 2;
 						strcat(respuesta, row[0]);
 						strcat(respuesta, "/");
-						printf("%s", row[0]);
-						printf("\n");
 						
 					}
 					
@@ -609,7 +597,7 @@ void* AtenderCliente (void* sock)
 				cont = 0;
 				while (row != NULL)
 				{
-					printf("%s \n", row[0]);
+					
 					row = mysql_fetch_row(resultado);
 					cont++;
 					
@@ -624,7 +612,6 @@ void* AtenderCliente (void* sock)
 			strcpy(Usuario1,nombre);
 			p = strtok( NULL, "/");	
 			strcpy(Usuario2,p);
-			printf("%s, %s\n", Usuario1, Usuario2);
 			sprintf (consulta,"SELECT Referencia.ID_Partida FROM (Jugadores, Referencia) WHERE Referencia.ID_Partida IN(SELECT Referencia.ID_Partida FROM(Jugadores, Referencia) WHERE Jugadores.Username = '%s' AND Jugadores.ID = Referencia.ID_Jugador) AND Jugadores.Username = '%s' AND Referencia.ID_Jugador = Jugadores.ID", Usuario1, Usuario2);
 			// hacemos la consulta 
 			err = mysql_query(conn, consulta);
@@ -683,7 +670,6 @@ void* AtenderCliente (void* sock)
 		}
 		else if (codigo == 6)//Peticiones realizadas por el servidor
 		{
-			printf("%d", contadorservicios);
 			sprintf(respuesta, "6/%d", contadorservicios);
 		}
 		else if (codigo == 7)//Lista conectados
@@ -731,21 +717,25 @@ void* AtenderCliente (void* sock)
 				case 2:
 					pareja = 0;
 					err = EntrarPartida(&milistaPartidas, miNombre, pareja, numPartida);
-					printf("Err: %d",err);
+
 					if (err == 0) {
-						sprintf(respuestaOtro, "8/2/%d/%s", numPartida, miNombre);
-						EnviarAPatida(miNombre, respuestaOtro, numPartida);
+						sprintf(respuesta, "8/2/%d/%s", numPartida,miNombre);
+						sprintf(respuestaOtro, "8/2/%d/%s", numPartida,miNombre);
+						write(sock_conn2, respuestaOtro, strlen(respuestaOtro));
+						sprintf(respuestaOtro, "8/6/%d/%s/%s/%s/%s", numPartida, milistaPartidas.partidas[numPartida].nombre1,milistaPartidas.partidas[numPartida].nombre2,milistaPartidas.partidas[numPartida].nombre3,milistaPartidas.partidas[numPartida].nombre4);
+						EnviarAPatida(nombre, respuestaOtro, numPartida);
+						printf("\nnombre:%s miNombre:%s\n",nombre,miNombre);
+
 					}
 					else if (err == -1) {
 						int pos = DamePosicion(&milistaConectados, nombre);
 						sock_conn2 = milistaConectados.conectados[pos].socket;
-						sprintf(respuestaOtro, "8/3/%d/%s", numPartida, nombre);
-						sprintf(respuesta, "8/6/%d/%s", numPartida, miNombre);
+						sprintf(respuestaOtro, "8/2/%d/lleno", numPartida);
 						write(sock_conn2, respuestaOtro, strlen(respuestaOtro));
 					}
 
 					break;
-				case 3:
+				case 3://lleno
 					pos = DamePosicion(&milistaConectados, nombre);
 					sock_conn2 = milistaConectados.conectados[pos].socket;
 					sprintf(respuestaOtro, "8/3/%d/%s", numPartida, nombre);
@@ -786,7 +776,7 @@ void* AtenderCliente (void* sock)
 		
 		if (codigo !=0)
 		{	
-			printf("Soket:%d",sock_conn);
+			printf("Soket:%d\n",sock_conn);
 			
 			printf ("Respuesta: %s\n", respuesta);
 			// Enviamos respuesta
@@ -848,7 +838,6 @@ int main(int argc, char *argv[])
 		
 		//Creamos el thread y decirle lo que tiene que hacer
 		err=pthread_create(&thread[i],NULL,AtenderCliente,&sock[i]);
-		printf("%d",err);
 		
 	}
 }

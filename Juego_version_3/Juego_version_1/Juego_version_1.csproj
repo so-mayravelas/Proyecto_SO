@@ -49,6 +49,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormSalaPartida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSalaPartida.Designer.cs">
+      <DependentUpon>FormSalaPartida.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormFinPartida.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormPrincipal.resx">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormSalaPartida.resx">
+      <DependentUpon>FormSalaPartida.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

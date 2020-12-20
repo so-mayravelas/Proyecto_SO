@@ -74,3 +74,10 @@ C:\Users\paola\Desktop\UPC\QT1ACTUAL\SO\SO\Proyecto_SO\Juego_version_3\Juego_ver
 C:\Users\paola\Desktop\UPC\QT1ACTUAL\SO\SO\Proyecto_SO\Juego_version_3\Juego_version_1\obj\x86\Debug\Juego_version_1.FormMesa.resources
 C:\Users\paola\Desktop\UPC\QT1ACTUAL\SO\SO\Proyecto_SO\Juego_version_3\Juego_version_1\obj\x86\Debug\Juego_version_1.FormPartida.resources
 C:\Users\paola\Desktop\UPC\QT1ACTUAL\SO\SO\Proyecto_SO\Juego_version_3\Juego_version_1\obj\x86\Debug\Juego_version_1.FormFinPartida.resources
+C:\Users\Galder\Documents\SO\Mus\ProyectoGit\Proyecto_SO\Juego_version_3\Juego_version_1\bin\Debug\FontAwesome.Sharp.dll
+C:\Users\Galder\Documents\SO\Mus\ProyectoGit\Proyecto_SO\Juego_version_3\Juego_version_1\obj\x86\Debug\Juego_version_1.Formfunciones.resources
+C:\Users\Galder\Documents\SO\Mus\ProyectoGit\Proyecto_SO\Juego_version_3\Juego_version_1\obj\x86\Debug\Juego_version_1.FormFinPartida.resources
+C:\Users\Galder\Documents\SO\Mus\ProyectoGit\Proyecto_SO\Juego_version_3\Juego_version_1\obj\x86\Debug\Juego_version_1.FormPartida.resources
+C:\Users\Galder\Documents\SO\Mus\ProyectoGit\Proyecto_SO\Juego_version_3\Juego_version_1\obj\x86\Debug\Juego_version_1.FormPrincipal.resources
+C:\Users\Galder\Documents\SO\Mus\ProyectoGit\Proyecto_SO\Juego_version_3\Juego_version_1\obj\x86\Debug\Juego_version_1.csproj.CopyComplete
+C:\Users\Galder\Documents\SO\Mus\ProyectoGit\Proyecto_SO\Juego_version_3\Juego_version_1\obj\x86\Debug\Juego_version_1.FormSalaPartida.resources

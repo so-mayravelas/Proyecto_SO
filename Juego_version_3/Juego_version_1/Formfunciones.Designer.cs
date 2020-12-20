@@ -394,7 +394,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Formfunciones";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Formfunciones_Load);
             this.Consultas_groupBox1.ResumeLayout(false);
             this.Consultas_groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ConectadosGrid)).EndInit();
