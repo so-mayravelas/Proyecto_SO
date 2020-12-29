@@ -9,37 +9,41 @@ namespace Juego_version_1
     public class Partida
     {
         //Definimos una lista de FlightPlans tipo Lists<>
-        List<string> Participantes = new List<string>();
+        string[] Participantes= { "", "", "", "" };
         int ID_Partida;
+        int Count = 0;
  
-        public void AñadirParticipante(string participante)
+        public void AñadirParticipante(string participante,int pos)
         {
             bool existe = false;
-            for (int i = 0; i < Participantes.Count; i++)
+            for (int i = 0; i < Count; i++)
             {
-                if (participante == Participantes[i]);
+                if (participante == Participantes[i])
+                    existe=true;
             }
             if (existe == false)
             {
-                Participantes.Add(participante);
+                Participantes[pos]=participante;
+                Count++;
+                
             }
         }
-        public void QuitarpParticipante(string participante)
+        public void QuitarParticipante(string participante)
         {
-            bool existe = false;
-            for (int i = 0; i < Participantes.Count; i++)
+            for (int i = 0; i < Count; i++)
             {
                 if (participante == Participantes[i])
-                    existe = true;
+                    Participantes[i] = participante;
             }
-            if (existe == true)
-            {
-                Participantes.Remove(participante);
-            }
+            Count--;
         }
+        public string DameParticipante(int i) {
+            return Participantes[i];
+        }
+
         public int DameNum()
         {
-            return Participantes.Count;
+            return Count;
         }
         public int DameID()
         {
@@ -50,14 +54,14 @@ namespace Juego_version_1
             ID_Partida = id;
         }
 
-        public Boolean ExixteParticipante(string usuario)
+        public int ExisteParticipante(string usuario)
         {
-            for (int i = 0; i < Participantes.Count; i++)
+            for (int i = 0; i < 4; i++)
             {
                 if (Participantes[i] == usuario)
-                    return true;
+                    return i;
             }
-            return false;
+            return -1;
         }
     }
 }

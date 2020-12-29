@@ -32,6 +32,7 @@ namespace Juego_version_1
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrincipal));
             this.menupp_panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.submenufq_panel4 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -43,6 +44,7 @@ namespace Juego_version_1
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.iconFormulariohijoactual = new FontAwesome.Sharp.IconPictureBox();
             this.panelhijos_panel2 = new System.Windows.Forms.Panel();
+
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -61,6 +63,7 @@ namespace Juego_version_1
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.submenufq_panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // menupp_panel1
@@ -79,10 +82,23 @@ namespace Juego_version_1
             this.menupp_panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menupp_panel1.ForeColor = System.Drawing.Color.White;
             this.menupp_panel1.Location = new System.Drawing.Point(0, 0);
-            this.menupp_panel1.Name = "menupp_panel1";
-            this.menupp_panel1.Size = new System.Drawing.Size(202, 701);
+            this.menupp_panel1.Size = new System.Drawing.Size(200, 450);
+
+
+
             this.menupp_panel1.TabIndex = 0;
             this.menupp_panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.menupp_panel1_Paint);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Juego_version_1.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(197, 94);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // submenufq_panel4
             // 
@@ -280,6 +296,24 @@ namespace Juego_version_1
             this.InstruccinesButton4.UseVisualStyleBackColor = true;
             this.InstruccinesButton4.Click += new System.EventHandler(this.InstruccinesButton4_Click);
             // 
+
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Teal;
+            this.panel2.Location = new System.Drawing.Point(3, 174);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(8, 30);
+            this.panel2.TabIndex = 1;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Teal;
+            this.panel3.Location = new System.Drawing.Point(3, 210);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(8, 30);
+            this.panel3.TabIndex = 2;
+            // 
+
             // iconButton2
             // 
             this.iconButton2.FlatAppearance.BorderSize = 0;
@@ -322,6 +356,16 @@ namespace Juego_version_1
             this.iconButton1.UseVisualStyleBackColor = true;
             this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
+
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Teal;
+            this.panel1.Location = new System.Drawing.Point(3, 138);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(8, 30);
+            this.panel1.TabIndex = 0;
+            // 
+
             // RegistrarButton1
             // 
             this.RegistrarButton1.FlatAppearance.BorderSize = 0;
@@ -342,17 +386,33 @@ namespace Juego_version_1
             this.RegistrarButton1.UseVisualStyleBackColor = true;
             this.RegistrarButton1.Click += new System.EventHandler(this.RegistrarButton1_Click);
             // 
+
+            // panelhijos_panel2
+            // 
+            this.panelhijos_panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelhijos_panel2.Location = new System.Drawing.Point(200, 0);
+            this.panelhijos_panel2.Name = "panelhijos_panel2";
+            this.panelhijos_panel2.Size = new System.Drawing.Size(600, 450);
+            this.panelhijos_panel2.TabIndex = 0;
+            this.panelhijos_panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2pantallaprincipal_Paint);
+            // 
+
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+
+            this.ClientSize = new System.Drawing.Size(800, 450);
+
             this.ClientSize = new System.Drawing.Size(884, 701);
             this.Controls.Add(this.barradetitulo_panel);
+
             this.Controls.Add(this.panelhijos_panel2);
             this.Controls.Add(this.menupp_panel1);
             this.Name = "FormPrincipal";
             this.Text = "FormPrincipal";
             this.menupp_panel1.ResumeLayout(false);
+
             this.submenufq_panel4.ResumeLayout(false);
             this.barradetitulo_panel.ResumeLayout(false);
             this.barradetitulo_panel.PerformLayout();
@@ -362,6 +422,7 @@ namespace Juego_version_1
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.submenufq_panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

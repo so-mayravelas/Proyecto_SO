@@ -15,6 +15,7 @@ using FontAwesome.Sharp;
 namespace Juego_version_1
 {
     public partial class FormPartida : Form
+
     {
 
         

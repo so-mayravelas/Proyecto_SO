@@ -16,11 +16,10 @@ namespace Juego_version_1
 {
     public partial class FormPrincipal : Form
     {
+        private Form activeForm = null;
+
 
         private IconButton currentBtn;
-      
-        
-        
         public FormPrincipal()
         {
             InitializeComponent();
@@ -76,7 +75,7 @@ namespace Juego_version_1
         //Para llamar al formulario hijo que aparecera enla pantalla principal
         //para que cerremos los formularios anteriores y no molesten
 
-        private Form activeForm = null;
+        
         private void OpenhijoForm(Form hijosForm)
         {
             if (activeForm != null)

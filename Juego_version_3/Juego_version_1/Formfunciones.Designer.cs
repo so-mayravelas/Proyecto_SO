@@ -401,7 +401,6 @@
             this.Name = "Formfunciones";
             this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Formfunciones_Load);
             this.Consultas_groupBox1.ResumeLayout(false);
             this.Consultas_groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ConectadosGrid)).EndInit();
