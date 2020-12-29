@@ -583,9 +583,69 @@ namespace Juego_version_1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Fondogif {
+            get {
+                object obj = ResourceManager.GetObject("Fondogif", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fondoprincipal {
+            get {
+                object obj = ResourceManager.GetObject("fondoprincipal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fondoprincipal1 {
+            get {
+                object obj = ResourceManager.GetObject("fondoprincipal1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fondoprincipal11 {
+            get {
+                object obj = ResourceManager.GetObject("fondoprincipal11", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fondoprincipal12 {
+            get {
+                object obj = ResourceManager.GetObject("fondoprincipal12", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap fq_log {
             get {
                 object obj = ResourceManager.GetObject("fq_log", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap lets_get_away_iPhone_wallpapers___3_ {
+            get {
+                object obj = ResourceManager.GetObject("lets get away iPhone wallpapers  (3)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

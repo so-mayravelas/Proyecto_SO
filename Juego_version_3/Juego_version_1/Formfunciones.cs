@@ -38,6 +38,7 @@ namespace Juego_version_1
             Consultas_groupBox1.Visible = false;
             groupBoxInvitacion.Visible = false;
             groupBoxChat.Visible = false;
+            OcultarRegistro();
             //CheckForIllegalCrossThreadCalls = false;
 
             //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
@@ -131,6 +132,8 @@ namespace Juego_version_1
         private void Iniciar_button4_Click(object sender, EventArgs e)
         {
             if (usuario_textBox1.Text != "" && contraseña_textBox2.Text != "")
+
+               
             {
                 // Quiere realizar un inicio de sesión
                 MiUsuario = Convert.ToString(usuario_textBox1.Text);
@@ -513,6 +516,13 @@ namespace Juego_version_1
             groupBoxInvitacion.Visible = false;
         }
 
+        private void ConectadosGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        //para poder hacer el chat 
+        //tenemos que pasar el chat entre partidas 
         private void buttonChat_Click(object sender, EventArgs e)
         {
             string mensaje;
@@ -541,6 +551,35 @@ namespace Juego_version_1
             this.Hide();
 
             
+        }
+
+        //Lo que tenemos que esconder para llamar a cada momento 
+
+        private void OcultarRegistro()
+        {
+            Conectar_button1.Visible = false;
+            Desconectar_button2.Visible = false;
+            Consultas_groupBox1.Visible = false;
+            groupBoxChat.Visible = false;
+            label5.Visible = false;
+            InvitarButton.Visible = false;
+            Consultas_groupBox1.Visible = false;
+            Iniciar_button4.Visible = false;
+            ConectadosGrid.Visible = false;
+            InvitarButton.Visible = false;
+        }
+        private void MostrarInicio()
+        {
+            Iniciar_button4.Visible = true;
+            Registro_button3.Visible = false;
+        }
+
+        private void Mostrarperfil()
+        {
+            ConectadosGrid.Visible = true;
+            groupBoxInvitacion.Visible = true;
+
+        
         }
 
 
