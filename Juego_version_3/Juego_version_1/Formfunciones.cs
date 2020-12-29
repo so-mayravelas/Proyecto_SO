@@ -285,25 +285,27 @@ namespace Juego_version_1
                                         ThreadStart ts = delegate { CrearForm(Convert.ToInt32(mensaje[2]), server); };
                                         crearForm = new Thread(ts);
                                         crearForm.Start();
-                                        //ActualizarPartidasEnForms(Convert.ToInt32(mensaje[2]));
+                                        Thread.Sleep(150);
+                                        ActualizarPartidasEnForms(Convert.ToInt32(mensaje[2]));
                                     }
                                 }
                                 else if (subidentificador == 2)
                                 {
                                     if (mensaje[3] != "lleno")
                                     {
-                                        
+
                                         if (mensaje[3] == MiUsuario)
                                         {
                                             MessageBox.Show("miUsuario==" + mensaje[3]);
                                             ThreadStart ts = delegate { CrearForm(Convert.ToInt32(mensaje[2]), server); };
                                             crearForm = new Thread(ts);
                                             crearForm.Start();
+                                            Thread.Sleep(100);
                                         }
 
                                         AñadirAPartida(mensaje[3], Convert.ToInt32(mensaje[2]));
-                                        //ActualizarPartidasEnForms(Convert.ToInt32(mensaje[2]));
-                                        
+                                        ActualizarPartidasEnForms(Convert.ToInt32(mensaje[2]));
+
                                         DelegadoPreChat DelegadoPC = new DelegadoPreChat(PreparacionChat);
                                         ConectadosGrid.Invoke(DelegadoPC, new object[] { Convert.ToInt32(mensaje[2]) });
                                     }
@@ -319,7 +321,7 @@ namespace Juego_version_1
                                 {
                                     Partida p = new Partida();
                                     p.PonID(Convert.ToInt32(mensaje[2]));
-                                    
+
                                     if (mensaje[3] != "")
                                     {
                                         p.AñadirParticipante(mensaje[3], 0);
@@ -336,7 +338,25 @@ namespace Juego_version_1
                                     {
                                         p.AñadirParticipante(mensaje[6], 3);
                                     }
+                                    Partidas[Convert.ToInt32(mensaje[2])] = p;
                                     ActualizarPartidasEnForms(Convert.ToInt32(mensaje[2]));
+                                }
+                                else if (subidentificador == 7)
+                                {
+                                    var resultado = MessageBox.Show("Deseas Cambiar el lugar con el jugador en la posicion" + Convert.ToInt32(mensaje[3]), "Cambiar Posicion", MessageBoxButtons.OKCancel);
+                                    if (resultado == DialogResult.OK)
+                                    {
+
+                                        mensajeC = "8/7/" + mensaje[2] + "/" + mensaje[3] + "/" + mensaje[4];
+
+                                        // Enviamos al servidor los nombres de usuario
+                                        msg = System.Text.Encoding.ASCII.GetBytes(mensajeC);
+                                        server.Send(msg);
+                                    }
+                                }
+                                else if (subidentificador == 8)
+                                {
+                                    formularios[Convert.ToInt32(mensaje[2])].EmpezarPartida(new FormPartida());
                                 }
                                 break;
 
@@ -355,10 +375,10 @@ namespace Juego_version_1
         }
         public void CrearForm(int numPartida, Socket sock)
         {
-            FormSalaPartida frm = new FormSalaPartida(numPartida,sock);
+            FormSalaPartida frm = new FormSalaPartida(numPartida,sock,MiUsuario);
             formularios.Add(frm);
             frm.ShowDialog();
-            formularios[numPartida].ActualizacionPartida(Partidas[numPartida]);
+
 
         }
         public void ActualizarPartidasEnForms(int numPartida)
@@ -436,7 +456,6 @@ namespace Juego_version_1
         public void AñadirAPartida(String miusuario, int numPartida)
         {
             for (int i = 0; i < 4; i++) {
-                MessageBox.Show("Canalla "+Partidas[numPartida].DameParticipante(1));
                 if (Partidas[numPartida].DameParticipante(1) == "")
                 {
                     Partidas[numPartida].AñadirParticipante(miusuario,1);

@@ -59,6 +59,8 @@
             this.button4 = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panelJug1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
@@ -163,16 +165,18 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(111, 163);
+            this.button2.Location = new System.Drawing.Point(131, 188);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(87, 25);
             this.button2.TabIndex = 13;
             this.button2.Text = "Cambiar lugar";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.panelJug1);
+            this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.label14);
             this.panel1.Controls.Add(this.label13);
             this.panel1.Location = new System.Drawing.Point(54, 144);
@@ -183,10 +187,9 @@
             // panelJug1
             // 
             this.panelJug1.Controls.Add(this.dataGridView4);
-            this.panelJug1.Controls.Add(this.button2);
             this.panelJug1.Location = new System.Drawing.Point(17, 13);
             this.panelJug1.Name = "panelJug1";
-            this.panelJug1.Size = new System.Drawing.Size(323, 201);
+            this.panelJug1.Size = new System.Drawing.Size(323, 169);
             this.panelJug1.TabIndex = 18;
             // 
             // dataGridView4
@@ -201,6 +204,7 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.panelJug3);
+            this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.label8);
             this.panel3.Location = new System.Drawing.Point(54, 444);
@@ -211,10 +215,9 @@
             // panelJug3
             // 
             this.panelJug3.Controls.Add(this.dataGridView1);
-            this.panelJug3.Controls.Add(this.button1);
             this.panelJug3.Location = new System.Drawing.Point(17, 13);
             this.panelJug3.Name = "panelJug3";
-            this.panelJug3.Size = new System.Drawing.Size(323, 201);
+            this.panelJug3.Size = new System.Drawing.Size(323, 169);
             this.panelJug3.TabIndex = 18;
             // 
             // dataGridView1
@@ -228,12 +231,13 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(111, 163);
+            this.button1.Location = new System.Drawing.Point(131, 188);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(87, 25);
             this.button1.TabIndex = 13;
             this.button1.Text = "Cambiar lugar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label7
             // 
@@ -258,6 +262,7 @@
             // panel5
             // 
             this.panel5.Controls.Add(this.panelJug2);
+            this.panel5.Controls.Add(this.button3);
             this.panel5.Controls.Add(this.label9);
             this.panel5.Controls.Add(this.label10);
             this.panel5.Location = new System.Drawing.Point(755, 144);
@@ -268,10 +273,9 @@
             // panelJug2
             // 
             this.panelJug2.Controls.Add(this.dataGridView2);
-            this.panelJug2.Controls.Add(this.button3);
             this.panelJug2.Location = new System.Drawing.Point(17, 13);
             this.panelJug2.Name = "panelJug2";
-            this.panelJug2.Size = new System.Drawing.Size(323, 201);
+            this.panelJug2.Size = new System.Drawing.Size(323, 169);
             this.panelJug2.TabIndex = 18;
             // 
             // dataGridView2
@@ -285,12 +289,13 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(111, 163);
+            this.button3.Location = new System.Drawing.Point(133, 189);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(87, 25);
             this.button3.TabIndex = 13;
             this.button3.Text = "Cambiar lugar";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label9
             // 
@@ -315,6 +320,7 @@
             // panel7
             // 
             this.panel7.Controls.Add(this.panelJug4);
+            this.panel7.Controls.Add(this.button4);
             this.panel7.Controls.Add(this.label11);
             this.panel7.Controls.Add(this.label12);
             this.panel7.Location = new System.Drawing.Point(755, 444);
@@ -325,10 +331,9 @@
             // panelJug4
             // 
             this.panelJug4.Controls.Add(this.dataGridView3);
-            this.panelJug4.Controls.Add(this.button4);
             this.panelJug4.Location = new System.Drawing.Point(17, 13);
             this.panelJug4.Name = "panelJug4";
-            this.panelJug4.Size = new System.Drawing.Size(323, 201);
+            this.panelJug4.Size = new System.Drawing.Size(323, 169);
             this.panelJug4.TabIndex = 18;
             // 
             // dataGridView3
@@ -342,12 +347,13 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(111, 163);
+            this.button4.Location = new System.Drawing.Point(133, 188);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(87, 25);
             this.button4.TabIndex = 13;
             this.button4.Text = "Cambiar lugar";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // label11
             // 
@@ -369,9 +375,29 @@
             this.label12.TabIndex = 3;
             this.label12.Text = "Partidas Jugadas por el jugador:";
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(533, 633);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(142, 23);
+            this.button5.TabIndex = 19;
+            this.button5.Text = "Empezar Partida";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Location = new System.Drawing.Point(-1, 2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1239, 715);
+            this.panel2.TabIndex = 20;
+            this.panel2.Visible = false;
+            // 
             // FormSalaPartida
             // 
             this.ClientSize = new System.Drawing.Size(1231, 715);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel3);
@@ -438,5 +464,7 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Panel panel2;
     }
 }

@@ -15,7 +15,6 @@ namespace Juego_version_1
  
         public void AñadirParticipante(string participante,int pos)
         {
-            fasdfa
             bool existe = false;
             for (int i = 0; i < Count; i++)
             {
