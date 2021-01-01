@@ -129,6 +129,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Image1.jpg" />
+    <None Include="Resources\bocata3.png" />
+    <None Include="Resources\bocata.png" />
+    <None Include="Resources\bocata2.png" />
     <None Include="Resources\preguntas %282%29.png" />
     <None Include="Resources\oros_giphy.gif" />
     <None Include="Resources\mesa.jpg" />

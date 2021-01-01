@@ -17,10 +17,17 @@ namespace Juego_version_1
     public partial class FormPartida : Form
 
     {
+        delegate void DelegadoBotones(int i);
+        delegate void DelegadoBocatas(string texto, int num);
+        int tipoRonda;
+        int ronda;
+        int numPartida;
+        Socket socket;
 
-        
-        public FormPartida()
+        public FormPartida(Socket socket,int numPartida)
         {
+            this.socket = socket;
+            this.numPartida = numPartida;
             InitializeComponent();
         }
 
@@ -47,149 +54,176 @@ namespace Juego_version_1
             fillg.Show();
         }
 
-        private void FormPartida_Load(object sender, EventArgs e)
+        public void bocatas(string texto,int num)
         {
-
+            DelegadoBocatas db = new DelegadoBocatas(Bocatas);
+            this.Invoke(db, new object[] { texto, num });
+        }
+        private void Bocatas(string texto,int num)
+        {
+            switch (num)
+            {
+                case 0:
+                    label5.Visible = true;
+                    label5.Text = texto;
+                    label3.Visible = false;
+                    label4.Visible = false;
+                    label2.Visible = false;
+                    pictureBox16.Visible = true;
+                    pictureBox12.Visible = false;
+                    pictureBox9.Visible = false;
+                    pictureBox5.Visible=false;
+ 
+                    break;
+                case 1:
+                    label2.Visible = true;
+                    label2.Text = texto;
+                    pictureBox12.Visible = true;
+                    break;
+                case 2:
+                    label3.Visible = true;
+                    label3.Text = texto;
+                    pictureBox9.Visible = true;
+                    break;
+                case 3:
+                    label4.Visible = true;
+                    label4.Text = texto;
+                    pictureBox5.Visible = true;
+                    break;
+            }
+            
+        }
+        public void cambBotones(int tipoRonda)
+        {
+            DelegadoBotones db = new DelegadoBotones(CambiarBotones);
+            this.Invoke(db, new object[] { tipoRonda });
+        }
+        private void CambiarBotones(int tipoRonda)
+        {
+            this.tipoRonda = tipoRonda;
+            switch (tipoRonda)
+            {
+                case 0:
+                    button1.Visible = true;
+                    button1.Text = "Mus";
+                    button3.Visible = true;
+                    button3.Text = "No hay Mus";
+                    break;
+                case 1:
+                    button3.Visible = true;
+                    button3.Text = "Descartar";
+                    break;
+                case 2:
+                    button1.Visible = true;
+                    button1.Text = "No";
+                    button3.Visible = true;
+                    button3.Text = "Si";
+                    break;
+                case 3:
+                    button1.Visible = true;
+                    button1.Text = "Paso";
+                    button3.Visible = true;
+                    button3.Text = "Envido";
+                    hScrollBar1.Visible = true;
+                    label1.Visible = true;
+                    break;
+                case 4:
+                    button1.Visible = true;
+                    button1.Text = "No Quiero";
+                    button2.Visible = true;
+                    button2.Text = "Quiero";
+                    button3.Visible = true;
+                    button3.Text = "Revido";
+                    hScrollBar1.Visible = true;
+                    label1.Visible = true;
+                    break;
+            }
         }
 
-        //Aceptamos la partida
+        private void button1_Click(object sender, EventArgs e)
+        {
+            button1.Visible = false;
+            button2.Visible = false;
+            button3.Visible = false;
+            string mensaje="";
+            byte[] msg;
+            switch (tipoRonda)
+            {
+                case 0:
+                    mensaje = "10/" + numPartida + "/" + ronda + "/MUS" ;
+                    break;
+                case 2:
+                    mensaje = "10/" + numPartida + "/" + ronda + "/NO";
+                    break;
+                case 3:
+                    mensaje = "10/" + numPartida + "/" + ronda + "/PASO";
+                    break;
+                case 4:
+                    mensaje = "10/" + numPartida + "/" + ronda + "/NOQUIERO";
+                    break;
+            }
 
 
+            // Enviamos al servidor los nombres de usuario
+            msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            socket.Send(msg);
+        }
 
-        //Metodos cuando alguien gana
-        //public void Cerrar(string ganador)
-        //{
-        //    this.timer1.Stop();
-        //    if (ganador == this.jinferior_label.Text)
-        //    {
-        //        string consulta = "22/" + this.id + "/" + this.segundos;
-        //        byte[] msg = System.Text.Encoding.ASCII.GetBytes(consulta);
-        //        server.Send(msg);
-        //    }
-        //    this.cerrar = true;
-        //    this.Close();
-        //}
-
-
-        //public void CancelarPartida()
-        //{
-        //    this.cerrar = true;
-        //    this.Close();
-        //}
-        //public void SetTurno(int turno)
-        //{
-        //    this.turno = turno;
-        //    this.textBoxChat.Items.Add("Es el turno de " + this.jugadores[this.turno]);
-        //    this.textBoxChat.TopIndex = this.textBoxChat.Items.Count - 1;
-        //}
-        //public void SetSentido(int sentido)
-        //{
-        //    this.sentido = sentido;
-        //}
+        private void button2_Click(object sender, EventArgs e)
+        {
+            button1.Visible = false;
+            button2.Visible = false;
+            button3.Visible = false;
+            string mensaje = "";
+            byte[] msg;
+            switch (tipoRonda)
+            {
+                case 4:
+                    mensaje = "10/" + numPartida + "/" + ronda + "/QUIERO";
+                    break;
+            }
 
 
+            // Enviamos al servidor los nombres de usuario
+            msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            socket.Send(msg);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            button1.Visible = false;
+            button2.Visible = false;
+            button3.Visible = false;
+            string mensaje = "";
+            byte[] msg;
+            switch (tipoRonda)
+            {
+                case 0:
+                    mensaje = "10/" + numPartida + "/" + ronda + "/NO";
+                    break;
+                case 1:
+                    mensaje = "10/" + numPartida + "/" + ronda + "/A/"+Convert.ToInt32(hScrollBar1.Value);
+                    break;
+                case 2:
+                    mensaje = "10/" + numPartida + "/" + ronda + "/SI";
+                    break;
+                case 3:
+                    mensaje = "10/" + numPartida + "/" + ronda + "/A/"+ Convert.ToInt32(hScrollBar1.Value);
+                    break;
+                case 4:
+                    mensaje = "10/" + numPartida + "/" + ronda + "/A/"+ Convert.ToInt32(hScrollBar1.Value);
+                    break;
+            }
 
 
-        //Añade una carta al centro de la mesa para ver que carta se esta jugando en ese momento
-        //public void HaveCard(int num)
-        //{
-        //    try { cartaEnMesa.Dispose(); }
-        //    catch { };
+            // Enviamos al servidor los nombres de usuario
+            msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            socket.Send(msg);
+        }
 
-        //    PictureBox PicBx = new PictureBox();
-        //    PicBx.Size = new Size(cdWidth / 2, cdHeight / 2);
-        //    PicBx.Location = new Point(this.cdWidth / 2 - cdWidth / 2, this.cdHeight / 2 - cdHeight / 4);
-
-        //    Rectangle rect = new Rectangle(1 + cdWidth * (num % 14), 1 + cdHeight * (int)Math.Floor((double)num / 14), cdWidth, cdHeight);
-        //    Image card = cropImage(this.deck, rect);
-        //    PicBx.Image = card;
-        //    PicBx.SizeMode = PictureBoxSizeMode.StretchImage;
-        //    PicBx.Name = num.ToString();
-
-        //    cartaEnMesa = PicBx;
-        //    this.Controls.Add(PicBx);
-
-        //}
-
-
-
-        ////Funcion recortar imagen revisar compatibilidad ponerlas directas sin usar bitmap
-        //private static Image cropImage(Image img, Rectangle cropArea)
-        //{
-        //    Bitmap bmpImage = new Bitmap(img);
-        //    Bitmap bmpCrop = bmpImage.Clone(cropArea, bmpImage.PixelFormat);
-        //    return (Image)(bmpCrop);
-        //}
-
-        //private void PicBx_Click(object sender, EventArgs e)
-        //{
-        //    PictureBox target = (PictureBox)sender;
-        //    //this.MensajeRecibido("Carta nº" + target.Name, "(consola)");
-
-        //    string mensaje = "21/" + this.id + "/" + target.Name;
-        //    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-        //    server.Send(msg);
-        //}
-
-        //private void EnviarBtn_Click(object sender, EventArgs e)
-        //{
-        //    if (this.textBoxComentario.Text != "")
-        //    {
-        //        string mensaje = "12/" + this.id + "|" + this.textBoxComentario.Text;
-        //        byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-        //        server.Send(msg);
-        //    }
-        //    this.textBoxComentario.Clear();
-        //}
-
-        //private void MensajeTxt_KeyPress(object sender, KeyPressEventArgs e)
-        //{
-        //    if (e.KeyChar == (char)Keys.Enter)
-        //        this.buttonChat.PerformClick();
-        //}
-
-        //private void Mesa_FormClosing(object sender, FormClosingEventArgs e)
-        //{
-        //    if (this.cerrar == false)
-        //    {
-        //        DialogResult res = MessageBox.Show("¿Estás seguro que quieres salir de la partida?", "Salir", MessageBoxButtons.YesNo);
-        //        if (res == DialogResult.Yes)
-        //        {
-        //            string cancelar = "23/" + this.id;
-        //            byte[] msg2 = System.Text.Encoding.ASCII.GetBytes(cancelar);
-        //            server.Send(msg2);
-        //        }
-        //        e.Cancel = true;
-        //    }
-        //}
-
-        //private void buttonChat_Click(object sender, EventArgs e)
-        //{
-        //    string mensaje;
-        //    byte[] msg;
-        //    mensaje = "9/" + Convert.ToString(idpartidainvitacion) + "/" + MiUsuario + "/" + Convert.ToString(textBoxComentario.Text);
-        //    textBoxChat.Text = MiUsuario + ": " + Convert.ToString(textBoxComentario.Text) + Environment.NewLine;
-        //    // Enviamos al servidor los nombres de usuario
-        //    msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-        //    if (conectado == true)
-        //        server.Send(msg);
-        //}
-        //public void PreparacionChat(int ID)
-        //{
-        //    groupBoxChat.Visible = true;
-        //    labelChat.Text = "Partida: " + Convert.ToString(ID);
-        //}
-
-        //public void ActualizarChat(string Usuario, string comentario)
-        //{
-        //    textBoxChat.Text = textBoxChat.Text + Usuario + ": " + comentario + Environment.NewLine;
-        //}
-
-        //private void Pasoturno_Button_Click(object sender, EventArgs e)
-        //{
-        //    string paso = "20/" + this.id;
-        //    byte[] msg2 = System.Text.Encoding.ASCII.GetBytes(paso);
-        //    server.Send(msg2);
-        //}
+        private void hScrollBar1_ValueChanged(object sender, EventArgs e)
+        {
+            label1.Text = "Apuesta: "+Convert.ToInt32(hScrollBar1.Value);
+        }
     }
 }

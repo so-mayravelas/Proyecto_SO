@@ -204,6 +204,11 @@ namespace Juego_version_1
                     string mensajeC;
                     string[] mensaje;
                     int identificador;
+                    int numPartida;
+                    int ronda;
+                    string caso;
+                    int apuesta;
+                    int jugador;
                     server.Receive(msg);
                     mensajeC = Encoding.ASCII.GetString(msg).Split('\0')[0];
                     mensaje = mensajeC.Split('/');
@@ -356,7 +361,7 @@ namespace Juego_version_1
                                 }
                                 else if (subidentificador == 8)
                                 {
-                                    formularios[Convert.ToInt32(mensaje[2])].EmpezarPartida(new FormPartida());
+                                    formularios[Convert.ToInt32(mensaje[2])].EmpezarPartida();
                                 }
                                 break;
 
@@ -364,9 +369,77 @@ namespace Juego_version_1
                                     DelegadoChat delegadoCha = new DelegadoChat(ActualizarChat);
                                     ConectadosGrid.Invoke(delegadoCha, new object[] { mensaje[2], mensaje[3] });
                                 break;
-                            
+                            case 10:
+                                numPartida = Convert.ToInt32(mensaje[1]);
+                                ronda = Convert.ToInt32(mensaje[2]);
+                                caso = mensaje[3];
+                                switch (ronda)
+                                {
 
+                                    case 0:
+                                        if (caso == "P")
+                                        {
+                                            formularios[numPartida].CambiarBotones(0);
+                                        }
+                                        else
+                                        {
+                                            formularios[numPartida].CambiarBotones(1);
+                                        }
+                                        break;
+                                    case 1:
+                                    case 2:
+                                        apuesta = Convert.ToInt32(caso);
+                                        if (apuesta == 0)
+                                        {
+                                            formularios[numPartida].CambiarBotones(3);
+                                        }
+                                        else
+                                        {
+                                            formularios[numPartida].CambiarBotones(4);
+                                        }
+                                        break;
+                                    case 3:
+                                    case 4:
+                                        apuesta = Convert.ToInt32(mensaje[4]);
+                                        if (caso == "P")
+                                        {
+                                            formularios[numPartida].CambiarBotones(1);
+                                        }
+                                        else
+                                        {
+                                            if (apuesta == 0)
+                                            {
+                                                formularios[numPartida].CambiarBotones(3);
+                                            }
+                                            else
+                                            {
+                                                formularios[numPartida].CambiarBotones(4);
+                                            }
+                                        }
+                                        break;
+                                }
 
+                                break;
+                            case 11:
+                                numPartida = Convert.ToInt32(mensaje[1]);
+                                ronda = Convert.ToInt32(mensaje[2]);
+                                switch (ronda)
+                                {
+                                    case 0:
+                                    case 3:
+                                    case 4:
+                                        caso = mensaje[3];
+                                        jugador = Convert.ToInt32(mensaje[4]);
+                                        formularios[numPartida].Bocatas(mensaje[5], jugador);
+                                        break;
+                                    case 1:
+                                    case 2:
+                                        jugador = Convert.ToInt32(mensaje[3]);
+                                        formularios[numPartida].Bocatas(mensaje[4], jugador);
+                                        break;
+                                }
+                                
+                                break;
 
                         }
                     }

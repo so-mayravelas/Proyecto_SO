@@ -200,6 +200,7 @@
             this.dataGridView4.Name = "dataGridView4";
             this.dataGridView4.Size = new System.Drawing.Size(323, 157);
             this.dataGridView4.TabIndex = 0;
+            this.dataGridView4.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView4_CellClick);
             // 
             // panel3
             // 
@@ -228,6 +229,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(323, 157);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // button1
             // 
@@ -286,6 +288,7 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(323, 157);
             this.dataGridView2.TabIndex = 0;
+            this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             // 
             // button3
             // 
@@ -344,6 +347,7 @@
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.Size = new System.Drawing.Size(323, 157);
             this.dataGridView3.TabIndex = 0;
+            this.dataGridView3.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView3_CellClick);
             // 
             // button4
             // 
@@ -387,7 +391,7 @@
             // 
             // panel2
             // 
-            this.panel2.Location = new System.Drawing.Point(-1, 2);
+            this.panel2.Location = new System.Drawing.Point(2, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1239, 715);
             this.panel2.TabIndex = 20;
@@ -396,7 +400,6 @@
             // FormSalaPartida
             // 
             this.ClientSize = new System.Drawing.Size(1231, 715);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel5);
@@ -409,6 +412,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.panel2);
             this.Name = "FormSalaPartida";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
