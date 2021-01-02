@@ -619,6 +619,7 @@ namespace Juego_version_1
             textBoxChat.Text = textBoxChat.Text+ Usuario + ": " + comentario + Environment.NewLine;
         }
 
+
         private void FormFunciones_Load(object sender, EventArgs e)
         {
             this.Hide();
@@ -632,14 +633,13 @@ namespace Juego_version_1
         {
             Conectar_button1.Visible = false;
             Desconectar_button2.Visible = false;
-            Consultas_groupBox1.Visible = false;
+            /*Consultas_groupBox1.Visible = false;
             groupBoxChat.Visible = false;
             label5.Visible = false;
             InvitarButton.Visible = false;
             Consultas_groupBox1.Visible = false;
-            Iniciar_button4.Visible = false;
             ConectadosGrid.Visible = false;
-            InvitarButton.Visible = false;
+            InvitarButton.Visible = false;*/
         }
         private void MostrarInicio()
         {
