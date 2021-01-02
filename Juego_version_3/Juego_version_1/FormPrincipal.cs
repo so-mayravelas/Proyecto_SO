@@ -10,6 +10,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using FontAwesome.Sharp;
+using System.Runtime.InteropServices;
 
 namespace Juego_version_1
 {
@@ -18,10 +19,17 @@ namespace Juego_version_1
         private Form activeForm = null;
 
 
+        private IconButton currentBtn;
         public FormPrincipal()
         {
             InitializeComponent();
             Diseño();
+
+            //Para quitar la barra del Form
+            this.Text = String.Empty;
+            this.ControlBox = false;
+            this.DoubleBuffered = true;
+            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
         }
 
         private void Diseño()
@@ -80,7 +88,10 @@ namespace Juego_version_1
             panelhijos_panel2.Tag = hijosForm;
             hijosForm.BringToFront();
             hijosForm.Show();
+            Titulodeformulariohijo.Text = hijosForm.Text;
         }
+
+
          //cuando llamamos al formulario como objeto
         //private void AbrirFormsInPanel(object Formshijos)
         //{
@@ -95,11 +106,7 @@ namespace Juego_version_1
         //    fhijo.Show();
             
         //}
-        private void RegistrarButton1_Click(object sender, EventArgs e)
-        {
-            OpenhijoForm(new Formfunciones());
-            //AbrirFormsInPanel(new Formfunciones());
-        }
+       
         //PARA Abrir los formularios de las partidas dentro del panel buscremos el panel el formulario Partida
         public void AbrirFormPartida<MiForm>() where MiForm : Form, new()
         {
@@ -121,10 +128,90 @@ namespace Juego_version_1
 
         }
 
-       
+        //Para activar Botones
+        private void ActivarBoton(object senderBtn, Color color)
+        {
+            iconFormulariohijoactual.IconChar = currentBtn.IconChar;
+            iconFormulariohijoactual.IconColor = color;
+
+
+
+        
+        }
+
+        //Para desactivar Botonactual
+
+        private void DesactivarBoton()
+        { 
+         
+          
+        }
+
+        //Boton de reiniciar
+
+        private void Reset()
+        {
+            DesactivarBoton();
+            iconFormulariohijoactual.IconChar = IconChar.Home;
+            iconFormulariohijoactual.IconColor = Color.MediumPurple;
+            Titulodeformulariohijo.Text = "Home";
+
+
+        }
+         //boton registrarse
+        private void RegistrarButton1_Click(object sender, EventArgs e)
+        {
+            OpenhijoForm(new Formfunciones());
+            //AbrirFormsInPanel(new Formfunciones());
+        }
+        //Boton iniciar Sesion
+
         private void iconButton1_Click(object sender, EventArgs e)
         {
+            OpenhijoForm(new Formfunciones());
             
+            
+        }
+
+        //Para podr mover el formulario desde el panel
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hwnd, int wMsg, int wParam, int lParam);
+
+        private void barradetitulo_panel_MouseDown(object sender, MouseEventArgs e)
+        {
+
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {   //cerraremso el formulariohijos
+            activeForm.Close();
+            Reset();
+        }
+
+        private void iconPictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void iconPictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void miniiconPictureBox1_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void menupp_panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

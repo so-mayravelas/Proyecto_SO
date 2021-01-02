@@ -225,21 +225,64 @@ namespace Juego_version_1
         private void dataGridView4_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
+            int num = e.RowIndex; //Vector de filas
+            dataGridView4.Rows[num].Cells[0].Style.BackColor = Color.Green; //La celda seleccionada se pondrá de color azul
+            string nombre = Convert.ToString(dataGridView3.Rows[num].Cells[0].Value);
+            dataGridView4.ClearSelection();
+            string mensaje;
+            byte[] msg;
+            mensaje = "8/1/" + numPartida + "/" + nombre;
+
+            // Enviamos al servidor los nombres de usuario
+            msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            sock.Send(msg);
+
         }
 
         private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            int num = e.RowIndex; //Vector de filas
+            dataGridView2.Rows[num].Cells[0].Style.BackColor = Color.Green; //La celda seleccionada se pondrá de color azul
+            string nombre = Convert.ToString(dataGridView3.Rows[num].Cells[0].Value);
+            dataGridView2.ClearSelection();
+            string mensaje;
+            byte[] msg;
+            mensaje = "8/1/" + numPartida + "/" + nombre;
+
+            // Enviamos al servidor los nombres de usuario
+            msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            sock.Send(msg);
 
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            int num = e.RowIndex; //Vector de filas
+            dataGridView1.Rows[num].Cells[0].Style.BackColor = Color.Green; //La celda seleccionada se pondrá de color azul
+            string nombre = Convert.ToString(dataGridView3.Rows[num].Cells[0].Value);
+            dataGridView1.ClearSelection();
+            string mensaje;
+            byte[] msg;
+            mensaje = "8/1/" + numPartida + "/" + nombre;
 
+            // Enviamos al servidor los nombres de usuario
+            msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            sock.Send(msg);
         }
 
         private void dataGridView3_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            int num = e.RowIndex; //Vector de filas
+            dataGridView3.Rows[num].Cells[0].Style.BackColor = Color.Green; //La celda seleccionada se pondrá de color azul
+            string nombre = Convert.ToString(dataGridView3.Rows[num].Cells[0].Value);
+            dataGridView3.ClearSelection();
+            string mensaje;
+            byte[] msg;
+            mensaje = "8/1/" + numPartida + "/" + nombre;
 
+            // Enviamos al servidor los nombres de usuario
+            msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            sock.Send(msg);
         }
     }
 }

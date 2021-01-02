@@ -265,9 +265,11 @@
             this.ConectadosGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.ConectadosGrid.Location = new System.Drawing.Point(576, 50);
             this.ConectadosGrid.Name = "ConectadosGrid";
+            this.ConectadosGrid.RowHeadersWidth = 62;
             this.ConectadosGrid.Size = new System.Drawing.Size(99, 150);
             this.ConectadosGrid.TabIndex = 15;
             this.ConectadosGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ConectadosGrid_CellClick);
+            this.ConectadosGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ConectadosGrid_CellContentClick);
             // 
             // InvitarButton
             // 
@@ -311,6 +313,7 @@
             // 
             // groupBoxInvitacion
             // 
+            this.groupBoxInvitacion.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxInvitacion.Controls.Add(this.buttonRechazar);
             this.groupBoxInvitacion.Controls.Add(this.buttonAceptar);
             this.groupBoxInvitacion.Controls.Add(this.labelInvitacion);
@@ -360,6 +363,7 @@
             // 
             // groupBoxChat
             // 
+            this.groupBoxChat.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxChat.Controls.Add(this.labelChat);
             this.groupBoxChat.Controls.Add(this.buttonChat);
             this.groupBoxChat.Controls.Add(this.textBoxComentario);
@@ -376,7 +380,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(697, 553);
+            this.BackgroundImage = global::Juego_version_1.Properties.Resources.fondoprincipal;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1005, 654);
             this.Controls.Add(this.groupBoxChat);
             this.Controls.Add(this.groupBoxInvitacion);
             this.Controls.Add(this.InvitarButton);
@@ -393,6 +399,7 @@
             this.Controls.Add(this.Conectar_button1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Formfunciones";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.WindowsDefaultBounds;
             this.Text = "Form1";
             this.Consultas_groupBox1.ResumeLayout(false);
             this.Consultas_groupBox1.PerformLayout();

@@ -67,6 +67,12 @@
     <Compile Include="FormPartida.Designer.cs">
       <DependentUpon>FormPartida.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPerfil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPerfil.Designer.cs">
+      <DependentUpon>FormPerfil.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,9 @@
     <EmbeddedResource Include="FormPartida.resx">
       <DependentUpon>FormPartida.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormPerfil.resx">
+      <DependentUpon>FormPerfil.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormPrincipal.resx">
       <DependentUpon>FormPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -99,14 +108,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -132,6 +135,12 @@
     <None Include="Resources\bocata3.png" />
     <None Include="Resources\bocata.png" />
     <None Include="Resources\bocata2.png" />
+    <None Include="Resources\fondoprincipal11.jpg" />
+    <None Include="Resources\fondoprincipal1.png" />
+    <None Include="Resources\lets get away iPhone wallpapers  %283%29.png" />
+    <None Include="Resources\fondoprincipal1.jpg" />
+    <None Include="Resources\fondoprincipal.jpg" />
+    <None Include="Resources\Fondogif.gif" />
     <None Include="Resources\preguntas %282%29.png" />
     <None Include="Resources\oros_giphy.gif" />
     <None Include="Resources\mesa.jpg" />
