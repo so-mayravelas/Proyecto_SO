@@ -18,7 +18,9 @@ namespace Juego_version_1
         string MiUsuario;
         delegate void DelegadoPanel(int i);
         delegate void DelegadoComienzoPartida(Form hijosForm);
+        delegate void DelegadoInvitar(string[] jugadores);
         private Form activeForm = null;
+        FormPartida hijosForm;
         public FormSalaPartida(int numPartida, Socket sock,string MiUsuario)
         {
             this.numPartida = numPartida;
@@ -144,7 +146,7 @@ namespace Juego_version_1
 
         private void button5_Click(object sender, EventArgs e)
         {
-            OpenhijoForm(new FormPartida());
+            OpenhijoForm(hijosForm);
             string mensaje;
             byte[] msg;
             mensaje = "8/8/" + numPartida +"/"+ MiUsuario;
@@ -154,10 +156,48 @@ namespace Juego_version_1
             sock.Send(msg);
 
         }
-        public void EmpezarPartida(Form hijosForm)
+        public void EmpezarPartida()
         {
             DelegadoComienzoPartida dcp = new DelegadoComienzoPartida(OpenhijoForm);
             this.Invoke(dcp, new object[] { hijosForm}); 
+        }
+        public void ActualizarJugadores(string[] jugadores)
+        {
+            DelegadoInvitar di = new DelegadoInvitar(actualizarJugadores);
+            this.Invoke(di, new object[] { jugadores });
+        }
+        private void actualizarJugadores(string[] jugadores)
+        {
+
+            dataGridView1.RowCount = jugadores.Length;
+            for (int i = 0; i < jugadores.Length; i++)
+            {
+                if (partida.ExisteParticipante(jugadores[i])==-1)
+                dataGridView1[0, i].Value = jugadores[i];
+            }
+            dataGridView2.RowCount = jugadores.Length;
+            for (int i = 0; i < jugadores.Length; i++)
+            {
+                if (partida.ExisteParticipante(jugadores[i]) == -1)
+
+                    dataGridView2[0, i].Value = jugadores[i];
+            }
+            dataGridView3.RowCount = jugadores.Length;
+            for (int i = 0; i < jugadores.Length; i++)
+            {
+                if (partida.ExisteParticipante(jugadores[i]) == -1)
+
+                    dataGridView3[0, i].Value = jugadores[i];
+            }
+            dataGridView4.RowCount = jugadores.Length;
+            for (int i = 0; i < jugadores.Length; i++)
+            {
+                if (partida.ExisteParticipante(jugadores[i]) == -1)
+
+                    dataGridView4[0, i].Value = jugadores[i];
+            }
+
+
         }
         private void OpenhijoForm(Form hijosForm)
         {
@@ -172,6 +212,77 @@ namespace Juego_version_1
             panel2.Visible = true;
             hijosForm.BringToFront();
             hijosForm.Show();
+        }
+        public void CambiarBotones(int tipoRonda)
+        {
+            hijosForm.cambBotones(tipoRonda);
+        }
+        public void Bocatas(string texto, int jugador)
+        {
+            hijosForm.bocatas(texto, jugador);
+        }
+
+        private void dataGridView4_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            int num = e.RowIndex; //Vector de filas
+            dataGridView4.Rows[num].Cells[0].Style.BackColor = Color.Green; //La celda seleccionada se pondrá de color azul
+            string nombre = Convert.ToString(dataGridView3.Rows[num].Cells[0].Value);
+            dataGridView4.ClearSelection();
+            string mensaje;
+            byte[] msg;
+            mensaje = "8/1/" + numPartida + "/" + nombre;
+
+            // Enviamos al servidor los nombres de usuario
+            msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            sock.Send(msg);
+
+        }
+
+        private void dataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int num = e.RowIndex; //Vector de filas
+            dataGridView2.Rows[num].Cells[0].Style.BackColor = Color.Green; //La celda seleccionada se pondrá de color azul
+            string nombre = Convert.ToString(dataGridView3.Rows[num].Cells[0].Value);
+            dataGridView2.ClearSelection();
+            string mensaje;
+            byte[] msg;
+            mensaje = "8/1/" + numPartida + "/" + nombre;
+
+            // Enviamos al servidor los nombres de usuario
+            msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            sock.Send(msg);
+
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int num = e.RowIndex; //Vector de filas
+            dataGridView1.Rows[num].Cells[0].Style.BackColor = Color.Green; //La celda seleccionada se pondrá de color azul
+            string nombre = Convert.ToString(dataGridView3.Rows[num].Cells[0].Value);
+            dataGridView1.ClearSelection();
+            string mensaje;
+            byte[] msg;
+            mensaje = "8/1/" + numPartida + "/" + nombre;
+
+            // Enviamos al servidor los nombres de usuario
+            msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            sock.Send(msg);
+        }
+
+        private void dataGridView3_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int num = e.RowIndex; //Vector de filas
+            dataGridView3.Rows[num].Cells[0].Style.BackColor = Color.Green; //La celda seleccionada se pondrá de color azul
+            string nombre = Convert.ToString(dataGridView3.Rows[num].Cells[0].Value);
+            dataGridView3.ClearSelection();
+            string mensaje;
+            byte[] msg;
+            mensaje = "8/1/" + numPartida + "/" + nombre;
+
+            // Enviamos al servidor los nombres de usuario
+            msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+            sock.Send(msg);
         }
     }
 }

@@ -26,23 +26,321 @@ typedef struct {
 	Conectado jugadores[4];
 	int empezada;
 } Partida;
+
 typedef struct {
 	Partida partidas[100];
 	int num;
 } ListaPartidas;
 ListaPartidas milistaPartidas;
 
-//Declaracion lista para guardar los conectados
+void BarajarBaraja(int numPartida)
+{
+	pthread_mutex_lock(&mutex);
+	for (int i=0;i<40;i++)//Creo los valores de las cartas, del 1 al 40
+		milistaPartidas.partidas[numPartida].Baraja[i] = i+1;
+	
+	srand(time(NULL));//Estructura para generar numeros aleatorios
+	int n = 40;
+	for(int i=0;i<40;i++)
+	{
+		int v = rand()%n;// nos genera un numero aleatorio entre 0 y n-1
+		int p = milistaPartidas.partidas[numPartida].Baraja[v];
+		milistaPartidas.partidas[numPartida].Baraja [v] = milistaPartidas.partidas[numPartida].Baraja[n-1];
+		milistaPartidas.partidas[numPartida].Baraja[n-1] = p;
+		n--;
+	}
+	pthread_mutex_unlock(&mutex);
+};
 
+void Repartir(numPartida)
+{
+	int ma = milistaPartidas.partidas[numPartida].Mano[0];
+	if(ma == 1)
+	{
+		pthread_mutex_lock(&mutex);
+		int cartas1[4] = {milistaPartidas.partidas[numPartida].Baraja[0],milistaPartidas.partidas[numPartida].Baraja[4],milistaPartidas.partidas[numPartida].Baraja[8],milistaPartidas.partidas[numPartida].Baraja[12]};
+		for(int i=0;i<4;i++)
+			milistaPartidas.partidas[numPartida].Cartas2[i] = cartas1[i];
+		int cartas2[4] = {milistaPartidas.partidas[numPartida].Baraja[1],milistaPartidas.partidas[numPartida].Baraja[5],milistaPartidas.partidas[numPartida].Baraja[9],milistaPartidas.partidas[numPartida].Baraja[13]};
+		for(int i=0;i<4;i++)
+			milistaPartidas.partidas[numPartida].Cartas3[i] = cartas2[i];
+		int cartas3[4] = {milistaPartidas.partidas[numPartida].Baraja[2],milistaPartidas.partidas[numPartida].Baraja[6],milistaPartidas.partidas[numPartida].Baraja[10],milistaPartidas.partidas[numPartida].Baraja[14]};
+		for(int i=0;i<4;i++)
+			milistaPartidas.partidas[numPartida].Cartas4[i] = cartas3[i];
+		int cartas4[4] = {milistaPartidas.partidas[numPartida].Baraja[3],milistaPartidas.partidas[numPartida].Baraja[7],milistaPartidas.partidas[numPartida].Baraja[11],milistaPartidas.partidas[numPartida].Baraja[15]};
+		for(int i=0;i<4;i++)
+			milistaPartidas.partidas[numPartida].Cartas1[i] = cartas4[i];
+		pthread_mutex_unlock(&mutex);
+	}
+	else if(ma == 2)
+	{
+		pthread_mutex_lock(&mutex);
+		int cartas1[4] = {milistaPartidas.partidas[numPartida].Baraja[0],milistaPartidas.partidas[numPartida].Baraja[4],milistaPartidas.partidas[numPartida].Baraja[8],milistaPartidas.partidas[numPartida].Baraja[12]};
+		for(int i=0;i<4;i++)
+			milistaPartidas.partidas[numPartida].Cartas3[i] = cartas1[i];
+		int cartas2[4] = {milistaPartidas.partidas[numPartida].Baraja[1],milistaPartidas.partidas[numPartida].Baraja[5],milistaPartidas.partidas[numPartida].Baraja[9],milistaPartidas.partidas[numPartida].Baraja[13]};
+		for(int i=0;i<4;i++)
+			milistaPartidas.partidas[numPartida].Cartas4[i] = cartas2[i];
+		int cartas3[4] = {milistaPartidas.partidas[numPartida].Baraja[2],milistaPartidas.partidas[numPartida].Baraja[6],milistaPartidas.partidas[numPartida].Baraja[10],milistaPartidas.partidas[numPartida].Baraja[14]};
+		for(int i=0;i<4;i++)
+			milistaPartidas.partidas[numPartida].Cartas1[i] = cartas3[i];
+		int cartas4[4] = {milistaPartidas.partidas[numPartida].Baraja[3],milistaPartidas.partidas[numPartida].Baraja[7],milistaPartidas.partidas[numPartida].Baraja[11],milistaPartidas.partidas[numPartida].Baraja[15]};
+		for(int i=0;i<4;i++)
+			milistaPartidas.partidas[numPartida].Cartas2[i] = cartas4[i];
+		pthread_mutex_unlock(&mutex);
+	}
+	else if(ma == 3)
+	{
+		pthread_mutex_lock(&mutex);
+		int cartas1[4] = {milistaPartidas.partidas[numPartida].Baraja[0],milistaPartidas.partidas[numPartida].Baraja[4],milistaPartidas.partidas[numPartida].Baraja[8],milistaPartidas.partidas[numPartida].Baraja[12]};
+		for(int i=0;i<4;i++)
+			milistaPartidas.partidas[numPartida].Cartas4[i] = cartas1[i];
+		int cartas2[4] = {milistaPartidas.partidas[numPartida].Baraja[1],milistaPartidas.partidas[numPartida].Baraja[5],milistaPartidas.partidas[numPartida].Baraja[9],milistaPartidas.partidas[numPartida].Baraja[13]};
+		for(int i=0;i<4;i++)
+			milistaPartidas.partidas[numPartida].Cartas1[i] = cartas2[i];
+		int cartas3[4] = {milistaPartidas.partidas[numPartida].Baraja[2],milistaPartidas.partidas[numPartida].Baraja[6],milistaPartidas.partidas[numPartida].Baraja[10],milistaPartidas.partidas[numPartida].Baraja[14]};
+		for(int i=0;i<4;i++)
+			milistaPartidas.partidas[numPartida].Cartas2[i] = cartas3[i];
+		int cartas4[4] = {milistaPartidas.partidas[numPartida].Baraja[3],milistaPartidas.partidas[numPartida].Baraja[7],milistaPartidas.partidas[numPartida].Baraja[11],milistaPartidas.partidas[numPartida].Baraja[15]};
+		for(int i=0;i<4;i++)
+			milistaPartidas.partidas[numPartida].Cartas3[i] = cartas4[i];
+		pthread_mutex_unlock(&mutex);
+	}
+	else if(ma == 4)
+	{
+		pthread_mutex_lock(&mutex);
+		int cartas1[4] = {milistaPartidas.partidas[numPartida].Baraja[0],milistaPartidas.partidas[numPartida].Baraja[4],milistaPartidas.partidas[numPartida].Baraja[8],milistaPartidas.partidas[numPartida].Baraja[12]};
+		for(int i=0;i<4;i++)
+			milistaPartidas.partidas[numPartida].Cartas1[i] = cartas1[i];
+		int cartas2[4] = {milistaPartidas.partidas[numPartida].Baraja[1],milistaPartidas.partidas[numPartida].Baraja[5],milistaPartidas.partidas[numPartida].Baraja[9],milistaPartidas.partidas[numPartida].Baraja[13]};
+		for(int i=0;i<4;i++)
+			milistaPartidas.partidas[numPartida].Cartas2[i] = cartas2[i];
+		int cartas3[4] = {milistaPartidas.partidas[numPartida].Baraja[2],milistaPartidas.partidas[numPartida].Baraja[6],milistaPartidas.partidas[numPartida].Baraja[10],milistaPartidas.partidas[numPartida].Baraja[14]};
+		for(int i=0;i<4;i++)
+			milistaPartidas.partidas[numPartida].Cartas3[i] = cartas3[i];
+		int cartas4[4] = {milistaPartidas.partidas[numPartida].Baraja[3],milistaPartidas.partidas[numPartida].Baraja[7],milistaPartidas.partidas[numPartida].Baraja[11],milistaPartidas.partidas[numPartida].Baraja[15]};
+		for(int i=0;i<4;i++)
+			milistaPartidas.partidas[numPartida].Cartas4[i] = cartas4[i];
+		pthread_mutex_unlock(&mutex);
+	}
+	for(int i=0; i<16;i++)
+	{
+		pthread_mutex_lock(&mutex);
+		milistaPartidas.partidas[numPartida].Baraja[i]=0;
+		pthread_mutex_unlock(&mutex);
+	}
+};
+
+void PasarMano(int numPartida)
+{
+	int ma = milistaPartidas.partidas[numPartida].Mano[0];
+	if(ma == 1)
+	{
+		pthread_mutex_lock(&mutex);
+		int mano[4] = {2,3,4,1};
+		for(int i=0;i<4;i++)
+			milistaPartidas.partidas[numPartida].Mano[i] = mano[i];
+		pthread_mutex_unlock(&mutex);
+	}
+	else if(ma == 2)
+	{
+		pthread_mutex_lock(&mutex);
+		int mano[4] = {3,4,1,2};
+		for(int i=0;i<4;i++)
+			milistaPartidas.partidas[numPartida].Mano[i] = mano[i];
+		pthread_mutex_unlock(&mutex);
+	}
+	else if(ma == 3)
+	{
+		pthread_mutex_lock(&mutex);
+		int mano[4] = {4,1,2,3};
+		for(int i=0;i<4;i++)
+			milistaPartidas.partidas[numPartida].Mano[i] = mano[i];
+		pthread_mutex_unlock(&mutex);
+	}
+	else if(ma == 4)
+	{
+		pthread_mutex_lock(&mutex);
+		int mano[4] = {1,2,3,4};
+		for(int i=0;i<4;i++)
+			milistaPartidas.partidas[numPartida].Mano[i] = mano[i];
+		pthread_mutex_unlock(&mutex);
+	}
+};
+
+void HayPares(int numPartida)
+{
+	pthread_mutex_lock(&mutex);
+	milistaPartidas.partidas[numPartida].Parejas = 1;
+	pthread_mutex_unlock(&mutex);
+};
+
+void HayJuego(int numPartida)
+{
+	pthread_mutex_lock(&mutex);
+	milistaPartidas.partidas[numPartida].Juego = 1;
+	pthread_mutex_unlock(&mutex);
+};
+
+int hayPares(int numPartida)
+{
+	int i = milistaPartidas.partidas[numPartida].Parejas;
+	return i;
+};
+
+int hayJuego(int numPartida)
+{
+	int i = milistaPartidas.partidas[numPartida].Juego;
+	return i;
+};
+
+int damePareja(int numPartida, char nombre[20])
+{
+	if(strcmp(milistaPartidas.partidas[numPartida].nombre1,nombre)==0)
+	{
+		return 0;
+	}
+	else if(strcmp(milistaPartidas.partidas[numPartida].nombre2,nombre)==0)
+	{
+		return 1;
+	}
+	else if(strcmp(milistaPartidas.partidas[numPartida].nombre3,nombre)==0)
+	{
+		return 0;
+	}
+	else if(strcmp(milistaPartidas.partidas[numPartida].nombre4,nombre)==0)
+	{
+		return 1;
+	}
+};
+void Mus(int numPartida, char nombre[20], int carta)
+{
+	int e = 0;
+	int i = 0;
+	if(strcmp(milistaPartidas.partidas[numPartida].nombre1,nombre)==0)
+	{
+		while (e==0)
+		{
+			if(milistaPartidas.partidas[numPartida].Baraja[i]!=0)
+			{
+				milistaPartidas.partidas[numPartida].Cartas1[carta]=milistaPartidas.partidas[numPartida].Baraja[i];
+				milistaPartidas.partidas[numPartida].Baraja[i]=0;
+				e=1;
+			}
+			i++;
+		}
+	}
+	else if(strcmp(milistaPartidas.partidas[numPartida].nombre2,nombre)==0)
+	{
+		while (e==0)
+		{
+			if(milistaPartidas.partidas[numPartida].Baraja[i]!=0)
+			{
+				milistaPartidas.partidas[numPartida].Cartas2[carta]=milistaPartidas.partidas[numPartida].Baraja[i];
+				milistaPartidas.partidas[numPartida].Baraja[i]=0;
+				e=1;
+			}
+			i++;
+		}
+	}
+	else if(strcmp(milistaPartidas.partidas[numPartida].nombre3,nombre)==0)
+	{
+		while (e==0)
+		{
+			if(milistaPartidas.partidas[numPartida].Baraja[i]!=0)
+			{
+				milistaPartidas.partidas[numPartida].Cartas3[carta]=milistaPartidas.partidas[numPartida].Baraja[i];
+				milistaPartidas.partidas[numPartida].Baraja[i]=0;
+				e=1;
+			}
+			i++;
+		}
+	}
+	else if(strcmp(milistaPartidas.partidas[numPartida].nombre4,nombre)==0)
+	{
+		while (e==0)
+		{
+			if(milistaPartidas.partidas[numPartida].Baraja[i]!=0)
+			{
+				milistaPartidas.partidas[numPartida].Cartas4[carta]=milistaPartidas.partidas[numPartida].Baraja[i];
+				milistaPartidas.partidas[numPartida].Baraja[i]=0;
+				e=1;
+			}
+			i++;
+		}
+	}
+};
+void Apostar(int numPartida, int ronda, int Apuesta)
+{
+	pthread_mutex_lock(&mutex);
+	milistaPartidas.partidas[numPartida].Apuesta[ronda-1]= Apuesta;
+	pthread_mutex_unlock(&mutex);
+}
+int Puntos(int numPartida, int Pareja, int ronda)
+{
+	int Puntos = milistaPartidas.partidas[numPartida].Apuesta[ronda-1];
+	
+	if (Puntos == 0)
+		Puntos = 1;
+	
+	if (Puntos == -1)
+		return 0;
+	
+	if (Pareja==0)
+	{
+		if(milistaPartidas.partidas[numPartida].PuntosP0[1] + Puntos >= 40)
+		{
+			pthread_mutex_lock(&mutex);
+			milistaPartidas.partidas[numPartida].PuntosP0[1] = 40 - milistaPartidas.partidas[numPartida].PuntosP0[1] + Puntos;
+			milistaPartidas.partidas[numPartida].PuntosP0[0] = milistaPartidas.partidas[numPartida].PuntosP0[0] + 1;
+			pthread_mutex_unlock(&mutex);
+			if(milistaPartidas.partidas[numPartida].PuntosP0[0]==3)
+			{
+				return -10;
+			}
+			return 0;
+		}
+		else
+		{
+			pthread_mutex_lock(&mutex);
+			milistaPartidas.partidas[numPartida].PuntosP0[1] = milistaPartidas.partidas[numPartida].PuntosP0[1] + Puntos;
+			pthread_mutex_unlock(&mutex);
+			return 0;
+		}
+	}
+	if (Pareja==1)
+	{
+		if(milistaPartidas.partidas[numPartida].PuntosP1[1] + Puntos >= 40)
+		{
+			pthread_mutex_lock(&mutex);
+			milistaPartidas.partidas[numPartida].PuntosP1[1] = 40 - milistaPartidas.partidas[numPartida].PuntosP1[1] + Puntos;
+			milistaPartidas.partidas[numPartida].PuntosP1[0] = milistaPartidas.partidas[numPartida].PuntosP1[0] + 1;
+			pthread_mutex_unlock(&mutex);
+			if(milistaPartidas.partidas[numPartida].PuntosP1[0]==3)
+			{
+				return -11;
+			}
+			return 0;
+		}
+		else
+		{
+			pthread_mutex_lock(&mutex);
+			milistaPartidas.partidas[numPartida].PuntosP1[1] = milistaPartidas.partidas[numPartida].PuntosP1[1] + Puntos;
+			pthread_mutex_unlock(&mutex);
+			return 0;
+		}
+	}
+}
 //La lista se pasa por referencia
 int PonConectado (ListaConectados *lista, char nombre[20], int *socket){
-	//añade nuevo conectado y retorna 0 si okey o 0 si la lista ya estaba llena
+	//aÃ±ade nuevo conectado y retorna 0 si okey o 0 si la lista ya estaba llena
 	if(lista->num ==100)
 		return -1;
 	else
 	{
 		pthread_mutex_lock(&mutex);//No me interrumpas ahora
 		strcpy(lista->conectados[lista->num].nombre, nombre);
+		printf("\nSocet:%d",*socket);
 		lista->conectados[lista->num].socket= *socket;
 		lista->num++;
 		pthread_mutex_unlock(&mutex);//Ya puedes interrumpir
@@ -121,10 +419,10 @@ void DameUser(ListaConectados *lista, int socket, char nombre[20]){
 	if(encontrado)
 							sprintf(nombre, "%s", lista->conectados[i].nombre);
 	else
-		printf("No se ha encontrado ningún usuario con ese socket");
+		printf("No se ha encontrado ningÃºn usuario con ese socket");
 }
 int CrearPartida(ListaPartidas* lista) {
-	//añade nuevo conectado y retorna 0 si okey o 0 si la lista ya estaba llena
+	//aÃ±ade nuevo conectado y retorna 0 si okey o 0 si la lista ya estaba llena
 	if (lista->num == 100)
 		return -1;
 	else
@@ -137,6 +435,9 @@ int CrearPartida(ListaPartidas* lista) {
 		lista->num++;
 		pthread_mutex_unlock(&mutex);//Ya puedes interrumpir
 			return lista->num-1;
+		
+			printf("num: %d\n",lista->num);
+
 	}
 }
 int EliminarPartida(ListaPartidas* lista, int partida) {
@@ -156,16 +457,18 @@ int EliminarPartida(ListaPartidas* lista, int partida) {
 
 }
 int EntrarPartida(ListaPartidas* lista, char nombre[20], int pareja, int numPartida) {
-	//añade nuevo conectado y retorna 0 si okey o 0 si la lista ya estaba llena
+	//aÃ±ade nuevo conectado y retorna 0 si okey o 0 si la lista ya estaba llena
 
 		pthread_mutex_lock(&mutex);//No me interrumpas ahora
-		for(int i=0;i<4;i++){
+	for(int i=0;i<4;i++){
 		if (strcmp(lista->partidas[numPartida].jugadores[i].nombre,"")==0)
 		{
 			strcpy(lista->partidas[numPartida].jugadores[i].nombre, nombre);
 			pthread_mutex_unlock(&mutex);//Ya puedes interrumpir
 			return 0;
 			
+		}
+
 		}}
 		return -1;
 	
@@ -180,8 +483,10 @@ int SalirPartida(ListaPartidas* lista, char nombre[20],int partida) {
 	else
 	{
 
-		pthread_mutex_lock(&mutex);
+		pthread_mutex_lock(&mutex);//No me interrumpas ahora
+
 		sprintf(lista->partidas[partida].jugadores[pos].nombre, "");
+
 		pthread_mutex_unlock(&mutex);//Ya puedes interrumpir
 		return 0;
 	}
@@ -194,11 +499,10 @@ void JugadoresEnPartida(ListaPartidas* lista, char* conectados[512],int partida)
 	//Ejemplo: "Pedro/Mayra/Luis"
 	pthread_mutex_lock(&mutex);//No me interrumpas ahora
 	sprintf(conectados, "");
-	for(int i=0;i<4;i++){
+for(int i=0;i<4;i++){
 	if(strcmp(lista->partidas[partida].jugadores[i].nombre,"")==0){
 		sprintf(conectados, "%s/%s", conectados, lista->partidas[partida].jugadores[i].nombre);
-	}
-	}
+	}}
 	pthread_mutex_unlock(&mutex);//Ya puedes interrumpir
 
 }
@@ -207,17 +511,124 @@ int CambiarPareja(ListaPartidas* lista, int jug1, int jug2, int numPartida) {
 	sprintf(temp, lista->partidas[numPartida].jugadores[jug1].nombre);
 	sprintf(lista->partidas[numPartida].jugadores[jug1].nombre, lista->partidas[numPartida].jugadores[jug2].nombre);
 	sprintf(lista->partidas[numPartida].jugadores[jug2].nombre,temp);	
-}
+	
 void EnviarAPatida(char nombre[20],char mensaje[200],int numPartida) {
 	char respuesta[20];
 	int sock_conn;
-	for(int i=0; i<4;i++){
+		for(int i=0; i<4;i++){
 	if(strcmp(milistaPartidas.partidas[numPartida].jugadores[i].nombre,nombre)!=0){
 		sock_conn=milistaConectados.conectados[DamePosicion(&milistaConectados, milistaPartidas.partidas[numPartida].jugadores[i].nombre)].socket;
+	}}
+}
+void EnviarAMano(char mensaje[200],int numPartida)
+{
+	int sock_conn;
+	int ma = milistaPartidas.partidas[numPartida].Mano[0];
+	if(ma == 1)
+	{
+		sock_conn = milistaConectados.conectados[DamePosicion(&milistaConectados, milistaPartidas.partidas[numPartida].nombre1)].socket;
 		write(sock_conn, mensaje, strlen(mensaje));
 	}
+	else if(ma == 2)
+	{
+		sock_conn = milistaConectados.conectados[DamePosicion(&milistaConectados, milistaPartidas.partidas[numPartida].nombre2)].socket;
+		write(sock_conn, mensaje, strlen(mensaje));
+	}
+	else if(ma == 3)
+	{
+		sock_conn = milistaConectados.conectados[DamePosicion(&milistaConectados, milistaPartidas.partidas[numPartida].nombre3)].socket;
+		write(sock_conn, mensaje, strlen(mensaje));
+	}
+	else if(ma == 4)
+	{
+		sock_conn = milistaConectados.conectados[DamePosicion(&milistaConectados, milistaPartidas.partidas[numPartida].nombre4)].socket;
+		write(sock_conn, mensaje, strlen(mensaje));
 	}
 }
+int EnviarSiguiente(char nombre[20],char mensaje[200],int numPartida)
+//Envia el mensaje al siguiente jugador de la ronda y retorna su posicion o -1 si la ronda a terminado, no hay siguiente
+{
+	int numJugador;
+	char siguiente[20];
+	
+	if(strcmp(milistaPartidas.partidas[numPartida].nombre1,nombre)==0)
+	{
+		numJugador=1;
+		strcpy(siguiente,milistaPartidas.partidas[numPartida].nombre2);
+	}
+	else if(strcmp(milistaPartidas.partidas[numPartida].nombre2,nombre)==0)
+	{
+		numJugador=2;
+		strcpy(siguiente,milistaPartidas.partidas[numPartida].nombre3);
+	}
+	else if(strcmp(milistaPartidas.partidas[numPartida].nombre3,nombre)==0)
+	{
+		numJugador=3;
+		strcpy(siguiente,milistaPartidas.partidas[numPartida].nombre4);
+	}
+	else if(strcmp(milistaPartidas.partidas[numPartida].nombre4,nombre)==0)
+	{
+		numJugador=4;
+		strcpy(siguiente,milistaPartidas.partidas[numPartida].nombre1);
+	}
+	
+	for(int i=0;i<4;i++)
+	{
+		if(numJugador == milistaPartidas.partidas[numPartida].Mano[i] && i!=3)
+		{
+			int sock_conn = milistaConectados.conectados[DamePosicion(&milistaConectados, siguiente)].socket;
+			write(sock_conn, mensaje, strlen(mensaje));
+			return i;
+		}
+	}
+	return -1;
+}
+void EnviarRival(char nombre[20],char mensaje[200],int numPartida)
+{
+	int sock_conn;
+	char rival[20];
+	
+	if(strcmp(milistaPartidas.partidas[numPartida].nombre1,nombre)==0)
+	{
+		strcpy(rival,milistaPartidas.partidas[numPartida].nombre2);
+	}
+	else if(strcmp(milistaPartidas.partidas[numPartida].nombre2,nombre)==0)
+	{
+		strcpy(rival,milistaPartidas.partidas[numPartida].nombre1);
+	}
+	else if(strcmp(milistaPartidas.partidas[numPartida].nombre3,nombre)==0)
+	{
+		strcpy(rival,milistaPartidas.partidas[numPartida].nombre2);
+	}
+	else if(strcmp(milistaPartidas.partidas[numPartida].nombre4,nombre)==0)
+	{
+		strcpy(rival,milistaPartidas.partidas[numPartida].nombre1);
+	}
+	sock_conn = milistaConectados.conectados[DamePosicion(&milistaConectados, rival)].socket;
+	write(sock_conn, mensaje, strlen(mensaje));
+}
+int EnviarCompanero(char nombre[20],char mensaje[200],int numPartida)
+{
+	int sock_conn;
+	char companero[20];
+	
+	if(strcmp(milistaPartidas.partidas[numPartida].nombre1,nombre)==0)
+	{
+		strcpy(companero,milistaPartidas.partidas[numPartida].nombre3);
+		sock_conn = milistaConectados.conectados[DamePosicion(&milistaConectados, companero)].socket;
+		write(sock_conn, mensaje, strlen(mensaje));
+		return 0;
+	}
+	else if(strcmp(milistaPartidas.partidas[numPartida].nombre2,nombre)==0)
+	{
+		strcpy(companero,milistaPartidas.partidas[numPartida].nombre4);
+		sock_conn = milistaConectados.conectados[DamePosicion(&milistaConectados, companero)].socket;
+		write(sock_conn, mensaje, strlen(mensaje));
+		return 0;
+	}
+	else 
+		return -1;
+};
 void NotificacionConectados()
 {
 
@@ -226,11 +637,13 @@ void NotificacionConectados()
 	char respuesta2[20];
 	
 	DameConectados(&milistaConectados, &respuesta);
+	printf("wert:%s",respuesta);
 	if (respuesta==NULL)
 		sprintf(respuesta2, "7/None");
 	else
 	{	
 		sprintf(respuesta2,"7%s",respuesta);
+		printf("Resultado: %s", respuesta2);
 	}
 	int sock_conn;
 	for (int i=0;i<=milistaConectados.num;i++){
@@ -275,13 +688,13 @@ void* AtenderCliente (void* sock)
 	//inicializar la conexion
 	conn = mysql_real_connect(conn, "localhost", "root", "mysql", "mus", 0, NULL, 0);
 	if (conn == NULL) {
-		printf("Error al inicializar la conexión: %u %s\n",
+		printf("Error al inicializar la conexiÃ³n: %u %s\n",
 			   mysql_errno(conn), mysql_error(conn));
 		exit(1);
 	}
 	
 	int terminar = 0;
-
+	printf("antes del while");
 	while (terminar == 0)
 	{
 		// Ahora recibimos la petici?n
@@ -318,7 +731,7 @@ void* AtenderCliente (void* sock)
 			char password[20];
 			p = strtok(NULL, "/");				// Ya tenemos el nombre
 			strcpy(password, p);
-			sprintf(consulta, "SELECT * FROM Jugadores WHERE Username='%s' AND Contrase�a='%s'",nombre,password);
+			sprintf(consulta, "SELECT * FROM Jugadores WHERE Username='%s' AND Contraseña='%s'",nombre,password);
 			err = mysql_query(conn, consulta);
 			if (err != 0) {
 				printf("Error al consultar datos de la base %u %s\n",
@@ -359,8 +772,8 @@ void* AtenderCliente (void* sock)
 			resultado = mysql_store_result(conn);
 			row = mysql_fetch_row(resultado);
 			
-
-
+			printf(row[0]);
+			printf("\n");
 			while (row != NULL) {
 				if (strcmp(row[0] , nombre)==0) {
 					sprintf(respuesta, "2/no");
@@ -389,7 +802,9 @@ void* AtenderCliente (void* sock)
 					}
 					row = mysql_fetch_row(resultado);
 				}
-				sprintf(consulta, "INSERT INTO Jugadores (ID,Username,Contraseña) VALUES (%d,'%s','%s')",newID,nombre,password);
+				printf("%d",newID);
+				printf("\n");
+				sprintf(consulta, "INSERT INTO Jugadores (ID,Username,ContraseÃ±a) VALUES (%d,'%s','%s')",newID,nombre,password);
 				err = mysql_query(conn, consulta);
 				if (err != 0) {
 					printf("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
@@ -430,6 +845,7 @@ void* AtenderCliente (void* sock)
 			int ID_P = 2;
 			int ID_J = -1;
 			int jugadores[3][3];
+			printf("%s", "Parejas del jugador:\n");
 			if (row == NULL)
 				printf("No se han obtenido datos en la consulta\n");
 			else {
@@ -473,6 +889,8 @@ void* AtenderCliente (void* sock)
 						ID_P = 2;
 						strcat(respuesta, row[0]);
 						strcat(respuesta, "/");
+						printf("%s", row[0]);
+						printf("\n");
 						
 					}
 					
@@ -510,7 +928,7 @@ void* AtenderCliente (void* sock)
 				cont = 0;
 				while (row != NULL)
 				{
-					
+					printf("%s \n", row[0]);
 					row = mysql_fetch_row(resultado);
 					cont++;
 					
@@ -525,6 +943,7 @@ void* AtenderCliente (void* sock)
 			strcpy(Usuario1,nombre);
 			p = strtok( NULL, "/");	
 			strcpy(Usuario2,p);
+			printf("%s, %s\n", Usuario1, Usuario2);
 			sprintf (consulta,"SELECT Referencia.ID_Partida FROM (Jugadores, Referencia) WHERE Referencia.ID_Partida IN(SELECT Referencia.ID_Partida FROM(Jugadores, Referencia) WHERE Jugadores.Username = '%s' AND Jugadores.ID = Referencia.ID_Jugador) AND Jugadores.Username = '%s' AND Referencia.ID_Jugador = Jugadores.ID", Usuario1, Usuario2);
 			// hacemos la consulta 
 			err = mysql_query(conn, consulta);
@@ -583,6 +1002,7 @@ void* AtenderCliente (void* sock)
 		}
 		else if (codigo == 6)//Peticiones realizadas por el servidor
 		{
+			printf("%d", contadorservicios);
 			sprintf(respuesta, "6/%d", contadorservicios);
 		}
 		else if (codigo == 7)//Lista conectados
@@ -631,7 +1051,6 @@ void* AtenderCliente (void* sock)
 				case 2:
 					pareja = 0;
 					err = EntrarPartida(&milistaPartidas, miNombre, pareja, numPartida);
-
 					if (err == 0) {
 						sprintf(respuesta, "8/2/%d/%s", numPartida,miNombre);
 						sprintf(respuestaOtro, "8/2/%d/%s", numPartida,miNombre);
@@ -639,6 +1058,7 @@ void* AtenderCliente (void* sock)
 						sprintf(respuestaOtro, "8/6/%d/%s/%s/%s/%s", numPartida, milistaPartidas.partidas[numPartida].jugadores[0].nombre,milistaPartidas.partidas[numPartida].jugadores[1].nombre,milistaPartidas.partidas[numPartida].jugadores[2].nombre,milistaPartidas.partidas[numPartida].jugadores[3].nombre);
 						EnviarAPatida(nombre, respuestaOtro, numPartida);
 						printf("\nnombre:%s miNombre:%s\n",nombre,miNombre);
+
 
 					}
 					else if (err == -1) {
@@ -649,7 +1069,7 @@ void* AtenderCliente (void* sock)
 					}
 
 					break;
-				case 3://lleno
+				case 3:
 					pos = DamePosicion(&milistaConectados, nombre);
 					sock_conn2 = milistaConectados.conectados[pos].socket;
 					sprintf(respuestaOtro, "8/3/%d/%s", numPartida, nombre);
@@ -680,8 +1100,7 @@ void* AtenderCliente (void* sock)
 				case 8:
 					sprintf(respuestaOtro, "8/8/%d",numPartida);
 					EnviarAPatida(nombre, respuestaOtro, numPartida);
-				
-
+					break;
 						
 			default:
 				break;
@@ -698,7 +1117,438 @@ void* AtenderCliente (void* sock)
 			sprintf(peticion,"%d/%d/%s/%s",codigo,numPartida,miNombre,mensaje);
 			EnviarAPatida(miNombre, peticion, numPartida);
 
-}
+		}
+		
+		else if (codigo == 10)
+		{
+			char miNombre;
+			p = strtok(NULL, "/");
+			int numPartida = atoi(p);
+			p = strtok(NULL, "/");				//Conseguimos el numero de partida
+			int ronda = atoi(p);
+			p = strtok(NULL, "/");				// Conseguimos el nombre
+			strcpy(nombre,p);
+			char Respuesta[200];
+			char caso[20];
+			
+			switch (ronda)
+			{
+			case 0://Ronda de Mus (P=Pregunta, A=Descarte)
+				p = strtok(NULL, "/");
+				strcpy(caso,p);
+				if(strcmp(caso, "P")==0)
+				{
+					char peticion[20];
+					p = strtok(NULL, "/");
+					strcpy(peticion,p);
+					if (strcmp(peticion, "NO")==0)
+					{
+						sprintf(Respuesta, "11/%d/0/P/%s/CORTO", numPartida, miNombre);
+						EnviarAPatida(miNombre, Respuesta, numPartida);//Notificamos a los jugadores lo que ha decidido
+						sprintf(Respuesta, "10/%d/1", numPartida);
+						EnviarAMano(Respuesta, numPartida);
+					}
+					else
+					{
+						sprintf(Respuesta, "11/%d/0/P/%s/MUS", numPartida, miNombre);
+						EnviarAPatida(miNombre, Respuesta, numPartida);//Notificamos a los jugadores lo que ha decidido
+						sprintf(Respuesta, "10/%d/0/P", numPartida);
+						int ma= EnviarSiguiente(miNombre,Respuesta,numPartida);
+						if (ma==-1)
+						{
+							sprintf(Respuesta, "10/%d/0/A", numPartida);
+							EnviarAMano(Respuesta, numPartida);
+						}
+					}
+				}
+				else
+				{
+					p = strtok(NULL, "/");
+					int numCartas = atoi(p);
+					for(int c=0;c<numCartas;c++)
+					{
+						p = strtok(NULL, "/");
+						int Carta = atoi(p);
+						Mus(numPartida,miNombre,Carta);
+					}
+					sprintf(Respuesta, "10/%d/0/A", numPartida);
+					int ma= EnviarSiguiente(miNombre,Respuesta,numPartida);
+					if (ma==-1)
+					{
+						sprintf(Respuesta, "10/%d/1", numPartida);
+						EnviarAMano(Respuesta, numPartida);
+					}
+				}
+				break;
+				
+			case 1://Mayores
+				p = strtok(NULL, "/");
+				strcpy(caso,p);
+				if (strcmp(caso, "PASO")==0)
+				{
+					sprintf(Respuesta, "11/%d/1/%s/PASA", numPartida, miNombre);
+					EnviarAPatida(miNombre, Respuesta, numPartida);
+					sprintf(Respuesta, "10/%d/1/A", numPartida);
+					int ma= EnviarSiguiente(miNombre,Respuesta,numPartida);
+					if (ma==-1)
+					{
+						sprintf(Respuesta, "11/%d/1/%s/SE FUE", numPartida, miNombre);
+						EnviarAPatida(miNombre, Respuesta, numPartida);
+						Apostar(numPartida,1,0);
+						sprintf(Respuesta, "10/%d/2", numPartida);
+						EnviarAMano(Respuesta, numPartida);
+					}
+				}
+				else if(strcmp(caso, "APUESTO")==0)
+				{
+					p = strtok(NULL, "/");				//Conseguimos el numero de partida
+					int Apuesta = atoi(p);
+					sprintf(Respuesta, "11/%d/1/%s/%d", numPartida, miNombre, Apuesta);
+					EnviarAPatida(miNombre, Respuesta, numPartida);
+					sprintf(Respuesta, "10/%d/1/%d", numPartida, Apuesta);
+					EnviarRival(miNombre,Respuesta,numPartida);
+				}
+				else if(strcmp(caso, "QUIERO")==0)
+				{
+					p = strtok(NULL, "/");				//Conseguimos el numero de partida
+					int Apuesta = atoi(p);
+					sprintf(Respuesta, "11/%d/1/%s/QUIERE", numPartida, miNombre);
+					Apostar(numPartida, 1, Apuesta);
+					EnviarAPatida(miNombre, Respuesta, numPartida);
+					sprintf(Respuesta, "10/%d/2", numPartida);
+					EnviarAMano(Respuesta, numPartida);
+				}
+				else
+				{
+					p = strtok(NULL, "/");				//Conseguimos el numero de partida
+					int Apuesta = atoi(p);
+					sprintf(Respuesta, "11/%d/1/%s/NO QUIRE", numPartida, miNombre);
+					int com= EnviarCompanero(miNombre,Respuesta,numPartida);
+					if(com==-1)
+					{
+						int p = damePareja(numPartida, miNombre);
+						if (p==0)
+							Puntos(numPartida,1,1);
+						else
+							Puntos(numPartida,0,1);
+						Apostar(numPartida, 1, -1);
+						EnviarAPatida(miNombre, Respuesta, numPartida);
+						sprintf(Respuesta, "10/%d/2", numPartida);
+						EnviarAMano(Respuesta, numPartida);
+					}
+				}
+				break;
+			case 2://Pequeña
+				p = strtok(NULL, "/");
+				strcpy(caso,p);
+				if (strcmp(caso, "PASO")==0)
+				{
+					sprintf(Respuesta, "11/%d/2/%s/PASA", numPartida, miNombre);
+					EnviarAPatida(miNombre, Respuesta, numPartida);
+					sprintf(Respuesta, "10/%d/2", numPartida);
+					int ma= EnviarSiguiente(miNombre,Respuesta,numPartida);
+					if (ma==-1)
+					{
+						sprintf(Respuesta, "11/%d/1/%s/SE FUE", numPartida, miNombre);
+						EnviarAPatida(miNombre, Respuesta, numPartida);
+						Apostar(numPartida,2,0);
+						sprintf(Respuesta, "10/%d/3/P", numPartida);
+						EnviarAMano(Respuesta, numPartida);
+					}
+				}
+				else if(strcmp(caso, "APUESTO")==0)
+				{
+					p = strtok(NULL, "/");				//Conseguimos el numero de partida
+					int Apuesta = atoi(p);
+					sprintf(Respuesta, "11/%d/2/%s/%d", numPartida, miNombre, Apuesta);
+					EnviarAPatida(miNombre, Respuesta, numPartida);
+					sprintf(Respuesta, "10/%d/2/%d", numPartida, Apuesta);
+					EnviarRival(miNombre,Respuesta,numPartida);
+				}
+				else if(strcmp(caso, "QUIERO")==0)
+				{
+					p = strtok(NULL, "/");				//Conseguimos el numero de partida
+					int Apuesta = atoi(p);
+					sprintf(Respuesta, "11/%d/2/%s/QUIERE", numPartida, miNombre);
+					Apostar(numPartida, 2, Apuesta);
+					EnviarAPatida(miNombre, Respuesta, numPartida);
+					sprintf(Respuesta, "10/%d/3/P", numPartida);
+					EnviarAMano(Respuesta, numPartida);
+				}
+				else
+				{
+					p = strtok(NULL, "/");				//Conseguimos el numero de partida
+					int Apuesta = atoi(p);
+					sprintf(Respuesta, "11/%d/2/%s/NO QUIRE", numPartida, miNombre);
+					int com= EnviarCompanero(miNombre,Respuesta,numPartida);
+					if(com==-1)
+					{
+						int p = damePareja(numPartida, miNombre);
+						if (p==0)
+							Puntos(numPartida,1,2);
+						else
+							Puntos(numPartida,0,2);
+						Apostar(numPartida, 2, -1);
+						EnviarAPatida(miNombre, Respuesta, numPartida);
+						sprintf(Respuesta, "10/%d/3/P", numPartida);
+						EnviarAMano(Respuesta, numPartida);
+					}
+				}
+				break;
+			case 3://Pares (P=Pregunta, A=Apuesta)
+				p = strtok(NULL, "/");
+				strcpy(caso,p);
+				if(strcmp(caso, "P")==0)
+				{
+					char peticion[20];
+					p = strtok(NULL, "/");
+					strcpy(peticion,p);
+					if (strcmp(peticion, "NO")==0)
+					{
+						sprintf(Respuesta, "11/%d/3/P/%s/PARES NO", numPartida, miNombre);
+						EnviarAPatida(miNombre, Respuesta, numPartida);//Notificamos a los jugadores lo que ha decidido
+						sprintf(Respuesta, "10/%d/3/P", numPartida);
+						int ma= EnviarSiguiente(miNombre,Respuesta,numPartida);
+						if (ma==-1)
+						{
+							int h = hayPares(numPartida);
+							if (h==1)
+							{
+								sprintf(Respuesta, "10/%d/3/A", numPartida);
+								EnviarAMano(Respuesta, numPartida);
+							}
+							else
+							{
+								sprintf(Respuesta, "10/%d/4/P", numPartida);
+								EnviarAMano(Respuesta, numPartida);
+							}
+						}
+					}
+					else
+					{
+						sprintf(Respuesta, "11/%d/3/P/%s/PARES SI", numPartida, miNombre);
+						EnviarAPatida(miNombre, Respuesta, numPartida);//Notificamos a los jugadores lo que ha decidido
+						sprintf(Respuesta, "10/%d/3/P", numPartida);
+						int ma= EnviarSiguiente(miNombre,Respuesta,numPartida);
+						if (ma==-1)
+						{
+							int h = hayPares(numPartida);
+							if (h==1)
+							{
+								sprintf(Respuesta, "10/%d/3/A", numPartida);
+								EnviarAMano(Respuesta, numPartida);
+							}
+							else
+							{
+								sprintf(Respuesta, "10/%d/4/P", numPartida);
+								EnviarAMano(Respuesta, numPartida);
+								Apostar(numPartida,3,0);
+								HayPares(numPartida);
+							}
+						}
+						else
+							HayPares(numPartida);
+					}
+				}
+				else
+				{
+					p = strtok(NULL, "/");
+					strcpy(caso,p);
+					if (strcmp(caso, "PASO")==0)
+					{
+						sprintf(Respuesta, "11/%d/3/%s/PASA", numPartida, miNombre);
+						EnviarAPatida(miNombre, Respuesta, numPartida);
+						sprintf(Respuesta, "10/%d/3/A", numPartida);
+						int ma= EnviarSiguiente(miNombre,Respuesta,numPartida);
+						if (ma==-1)
+						{
+							sprintf(Respuesta, "11/%d/2/%s/SE FUE", numPartida, miNombre);
+							EnviarAPatida(miNombre, Respuesta, numPartida);
+							Apostar(numPartida,3,0);
+							sprintf(Respuesta, "10/%d/4/P", numPartida);
+							EnviarAMano(Respuesta, numPartida);
+						}
+					}
+					else if(strcmp(caso, "APUESTO")==0)
+					{
+						p = strtok(NULL, "/");				//Conseguimos el numero de partida
+						int Apuesta = atoi(p);
+						sprintf(Respuesta, "11/%d/3/%s/%d", numPartida, miNombre, Apuesta);
+						EnviarAPatida(miNombre, Respuesta, numPartida);
+						sprintf(Respuesta, "10/%d/3/A/%d", numPartida, Apuesta);
+						EnviarRival(miNombre,Respuesta,numPartida);
+					}
+					else if(strcmp(caso, "QUIERO")==0)
+					{
+						p = strtok(NULL, "/");				//Conseguimos el numero de partida
+						int Apuesta = atoi(p);
+						sprintf(Respuesta, "11/%d/3/%s/QUIERE", numPartida, miNombre);
+						Apostar(numPartida, 3, Apuesta);
+						EnviarAPatida(miNombre, Respuesta, numPartida);
+						sprintf(Respuesta, "10/%d/4/P", numPartida);
+						EnviarAMano(Respuesta, numPartida);
+					}
+					else
+					{
+						p = strtok(NULL, "/");				//Conseguimos el numero de partida
+						int Apuesta = atoi(p);
+						sprintf(Respuesta, "11/%d/3/%s/NO QUIRE", numPartida, miNombre);
+						int com= EnviarCompanero(miNombre,Respuesta,numPartida);
+						if(com==-1)
+						{
+							int p = damePareja(numPartida, miNombre);
+							if (p==0)
+								Puntos(numPartida,1,3);
+							else
+								Puntos(numPartida,0,3);
+							Apostar(numPartida, 3, -1);
+							EnviarAPatida(miNombre, Respuesta, numPartida);
+							sprintf(Respuesta, "10/%d/4/P", numPartida);
+							EnviarAMano(Respuesta, numPartida);
+						}
+					}
+				}
+				
+				break;
+			case 4://Juego (P=Pregunta, A=Apuesta)
+				p = strtok(NULL, "/");
+				strcpy(caso,p);
+				if(strcmp(caso, "P")==0)
+				{
+					char peticion[20];
+					p = strtok(NULL, "/");
+					strcpy(peticion,p);
+					if (strcmp(peticion, "NO")==0)
+					{
+						sprintf(Respuesta, "11/%d/4/P/%s/JUEGO NO", numPartida, miNombre);
+						EnviarAPatida(miNombre, Respuesta, numPartida);//Notificamos a los jugadores lo que ha decidido
+						sprintf(Respuesta, "10/%d/4/P", numPartida);
+						int ma= EnviarSiguiente(miNombre,Respuesta,numPartida);
+						if (ma==-1)
+						{
+							int h = hayJuego(numPartida);
+							if(h==1)
+							{
+								sprintf(Respuesta, "10/%d/4/A", numPartida);
+								EnviarAMano(Respuesta, numPartida);
+							}
+							else
+							{
+								sprintf(Respuesta, "10/%d/5", numPartida);
+								EnviarAMano(Respuesta, numPartida);
+							}
+						}
+					}
+					else
+					{
+						sprintf(Respuesta, "11/%d/4/P/%s/JUEGO SI", numPartida, miNombre);
+						EnviarAPatida(miNombre, Respuesta, numPartida);//Notificamos a los jugadores lo que ha decidido
+						sprintf(Respuesta, "10/%d/4/P", numPartida);
+						int ma= EnviarSiguiente(miNombre,Respuesta,numPartida);
+						if (ma==-1)
+						{
+							int h = hayJuego(numPartida);
+							if(h==1)
+							{
+								sprintf(Respuesta, "10/%d/4/A", numPartida);
+								EnviarAMano(Respuesta, numPartida);
+							}
+							else
+							{
+								HayJuego(numPartida);
+								sprintf(Respuesta, "11/%d/FIN DE RONDA", numPartida, miNombre);
+								//Repartir puntuacion
+								BarajarBaraja(numPartida);
+								PasarMano(numPartida);
+								Repartir(numPartida);
+								sprintf(Respuesta, "10/%d/1/A", numPartida);
+								EnviarAMano(Respuesta,numPartida);
+								EnviarAPatida(miNombre, Respuesta, numPartida);//Notificamos a los jugadores lo que ha decidido
+							}
+						}
+						else
+							HayJuego(numPartida);
+					}
+				}
+				else
+				{
+					char caso[20];
+					p = strtok(NULL, "/");
+					strcpy(caso,p);
+					if (strcmp(caso, "PASO")==0)
+					{
+						sprintf(Respuesta, "11/%d/4/%s/PASA", numPartida, miNombre);
+						EnviarAPatida(miNombre, Respuesta, numPartida);
+						sprintf(Respuesta, "10/%d/4/A", numPartida);
+						int ma= EnviarSiguiente(miNombre,Respuesta,numPartida);
+						if (ma==-1)
+						{
+							sprintf(Respuesta, "11/%d/2/%s/SE FUE", numPartida, miNombre);
+							EnviarAPatida(miNombre, Respuesta, numPartida);
+							Apostar(numPartida,3,0);
+							//Reparti Puntos
+							BarajarBaraja(numPartida);
+							PasarMano(numPartida);
+							Repartir(numPartida);
+							sprintf(Respuesta, "10/%d/1/A", numPartida);
+							EnviarAMano(Respuesta,numPartida);
+						}
+					}
+					else if(strcmp(caso, "APUESTO")==0)
+					{
+						p = strtok(NULL, "/");				//Conseguimos el numero de partida
+						int Apuesta = atoi(p);
+						sprintf(Respuesta, "11/%d/4/%s/%d", numPartida, miNombre, Apuesta);
+						EnviarAPatida(miNombre, Respuesta, numPartida);
+						sprintf(Respuesta, "10/%d/4/A/%d", numPartida, Apuesta);
+						EnviarRival(miNombre,Respuesta,numPartida);
+					}
+					else if(strcmp(caso, "QUIERO")==0)
+					{
+						p = strtok(NULL, "/");				//Conseguimos el numero de partida
+						int Apuesta = atoi(p);
+						sprintf(Respuesta, "11/%d/4/%s/QUIERE", numPartida, miNombre);
+						Apostar(numPartida, 4, Apuesta);
+						EnviarAPatida(miNombre, Respuesta, numPartida);
+						//Repartir Puntos
+						BarajarBaraja(numPartida);
+						PasarMano(numPartida);
+						Repartir(numPartida);
+						sprintf(Respuesta, "10/%d/1/A", numPartida);
+						EnviarAMano(Respuesta,numPartida);
+					}
+					else
+					{
+						p = strtok(NULL, "/");				//Conseguimos el numero de partida
+						int Apuesta = atoi(p);
+						sprintf(Respuesta, "11/%d/4/%s/NO QUIRE", numPartida, miNombre);
+						int com= EnviarCompanero(miNombre,Respuesta,numPartida);
+						if(com==-1)
+						{
+							int p = damePareja(numPartida, miNombre);
+							if (p==0)
+								Puntos(numPartida,1,4);
+							else
+								Puntos(numPartida,0,4);
+							Apostar(numPartida, 4, -1);
+							EnviarAPatida(miNombre, Respuesta, numPartida);
+							//Repartir Puntos
+							BarajarBaraja(numPartida);
+							PasarMano(numPartida);
+							Repartir(numPartida);
+							sprintf(Respuesta, "10/%d/1/A", numPartida);
+							EnviarAMano(Respuesta,numPartida);
+						}
+					}
+				}
+				break;
+			case 5://Punto
+				
+				break;
+			default:
+				break;
+			}
+		}
 
 		
 		
@@ -766,6 +1616,7 @@ int main(int argc, char *argv[])
 		
 		//Creamos el thread y decirle lo que tiene que hacer
 		err=pthread_create(&thread[i],NULL,AtenderCliente,&sock[i]);
+		printf("%d",err);
 		
 	}
 }
