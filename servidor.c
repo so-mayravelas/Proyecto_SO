@@ -14,6 +14,7 @@ pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;
 
 typedef struct {
 	char nombre[20];
+	int Cartas[4];
 	int socket;
 } Conectado;
 
@@ -25,6 +26,13 @@ ListaConectados milistaConectados;
 typedef struct {
 	Conectado jugadores[4];
 	int empezada;
+	int Apuesta[5];
+	int Mano[4];
+	int PuntosP0[2];
+	int PuntosP1[2];
+	int Parejas;
+	int Juego;
+	int Baraja[40];
 } Partida;
 
 typedef struct {
@@ -55,74 +63,21 @@ void BarajarBaraja(int numPartida)
 void Repartir(numPartida)
 {
 	int ma = milistaPartidas.partidas[numPartida].Mano[0];
-	if(ma == 1)
-	{
+
 		pthread_mutex_lock(&mutex);
-		int cartas1[4] = {milistaPartidas.partidas[numPartida].Baraja[0],milistaPartidas.partidas[numPartida].Baraja[4],milistaPartidas.partidas[numPartida].Baraja[8],milistaPartidas.partidas[numPartida].Baraja[12]};
-		for(int i=0;i<4;i++)
-			milistaPartidas.partidas[numPartida].Cartas2[i] = cartas1[i];
-		int cartas2[4] = {milistaPartidas.partidas[numPartida].Baraja[1],milistaPartidas.partidas[numPartida].Baraja[5],milistaPartidas.partidas[numPartida].Baraja[9],milistaPartidas.partidas[numPartida].Baraja[13]};
-		for(int i=0;i<4;i++)
-			milistaPartidas.partidas[numPartida].Cartas3[i] = cartas2[i];
-		int cartas3[4] = {milistaPartidas.partidas[numPartida].Baraja[2],milistaPartidas.partidas[numPartida].Baraja[6],milistaPartidas.partidas[numPartida].Baraja[10],milistaPartidas.partidas[numPartida].Baraja[14]};
-		for(int i=0;i<4;i++)
-			milistaPartidas.partidas[numPartida].Cartas4[i] = cartas3[i];
-		int cartas4[4] = {milistaPartidas.partidas[numPartida].Baraja[3],milistaPartidas.partidas[numPartida].Baraja[7],milistaPartidas.partidas[numPartida].Baraja[11],milistaPartidas.partidas[numPartida].Baraja[15]};
-		for(int i=0;i<4;i++)
-			milistaPartidas.partidas[numPartida].Cartas1[i] = cartas4[i];
+		for(int j=0;j<4;j++){
+			int cartas1[4] = {milistaPartidas.partidas[numPartida].Baraja[j*4],milistaPartidas.partidas[numPartida].Baraja[4*(j+1)],milistaPartidas.partidas[numPartida].Baraja[4*(j+2)],milistaPartidas.partidas[numPartida].Baraja[4*(j+3)]};
+			for(int i=0;i<4;i++){
+				if(j+ma<5){
+				milistaPartidas.partidas[numPartida].jugadores[j+ma-1].Cartas[i] = cartas1[i];
+				}
+				else{
+					milistaPartidas.partidas[numPartida].jugadores[j+ma-5].Cartas[i] = cartas1[i];
+				}
+			}
+		}
 		pthread_mutex_unlock(&mutex);
-	}
-	else if(ma == 2)
-	{
-		pthread_mutex_lock(&mutex);
-		int cartas1[4] = {milistaPartidas.partidas[numPartida].Baraja[0],milistaPartidas.partidas[numPartida].Baraja[4],milistaPartidas.partidas[numPartida].Baraja[8],milistaPartidas.partidas[numPartida].Baraja[12]};
-		for(int i=0;i<4;i++)
-			milistaPartidas.partidas[numPartida].Cartas3[i] = cartas1[i];
-		int cartas2[4] = {milistaPartidas.partidas[numPartida].Baraja[1],milistaPartidas.partidas[numPartida].Baraja[5],milistaPartidas.partidas[numPartida].Baraja[9],milistaPartidas.partidas[numPartida].Baraja[13]};
-		for(int i=0;i<4;i++)
-			milistaPartidas.partidas[numPartida].Cartas4[i] = cartas2[i];
-		int cartas3[4] = {milistaPartidas.partidas[numPartida].Baraja[2],milistaPartidas.partidas[numPartida].Baraja[6],milistaPartidas.partidas[numPartida].Baraja[10],milistaPartidas.partidas[numPartida].Baraja[14]};
-		for(int i=0;i<4;i++)
-			milistaPartidas.partidas[numPartida].Cartas1[i] = cartas3[i];
-		int cartas4[4] = {milistaPartidas.partidas[numPartida].Baraja[3],milistaPartidas.partidas[numPartida].Baraja[7],milistaPartidas.partidas[numPartida].Baraja[11],milistaPartidas.partidas[numPartida].Baraja[15]};
-		for(int i=0;i<4;i++)
-			milistaPartidas.partidas[numPartida].Cartas2[i] = cartas4[i];
-		pthread_mutex_unlock(&mutex);
-	}
-	else if(ma == 3)
-	{
-		pthread_mutex_lock(&mutex);
-		int cartas1[4] = {milistaPartidas.partidas[numPartida].Baraja[0],milistaPartidas.partidas[numPartida].Baraja[4],milistaPartidas.partidas[numPartida].Baraja[8],milistaPartidas.partidas[numPartida].Baraja[12]};
-		for(int i=0;i<4;i++)
-			milistaPartidas.partidas[numPartida].Cartas4[i] = cartas1[i];
-		int cartas2[4] = {milistaPartidas.partidas[numPartida].Baraja[1],milistaPartidas.partidas[numPartida].Baraja[5],milistaPartidas.partidas[numPartida].Baraja[9],milistaPartidas.partidas[numPartida].Baraja[13]};
-		for(int i=0;i<4;i++)
-			milistaPartidas.partidas[numPartida].Cartas1[i] = cartas2[i];
-		int cartas3[4] = {milistaPartidas.partidas[numPartida].Baraja[2],milistaPartidas.partidas[numPartida].Baraja[6],milistaPartidas.partidas[numPartida].Baraja[10],milistaPartidas.partidas[numPartida].Baraja[14]};
-		for(int i=0;i<4;i++)
-			milistaPartidas.partidas[numPartida].Cartas2[i] = cartas3[i];
-		int cartas4[4] = {milistaPartidas.partidas[numPartida].Baraja[3],milistaPartidas.partidas[numPartida].Baraja[7],milistaPartidas.partidas[numPartida].Baraja[11],milistaPartidas.partidas[numPartida].Baraja[15]};
-		for(int i=0;i<4;i++)
-			milistaPartidas.partidas[numPartida].Cartas3[i] = cartas4[i];
-		pthread_mutex_unlock(&mutex);
-	}
-	else if(ma == 4)
-	{
-		pthread_mutex_lock(&mutex);
-		int cartas1[4] = {milistaPartidas.partidas[numPartida].Baraja[0],milistaPartidas.partidas[numPartida].Baraja[4],milistaPartidas.partidas[numPartida].Baraja[8],milistaPartidas.partidas[numPartida].Baraja[12]};
-		for(int i=0;i<4;i++)
-			milistaPartidas.partidas[numPartida].Cartas1[i] = cartas1[i];
-		int cartas2[4] = {milistaPartidas.partidas[numPartida].Baraja[1],milistaPartidas.partidas[numPartida].Baraja[5],milistaPartidas.partidas[numPartida].Baraja[9],milistaPartidas.partidas[numPartida].Baraja[13]};
-		for(int i=0;i<4;i++)
-			milistaPartidas.partidas[numPartida].Cartas2[i] = cartas2[i];
-		int cartas3[4] = {milistaPartidas.partidas[numPartida].Baraja[2],milistaPartidas.partidas[numPartida].Baraja[6],milistaPartidas.partidas[numPartida].Baraja[10],milistaPartidas.partidas[numPartida].Baraja[14]};
-		for(int i=0;i<4;i++)
-			milistaPartidas.partidas[numPartida].Cartas3[i] = cartas3[i];
-		int cartas4[4] = {milistaPartidas.partidas[numPartida].Baraja[3],milistaPartidas.partidas[numPartida].Baraja[7],milistaPartidas.partidas[numPartida].Baraja[11],milistaPartidas.partidas[numPartida].Baraja[15]};
-		for(int i=0;i<4;i++)
-			milistaPartidas.partidas[numPartida].Cartas4[i] = cartas4[i];
-		pthread_mutex_unlock(&mutex);
-	}
+	
 	for(int i=0; i<16;i++)
 	{
 		pthread_mutex_lock(&mutex);
@@ -196,79 +151,29 @@ int hayJuego(int numPartida)
 
 int damePareja(int numPartida, char nombre[20])
 {
-	if(strcmp(milistaPartidas.partidas[numPartida].nombre1,nombre)==0)
+	for(int i=0; i<4;i++){
+	if(strcmp(milistaPartidas.partidas[numPartida].jugadores[i].nombre,nombre)==0)
 	{
-		return 0;
-	}
-	else if(strcmp(milistaPartidas.partidas[numPartida].nombre2,nombre)==0)
-	{
-		return 1;
-	}
-	else if(strcmp(milistaPartidas.partidas[numPartida].nombre3,nombre)==0)
-	{
-		return 0;
-	}
-	else if(strcmp(milistaPartidas.partidas[numPartida].nombre4,nombre)==0)
-	{
-		return 1;
-	}
-};
-void Mus(int numPartida, char nombre[20], int carta)
+		return i%2;
+	}}
+
+}
+void Mus(int numPartida, int jugador, int carta)
 {
 	int e = 0;
 	int i = 0;
-	if(strcmp(milistaPartidas.partidas[numPartida].nombre1,nombre)==0)
+	while (e==0)
 	{
-		while (e==0)
+		if(milistaPartidas.partidas[numPartida].Baraja[i]!=0)
 		{
-			if(milistaPartidas.partidas[numPartida].Baraja[i]!=0)
-			{
-				milistaPartidas.partidas[numPartida].Cartas1[carta]=milistaPartidas.partidas[numPartida].Baraja[i];
-				milistaPartidas.partidas[numPartida].Baraja[i]=0;
-				e=1;
-			}
-			i++;
+			milistaPartidas.partidas[numPartida].jugadores[jugador].Cartas[carta]=milistaPartidas.partidas[numPartida].Baraja[i];
+			milistaPartidas.partidas[numPartida].Baraja[i]=0;
+			e=1;
 		}
+		i++;
 	}
-	else if(strcmp(milistaPartidas.partidas[numPartida].nombre2,nombre)==0)
-	{
-		while (e==0)
-		{
-			if(milistaPartidas.partidas[numPartida].Baraja[i]!=0)
-			{
-				milistaPartidas.partidas[numPartida].Cartas2[carta]=milistaPartidas.partidas[numPartida].Baraja[i];
-				milistaPartidas.partidas[numPartida].Baraja[i]=0;
-				e=1;
-			}
-			i++;
-		}
-	}
-	else if(strcmp(milistaPartidas.partidas[numPartida].nombre3,nombre)==0)
-	{
-		while (e==0)
-		{
-			if(milistaPartidas.partidas[numPartida].Baraja[i]!=0)
-			{
-				milistaPartidas.partidas[numPartida].Cartas3[carta]=milistaPartidas.partidas[numPartida].Baraja[i];
-				milistaPartidas.partidas[numPartida].Baraja[i]=0;
-				e=1;
-			}
-			i++;
-		}
-	}
-	else if(strcmp(milistaPartidas.partidas[numPartida].nombre4,nombre)==0)
-	{
-		while (e==0)
-		{
-			if(milistaPartidas.partidas[numPartida].Baraja[i]!=0)
-			{
-				milistaPartidas.partidas[numPartida].Cartas4[carta]=milistaPartidas.partidas[numPartida].Baraja[i];
-				milistaPartidas.partidas[numPartida].Baraja[i]=0;
-				e=1;
-			}
-			i++;
-		}
-	}
+	
+	
 };
 void Apostar(int numPartida, int ronda, int Apuesta)
 {
@@ -463,13 +368,13 @@ int EntrarPartida(ListaPartidas* lista, char nombre[20], int pareja, int numPart
 	for(int i=0;i<4;i++){
 		if (strcmp(lista->partidas[numPartida].jugadores[i].nombre,"")==0)
 		{
-			strcpy(lista->partidas[numPartida].jugadores[i].nombre, nombre);
+			sprintf(lista->partidas[numPartida].jugadores[i].nombre, nombre);
 			pthread_mutex_unlock(&mutex);//Ya puedes interrumpir
 			return 0;
 			
 		}
 
-		}}
+		}
 		return -1;
 	
 }
@@ -510,68 +415,33 @@ int CambiarPareja(ListaPartidas* lista, int jug1, int jug2, int numPartida) {
 	char temp[20];
 	sprintf(temp, lista->partidas[numPartida].jugadores[jug1].nombre);
 	sprintf(lista->partidas[numPartida].jugadores[jug1].nombre, lista->partidas[numPartida].jugadores[jug2].nombre);
-	sprintf(lista->partidas[numPartida].jugadores[jug2].nombre,temp);	
-	
+	sprintf(lista->partidas[numPartida].jugadores[jug2].nombre, temp);
+}
 void EnviarAPatida(char nombre[20],char mensaje[200],int numPartida) {
 	char respuesta[20];
 	int sock_conn;
 		for(int i=0; i<4;i++){
 	if(strcmp(milistaPartidas.partidas[numPartida].jugadores[i].nombre,nombre)!=0){
 		sock_conn=milistaConectados.conectados[DamePosicion(&milistaConectados, milistaPartidas.partidas[numPartida].jugadores[i].nombre)].socket;
+		write(sock_conn, mensaje, strlen(mensaje));
 	}}
 }
 void EnviarAMano(char mensaje[200],int numPartida)
 {
 	int sock_conn;
 	int ma = milistaPartidas.partidas[numPartida].Mano[0];
-	if(ma == 1)
-	{
-		sock_conn = milistaConectados.conectados[DamePosicion(&milistaConectados, milistaPartidas.partidas[numPartida].nombre1)].socket;
-		write(sock_conn, mensaje, strlen(mensaje));
-	}
-	else if(ma == 2)
-	{
-		sock_conn = milistaConectados.conectados[DamePosicion(&milistaConectados, milistaPartidas.partidas[numPartida].nombre2)].socket;
-		write(sock_conn, mensaje, strlen(mensaje));
-	}
-	else if(ma == 3)
-	{
-		sock_conn = milistaConectados.conectados[DamePosicion(&milistaConectados, milistaPartidas.partidas[numPartida].nombre3)].socket;
-		write(sock_conn, mensaje, strlen(mensaje));
-	}
-	else if(ma == 4)
-	{
-		sock_conn = milistaConectados.conectados[DamePosicion(&milistaConectados, milistaPartidas.partidas[numPartida].nombre4)].socket;
-		write(sock_conn, mensaje, strlen(mensaje));
-	}
+	sock_conn = milistaConectados.conectados[DamePosicion(&milistaConectados, milistaPartidas.partidas[numPartida].jugadores[ma-1].nombre)].socket;
+	write(sock_conn, mensaje, strlen(mensaje));
+	
+	
 }
-int EnviarSiguiente(char nombre[20],char mensaje[200],int numPartida)
+int EnviarSiguiente(int jugador,char mensaje[200],int numPartida)
 //Envia el mensaje al siguiente jugador de la ronda y retorna su posicion o -1 si la ronda a terminado, no hay siguiente
 {
 	int numJugador;
 	char siguiente[20];
-	
-	if(strcmp(milistaPartidas.partidas[numPartida].nombre1,nombre)==0)
-	{
-		numJugador=1;
-		strcpy(siguiente,milistaPartidas.partidas[numPartida].nombre2);
-	}
-	else if(strcmp(milistaPartidas.partidas[numPartida].nombre2,nombre)==0)
-	{
-		numJugador=2;
-		strcpy(siguiente,milistaPartidas.partidas[numPartida].nombre3);
-	}
-	else if(strcmp(milistaPartidas.partidas[numPartida].nombre3,nombre)==0)
-	{
-		numJugador=3;
-		strcpy(siguiente,milistaPartidas.partidas[numPartida].nombre4);
-	}
-	else if(strcmp(milistaPartidas.partidas[numPartida].nombre4,nombre)==0)
-	{
-		numJugador=4;
-		strcpy(siguiente,milistaPartidas.partidas[numPartida].nombre1);
-	}
-	
+	numJugador=1;
+	strcpy(siguiente,milistaPartidas.partidas[numPartida].jugadores[jugador].nombre);	
 	for(int i=0;i<4;i++)
 	{
 		if(numJugador == milistaPartidas.partidas[numPartida].Mano[i] && i!=3)
@@ -583,51 +453,28 @@ int EnviarSiguiente(char nombre[20],char mensaje[200],int numPartida)
 	}
 	return -1;
 }
-void EnviarRival(char nombre[20],char mensaje[200],int numPartida)
+void EnviarRival(int jugador,char mensaje[200],int numPartida)
 {
 	int sock_conn;
 	char rival[20];
 	
-	if(strcmp(milistaPartidas.partidas[numPartida].nombre1,nombre)==0)
-	{
-		strcpy(rival,milistaPartidas.partidas[numPartida].nombre2);
-	}
-	else if(strcmp(milistaPartidas.partidas[numPartida].nombre2,nombre)==0)
-	{
-		strcpy(rival,milistaPartidas.partidas[numPartida].nombre1);
-	}
-	else if(strcmp(milistaPartidas.partidas[numPartida].nombre3,nombre)==0)
-	{
-		strcpy(rival,milistaPartidas.partidas[numPartida].nombre2);
-	}
-	else if(strcmp(milistaPartidas.partidas[numPartida].nombre4,nombre)==0)
-	{
-		strcpy(rival,milistaPartidas.partidas[numPartida].nombre1);
-	}
+
+	strcpy(rival,milistaPartidas.partidas[numPartida].jugadores[jugador].nombre);
+
 	sock_conn = milistaConectados.conectados[DamePosicion(&milistaConectados, rival)].socket;
 	write(sock_conn, mensaje, strlen(mensaje));
 }
-int EnviarCompanero(char nombre[20],char mensaje[200],int numPartida)
+int EnviarCompanero(int jugador,char mensaje[200],int numPartida)
 {
 	int sock_conn;
 	char companero[20];
 	
-	if(strcmp(milistaPartidas.partidas[numPartida].nombre1,nombre)==0)
-	{
-		strcpy(companero,milistaPartidas.partidas[numPartida].nombre3);
-		sock_conn = milistaConectados.conectados[DamePosicion(&milistaConectados, companero)].socket;
-		write(sock_conn, mensaje, strlen(mensaje));
-		return 0;
-	}
-	else if(strcmp(milistaPartidas.partidas[numPartida].nombre2,nombre)==0)
-	{
-		strcpy(companero,milistaPartidas.partidas[numPartida].nombre4);
-		sock_conn = milistaConectados.conectados[DamePosicion(&milistaConectados, companero)].socket;
-		write(sock_conn, mensaje, strlen(mensaje));
-		return 0;
-	}
-	else 
-		return -1;
+
+	strcpy(companero,milistaPartidas.partidas[numPartida].jugadores[jugador%2+2].nombre);
+	sock_conn = milistaConectados.conectados[DamePosicion(&milistaConectados, companero)].socket;
+	write(sock_conn, mensaje, strlen(mensaje));
+	return 0;
+
 };
 void NotificacionConectados()
 {
@@ -731,7 +578,7 @@ void* AtenderCliente (void* sock)
 			char password[20];
 			p = strtok(NULL, "/");				// Ya tenemos el nombre
 			strcpy(password, p);
-			sprintf(consulta, "SELECT * FROM Jugadores WHERE Username='%s' AND ContraseÃ±a='%s'",nombre,password);
+			sprintf(consulta, "SELECT * FROM Jugadores WHERE Username='%s' AND Contraseña='%s'",nombre,password);
 			err = mysql_query(conn, consulta);
 			if (err != 0) {
 				printf("Error al consultar datos de la base %u %s\n",
@@ -804,7 +651,7 @@ void* AtenderCliente (void* sock)
 				}
 				printf("%d",newID);
 				printf("\n");
-				sprintf(consulta, "INSERT INTO Jugadores (ID,Username,ContraseÃƒÂ±a) VALUES (%d,'%s','%s')",newID,nombre,password);
+				sprintf(consulta, "INSERT INTO Jugadores (ID,Username,Contraseña) VALUES (%d,'%s','%s')",newID,nombre,password);
 				err = mysql_query(conn, consulta);
 				if (err != 0) {
 					printf("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
@@ -1041,23 +888,27 @@ void* AtenderCliente (void* sock)
 					if (numPartida == -1) {
 						numPartida = CrearPartida(&milistaPartidas);
 						sprintf(respuesta, "8/1/%d/%s",  numPartida, miNombre);
+						err = EntrarPartida(&milistaPartidas, miNombre, pareja, numPartida);
 					}
-					err = EntrarPartida(&milistaPartidas, miNombre, pareja, numPartida);		
+					else
+						sprintf(respuesta, "");
 					int pos = DamePosicion(&milistaConectados, nombre);
 					sock_conn2 = milistaConectados.conectados[pos].socket;
 					sprintf(respuestaOtro, "8/1/%d/%s", numPartida, miNombre);
 					write(sock_conn2, respuestaOtro, strlen(respuestaOtro));
 					break;
 				case 2:
+					sprintf(respuesta, "");
 					pareja = 0;
 					err = EntrarPartida(&milistaPartidas, miNombre, pareja, numPartida);
 					if (err == 0) {
-						sprintf(respuesta, "8/2/%d/%s", numPartida,miNombre);
 						sprintf(respuestaOtro, "8/2/%d/%s", numPartida,miNombre);
+						int pos = DamePosicion(&milistaConectados, miNombre);
+						sock_conn2 = milistaConectados.conectados[pos].socket;
 						write(sock_conn2, respuestaOtro, strlen(respuestaOtro));
 						sprintf(respuestaOtro, "8/6/%d/%s/%s/%s/%s", numPartida, milistaPartidas.partidas[numPartida].jugadores[0].nombre,milistaPartidas.partidas[numPartida].jugadores[1].nombre,milistaPartidas.partidas[numPartida].jugadores[2].nombre,milistaPartidas.partidas[numPartida].jugadores[3].nombre);
-						EnviarAPatida(nombre, respuestaOtro, numPartida);
-						printf("\nnombre:%s miNombre:%s\n",nombre,miNombre);
+						EnviarAPatida("", respuestaOtro, numPartida);
+						printf("\nPetticion:%s\n",respuestaOtro);
 
 
 					}
@@ -1084,9 +935,20 @@ void* AtenderCliente (void* sock)
 					pos=atoi(nombre);
 					p = strtok(NULL, "/");				//Conseguimos el numero de partida
 					pos2 = atoi(p);
+
+					if(milistaPartidas.partidas[numPartida].jugadores[pos2].nombre!=""){
 					sprintf(respuestaOtro, "8/7/%d/%d/%d", numPartida, pos,pos2);
 					sock_conn2 = milistaConectados.conectados[DamePosicion(&milistaConectados,milistaPartidas.partidas[numPartida].jugadores[pos].nombre)].socket;
 					write(sock_conn2, respuestaOtro, strlen(respuestaOtro));
+					}
+					else{
+						pos=atoi(nombre);
+						p = strtok(NULL, "/");				//Conseguimos el numero de partida
+						pos2 = atoi(p);
+						CambiarPareja(&milistaPartidas, pos, pos2, numPartida);
+						sprintf(respuestaOtro, "8/6/%d/%s/%s/%s/%s", numPartida, milistaPartidas.partidas[numPartida].jugadores[0].nombre,milistaPartidas.partidas[numPartida].jugadores[1].nombre,milistaPartidas.partidas[numPartida].jugadores[2].nombre,milistaPartidas.partidas[numPartida].jugadores[3].nombre);
+						EnviarAPatida("", respuestaOtro, numPartida);
+					}
 
 					break;
 				case 7:
@@ -1556,10 +1418,11 @@ void* AtenderCliente (void* sock)
 		{	
 			printf("Soket:%d\n",sock_conn);
 			
-			printf ("Respuesta: %s\n", respuesta);
 			// Enviamos respuesta
-
-			write (sock_conn,respuesta, strlen(respuesta));
+			if(codigo !=-5){
+				printf ("Respuesta: %s\n", respuesta);
+				
+			write (sock_conn,respuesta, strlen(respuesta));}
 			if (codigo != 1 && codigo != 2)
 			{
 				pthread_mutex_lock(&mutex);//No me interrumpas

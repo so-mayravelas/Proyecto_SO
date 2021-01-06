@@ -30,8 +30,9 @@ namespace Juego_version_1
         private static Mutex mut = new Mutex();
         int num, idpartidainvitacion, iseleccionado = 0;
         bool loged = false, conectado = false;
-       
-        
+        List<String> Conectados = new List<String>();
+
+
         public Formfunciones()
         {         
             InitializeComponent();
@@ -217,7 +218,6 @@ namespace Juego_version_1
                     mensaje = mensajeC.Split('/');
                     if (mensaje[0] != "")
                     {
-                        MessageBox.Show("El mensaje es:" + mensajeC);
                         identificador = Convert.ToInt32(mensaje[0]);
                         switch (identificador)
                         {
@@ -270,7 +270,6 @@ namespace Juego_version_1
                                 MessageBox.Show(mensaje[1]);
                                 break;
                             case 7://Lista clientes
-                                List<String> Conectados = new List<String>();
                                 Conectados.Clear();
                                 for (int i = 1; i < mensaje.Length && mensaje[i] != ""; i++)
                                 {
@@ -280,6 +279,8 @@ namespace Juego_version_1
 
                                 DelegadoGrid delegadoDG = new DelegadoGrid(RellenarDataGrid);
                                 ConectadosGrid.Invoke(delegadoDG, new object[] {Conectados});
+                                for(int i=0;i<formularios.Count;i++)
+                                formularios[i].ActualizarJugadores(Conectados);
                                 break;
                             case 8://Invitaciones
                                 int subidentificador = Convert.ToInt32(mensaje[1]);
@@ -293,8 +294,10 @@ namespace Juego_version_1
                                         ThreadStart ts = delegate { CrearForm(Convert.ToInt32(mensaje[2]), server); };
                                         crearForm = new Thread(ts);
                                         crearForm.Start();
-                                        Thread.Sleep(150);
+                                        Thread.Sleep(300);
                                         ActualizarPartidasEnForms(Convert.ToInt32(mensaje[2]));
+                                        for (int i = 0; i < formularios.Count; i++)
+                                            formularios[i].ActualizarJugadores(Conectados);
                                     }
                                 }
                                 else if (subidentificador == 2)
@@ -308,14 +311,12 @@ namespace Juego_version_1
                                             ThreadStart ts = delegate { CrearForm(Convert.ToInt32(mensaje[2]), server); };
                                             crearForm = new Thread(ts);
                                             crearForm.Start();
-                                            Thread.Sleep(100);
+                                            Thread.Sleep(150);
+                                            DelegadoPreChat DelegadoPC = new DelegadoPreChat(PreparacionChat);
+                                            ConectadosGrid.Invoke(DelegadoPC, new object[] { Convert.ToInt32(mensaje[2]) });
                                         }
 
-                                        AñadirAPartida(mensaje[3], Convert.ToInt32(mensaje[2]));
-                                        ActualizarPartidasEnForms(Convert.ToInt32(mensaje[2]));
 
-                                        DelegadoPreChat DelegadoPC = new DelegadoPreChat(PreparacionChat);
-                                        ConectadosGrid.Invoke(DelegadoPC, new object[] { Convert.ToInt32(mensaje[2]) });
                                     }
                                     else
                                     {
@@ -347,7 +348,10 @@ namespace Juego_version_1
                                         p.AñadirParticipante(mensaje[6], 3);
                                     }
                                     Partidas[Convert.ToInt32(mensaje[2])] = p;
+                                    Thread.Sleep(300);
                                     ActualizarPartidasEnForms(Convert.ToInt32(mensaje[2]));
+                                    formularios[Convert.ToInt32(mensaje[2])].ActualizarJugadores(Conectados);
+                                    
                                 }
                                 else if (subidentificador == 7)
                                 {

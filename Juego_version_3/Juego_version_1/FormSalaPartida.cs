@@ -18,7 +18,7 @@ namespace Juego_version_1
         string MiUsuario;
         delegate void DelegadoPanel(int i);
         delegate void DelegadoComienzoPartida(Form hijosForm);
-        delegate void DelegadoInvitar(string[] jugadores);
+        delegate void DelegadoInvitar(List<String> jugadores);
         private Form activeForm = null;
         FormPartida hijosForm;
         public FormSalaPartida(int numPartida, Socket sock,string MiUsuario)
@@ -26,6 +26,7 @@ namespace Juego_version_1
             this.numPartida = numPartida;
             this.sock = sock;
             this.MiUsuario = MiUsuario;
+            hijosForm = new FormPartida(sock, numPartida);
             InitializeComponent();
         }
         public void ActualizacionPartida(Partida partida)
@@ -161,42 +162,53 @@ namespace Juego_version_1
             DelegadoComienzoPartida dcp = new DelegadoComienzoPartida(OpenhijoForm);
             this.Invoke(dcp, new object[] { hijosForm}); 
         }
-        public void ActualizarJugadores(string[] jugadores)
+        public void ActualizarJugadores(List<String> jugadores)
         {
             DelegadoInvitar di = new DelegadoInvitar(actualizarJugadores);
             this.Invoke(di, new object[] { jugadores });
         }
-        private void actualizarJugadores(string[] jugadores)
+        private void actualizarJugadores(List<String> jugadores)
         {
-
-            dataGridView1.RowCount = jugadores.Length;
-            for (int i = 0; i < jugadores.Length; i++)
-            {
-                if (partida.ExisteParticipante(jugadores[i])==-1)
-                dataGridView1[0, i].Value = jugadores[i];
-            }
-            dataGridView2.RowCount = jugadores.Length;
-            for (int i = 0; i < jugadores.Length; i++)
-            {
-                if (partida.ExisteParticipante(jugadores[i]) == -1)
-
-                    dataGridView2[0, i].Value = jugadores[i];
-            }
-            dataGridView3.RowCount = jugadores.Length;
-            for (int i = 0; i < jugadores.Length; i++)
-            {
-                if (partida.ExisteParticipante(jugadores[i]) == -1)
-
-                    dataGridView3[0, i].Value = jugadores[i];
-            }
-            dataGridView4.RowCount = jugadores.Length;
-            for (int i = 0; i < jugadores.Length; i++)
+            dataGridView1.DataSource = null; //Volvemos a rellenar el dataGrid
+            dataGridView1.ColumnCount = 1; //Número de columnas
+            dataGridView1.ColumnHeadersVisible = false;
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView2.DataSource = null; //Volvemos a rellenar el dataGrid
+            dataGridView2.ColumnCount = 1; //Número de columnas
+            dataGridView2.ColumnHeadersVisible = false;
+            dataGridView2.RowHeadersVisible = false;
+            dataGridView3.DataSource = null; //Volvemos a rellenar el dataGrid
+            dataGridView3.ColumnCount = 1; //Número de columnas
+            dataGridView3.ColumnHeadersVisible = false;
+            dataGridView3.RowHeadersVisible = false;
+            dataGridView4.DataSource = null; //Volvemos a rellenar el dataGrid
+            dataGridView4.ColumnCount = 1; //Número de columnas
+            dataGridView4.ColumnHeadersVisible = false;
+            dataGridView4.RowHeadersVisible = false;
+            List<String> jugadoresNoEnPartida= new List<string>();
+            for (int i = 0; i < jugadores.Count; i++)
             {
                 if (partida.ExisteParticipante(jugadores[i]) == -1)
-
-                    dataGridView4[0, i].Value = jugadores[i];
+                {
+                    jugadoresNoEnPartida.Add(jugadores[i]);
+                }
             }
+            if (jugadoresNoEnPartida.Count != 0)
+            {
+                dataGridView1.RowCount = jugadoresNoEnPartida.Count;
+                dataGridView2.RowCount = jugadoresNoEnPartida.Count;
+                dataGridView3.RowCount = jugadoresNoEnPartida.Count;
+                dataGridView4.RowCount = jugadoresNoEnPartida.Count;
+                for (int i = 0; i < jugadoresNoEnPartida.Count; i++)
+                {
 
+                    dataGridView1[0, i].Value = jugadoresNoEnPartida[i];
+                    dataGridView2[0, i].Value = jugadoresNoEnPartida[i];
+                    dataGridView3[0, i].Value = jugadoresNoEnPartida[i];
+                    dataGridView4[0, i].Value = jugadoresNoEnPartida[i];
+
+                }
+            }
 
         }
         private void OpenhijoForm(Form hijosForm)
@@ -204,7 +216,7 @@ namespace Juego_version_1
             if (activeForm != null)
                 activeForm.Close();
             activeForm = hijosForm;
-            hijosForm.TopLevel = false;
+            //hijosForm.TopLevel = false;
             hijosForm.FormBorderStyle = FormBorderStyle.None;
             hijosForm.Dock = DockStyle.Fill;
             panel2.Controls.Add(hijosForm);
