@@ -562,7 +562,7 @@ void* AtenderCliente (void* sock)
 		
 		
 		
-		if (codigo !=0 && codigo !=6 && codigo !=7 && codigo != 8 && codigo != 9)
+		if (codigo !=0 && codigo !=6 && codigo !=7 && codigo != 8 && codigo != 9 && codigo != 10)
 		{
 			p = strtok( NULL, "/");				// Ya tenemos el nombre
 			strcpy(nombre,p);
@@ -962,6 +962,7 @@ void* AtenderCliente (void* sock)
 				case 8:
 					sprintf(respuestaOtro, "8/8/%d",numPartida);
 					EnviarAPatida(nombre, respuestaOtro, numPartida);
+					sprintf(respuesta,"");
 					break;
 						
 			default:
@@ -996,9 +997,8 @@ void* AtenderCliente (void* sock)
 			switch (ronda)
 			{
 			case 0://Ronda de Mus (P=Pregunta, A=Descarte)
-				p = strtok(NULL, "/");
-				strcpy(caso,p);
-				if(strcmp(caso, "P")==0)
+				strcpy(caso,nombre);
+				if(strcmp(nombre, "P")==0)
 				{
 					char peticion[20];
 					p = strtok(NULL, "/");

@@ -22,6 +22,7 @@ namespace Juego_version_1
         int tipoRonda;
         int ronda;
         int numPartida;
+        int jugador;
         Socket socket;
 
         public FormPartida(Socket socket,int numPartida)
@@ -29,6 +30,14 @@ namespace Juego_version_1
             this.socket = socket;
             this.numPartida = numPartida;
             InitializeComponent();
+        }
+        public void ValorJugador(int jugador)
+        {
+            this.jugador = jugador;
+            if (jugador == 0)
+                cambBotones(0);
+            else
+                cambBotones(-1);
         }
 
         private void FinpartidaButton1_Click(object sender, EventArgs e)
@@ -100,45 +109,67 @@ namespace Juego_version_1
         }
         private void CambiarBotones(int tipoRonda)
         {
-            this.tipoRonda = tipoRonda;
-            switch (tipoRonda)
-            {
-                case 0:
-                    button1.Visible = true;
-                    button1.Text = "Mus";
-                    button3.Visible = true;
-                    button3.Text = "No hay Mus";
+                this.tipoRonda = tipoRonda;
+                switch (tipoRonda)
+                {
+                    case 0:
+                        button1.Visible = true;
+                        button1.Text = "Mus";
+                        button2.Visible = false;
+                        button3.Visible = true;
+                        button3.Text = "No hay Mus";
+                    label1.Visible = false;
+                    hScrollBar1.Visible = false;
+                        break;
+                    case 1:
+                        button3.Visible = true;
+                        button3.Text = "Descartar";
+                    button1.Visible = false;
+                    button2.Visible = false;
+                    label1.Visible = false;
+                    hScrollBar1.Visible = false;
                     break;
-                case 1:
-                    button3.Visible = true;
-                    button3.Text = "Descartar";
+                    case 2:
+                        button1.Visible = true;
+                        button1.Text = "No";
+                        button3.Visible = true;
+                        button3.Text = "Si";
+                    button2.Visible = false;
+                    label1.Visible = false;
+                    hScrollBar1.Visible = false;
+
                     break;
-                case 2:
-                    button1.Visible = true;
-                    button1.Text = "No";
-                    button3.Visible = true;
-                    button3.Text = "Si";
-                    break;
-                case 3:
-                    button1.Visible = true;
-                    button1.Text = "Paso";
-                    button3.Visible = true;
-                    button3.Text = "Envido";
-                    hScrollBar1.Visible = true;
+                    case 3:
+                        button1.Visible = true;
+                        button1.Text = "Paso";
+                        button3.Visible = true;
+                        button3.Text = "Envido";
+                        hScrollBar1.Visible = true;
+                        label1.Visible = true;
+                    button2.Visible = false;
                     label1.Visible = true;
-                    break;
-                case 4:
-                    button1.Visible = true;
-                    button1.Text = "No Quiero";
-                    button2.Visible = true;
-                    button2.Text = "Quiero";
-                    button3.Visible = true;
-                    button3.Text = "Revido";
                     hScrollBar1.Visible = true;
-                    label1.Visible = true;
+
                     break;
-            }
-        }
+                    case 4:
+                        button1.Visible = true;
+                        button1.Text = "No Quiero";
+                        button2.Visible = true;
+                        button2.Text = "Quiero";
+                        button3.Visible = true;
+                        button3.Text = "Revido";
+                        hScrollBar1.Visible = true;
+                        label1.Visible = true;
+                        break;
+                    case -1:
+                        button1.Visible = false;
+                        button2.Visible = false;
+                        button3.Visible = false;
+                    label1.Visible = false;
+                    hScrollBar1.Visible = false;
+                    break;
+                }
+            } 
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -150,10 +181,10 @@ namespace Juego_version_1
             switch (tipoRonda)
             {
                 case 0:
-                    mensaje = "10/" + numPartida + "/" + ronda + "/MUS" ;
+                    mensaje = "10/" + numPartida + "/" + ronda + "/P/MUS" ;
                     break;
                 case 2:
-                    mensaje = "10/" + numPartida + "/" + ronda + "/NO";
+                    mensaje = "10/" + numPartida + "/" + ronda + "/P/NO";
                     break;
                 case 3:
                     mensaje = "10/" + numPartida + "/" + ronda + "/PASO";
@@ -199,13 +230,13 @@ namespace Juego_version_1
             switch (tipoRonda)
             {
                 case 0:
-                    mensaje = "10/" + numPartida + "/" + ronda + "/NO";
+                    mensaje = "10/" + numPartida + "/" + ronda + "/P/NO";
                     break;
                 case 1:
                     mensaje = "10/" + numPartida + "/" + ronda + "/A/"+Convert.ToInt32(hScrollBar1.Value);
                     break;
                 case 2:
-                    mensaje = "10/" + numPartida + "/" + ronda + "/SI";
+                    mensaje = "10/" + numPartida + "/" + ronda + "/P/SI";
                     break;
                 case 3:
                     mensaje = "10/" + numPartida + "/" + ronda + "/A/"+ Convert.ToInt32(hScrollBar1.Value);

@@ -17,7 +17,7 @@ namespace Juego_version_1
         Partida partida;
         string MiUsuario;
         delegate void DelegadoPanel(int i);
-        delegate void DelegadoComienzoPartida(Form hijosForm);
+        delegate void DelegadoComienzoPartida(FormPartida hijosForm);
         delegate void DelegadoInvitar(List<String> jugadores);
         private Form activeForm = null;
         FormPartida hijosForm;
@@ -148,6 +148,8 @@ namespace Juego_version_1
         private void button5_Click(object sender, EventArgs e)
         {
             OpenhijoForm(hijosForm);
+            hijosForm.ValorJugador(partida.ExisteParticipante(MiUsuario));
+
             string mensaje;
             byte[] msg;
             mensaje = "8/8/" + numPartida +"/"+ MiUsuario;
@@ -211,19 +213,22 @@ namespace Juego_version_1
             }
 
         }
-        private void OpenhijoForm(Form hijosForm)
+        private void OpenhijoForm(FormPartida hijosForm)
         {
             if (activeForm != null)
                 activeForm.Close();
             activeForm = hijosForm;
-            //hijosForm.TopLevel = false;
+            hijosForm.TopLevel = false;
             hijosForm.FormBorderStyle = FormBorderStyle.None;
             hijosForm.Dock = DockStyle.Fill;
             panel2.Controls.Add(hijosForm);
             panel2.Tag = hijosForm;
             panel2.Visible = true;
+            panel2.BringToFront();
             hijosForm.BringToFront();
             hijosForm.Show();
+            hijosForm.ValorJugador(partida.ExisteParticipante(MiUsuario));
+
         }
         public void CambiarBotones(int tipoRonda)
         {
