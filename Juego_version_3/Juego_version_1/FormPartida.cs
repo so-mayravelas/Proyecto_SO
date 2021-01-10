@@ -19,7 +19,7 @@ namespace Juego_version_1
     {
         delegate void DelegadoBotones(int i);
         delegate void DelegadoBocatas(string texto, int num);
-        int tipoRonda;
+        Partida partida;
         int ronda;
         int numPartida;
         int jugador;
@@ -38,6 +38,19 @@ namespace Juego_version_1
                 cambBotones(0);
             else
                 cambBotones(-1);
+        }
+        public void ValorPartida(Partida p)
+        {
+            this.partida = p;
+        }
+        public void repartir(int numjugador, int[] c)
+        {
+            partida.AsignarCartas(numjugador, c);
+        }
+        
+        public void rondas(int Ronda)
+        {
+            this.ronda = Ronda;
         }
 
         private void FinpartidaButton1_Click(object sender, EventArgs e)
@@ -109,7 +122,6 @@ namespace Juego_version_1
         }
         private void CambiarBotones(int tipoRonda)
         {
-                this.tipoRonda = tipoRonda;
                 switch (tipoRonda)
                 {
                     case 0:
@@ -118,46 +130,44 @@ namespace Juego_version_1
                         button2.Visible = false;
                         button3.Visible = true;
                         button3.Text = "No hay Mus";
-                    label1.Visible = false;
-                    hScrollBar1.Visible = false;
+                        label1.Visible = false;
+                        hScrollBar1.Visible = false;
                         break;
                     case 1:
                         button3.Visible = true;
                         button3.Text = "Descartar";
-                    button1.Visible = false;
-                    button2.Visible = false;
-                    label1.Visible = false;
-                    hScrollBar1.Visible = false;
-                    break;
+                        button1.Visible = false;
+                        button2.Visible = false;
+                        label1.Visible = false;
+                        hScrollBar1.Visible = false;
+                        break;
                     case 2:
                         button1.Visible = true;
                         button1.Text = "No";
                         button3.Visible = true;
                         button3.Text = "Si";
-                    button2.Visible = false;
-                    label1.Visible = false;
-                    hScrollBar1.Visible = false;
-
-                    break;
+                        button2.Visible = false;
+                        label1.Visible = false;
+                        hScrollBar1.Visible = false;
+                        break;
                     case 3:
                         button1.Visible = true;
                         button1.Text = "Paso";
                         button3.Visible = true;
-                        button3.Text = "Envido";
+                        button3.Text = "Apuesto";
                         hScrollBar1.Visible = true;
                         label1.Visible = true;
-                    button2.Visible = false;
-                    label1.Visible = true;
-                    hScrollBar1.Visible = true;
-
-                    break;
+                        button2.Visible = false;
+                        label1.Visible = true;
+                        hScrollBar1.Visible = true;
+                        break;
                     case 4:
                         button1.Visible = true;
                         button1.Text = "No Quiero";
                         button2.Visible = true;
                         button2.Text = "Quiero";
                         button3.Visible = true;
-                        button3.Text = "Revido";
+                        button3.Text = "Apuesto";
                         hScrollBar1.Visible = true;
                         label1.Visible = true;
                         break;
@@ -165,32 +175,30 @@ namespace Juego_version_1
                         button1.Visible = false;
                         button2.Visible = false;
                         button3.Visible = false;
-                    label1.Visible = false;
-                    hScrollBar1.Visible = false;
-                    break;
+                        label1.Visible = false;
+                        hScrollBar1.Visible = false;
+                        break;
                 }
             } 
 
         private void button1_Click(object sender, EventArgs e)
         {
-            button1.Visible = false;
-            button2.Visible = false;
-            button3.Visible = false;
+            CambiarBotones(-1);
             string mensaje="";
             byte[] msg;
-            switch (tipoRonda)
+            switch (ronda)
             {
                 case 0:
-                    mensaje = "10/" + numPartida + "/" + ronda + "/P/MUS" ;
+                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/MUS" ;
                     break;
                 case 2:
-                    mensaje = "10/" + numPartida + "/" + ronda + "/P/NO";
+                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/NO";
                     break;
                 case 3:
-                    mensaje = "10/" + numPartida + "/" + ronda + "/PASO";
+                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/PASO";
                     break;
                 case 4:
-                    mensaje = "10/" + numPartida + "/" + ronda + "/NOQUIERO";
+                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/NO QUIERO";
                     break;
             }
 
@@ -202,15 +210,13 @@ namespace Juego_version_1
 
         private void button2_Click(object sender, EventArgs e)
         {
-            button1.Visible = false;
-            button2.Visible = false;
-            button3.Visible = false;
+            CambiarBotones(-1);
             string mensaje = "";
             byte[] msg;
-            switch (tipoRonda)
+            switch (ronda)
             {
                 case 4:
-                    mensaje = "10/" + numPartida + "/" + ronda + "/QUIERO";
+                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/QUIERO";
                     break;
             }
 
@@ -222,27 +228,25 @@ namespace Juego_version_1
 
         private void button3_Click(object sender, EventArgs e)
         {
-            button1.Visible = false;
-            button2.Visible = false;
-            button3.Visible = false;
+            CambiarBotones(-1);
             string mensaje = "";
             byte[] msg;
-            switch (tipoRonda)
+            switch (ronda)
             {
                 case 0:
-                    mensaje = "10/" + numPartida + "/" + ronda + "/P/NO";
+                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/NO";
                     break;
                 case 1:
-                    mensaje = "10/" + numPartida + "/" + ronda + "/A/"+Convert.ToInt32(hScrollBar1.Value);
+                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/A/" +Convert.ToInt32(hScrollBar1.Value);
                     break;
                 case 2:
-                    mensaje = "10/" + numPartida + "/" + ronda + "/P/SI";
+                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/SI";
                     break;
                 case 3:
-                    mensaje = "10/" + numPartida + "/" + ronda + "/A/"+ Convert.ToInt32(hScrollBar1.Value);
+                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/APUESTO/" + Convert.ToInt32(hScrollBar1.Value);
                     break;
                 case 4:
-                    mensaje = "10/" + numPartida + "/" + ronda + "/A/"+ Convert.ToInt32(hScrollBar1.Value);
+                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/APUESTO/" + Convert.ToInt32(hScrollBar1.Value);
                     break;
             }
 
@@ -254,7 +258,7 @@ namespace Juego_version_1
 
         private void hScrollBar1_ValueChanged(object sender, EventArgs e)
         {
-            label1.Text = "Apuesta: "+Convert.ToInt32(hScrollBar1.Value);
+            label1.Text = "Apuesta: " + Convert.ToInt32(hScrollBar1.Value);
         }
     }
 }

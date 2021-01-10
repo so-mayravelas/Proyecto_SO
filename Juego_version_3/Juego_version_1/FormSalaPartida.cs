@@ -228,11 +228,20 @@ namespace Juego_version_1
             hijosForm.BringToFront();
             hijosForm.Show();
             hijosForm.ValorJugador(partida.ExisteParticipante(MiUsuario));
+            hijosForm.ValorPartida(partida);
 
         }
         public void CambiarBotones(int tipoRonda)
         {
             hijosForm.cambBotones(tipoRonda);
+        }
+        public void Repartir(int numjugador, int[] c)
+        {
+            hijosForm.repartir(numjugador, c);
+        }
+        public void Ronda(int Ronda)
+        {
+            hijosForm.rondas(Ronda);
         }
         public void Bocatas(string texto, int jugador)
         {
