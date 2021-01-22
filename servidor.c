@@ -431,9 +431,9 @@ void JugadoresEnPartida(ListaPartidas* lista, char* conectados[512],int partida)
 	pthread_mutex_lock(&mutex);//No me interrumpas ahora
 	sprintf(conectados, "");
 for(int i=0;i<4;i++){
-	if(strcmp(lista->partidas[partida].jugadores[i].nombre,"")==0){
+	if(strcmp(lista->partidas[partida].jugadores[i].nombre,"")==0)
 		sprintf(conectados, "%s/%s", conectados, lista->partidas[partida].jugadores[i].nombre);
-	}}
+	}
 	pthread_mutex_unlock(&mutex);//Ya puedes interrumpir
 
 }
@@ -467,7 +467,7 @@ void EnviarSiguienteJugador(int numPartida,char mensaje[200],int jugador)
 	int siguiente;
 	for(int i=0;i<3;i++)
 	{
-		if(jugador = milistaPartidas.partidas[numPartida].Mano[i])
+		if(jugador == milistaPartidas.partidas[numPartida].Mano[i])
 			siguiente=milistaPartidas.partidas[numPartida].Mano[i+1];
 	}
 	int sock_conn = milistaConectados.conectados[DamePosicion(&milistaConectados, milistaPartidas.partidas[numPartida].jugadores[siguiente].nombre)].socket;
@@ -1007,7 +1007,8 @@ void* AtenderCliente (void* sock)
 				{
 					sprintf(Respuesta, "11/%d/0/%d/CORTO", numPartida, jugador);
 					EnviarAPatida(miNombre, Respuesta, numPartida);//Notificamos a los jugadores lo que ha decidido
-					sprintf(Respuesta, "10/%d/2", numPartida);
+					sprintf(Respuesta, "10/%d/2/P", numPartida);
+					printf("Respuesta: %s\n", Respuesta);
 					EnviarAMano(Respuesta, numPartida);
 				}
 				else
@@ -1017,6 +1018,7 @@ void* AtenderCliente (void* sock)
 					if (jugador!=DamejugadorPosicion(numPartida,3))
 					{
 						sprintf(Respuesta, "10/%d/0", numPartida);
+						printf("Respuesta: %s\n", Respuesta);
 						EnviarSiguienteJugador(numPartida,Respuesta, jugador);
 					}
 					else
@@ -1039,7 +1041,7 @@ void* AtenderCliente (void* sock)
 				EnviarAPatida(miNombre, Respuesta, numPartida);//Notificamos a los jugadores lo que ha decidido
 				if (jugador!=DamejugadorPosicion(numPartida,3))
 				{
-					sprintf(Respuesta, "10/%d/1", numPartida);
+					sprintf(Respuesta, "10/%d/1/", numPartida);
 					EnviarSiguienteJugador(numPartida,Respuesta, jugador);
 				}
 				else
@@ -1065,8 +1067,9 @@ void* AtenderCliente (void* sock)
 						sprintf(Respuesta, "11/%d/2/%d/SE FUE", numPartida, jugador);
 						EnviarAPatida(miNombre, Respuesta, numPartida);
 						Apostar(numPartida,1,0);
+						printf ("Respuesta: %s\n", Respuesta);
 						sprintf(Respuesta, "10/%d/3/P", numPartida);
-						EnviarAMano(Respuesta, numPartida);
+						EnviarAMano(Respuesta, numPartida);;
 					}
 				}
 				else if(strcmp(caso, "APUESTO")==0)
@@ -1101,7 +1104,7 @@ void* AtenderCliente (void* sock)
 						Puntos(numPartida,jugador,2);
 						Apostar(numPartida, 1, -1);
 						EnviarAPatida(miNombre, Respuesta, numPartida);
-						sprintf(Respuesta, "10/%d/3/A", numPartida);
+						sprintf(Respuesta, "10/%d/3/P", numPartida);
 						EnviarAMano(Respuesta, numPartida);
 					}
 					else
@@ -1503,7 +1506,7 @@ void* AtenderCliente (void* sock)
 
 		
 		
-		if (codigo !=0)
+		if (codigo !=0 && codigo!=9 && codigo!=10)
 		{	
 			printf("Soket:%d\n",sock_conn);
 			

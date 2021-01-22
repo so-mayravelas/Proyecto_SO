@@ -11,6 +11,7 @@ namespace Juego_version_1
         //Definimos una lista de FlightPlans tipo Lists<>
         string[] Participantes= { "", "", "", "" };
         int ID_Partida;
+        int[] Puntuaciones = { 0, 0, 0, 0 };
         int[,] Cartas = { { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 } };
         int Count = 0;
  

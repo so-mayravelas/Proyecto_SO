@@ -296,7 +296,7 @@ namespace Juego_version_1
                                         ThreadStart ts = delegate { CrearForm(Convert.ToInt32(mensaje[2]), server); };
                                         crearForm = new Thread(ts);
                                         crearForm.Start();
-                                        Thread.Sleep(600);
+                                        Thread.Sleep(1500);
                                         ActualizarPartidasEnForms(Convert.ToInt32(mensaje[2]));
                                         for (int i = 0; i < formularios.Count; i++)
                                             formularios[i].ActualizarJugadores(Conectados);
@@ -313,7 +313,7 @@ namespace Juego_version_1
                                             ThreadStart ts = delegate { CrearForm(Convert.ToInt32(mensaje[2]), server); };
                                             crearForm = new Thread(ts);
                                             crearForm.Start();
-                                            Thread.Sleep(250);
+                                            Thread.Sleep(750);
                                             DelegadoPreChat DelegadoPC = new DelegadoPreChat(PreparacionChat);
                                             ConectadosGrid.Invoke(DelegadoPC, new object[] { Convert.ToInt32(mensaje[2]) });
                                         }
@@ -350,7 +350,7 @@ namespace Juego_version_1
                                         p.AñadirParticipante(mensaje[6], 3);
                                     }
                                     Partidas[Convert.ToInt32(mensaje[2])] = p;
-                                    Thread.Sleep(300);
+                                    Thread.Sleep(600);
                                     ActualizarPartidasEnForms(Convert.ToInt32(mensaje[2]));
                                     formularios[Convert.ToInt32(mensaje[2])].ActualizarJugadores(Conectados);
                                     
@@ -399,6 +399,7 @@ namespace Juego_version_1
                                         else
                                         {
                                             apuesta = Convert.ToInt32(mensaje[4]);
+                                            formularios[numPartida].valorapuesta(apuesta);
                                             formularios[numPartida].CambiarBotones(4);
                                         }
                                         break;
@@ -410,6 +411,7 @@ namespace Juego_version_1
                                         else
                                         {
                                             apuesta = Convert.ToInt32(mensaje[4]);
+                                            formularios[numPartida].valorapuesta(apuesta);
                                             formularios[numPartida].CambiarBotones(4);
                                         }
                                         break;
@@ -424,6 +426,7 @@ namespace Juego_version_1
                                         else
                                         {
                                             apuesta = Convert.ToInt32(mensaje[4]);
+                                            formularios[numPartida].valorapuesta(apuesta);
                                             formularios[numPartida].CambiarBotones(4);
                                         }
                                         break;
@@ -438,6 +441,7 @@ namespace Juego_version_1
                                         else
                                         {
                                             apuesta = Convert.ToInt32(mensaje[4]);
+                                            formularios[numPartida].valorapuesta(apuesta);
                                             formularios[numPartida].CambiarBotones(4);
                                         }
                                         break;
@@ -449,6 +453,7 @@ namespace Juego_version_1
                                         else
                                         {
                                             apuesta = Convert.ToInt32(mensaje[4]);
+                                            formularios[numPartida].valorapuesta(apuesta);
                                             formularios[numPartida].CambiarBotones(4);
                                         }
                                         break;
@@ -468,7 +473,7 @@ namespace Juego_version_1
                                     case 3:
                                     case 4:
                                         caso = mensaje[3];
-                                        jugador = Convert.ToInt32(mensaje[4]);
+                                        jugador = Convert.ToInt32(mensaje[3]);
                                         formularios[numPartida].Bocatas(mensaje[5], jugador);
                                         break;
                                     case 11:

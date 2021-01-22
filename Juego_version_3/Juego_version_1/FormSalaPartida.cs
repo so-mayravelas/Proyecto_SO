@@ -235,6 +235,10 @@ namespace Juego_version_1
         {
             hijosForm.cambBotones(tipoRonda);
         }
+        public void valorapuesta(int a)
+        {
+            hijosForm.ValorApuesta(a);
+        }
         public void Repartir(int numjugador, int[] c)
         {
             hijosForm.repartir(numjugador, c);

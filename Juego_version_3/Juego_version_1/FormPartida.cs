@@ -20,6 +20,7 @@ namespace Juego_version_1
         delegate void DelegadoBotones(int i);
         delegate void DelegadoBocatas(string texto, int num);
         Partida partida;
+        int apuesta;
         int ronda;
         int numPartida;
         int jugador;
@@ -43,9 +44,13 @@ namespace Juego_version_1
         {
             this.partida = p;
         }
+        public void ValorApuesta(int a)
+        {
+            this.apuesta = a;
+        }
         public void repartir(int numjugador, int[] c)
         {
-            partida.AsignarCartas(numjugador, c);
+            this.partida.AsignarCartas(numjugador, c);
         }
         
         public void rondas(int Ronda)
@@ -192,13 +197,40 @@ namespace Juego_version_1
                     mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/MUS" ;
                     break;
                 case 2:
-                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/NO";
+                    if(button1.Text=="Paso")
+                        mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/PASO";
+                    else
+                        mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/NO QUIERO" + "/" + apuesta;
                     break;
                 case 3:
-                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/PASO";
+                    if (button1.Text == "Paso")
+                        mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/PASO";
+                    else
+                        mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/NO QUIERO" + "/" + apuesta;
                     break;
                 case 4:
-                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/NO QUIERO";
+                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/NO";
+                    break;
+                case 5:
+                    if (button1.Text == "Paso")
+                        mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/PASO";
+                    else
+                        mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/NO QUIERO" + "/" + apuesta;
+                    break;
+                case 6:
+                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/NO";
+                    break;
+                case 7:
+                    if (button1.Text == "Paso")
+                        mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/PASO";
+                    else
+                        mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/NO QUIERO" + "/" + apuesta;
+                    break;
+                case 8:
+                    if (button1.Text == "Paso")
+                        mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/PASO";
+                    else
+                        mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/NO QUIERO" + "/" + apuesta;
                     break;
             }
 
@@ -213,14 +245,7 @@ namespace Juego_version_1
             CambiarBotones(-1);
             string mensaje = "";
             byte[] msg;
-            switch (ronda)
-            {
-                case 4:
-                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/QUIERO";
-                    break;
-            }
-
-
+            mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/QUIERO" + "/" + apuesta;
             // Enviamos al servidor los nombres de usuario
             msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             socket.Send(msg);
@@ -230,6 +255,7 @@ namespace Juego_version_1
         {
             CambiarBotones(-1);
             string mensaje = "";
+            int apt;
             byte[] msg;
             switch (ronda)
             {
@@ -237,16 +263,33 @@ namespace Juego_version_1
                     mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/NO";
                     break;
                 case 1:
-                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/A/" +Convert.ToInt32(hScrollBar1.Value);
+                    //Mensaje Cartas
                     break;
                 case 2:
-                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/SI";
+                    apt = apuesta + Convert.ToInt32(hScrollBar1.Value);
+                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/APUESTO/" + apt;
                     break;
                 case 3:
-                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/APUESTO/" + Convert.ToInt32(hScrollBar1.Value);
+                    apt = apuesta + Convert.ToInt32(hScrollBar1.Value);
+                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/APUESTO/" + apt;
                     break;
                 case 4:
-                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/APUESTO/" + Convert.ToInt32(hScrollBar1.Value);
+                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/SI";
+                    break;
+                case 5:
+                    apt = apuesta + Convert.ToInt32(hScrollBar1.Value);
+                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/APUESTO/" + apt;
+                    break;
+                case 6:
+                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/SI";
+                    break;
+                case 7:
+                    apt = apuesta + Convert.ToInt32(hScrollBar1.Value);
+                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/APUESTO/" + apt;
+                    break;
+                case 8:
+                    apt = apuesta + Convert.ToInt32(hScrollBar1.Value);
+                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/APUESTO/" + apt;
                     break;
             }
 
