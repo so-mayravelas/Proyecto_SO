@@ -247,11 +247,19 @@ namespace Juego_version_1
         {
             hijosForm.rondas(Ronda);
         }
-        public void Bocatas(string texto, int jugador)
+        public void Bocatas(string texto, int jugador,int ronda)
         {
+            if (ronda!= hijosForm.rondaDevol())
+            {
+                hijosForm.bocatas(texto, 8);
+                hijosForm.rondas(ronda);
+            }
             hijosForm.bocatas(texto, jugador);
         }
-
+        public void Cartas(int inicio)
+        {
+            hijosForm.cartasJugador(inicio);
+        }
         private void dataGridView4_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 

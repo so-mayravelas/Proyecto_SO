@@ -49,7 +49,10 @@ namespace Juego_version_1
         public string DameParticipante(int i) {
             return Participantes[i];
         }
-
+        public int DameCarta(int jugador,int carta)
+        {
+            return this.Cartas[jugador,carta];
+        }
         public int DameNum()
         {
             return Count;

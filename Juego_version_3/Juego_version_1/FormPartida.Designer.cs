@@ -37,6 +37,7 @@ namespace Juego_version_1
             this.textBoxComentario = new System.Windows.Forms.TextBox();
             this.textBoxChat = new System.Windows.Forms.TextBox();
             this.finjuegopanel1 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -76,9 +77,8 @@ namespace Juego_version_1
             this.jizquierda_label = new System.Windows.Forms.Label();
             this.jsuperior_label = new System.Windows.Forms.Label();
             this.jderecha_label = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Chat_panel1.SuspendLayout();
             this.groupBoxChat.SuspendLayout();
             this.finjuegopanel1.SuspendLayout();
@@ -198,6 +198,18 @@ namespace Juego_version_1
             this.finjuegopanel1.Name = "finjuegopanel1";
             this.finjuegopanel1.Size = new System.Drawing.Size(1132, 749);
             this.finjuegopanel1.TabIndex = 1;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label5.Font = new System.Drawing.Font("Comic Sans MS", 25.25F);
+            this.label5.Location = new System.Drawing.Point(570, 385);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(115, 47);
+            this.label5.TabIndex = 24;
+            this.label5.Text = "label5";
+            this.label5.Visible = false;
             // 
             // label4
             // 
@@ -587,31 +599,19 @@ namespace Juego_version_1
             this.jderecha_label.TabIndex = 6;
             this.jderecha_label.Text = "Derecha";
             // 
-            // timer1
-            // 
-            this.timer1.Interval = 1000;
-            // 
             // pictureBox16
             // 
             this.pictureBox16.Image = global::Juego_version_1.Properties.Resources.bocata3;
-            this.pictureBox16.Location = new System.Drawing.Point(632, 337);
+            this.pictureBox16.Location = new System.Drawing.Point(527, 344);
             this.pictureBox16.Name = "pictureBox16";
             this.pictureBox16.Size = new System.Drawing.Size(196, 144);
             this.pictureBox16.TabIndex = 23;
             this.pictureBox16.TabStop = false;
             this.pictureBox16.Visible = false;
             // 
-            // label5
+            // timer1
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label5.Font = new System.Drawing.Font("Comic Sans MS", 25.25F);
-            this.label5.Location = new System.Drawing.Point(680, 369);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(115, 47);
-            this.label5.TabIndex = 24;
-            this.label5.Text = "label5";
-            this.label5.Visible = false;
+            this.timer1.Interval = 1000;
             // 
             // FormPartida
             // 

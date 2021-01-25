@@ -215,6 +215,7 @@ namespace Juego_version_1
                     string caso;
                     int apuesta;
                     int jugador;
+
                     server.Receive(msg);
                     mensajeC = Encoding.ASCII.GetString(msg).Split('\0')[0];
                     mensaje = mensajeC.Split('/');
@@ -465,23 +466,35 @@ namespace Juego_version_1
                                 switch (ronda)
                                 {
                                     case 0:
+                                        jugador = Convert.ToInt32(mensaje[3]);
+                                        formularios[numPartida].Bocatas(mensaje[4], jugador, ronda);
+                                        break;
                                     case 1:
+                                        jugador = Convert.ToInt32(mensaje[3]);
+                                        formularios[numPartida].Bocatas(mensaje[4], jugador,ronda);
+                                        break;
                                     case 2:
                                         jugador = Convert.ToInt32(mensaje[3]);
-                                        formularios[numPartida].Bocatas(mensaje[4], jugador);
+                                        formularios[numPartida].Bocatas(mensaje[4], jugador, ronda);
                                         break;
                                     case 3:
+                                        jugador = Convert.ToInt32(mensaje[3]);
+                                        formularios[numPartida].Bocatas(mensaje[4], jugador, ronda);
+                                        break;
                                     case 4:
                                         caso = mensaje[3];
                                         jugador = Convert.ToInt32(mensaje[3]);
-                                        formularios[numPartida].Bocatas(mensaje[5], jugador);
+                                        formularios[numPartida].Bocatas(mensaje[4], jugador, ronda);
                                         break;
                                     case 11:
-                                        int numjugador = Convert.ToInt32(mensaje[3]);
-                                        int[] cartas = { Convert.ToInt32(mensaje[4]), Convert.ToInt32(mensaje[5]), Convert.ToInt32(mensaje[6]), Convert.ToInt32(mensaje[7]) };
-                                        formularios[numPartida].Repartir(numjugador, cartas);
-                                        break;
-                                 
+                                        for (int i = 0; i < 4; i++)
+                                        {
+                                            int[] cartas = { Convert.ToInt32(mensaje[3+i*4]), Convert.ToInt32(mensaje[4 + i * 4]), Convert.ToInt32(mensaje[5 + i * 4]), Convert.ToInt32(mensaje[6 + i * 4]) };
+                                            formularios[numPartida].Repartir(i, cartas);
+                                        }
+
+                                        formularios[numPartida].Cartas(0);
+                                        break;                                 
                                 }
                                 break;
                         }
