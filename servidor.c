@@ -308,7 +308,7 @@ int SumarPuntos(int numPartida, int Pareja, int Puntos)
 				sprintf(mensaje,"11/%d/12/%d/%d/%d/%d",numPartida,milistaPartidas.partidas[numPartida].Puntos[0],milistaPartidas.partidas[numPartida].Puntos[1],milistaPartidas.partidas[numPartida].Puntos[2],milistaPartidas.partidas[numPartida].Puntos[3]);
 				printf("Notificacion: %s\n", mensaje);
 				EnviarAPatida("", mensaje , numPartida);
-				usleep(50000);
+				usleep(80000);
 				return -10;
 			}
 			else
@@ -316,14 +316,14 @@ int SumarPuntos(int numPartida, int Pareja, int Puntos)
 				sprintf(mensaje,"11/%d/12/%d/%d/%d/%d",numPartida,milistaPartidas.partidas[numPartida].Puntos[0],milistaPartidas.partidas[numPartida].Puntos[1],milistaPartidas.partidas[numPartida].Puntos[2],milistaPartidas.partidas[numPartida].Puntos[3]);
 				printf("Notificacion: %s\n", mensaje);
 				EnviarAPatida("", mensaje , numPartida);
-				usleep(50000);
+				usleep(80000);
 				return -11;
 			}
 		}
 		sprintf(mensaje,"11/%d/12/%d/%d/%d/%d",numPartida,milistaPartidas.partidas[numPartida].Puntos[0],milistaPartidas.partidas[numPartida].Puntos[1],milistaPartidas.partidas[numPartida].Puntos[2],milistaPartidas.partidas[numPartida].Puntos[3]);
 		printf("Notificacion: %s\n", mensaje);
 		EnviarAPatida("", mensaje , numPartida);
-		usleep(50000);
+		usleep(80000);
 		return -1;
 	}
 	else
@@ -334,7 +334,7 @@ int SumarPuntos(int numPartida, int Pareja, int Puntos)
 		sprintf(mensaje,"11/%d/12/%d/%d/%d/%d",numPartida,milistaPartidas.partidas[numPartida].Puntos[0],milistaPartidas.partidas[numPartida].Puntos[1],milistaPartidas.partidas[numPartida].Puntos[2],milistaPartidas.partidas[numPartida].Puntos[3]);
 		printf("Notificacion: %s\n", mensaje);
 		EnviarAPatida("", mensaje , numPartida);
-		usleep(50000);
+		usleep(80000);
 		return 0;
 	}
 }
@@ -353,7 +353,7 @@ int Puntos(int numPartida, int jugador, int ronda)
 			sprintf(mensaje,"11/%d/12/%d/%d/%d/%d",numPartida,milistaPartidas.partidas[numPartida].Puntos[0],milistaPartidas.partidas[numPartida].Puntos[1],milistaPartidas.partidas[numPartida].Puntos[2],milistaPartidas.partidas[numPartida].Puntos[3]);
 			printf("Notificacion: %s\n", mensaje);
 			EnviarAPatida("", mensaje , numPartida);
-			usleep(50000);
+			usleep(80000);
 			return 0;
 		}
 		else
@@ -365,7 +365,7 @@ int Puntos(int numPartida, int jugador, int ronda)
 		sprintf(mensaje,"11/%d/12/%d/%d/%d/%d",numPartida,milistaPartidas.partidas[numPartida].Puntos[0],milistaPartidas.partidas[numPartida].Puntos[1],milistaPartidas.partidas[numPartida].Puntos[2],milistaPartidas.partidas[numPartida].Puntos[3]);
 		printf("Notificacion: %s\n", mensaje);
 		EnviarAPatida("", mensaje , numPartida);
-		usleep(50000);
+		usleep(80000);
 		return 0;
 	}
 	
@@ -461,7 +461,7 @@ int ContarPuntos(int numPartida)
 		else if(c==-1)
 			return -1;
 	}
-	//Repartimos los puntos de PequeÃ±a
+	//Repartimos los puntos de Pequeña
 	p = milistaPartidas.partidas[numPartida].Mano[0];
 	for(int i=1;i<4;i++)
 	{
@@ -500,10 +500,495 @@ int ContarPuntos(int numPartida)
 		else if(c==-1)
 			return -1;
 	}
-	//Repartimos los puntos de Pares si es que hay
-	if(hayPares(numPartida)==1)
+	//Repartimos los puntos de Pares si es que los hay
+	int pares = hayPares(numPartida);
+	printf ("hayPares: %d\n", pares);
+	if(pares==1)
 	{
-		
+		int p;
+		int pp[2]={0,0};
+		int l;
+		for(int a=0;a<4;a++)
+		{
+			p = milistaPartidas.partidas[numPartida].Mano[a];
+			if(milistaPartidas.partidas[numPartida].Pares[p]==1)
+			{
+				for(int i=0;i<3;i++)
+				{
+					if(milistaPartidas.partidas[numPartida].jugadores[p].Cartas[i]==milistaPartidas.partidas[numPartida].jugadores[p].Cartas[i+1])
+					{
+						if(pp[0]==0)
+						{
+							pp[0]=1;
+							pp[1]=milistaPartidas.partidas[numPartida].jugadores[p].Cartas[i];
+						}
+						else if(pp[0]==1 && milistaPartidas.partidas[numPartida].jugadores[p].Cartas[i]==milistaPartidas.partidas[numPartida].jugadores[p].Cartas[i-1])
+						{
+							pp[0]=2;
+							pp[1]=milistaPartidas.partidas[numPartida].jugadores[p].Cartas[i];
+						}
+						else
+						{
+							pp[0]=3;
+							pp[1]=milistaPartidas.partidas[numPartida].jugadores[p].Cartas[i-1]*100+milistaPartidas.partidas[numPartida].jugadores[p].Cartas[i];
+						}
+					}
+				}
+				l=a;
+				a=4;
+			}
+		}
+		for(int a=l+1;a<4;a++)
+		{
+			int q = milistaPartidas.partidas[numPartida].Mano[a];
+			int qp[2]={0,0};
+			if(milistaPartidas.partidas[numPartida].Pares[q]==1)
+			{
+				for(int i=0;i<3;i++)
+				{
+					if(milistaPartidas.partidas[numPartida].jugadores[q].Cartas[i]==milistaPartidas.partidas[numPartida].jugadores[q].Cartas[i+1])
+					{
+						if(qp[0]==0)
+						{
+							qp[0]=1;
+							qp[1]=milistaPartidas.partidas[numPartida].jugadores[q].Cartas[i];
+						}
+						else if(qp[0]==1 && milistaPartidas.partidas[numPartida].jugadores[q].Cartas[i]==milistaPartidas.partidas[numPartida].jugadores[q].Cartas[i-1])
+						{
+							qp[0]=2;
+							qp[1]=milistaPartidas.partidas[numPartida].jugadores[q].Cartas[i];
+						}
+						else
+						{
+							qp[0]=3;
+							qp[1]=milistaPartidas.partidas[numPartida].jugadores[q].Cartas[i-1]*100+milistaPartidas.partidas[numPartida].jugadores[q].Cartas[i];
+						}
+					}
+				}
+				if(qp[0]>pp[0] && qp[1]>pp[1])
+				{
+					p=q;
+					pp[0]=qp[0];
+					pp[1]=qp[1];
+				}
+			}
+		}
+		if(p==0 || p==2)
+		{
+			if(milistaPartidas.partidas[numPartida].Pares[0]==1)
+			{
+				int qp[2]={0,0};
+				for(int i=0;i<3;i++)
+				{
+					if(milistaPartidas.partidas[numPartida].jugadores[0].Cartas[i]==milistaPartidas.partidas[numPartida].jugadores[0].Cartas[i+1])
+					{
+						if(qp[0]==0)
+						{
+							qp[0]=1;
+							qp[1]=milistaPartidas.partidas[numPartida].jugadores[0].Cartas[i];
+						}
+						else if(qp[0]==1 && milistaPartidas.partidas[numPartida].jugadores[0].Cartas[i]==milistaPartidas.partidas[numPartida].jugadores[0].Cartas[i-1])
+						{
+							qp[0]=2;
+							qp[1]=milistaPartidas.partidas[numPartida].jugadores[0].Cartas[i];
+						}
+						else
+						{
+							qp[0]=3;
+							qp[1]=milistaPartidas.partidas[numPartida].jugadores[0].Cartas[i-1]*100+milistaPartidas.partidas[numPartida].jugadores[0].Cartas[i];
+						}
+					}
+				}
+				if(qp[0]==3)
+				{
+					int c = SumarPuntos(numPartida,0,3);
+					if(c==-10)
+						return -10;
+					else if(c==-1)
+						return -1;
+				}
+				if(qp[0]==2)
+				{
+					int c = SumarPuntos(numPartida,0,2);
+					if(c==-10)
+						return -10;
+					else if(c==-1)
+						return -1;
+				}
+				else
+				{
+					int c = SumarPuntos(numPartida,0,1);
+					if(c==-10)
+						return -10;
+					else if(c==-1)
+						return -1;
+				}
+			}
+			if(milistaPartidas.partidas[numPartida].Pares[2]==1)
+			{
+				int qp[2]={0,0};
+				for(int i=0;i<3;i++)
+				{
+					if(milistaPartidas.partidas[numPartida].jugadores[2].Cartas[i]==milistaPartidas.partidas[numPartida].jugadores[2].Cartas[i+1])
+					{
+						if(qp[0]==0)
+						{
+							qp[0]=1;
+							qp[1]=milistaPartidas.partidas[numPartida].jugadores[2].Cartas[i];
+						}
+						else if(qp[0]==1 && milistaPartidas.partidas[numPartida].jugadores[2].Cartas[i]==milistaPartidas.partidas[numPartida].jugadores[2].Cartas[i-1])
+						{
+							qp[0]=2;
+							qp[1]=milistaPartidas.partidas[numPartida].jugadores[2].Cartas[i];
+						}
+						else
+						{
+							qp[0]=3;
+							qp[1]=milistaPartidas.partidas[numPartida].jugadores[2].Cartas[i-1]*100+milistaPartidas.partidas[numPartida].jugadores[2].Cartas[i];
+						}
+					}
+				}
+				if(qp[0]==3)
+				{
+					int c = SumarPuntos(numPartida,0,3);
+					if(c==-10)
+						return -10;
+					else if(c==-1)
+						return -1;
+				}
+				if(qp[0]==2)
+				{
+					int c = SumarPuntos(numPartida,0,2);
+					if(c==-10)
+						return -10;
+					else if(c==-1)
+						return -1;
+				}
+				else
+				{
+					int c = SumarPuntos(numPartida,0,1);
+					if(c==-10)
+						return -10;
+					else if(c==-1)
+						return -1;
+				}
+			}
+			int c = Puntos(numPartida,3,3);
+			if(c==-10)
+				return -10;
+			else if(c==-1)
+				return -1;
+		}
+		else
+		{
+			if(milistaPartidas.partidas[numPartida].Pares[1]==1)
+			{
+				int qp[2]={0,0};
+				for(int i=0;i<3;i++)
+				{
+					if(milistaPartidas.partidas[numPartida].jugadores[1].Cartas[i]==milistaPartidas.partidas[numPartida].jugadores[1].Cartas[i+1])
+					{
+						if(qp[0]==0)
+						{
+							qp[0]=1;
+							qp[1]=milistaPartidas.partidas[numPartida].jugadores[1].Cartas[i];
+						}
+						else if(qp[0]==1 && milistaPartidas.partidas[numPartida].jugadores[1].Cartas[i]==milistaPartidas.partidas[numPartida].jugadores[1].Cartas[i-1])
+						{
+							qp[0]=2;
+							qp[1]=milistaPartidas.partidas[numPartida].jugadores[1].Cartas[i];
+						}
+						else
+						{
+							qp[0]=3;
+							qp[1]=milistaPartidas.partidas[numPartida].jugadores[1].Cartas[i-1]*100+milistaPartidas.partidas[numPartida].jugadores[1].Cartas[i];
+						}
+					}
+				}
+				if(qp[0]==3)
+				{
+					int c = SumarPuntos(numPartida,1,3);
+					if(c==-11)
+						return -11;
+					else if(c==-1)
+						return -1;
+				}
+				if(qp[0]==2)
+				{
+					int c = SumarPuntos(numPartida,1,2);
+					if(c==-11)
+						return -11;
+					else if(c==-1)
+						return -1;
+				}
+				else
+				{
+					int c = SumarPuntos(numPartida,1,1);
+					if(c==-11)
+						return -11;
+					else if(c==-1)
+						return -1;
+				}
+			}
+			if(milistaPartidas.partidas[numPartida].Pares[3]==1)
+			{
+				int qp[2]={0,0};
+				for(int i=0;i<3;i++)
+				{
+					if(milistaPartidas.partidas[numPartida].jugadores[3].Cartas[i]==milistaPartidas.partidas[numPartida].jugadores[3].Cartas[i+1])
+					{
+						if(pp[0]==0)
+						{
+							qp[0]=1;
+							qp[1]=milistaPartidas.partidas[numPartida].jugadores[3].Cartas[i];
+						}
+						else if(qp[0]==1 && milistaPartidas.partidas[numPartida].jugadores[3].Cartas[i]==milistaPartidas.partidas[numPartida].jugadores[3].Cartas[i-1])
+						{
+							qp[0]=2;
+							qp[1]=milistaPartidas.partidas[numPartida].jugadores[3].Cartas[i];
+						}
+						else
+						{
+							qp[0]=3;
+							qp[1]=milistaPartidas.partidas[numPartida].jugadores[3].Cartas[i-1]*100+milistaPartidas.partidas[numPartida].jugadores[3].Cartas[i];
+						}
+					}
+				}
+				if(qp[0]==3)
+				{
+					int c = SumarPuntos(numPartida,1,3);
+					if(c==-11)
+						return -11;
+					else if(c==-1)
+						return -1;
+				}
+				if(qp[0]==2)
+				{
+					int c = SumarPuntos(numPartida,1,2);
+					if(c==-11)
+						return -11;
+					else if(c==-1)
+						return -1;
+				}
+				else
+				{
+					int c = SumarPuntos(numPartida,1,1);
+					if(c==-11)
+						return -11;
+					else if(c==-1)
+						return -1;
+				}
+			}
+			int c = Puntos(numPartida,2,3);
+			if(c==-11)
+				return -11;
+			else if(c==-1)
+				return -1;
+		}
+	}
+	
+	else if(pares==2)
+	{
+		if(milistaPartidas.partidas[numPartida].Pares[0]==1)
+		{
+			int qp[2]={0,0};
+			for(int i=0;i<3;i++)
+			{
+				if(milistaPartidas.partidas[numPartida].jugadores[0].Cartas[i]==milistaPartidas.partidas[numPartida].jugadores[0].Cartas[i+1])
+				{
+					if(qp[0]==0)
+					{
+						qp[0]=1;
+						qp[1]=milistaPartidas.partidas[numPartida].jugadores[0].Cartas[i];
+					}
+					else if(qp[0]==1 && milistaPartidas.partidas[numPartida].jugadores[0].Cartas[i]==milistaPartidas.partidas[numPartida].jugadores[0].Cartas[i-1])
+					{
+						qp[0]=2;
+						qp[1]=milistaPartidas.partidas[numPartida].jugadores[0].Cartas[i];
+					}
+					else
+					{
+						qp[0]=3;
+						qp[1]=milistaPartidas.partidas[numPartida].jugadores[0].Cartas[i-1]*100+milistaPartidas.partidas[numPartida].jugadores[0].Cartas[i];
+					}
+				}
+			}
+			if(qp[0]==3)
+			{
+				int c = SumarPuntos(numPartida,0,3);
+				if(c==-10)
+					return -10;
+				else if(c==-1)
+					return -1;
+			}
+			if(qp[0]==2)
+			{
+				int c = SumarPuntos(numPartida,0,2);
+				if(c==-10)
+					return -10;
+				else if(c==-1)
+					return -1;
+			}
+			else
+			{
+				int c = SumarPuntos(numPartida,0,1);
+				if(c==-10)
+					return -10;
+				else if(c==-1)
+					return -1;
+			}
+		}
+		if(milistaPartidas.partidas[numPartida].Pares[2]==1)
+		{
+			int qp[2]={0,0};
+			for(int i=0;i<3;i++)
+			{
+				if(milistaPartidas.partidas[numPartida].jugadores[2].Cartas[i]==milistaPartidas.partidas[numPartida].jugadores[2].Cartas[i+1])
+				{
+					if(qp[0]==0)
+					{
+						qp[0]=1;
+						qp[1]=milistaPartidas.partidas[numPartida].jugadores[2].Cartas[i];
+					}
+					else if(qp[0]==1 && milistaPartidas.partidas[numPartida].jugadores[2].Cartas[i]==milistaPartidas.partidas[numPartida].jugadores[2].Cartas[i-1])
+					{
+						qp[0]=2;
+						qp[1]=milistaPartidas.partidas[numPartida].jugadores[2].Cartas[i];
+					}
+					else
+					{
+						qp[0]=3;
+						qp[1]=milistaPartidas.partidas[numPartida].jugadores[2].Cartas[i-1]*100+milistaPartidas.partidas[numPartida].jugadores[2].Cartas[i];
+					}
+				}
+			}
+			if(qp[0]==3)
+			{
+				int c = SumarPuntos(numPartida,0,3);
+				if(c==-10)
+					return -10;
+				else if(c==-1)
+					return -1;
+			}
+			if(qp[0]==2)
+			{
+				int c = SumarPuntos(numPartida,0,2);
+				if(c==-10)
+					return -10;
+				else if(c==-1)
+					return -1;
+			}
+			else
+			{
+				int c = SumarPuntos(numPartida,0,1);
+				if(c==-10)
+					return -10;
+				else if(c==-1)
+					return -1;
+			}
+		}
+	}
+
+	else if(pares==3)
+	{
+		if(milistaPartidas.partidas[numPartida].Pares[1]==1)
+		{
+			int qp[2]={0,0};
+			for(int i=0;i<3;i++)
+			{
+				if(milistaPartidas.partidas[numPartida].jugadores[1].Cartas[i]==milistaPartidas.partidas[numPartida].jugadores[1].Cartas[i+1])
+				{
+					if(qp[0]==0)
+					{
+						qp[0]=1;
+						qp[1]=milistaPartidas.partidas[numPartida].jugadores[1].Cartas[i];
+					}
+					else if(qp[0]==1 && milistaPartidas.partidas[numPartida].jugadores[1].Cartas[i]==milistaPartidas.partidas[numPartida].jugadores[1].Cartas[i-1])
+					{
+						qp[0]=2;
+						qp[1]=milistaPartidas.partidas[numPartida].jugadores[1].Cartas[i];
+					}
+					else
+					{
+						qp[0]=3;
+						qp[1]=milistaPartidas.partidas[numPartida].jugadores[1].Cartas[i-1]*100+milistaPartidas.partidas[numPartida].jugadores[1].Cartas[i];
+					}
+				}
+			}
+			if(qp[0]==3)
+			{
+				int c = SumarPuntos(numPartida,1,3);
+				if(c==-11)
+					return -11;
+				else if(c==-1)
+					return -1;
+			}
+			if(qp[0]==2)
+			{
+				int c = SumarPuntos(numPartida,1,2);
+				if(c==-11)
+					return -11;
+				else if(c==-1)
+					return -1;
+			}
+			else
+			{
+				int c = SumarPuntos(numPartida,1,1);
+				if(c==-11)
+					return -11;
+				else if(c==-1)
+					return -1;
+			}
+		}
+		if(milistaPartidas.partidas[numPartida].Pares[3]==1)
+		{
+			int qp[2]={0,0};
+			for(int i=0;i<3;i++)
+			{
+				if(milistaPartidas.partidas[numPartida].jugadores[3].Cartas[i]==milistaPartidas.partidas[numPartida].jugadores[3].Cartas[i+1])
+				{
+					if(qp[0]==0)
+					{
+						qp[0]=1;
+						qp[1]=milistaPartidas.partidas[numPartida].jugadores[3].Cartas[i];
+					}
+					else if(qp[0]==1 && milistaPartidas.partidas[numPartida].jugadores[3].Cartas[i]==milistaPartidas.partidas[numPartida].jugadores[3].Cartas[i-1])
+					{
+						qp[0]=2;
+						qp[1]=milistaPartidas.partidas[numPartida].jugadores[3].Cartas[i];
+					}
+					else
+					{
+						qp[0]=3;
+						qp[1]=milistaPartidas.partidas[numPartida].jugadores[3].Cartas[i-1]*100+milistaPartidas.partidas[numPartida].jugadores[3].Cartas[i];
+					}
+				}
+			}
+			if(qp[0]==3)
+			{
+				int c = SumarPuntos(numPartida,1,3);
+				if(c==-11)
+					return -11;
+				else if(c==-1)
+					return -1;
+			}
+			if(qp[0]==2)
+			{
+				int c = SumarPuntos(numPartida,1,2);
+				if(c==-11)
+					return -11;
+				else if(c==-1)
+					return -1;
+			}
+			else
+			{
+				int c = SumarPuntos(numPartida,1,1);
+				if(c==-11)
+					return -11;
+				else if(c==-1)
+					return -1;
+			}
+		}
 	}
 	//Repartimos los puntos de Juego si es que hay
 	int juego = hayJuego(numPartida);
@@ -2096,7 +2581,7 @@ void* AtenderCliente (void* sock)
 					else
 					{
 						sprintf(Respuesta, "10/%d/6", numPartida);
-						EnviarSiguienteJugador(numPartida, Respuesta, DamejugadorPosicion(numPartida,jugador));
+						EnviarSiguienteJugador(numPartida, Respuesta, jugador);
 					}
 				}
 				else
