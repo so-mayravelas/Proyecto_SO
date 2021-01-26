@@ -26,6 +26,7 @@ namespace Juego_version_1
         int numPartida;
         int jugador;
         Socket socket;
+        int[] descartes= { 0,0,0,0,0};
 
         public FormPartida(Socket socket,int numPartida)
         {
@@ -304,6 +305,8 @@ namespace Juego_version_1
             {
 
                 cartas = Repartir(pos[0]);
+                for (int i = 0; i < 4; i++)
+                    cartas[i].RotateFlip(RotateFlipType.Rotate90FlipNone);
                 pictureBox8.Image = cartas[0];
                 pictureBox13.Image = cartas[1];
                 pictureBox6.Image = cartas[2];
@@ -316,6 +319,8 @@ namespace Juego_version_1
                 pictureBox4.Image = cartas[3];
 
                 cartas = Repartir(pos[2]);
+                for (int i = 0; i < 4; i++)
+                    cartas[i].RotateFlip(RotateFlipType.Rotate270FlipNone);
                 pictureBox15.Image = cartas[0];
                 pictureBox14.Image = cartas[1];
                 pictureBox11.Image = cartas[2];
@@ -425,6 +430,7 @@ namespace Juego_version_1
                 case 0:
                     mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/MUS" ;
                     break;
+
                 case 2:
                     if(button1.Text=="Paso")
                         mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/PASO";
@@ -492,7 +498,21 @@ namespace Juego_version_1
                     mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/NO";
                     break;
                 case 1:
-                    //Mensaje Cartas
+                    if (descartes[0] > 0)
+                    {
+                        for (int i = 0; i < 4; i++)
+                            mensaje = 0 != descartes[i + 1] ? mensaje + "/" + i : mensaje + "";
+                        mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/" + Convert.ToString(descartes[0]) + mensaje;
+                        descartes[0] = 0;
+                        descartes[1] = 0;
+                        descartes[2] = 0;
+                        descartes[3] = 0;
+                        descartes[4] = 0;
+                        pictureBox17.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                        pictureBox18.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                        pictureBox19.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                        pictureBox20.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                    }
                     break;
                 case 2:
                     apt = apuesta + Convert.ToInt32(hScrollBar1.Value);
@@ -535,6 +555,82 @@ namespace Juego_version_1
         private void hScrollBar1_ValueChanged(object sender, EventArgs e)
         {
             label1.Text = "Apuesta: " + Convert.ToInt32(hScrollBar1.Value);
+        }
+
+        private void pictureBox20_Click(object sender, EventArgs e)
+        {
+            if (ronda == 1)
+            {
+                if (pictureBox20.BorderStyle != System.Windows.Forms.BorderStyle.FixedSingle)
+                {
+                    pictureBox20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+                    descartes[1] = 1;
+                    descartes[0]++;
+                }
+                else
+                {
+                    pictureBox20.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                    descartes[1] = 0;
+                    descartes[0]--;
+                }
+            }
+        }
+
+        private void pictureBox19_Click(object sender, EventArgs e)
+        {
+            if (ronda == 1)
+            {
+                if (pictureBox19.BorderStyle != System.Windows.Forms.BorderStyle.FixedSingle)
+                {
+                    pictureBox19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+                    descartes[2] = 1;
+                    descartes[0]++;
+                }
+                else
+                {
+                    pictureBox19.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                    descartes[2] = 0;
+                    descartes[0]--;
+                }
+            }
+        }
+
+        private void pictureBox18_Click(object sender, EventArgs e)
+        {
+            if (ronda == 1)
+            {
+                if (pictureBox18.BorderStyle != System.Windows.Forms.BorderStyle.FixedSingle)
+                {
+                    pictureBox18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+                    descartes[3] = 1;
+                    descartes[0]++;
+                }
+                else
+                {
+                    pictureBox18.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                    descartes[3] = 0;
+                    descartes[0]--;
+                }
+            }
+        }
+
+        private void pictureBox17_Click(object sender, EventArgs e)
+        {
+            if (ronda == 1)
+            {
+                if (pictureBox17.BorderStyle != System.Windows.Forms.BorderStyle.FixedSingle)
+                {
+                    pictureBox17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+                    descartes[4] = 1;
+                    descartes[0]++;
+                }
+                else
+                {
+                    pictureBox17.BorderStyle = System.Windows.Forms.BorderStyle.None;
+                    descartes[4] = 0;
+                    descartes[0]--;
+                }
+            }
         }
     }
 }

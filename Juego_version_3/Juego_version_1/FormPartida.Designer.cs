@@ -31,6 +31,8 @@ namespace Juego_version_1
         {
             this.components = new System.ComponentModel.Container();
             this.Chat_panel1 = new System.Windows.Forms.Panel();
+            this.labelP1 = new System.Windows.Forms.Label();
+            this.labelP0 = new System.Windows.Forms.Label();
             this.groupBoxChat = new System.Windows.Forms.GroupBox();
             this.labelChat = new System.Windows.Forms.Label();
             this.buttonChat = new System.Windows.Forms.Button();
@@ -79,8 +81,6 @@ namespace Juego_version_1
             this.jsuperior_label = new System.Windows.Forms.Label();
             this.jderecha_label = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.labelP0 = new System.Windows.Forms.Label();
-            this.labelP1 = new System.Windows.Forms.Label();
             this.Chat_panel1.SuspendLayout();
             this.groupBoxChat.SuspendLayout();
             this.finjuegopanel1.SuspendLayout();
@@ -121,6 +121,24 @@ namespace Juego_version_1
             this.Chat_panel1.Name = "Chat_panel1";
             this.Chat_panel1.Size = new System.Drawing.Size(238, 749);
             this.Chat_panel1.TabIndex = 0;
+            // 
+            // labelP1
+            // 
+            this.labelP1.AutoSize = true;
+            this.labelP1.Location = new System.Drawing.Point(29, 506);
+            this.labelP1.Name = "labelP1";
+            this.labelP1.Size = new System.Drawing.Size(35, 13);
+            this.labelP1.TabIndex = 28;
+            this.labelP1.Text = "label7";
+            // 
+            // labelP0
+            // 
+            this.labelP0.AutoSize = true;
+            this.labelP0.Location = new System.Drawing.Point(28, 474);
+            this.labelP0.Name = "labelP0";
+            this.labelP0.Size = new System.Drawing.Size(35, 13);
+            this.labelP0.TabIndex = 27;
+            this.labelP0.Text = "label6";
             // 
             // groupBoxChat
             // 
@@ -362,6 +380,7 @@ namespace Juego_version_1
             this.pictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox17.TabIndex = 11;
             this.pictureBox17.TabStop = false;
+            this.pictureBox17.Click += new System.EventHandler(this.pictureBox17_Click);
             // 
             // pictureBox18
             // 
@@ -372,6 +391,7 @@ namespace Juego_version_1
             this.pictureBox18.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox18.TabIndex = 10;
             this.pictureBox18.TabStop = false;
+            this.pictureBox18.Click += new System.EventHandler(this.pictureBox18_Click);
             // 
             // pictureBox19
             // 
@@ -382,6 +402,7 @@ namespace Juego_version_1
             this.pictureBox19.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox19.TabIndex = 10;
             this.pictureBox19.TabStop = false;
+            this.pictureBox19.Click += new System.EventHandler(this.pictureBox19_Click);
             // 
             // pictureBox20
             // 
@@ -392,6 +413,7 @@ namespace Juego_version_1
             this.pictureBox20.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox20.TabIndex = 9;
             this.pictureBox20.TabStop = false;
+            this.pictureBox20.Click += new System.EventHandler(this.pictureBox20_Click);
             // 
             // panel3
             // 
@@ -616,24 +638,6 @@ namespace Juego_version_1
             // timer1
             // 
             this.timer1.Interval = 1000;
-            // 
-            // labelP0
-            // 
-            this.labelP0.AutoSize = true;
-            this.labelP0.Location = new System.Drawing.Point(28, 474);
-            this.labelP0.Name = "labelP0";
-            this.labelP0.Size = new System.Drawing.Size(35, 13);
-            this.labelP0.TabIndex = 27;
-            this.labelP0.Text = "label6";
-            // 
-            // labelP1
-            // 
-            this.labelP1.AutoSize = true;
-            this.labelP1.Location = new System.Drawing.Point(29, 506);
-            this.labelP1.Name = "labelP1";
-            this.labelP1.Size = new System.Drawing.Size(35, 13);
-            this.labelP1.TabIndex = 28;
-            this.labelP1.Text = "label7";
             // 
             // FormPartida
             // 

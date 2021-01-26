@@ -1675,9 +1675,12 @@ void* AtenderCliente (void* sock)
 				{
 					p = strtok(NULL, "/");
 					int Carta = atoi(p);
-					Mus(numPartida,miNombre,Carta);
+					Mus(numPartida,jugador,Carta);
 				}
 				sprintf(Respuesta, "11/%d/1/%d/%d", numPartida, jugador, numCartas);
+				EnviarAPatida("", Respuesta, numPartida);//Notificamos a los jugadores lo que ha decidido
+				usleep(50000);
+				sprintf(Respuesta, "11/%d/10/%d/%d/%d/%d/%d", numPartida, jugador, milistaPartidas.partidas[numPartida].jugadores[jugador].Cartas[0],milistaPartidas.partidas[numPartida].jugadores[jugador].Cartas[1],milistaPartidas.partidas[numPartida].jugadores[jugador].Cartas[2],milistaPartidas.partidas[numPartida].jugadores[jugador].Cartas[3]);
 				EnviarAPatida("", Respuesta, numPartida);//Notificamos a los jugadores lo que ha decidido
 				usleep(50000);
 				if (jugador!=DamejugadorPosicion(numPartida,3))
@@ -2177,7 +2180,9 @@ void* AtenderCliente (void* sock)
 						EnviarCartas(numPartida);
 						sprintf(Respuesta, "10/%d/0", numPartida);
 						EnviarAMano(Respuesta, numPartida);
-						
+						usleep(50000);
+						sprintf(Respuesta, "11/%d/13", numPartida);
+						EnviarAPatida("",Respuesta, numPartida);
 					}
 				}
 				else
@@ -2213,6 +2218,9 @@ void* AtenderCliente (void* sock)
 								EnviarCartas(numPartida);
 								sprintf(Respuesta, "10/%d/0", numPartida);
 								EnviarAMano(Respuesta, numPartida);
+								usleep(50000);
+								sprintf(Respuesta, "11/%d/13", numPartida);
+								EnviarAPatida("",Respuesta, numPartida);
 								
 							}
 						}
@@ -2276,6 +2284,9 @@ void* AtenderCliente (void* sock)
 							EnviarCartas(numPartida);
 							sprintf(Respuesta, "10/%d/0", numPartida);
 							EnviarAMano(Respuesta, numPartida);
+							usleep(50000);
+							sprintf(Respuesta, "11/%d/13", numPartida);
+							EnviarAPatida("",Respuesta, numPartida);
 							
 						}
 					}
@@ -2327,6 +2338,9 @@ void* AtenderCliente (void* sock)
 						EnviarCartas(numPartida);
 						sprintf(Respuesta, "10/%d/0", numPartida);
 						EnviarAMano(Respuesta, numPartida);
+						usleep(50000);
+						sprintf(Respuesta, "11/%d/13", numPartida);
+						EnviarAPatida("",Respuesta, numPartida);
 						
 					}
 				}
@@ -2363,6 +2377,9 @@ void* AtenderCliente (void* sock)
 								EnviarCartas(numPartida);
 								sprintf(Respuesta, "10/%d/0", numPartida);
 								EnviarAMano(Respuesta, numPartida);
+								usleep(50000);
+								sprintf(Respuesta, "11/%d/13", numPartida);
+								EnviarAPatida("",Respuesta, numPartida);
 								
 							}
 						}
