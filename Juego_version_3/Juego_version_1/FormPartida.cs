@@ -549,12 +549,13 @@ namespace Juego_version_1
         }
         private void Puntuaciones(int[] puntos)
         {
-            labelP0.Text = "Pareja 0: J:" + puntos[1] + " P:" + puntos[0];
-            labelP1.Text = "Pareja 1: J:" + puntos[3] + " P:" + puntos[2];
+            labelP0.Text = "PAREJA 0: Juegos:" + puntos[0] + " Piedras:" + puntos[1];
+            labelP1.Text = "PAREJA 1: Juegos:" + puntos[2] + " Piedras:" + puntos[3];
         }
         private void hScrollBar1_ValueChanged(object sender, EventArgs e)
         {
-            label1.Text = "Apuesta: " + Convert.ToInt32(hScrollBar1.Value);
+            int piedras = apuesta + Convert.ToInt32(hScrollBar1.Value);
+            label1.Text = "Apuesta: " + piedras;
         }
 
         private void pictureBox20_Click(object sender, EventArgs e)

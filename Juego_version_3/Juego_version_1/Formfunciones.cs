@@ -394,6 +394,8 @@ namespace Juego_version_1
                                     case 2:
                                         if (mensaje[3] == "P")
                                         {
+                                            apuesta = 0;
+                                            formularios[numPartida].valorapuesta(apuesta);
                                             formularios[numPartida].CambiarBotones(3);
                                         }
                                         else
@@ -406,6 +408,8 @@ namespace Juego_version_1
                                     case 3:
                                         if (mensaje[3] == "P")
                                         {
+                                            apuesta = 0;
+                                            formularios[numPartida].valorapuesta(apuesta);
                                             formularios[numPartida].CambiarBotones(3);
                                         }
                                         else
@@ -421,6 +425,8 @@ namespace Juego_version_1
                                     case 5:
                                         if (mensaje[3] == "P")
                                         {
+                                            apuesta = 0;
+                                            formularios[numPartida].valorapuesta(apuesta);
                                             formularios[numPartida].CambiarBotones(3);
                                         }
                                         else
@@ -436,6 +442,8 @@ namespace Juego_version_1
                                     case 7:
                                         if (mensaje[3] == "P")
                                         {
+                                            apuesta = 0;
+                                            formularios[numPartida].valorapuesta(apuesta);
                                             formularios[numPartida].CambiarBotones(3);
                                         }
                                         else
@@ -448,6 +456,8 @@ namespace Juego_version_1
                                     case 8:
                                         if (mensaje[3] == "P")
                                         {
+                                            apuesta = 0;
+                                            formularios[numPartida].valorapuesta(apuesta);
                                             formularios[numPartida].CambiarBotones(3);
                                         }
                                         else
@@ -485,11 +495,33 @@ namespace Juego_version_1
                                         jugador = Convert.ToInt32(mensaje[3]);
                                         formularios[numPartida].Bocatas(mensaje[4], jugador, ronda);
                                         break;
+
                                     case 10:
                                         int[] cartaS = { Convert.ToInt32(mensaje[4]), Convert.ToInt32(mensaje[5]), Convert.ToInt32(mensaje[6]), Convert.ToInt32(mensaje[7]) };
                                         formularios[numPartida].Repartir(Convert.ToInt32(mensaje[3]), cartaS);
                                         //formularios[numPartida].Cartas(2);
                                         formularios[numPartida].Cartas(0);
+
+                                    case 5:
+                                        caso = mensaje[3];
+                                        jugador = Convert.ToInt32(mensaje[3]);
+                                        formularios[numPartida].Bocatas(mensaje[4], jugador, ronda);
+                                        break;
+                                    case 6:
+                                        caso = mensaje[3];
+                                        jugador = Convert.ToInt32(mensaje[3]);
+                                        formularios[numPartida].Bocatas(mensaje[4], jugador, ronda);
+                                        break;
+                                    case 7:
+                                        caso = mensaje[3];
+                                        jugador = Convert.ToInt32(mensaje[3]);
+                                        formularios[numPartida].Bocatas(mensaje[4], jugador, ronda);
+                                        break;
+                                    case 8:
+                                        caso = mensaje[3];
+                                        jugador = Convert.ToInt32(mensaje[3]);
+                                        formularios[numPartida].Bocatas(mensaje[4], jugador, ronda);
+
                                         break;
                                     case 11:
                                         for (int i = 0; i < 4; i++)
@@ -504,8 +536,14 @@ namespace Juego_version_1
                                         int[] puntos = { Convert.ToInt32(mensaje[3]), Convert.ToInt32(mensaje[4]), Convert.ToInt32(mensaje[5]), Convert.ToInt32(mensaje[6]) };
                                         formularios[numPartida].puntuaciones(puntos);
                                         break;
+
                                     case 13:
                                         formularios[numPartida].Cartas(1);
+
+                                    case 20://Gana la Pareja 0
+                                        break;
+                                    case 21://Gana la Pareja 1
+
                                         break;
                                 }
                                 break;
