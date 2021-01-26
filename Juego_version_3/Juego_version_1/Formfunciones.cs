@@ -381,6 +381,7 @@ namespace Juego_version_1
                             case 10:
                                 numPartida = Convert.ToInt32(mensaje[1]);
                                 ronda = Convert.ToInt32(mensaje[2]);
+                                formularios[numPartida].Bocatas("", 16, ronda);
                                 formularios[numPartida].Ronda(ronda);
                                 switch (ronda)
                                 {
@@ -411,6 +412,7 @@ namespace Juego_version_1
                                             apuesta = 0;
                                             formularios[numPartida].valorapuesta(apuesta);
                                             formularios[numPartida].CambiarBotones(3);
+
                                         }
                                         else
                                         {
