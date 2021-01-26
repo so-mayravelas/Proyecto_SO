@@ -1195,7 +1195,7 @@ void* AtenderCliente (void* sock)
 			char password[20];
 			p = strtok(NULL, "/");				// Ya tenemos el nombre
 			strcpy(password, p);
-			sprintf(consulta, "SELECT * FROM Jugadores WHERE Username='%s' AND ContraseÃ±a='%s'",nombre,password);
+			sprintf(consulta, "SELECT * FROM Jugadores WHERE Username='%s' AND Contraseña='%s'",nombre,password);
 			err = mysql_query(conn, consulta);
 			if (err != 0) {
 				printf("Error al consultar datos de la base %u %s\n",
@@ -1268,7 +1268,7 @@ void* AtenderCliente (void* sock)
 				}
 				printf("%d",newID);
 				printf("\n");
-				sprintf(consulta, "INSERT INTO Jugadores (ID,Username,ContraseÃ±a) VALUES (%d,'%s','%s')",newID,nombre,password);
+				sprintf(consulta, "INSERT INTO Jugadores (ID,Username,Contraseña) VALUES (%d,'%s','%s')",newID,nombre,password);
 				err = mysql_query(conn, consulta);
 				if (err != 0) {
 					printf("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));

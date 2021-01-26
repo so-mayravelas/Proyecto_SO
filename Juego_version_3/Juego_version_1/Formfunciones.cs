@@ -501,7 +501,7 @@ namespace Juego_version_1
                                         formularios[numPartida].Repartir(Convert.ToInt32(mensaje[3]), cartaS);
                                         //formularios[numPartida].Cartas(2);
                                         formularios[numPartida].Cartas(0);
-
+                                        break;
                                     case 5:
                                         caso = mensaje[3];
                                         jugador = Convert.ToInt32(mensaje[3]);
@@ -539,7 +539,7 @@ namespace Juego_version_1
 
                                     case 13:
                                         formularios[numPartida].Cartas(1);
-
+                                        break;
                                     case 20://Gana la Pareja 0
                                         break;
                                     case 21://Gana la Pareja 1
