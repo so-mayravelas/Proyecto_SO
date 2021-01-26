@@ -480,7 +480,7 @@ namespace Juego_version_1
                                         break;
                                     case 1:
                                         jugador = Convert.ToInt32(mensaje[3]);
-                                        formularios[numPartida].Bocatas(mensaje[4], jugador,ronda);
+                                        formularios[numPartida].Bocatas("Descarto "+mensaje[4], jugador,ronda);
                                         break;
                                     case 2:
                                         jugador = Convert.ToInt32(mensaje[3]);
@@ -495,6 +495,13 @@ namespace Juego_version_1
                                         jugador = Convert.ToInt32(mensaje[3]);
                                         formularios[numPartida].Bocatas(mensaje[4], jugador, ronda);
                                         break;
+
+                                    case 10:
+                                        int[] cartaS = { Convert.ToInt32(mensaje[4]), Convert.ToInt32(mensaje[5]), Convert.ToInt32(mensaje[6]), Convert.ToInt32(mensaje[7]) };
+                                        formularios[numPartida].Repartir(Convert.ToInt32(mensaje[3]), cartaS);
+                                        //formularios[numPartida].Cartas(2);
+                                        formularios[numPartida].Cartas(0);
+
                                     case 5:
                                         caso = mensaje[3];
                                         jugador = Convert.ToInt32(mensaje[3]);
@@ -514,6 +521,7 @@ namespace Juego_version_1
                                         caso = mensaje[3];
                                         jugador = Convert.ToInt32(mensaje[3]);
                                         formularios[numPartida].Bocatas(mensaje[4], jugador, ronda);
+
                                         break;
                                     case 11:
                                         for (int i = 0; i < 4; i++)
@@ -521,16 +529,21 @@ namespace Juego_version_1
                                             int[] cartas = { Convert.ToInt32(mensaje[3+i*4]), Convert.ToInt32(mensaje[4 + i * 4]), Convert.ToInt32(mensaje[5 + i * 4]), Convert.ToInt32(mensaje[6 + i * 4]) };
                                             formularios[numPartida].Repartir(i, cartas);
                                         }
-
+                                        //formularios[numPartida].Cartas(2);
                                         formularios[numPartida].Cartas(0);
                                         break;
                                     case 12:
                                         int[] puntos = { Convert.ToInt32(mensaje[3]), Convert.ToInt32(mensaje[4]), Convert.ToInt32(mensaje[5]), Convert.ToInt32(mensaje[6]) };
                                         formularios[numPartida].puntuaciones(puntos);
                                         break;
+
+                                    case 13:
+                                        formularios[numPartida].Cartas(1);
+
                                     case 20://Gana la Pareja 0
                                         break;
                                     case 21://Gana la Pareja 1
+
                                         break;
                                 }
                                 break;

@@ -461,7 +461,7 @@ int ContarPuntos(int numPartida)
 		else if(c==-1)
 			return -1;
 	}
-	//Repartimos los puntos de Peque�a
+	//Repartimos los puntos de Pequeña
 	p = milistaPartidas.partidas[numPartida].Mano[0];
 	for(int i=1;i<4;i++)
 	{
@@ -968,7 +968,7 @@ void DameUser(ListaConectados *lista, int socket, char nombre[20]){
 	if(encontrado)
 							sprintf(nombre, "%s", lista->conectados[i].nombre);
 	else
-		printf("No se ha encontrado ningÃºn usuario con ese socket");
+		printf("No se ha encontrado ningÃÂºn usuario con ese socket");
 }
 int CrearPartida(ListaPartidas* lista) {
 	//anade nuevo conectado y retorna 0 si okey o 0 si la lista ya estaba llena
@@ -1006,7 +1006,7 @@ int EliminarPartida(ListaPartidas* lista, int partida) {
 
 }
 int EntrarPartida(ListaPartidas* lista, char nombre[20], int pareja, int numPartida) {
-	//aÃ±ade nuevo conectado y retorna 0 si okey o 0 si la lista ya estaba llena
+	//aÃÂ±ade nuevo conectado y retorna 0 si okey o 0 si la lista ya estaba llena
 
 		pthread_mutex_lock(&mutex);//No me interrumpas ahora
 	for(int i=0;i<4;i++){
@@ -1152,7 +1152,7 @@ void* AtenderCliente (void* sock)
 	//inicializar la conexion
 	conn = mysql_real_connect(conn, "localhost", "root", "mysql", "mus", 0, NULL, 0);
 	if (conn == NULL) {
-		printf("Error al inicializar la conexiÃ³n: %u %s\n",
+		printf("Error al inicializar la conexiÃÂ³n: %u %s\n",
 			   mysql_errno(conn), mysql_error(conn));
 		exit(1);
 	}
@@ -1195,7 +1195,7 @@ void* AtenderCliente (void* sock)
 			char password[20];
 			p = strtok(NULL, "/");				// Ya tenemos el nombre
 			strcpy(password, p);
-			sprintf(consulta, "SELECT * FROM Jugadores WHERE Username='%s' AND Contrase�a='%s'",nombre,password);
+			sprintf(consulta, "SELECT * FROM Jugadores WHERE Username='%s' AND Contraseña='%s'",nombre,password);
 			err = mysql_query(conn, consulta);
 			if (err != 0) {
 				printf("Error al consultar datos de la base %u %s\n",
@@ -1268,7 +1268,7 @@ void* AtenderCliente (void* sock)
 				}
 				printf("%d",newID);
 				printf("\n");
-				sprintf(consulta, "INSERT INTO Jugadores (ID,Username,Contrase�a) VALUES (%d,'%s','%s')",newID,nombre,password);
+				sprintf(consulta, "INSERT INTO Jugadores (ID,Username,Contraseña) VALUES (%d,'%s','%s')",newID,nombre,password);
 				err = mysql_query(conn, consulta);
 				if (err != 0) {
 					printf("Error al consultar datos de la base %u %s\n",mysql_errno(conn), mysql_error(conn));
@@ -1657,11 +1657,15 @@ void* AtenderCliente (void* sock)
 				{
 					p = strtok(NULL, "/");
 					int Carta = atoi(p);
-					Mus(numPartida,miNombre,Carta);
+					Mus(numPartida,jugador,Carta);
 				}
 				sprintf(Respuesta, "11/%d/1/%d/%d", numPartida, jugador, numCartas);
 				EnviarAPatida("", Respuesta, numPartida);//Notificamos a los jugadores lo que ha decidido
-				usleep(80000);
+				usleep(50000);
+				sprintf(Respuesta, "11/%d/10/%d/%d/%d/%d/%d", numPartida, jugador, milistaPartidas.partidas[numPartida].jugadores[jugador].Cartas[0],milistaPartidas.partidas[numPartida].jugadores[jugador].Cartas[1],milistaPartidas.partidas[numPartida].jugadores[jugador].Cartas[2],milistaPartidas.partidas[numPartida].jugadores[jugador].Cartas[3]);
+				EnviarAPatida("", Respuesta, numPartida);//Notificamos a los jugadores lo que ha decidido
+				usleep(50000);
+
 				if (jugador!=DamejugadorPosicion(numPartida,3))
 				{
 					sprintf(Respuesta, "10/%d/1/", numPartida);
@@ -2236,7 +2240,9 @@ void* AtenderCliente (void* sock)
 						usleep(50000);
 						sprintf(Respuesta, "10/%d/0", numPartida);
 						EnviarAMano(Respuesta, numPartida);
-						
+						usleep(50000);
+						sprintf(Respuesta, "11/%d/13", numPartida);
+						EnviarAPatida("",Respuesta, numPartida);
 					}
 				}
 				else
@@ -2274,6 +2280,9 @@ void* AtenderCliente (void* sock)
 								usleep(50000);
 								sprintf(Respuesta, "10/%d/0", numPartida);
 								EnviarAMano(Respuesta, numPartida);
+								usleep(50000);
+								sprintf(Respuesta, "11/%d/13", numPartida);
+								EnviarAPatida("",Respuesta, numPartida);
 								
 							}
 						}
@@ -2339,6 +2348,9 @@ void* AtenderCliente (void* sock)
 							usleep(50000);
 							sprintf(Respuesta, "10/%d/0", numPartida);
 							EnviarAMano(Respuesta, numPartida);
+							usleep(50000);
+							sprintf(Respuesta, "11/%d/13", numPartida);
+							EnviarAPatida("",Respuesta, numPartida);
 							
 						}
 					}
@@ -2392,6 +2404,9 @@ void* AtenderCliente (void* sock)
 						usleep(50000);
 						sprintf(Respuesta, "10/%d/0", numPartida);
 						EnviarAMano(Respuesta, numPartida);
+						usleep(50000);
+						sprintf(Respuesta, "11/%d/13", numPartida);
+						EnviarAPatida("",Respuesta, numPartida);
 						
 					}
 				}
@@ -2430,6 +2445,9 @@ void* AtenderCliente (void* sock)
 								usleep(50000);
 								sprintf(Respuesta, "10/%d/0", numPartida);
 								EnviarAMano(Respuesta, numPartida);
+								usleep(50000);
+								sprintf(Respuesta, "11/%d/13", numPartida);
+								EnviarAPatida("",Respuesta, numPartida);
 								
 							}
 						}
