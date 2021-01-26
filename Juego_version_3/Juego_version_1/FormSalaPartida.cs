@@ -26,7 +26,7 @@ namespace Juego_version_1
             this.numPartida = numPartida;
             this.sock = sock;
             this.MiUsuario = MiUsuario;
-            hijosForm = new FormPartida(sock, numPartida);
+            hijosForm = new FormPartida(sock, numPartida,MiUsuario);
             InitializeComponent();
         }
         public void ActualizacionPartida(Partida partida)
@@ -265,6 +265,10 @@ namespace Juego_version_1
         public void Cartas(int inicio)
         {
             hijosForm.cartasJugador(inicio);
+        }
+        public void ActualizarChat(string Usuario, string comentario)
+        {
+            hijosForm.ChatDelegado(Usuario,comentario);
         }
         private void dataGridView4_CellClick(object sender, DataGridViewCellEventArgs e)
         {

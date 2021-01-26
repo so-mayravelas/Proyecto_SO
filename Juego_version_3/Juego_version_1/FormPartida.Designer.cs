@@ -170,6 +170,7 @@ namespace Juego_version_1
             this.buttonChat.TabIndex = 24;
             this.buttonChat.Text = "Enviar";
             this.buttonChat.UseVisualStyleBackColor = true;
+            this.buttonChat.Click += new System.EventHandler(this.buttonChat_Click);
             // 
             // textBoxComentario
             // 
@@ -190,6 +191,7 @@ namespace Juego_version_1
             // 
             // finjuegopanel1
             // 
+            this.finjuegopanel1.BackColor = System.Drawing.Color.SteelBlue;
             this.finjuegopanel1.Controls.Add(this.label5);
             this.finjuegopanel1.Controls.Add(this.pictureBox16);
             this.finjuegopanel1.Controls.Add(this.label4);
@@ -216,6 +218,7 @@ namespace Juego_version_1
             this.finjuegopanel1.Controls.Add(this.jsuperior_label);
             this.finjuegopanel1.Controls.Add(this.jderecha_label);
             this.finjuegopanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.finjuegopanel1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.finjuegopanel1.Location = new System.Drawing.Point(0, 0);
             this.finjuegopanel1.Name = "finjuegopanel1";
             this.finjuegopanel1.Size = new System.Drawing.Size(1132, 749);

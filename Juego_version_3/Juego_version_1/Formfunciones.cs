@@ -46,7 +46,6 @@ namespace Juego_version_1
             InitializeComponent();
             Consultas_groupBox1.Visible = false;
             groupBoxInvitacion.Visible = false;
-            groupBoxChat.Visible = false;
             OcultarRegistro();
             BordeBotones();
             //CheckForIllegalCrossThreadCalls = false;
@@ -54,7 +53,7 @@ namespace Juego_version_1
             //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
             //al que deseamos conectarnos
             IPAddress direc = IPAddress.Parse("192.168.56.102");
-            IPEndPoint ipep = new IPEndPoint(direc, 9050);
+            IPEndPoint ipep = new IPEndPoint(direc, 9020);
             Consultas_groupBox1.Visible = false;
 
             //Creamos el socket 
@@ -84,7 +83,7 @@ namespace Juego_version_1
             //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
             //al que deseamos conectarnos
             IPAddress direc = IPAddress.Parse("192.168.56.102");
-            IPEndPoint ipep = new IPEndPoint(direc, 9050);
+            IPEndPoint ipep = new IPEndPoint(direc, 9020);
 
             //Creamos el socket 
             server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -350,8 +349,6 @@ namespace Juego_version_1
                                             crearForm = new Thread(ts);
                                             crearForm.Start();
                                             Thread.Sleep(1500);
-                                            DelegadoPreChat DelegadoPC = new DelegadoPreChat(PreparacionChat);
-                                            ConectadosGrid.Invoke(DelegadoPC, new object[] { Convert.ToInt32(mensaje[2]) });
                                         }
 
 
@@ -411,8 +408,10 @@ namespace Juego_version_1
                                 break;
 
                             case 9:
-                                    DelegadoChat delegadoCha = new DelegadoChat(ActualizarChat);
-                                    ConectadosGrid.Invoke(delegadoCha, new object[] { mensaje[2], mensaje[3] });
+                                //DelegadoChat delegadoCha = new DelegadoChat(ActualizarChat);
+                                //ConectadosGrid.Invoke(delegadoCha, new object[] { mensaje[2], mensaje[3] });
+                                numPartida = Convert.ToInt32(mensaje[1]);
+                                formularios[numPartida].ActualizarChat(mensaje[2], mensaje[3]);
                                 break;
                             case 10:
                                 numPartida = Convert.ToInt32(mensaje[1]);
@@ -713,8 +712,6 @@ namespace Juego_version_1
             if (conectado == true)
                 server.Send(msg);
             groupBoxInvitacion.Visible = false;
-            groupBoxChat.Visible = true;
-            PreparacionChat(idpartidainvitacion);
 
         }
 
@@ -737,28 +734,6 @@ namespace Juego_version_1
 
         //para poder hacer el chat 
         //tenemos que pasar el chat entre partidas 
-        private void buttonChat_Click(object sender, EventArgs e)
-        {
-            string mensaje;
-            byte[] msg;
-            mensaje = "9/" + Convert.ToString(idpartidainvitacion) + "/" + MiUsuario + "/" + Convert.ToString(textBoxComentario.Text);
-            textBoxChat.Text = MiUsuario + ": " + Convert.ToString(textBoxComentario.Text) + Environment.NewLine;
-            // Enviamos al servidor los nombres de usuario
-            msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            if (conectado == true)
-                server.Send(msg);
-        }
-
-        public void PreparacionChat(int ID)
-        {
-            groupBoxChat.Visible = true;
-            labelChat.Text = "Partida: " + Convert.ToString(ID);
-        }
-
-        public void ActualizarChat(string Usuario, string comentario)
-        {
-            textBoxChat.Text = textBoxChat.Text+ Usuario + ": " + comentario + Environment.NewLine;
-        }
 
 
         //Lista de botones 
@@ -939,13 +914,7 @@ namespace Juego_version_1
         int sw, sh;
 
         //Restaurar
-        private void Rests_iconButton1_Click(object sender, EventArgs e)
-        {
-            Rests_iconButton1.Visible = false;
-            Maxi_iconButton2.Visible = true;
-            this.Size = new Size(sw, sh);
-            this.Location = new Point(lx, ly);
-        }
+
         //Para arrastrar el form desde los paneles
         private void panelTitulo_MouseMove(object sender, MouseEventArgs e)
         {
@@ -965,19 +934,6 @@ namespace Juego_version_1
         }
 
         //Para maximizar
-        private void Maxi_iconButton2_Click(object sender, EventArgs e)
-        {
-
-            lx = this.Location.X;
-            ly = this.Location.Y;
-            sw = this.Size.Width;
-            sh = this.Size.Height;
-            Rests_iconButton1.Visible = true;
-            Maxi_iconButton2.Visible = false;
-            this.Size = Screen.PrimaryScreen.WorkingArea.Size;
-            this.Location = Screen.PrimaryScreen.WorkingArea.Location;
-        }
-
         #endregion
 
       #region ABRIR FORMULARIOS
@@ -1094,7 +1050,6 @@ namespace Juego_version_1
             Desconectar_button2.Visible = false;
             Iniciar_button4.Visible = false;
             InvitarButton.Visible = false;
-            groupBoxChat.Visible = false;
             groupBoxInvitacion.Visible = false;
             Consultas_groupBox1.Visible = false;
             contraseña_textBox2.Visible = false;
@@ -1243,6 +1198,7 @@ namespace Juego_version_1
         {
 
         }
+
 
         private void ContraseñaB_textBox1_Leave(object sender, EventArgs e)
         {

@@ -20,18 +20,21 @@ namespace Juego_version_1
         delegate void DelegadoBotones(int i);
         delegate void DelegadoBocatas(string texto, int num);
         delegate void DelegadoPuntuaciones(int[] puntos);
+        delegate void DelegadoChat(string usuario,string mensaje);
         Partida partida;
         int apuesta;
         int ronda=0;
         int numPartida;
         int jugador;
         Socket socket;
+        string miUsuario;
         int[] descartes= { 0,0,0,0,0};
 
-        public FormPartida(Socket socket,int numPartida)
+        public FormPartida(Socket socket,int numPartida, string miUsuario)
         {
             this.socket = socket;
             this.numPartida = numPartida;
+            this.miUsuario = miUsuario;
             InitializeComponent();
         }
         public void ValorJugador(int jugador)
@@ -631,6 +634,29 @@ namespace Juego_version_1
                     descartes[4] = 0;
                     descartes[0]--;
                 }
+            }
+        }
+        public void ChatDelegado(string usuario, string mensaje)
+        {
+            DelegadoChat delegadoCha = new DelegadoChat(ActualizarChat);
+            this.Invoke(delegadoCha, new object[] { usuario, mensaje });
+        }
+        public void ActualizarChat(string Usuario, string comentario)
+        {
+            textBoxChat.Text = textBoxChat.Text + Usuario + ": " + comentario + Environment.NewLine;
+        }
+        private void buttonChat_Click(object sender, EventArgs e)
+        {
+            if (textBoxComentario.Text != "")
+            {
+                string mensaje;
+                byte[] msg;
+                mensaje = "9/" + numPartida + "/" + miUsuario + "/" + Convert.ToString(textBoxComentario.Text);
+                textBoxChat.Text = textBoxChat.Text + miUsuario + ": " + Convert.ToString(textBoxComentario.Text) + Environment.NewLine;
+                textBoxComentario.Text = "";
+                // Enviamos al servidor los nombres de usuario
+                msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                socket.Send(msg);
             }
         }
     }
