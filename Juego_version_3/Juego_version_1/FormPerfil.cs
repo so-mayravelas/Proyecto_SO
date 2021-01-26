@@ -16,4 +16,9 @@ namespace Juego_version_1
             InitializeComponent();
         }
     }
+
+    //eSTE SE PUEDE ELIMINAR SE HA JUNTADO TODO EN EL FORM FUNCIONES 
+
+
+
 }

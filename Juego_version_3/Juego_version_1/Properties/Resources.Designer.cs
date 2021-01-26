@@ -553,6 +553,16 @@ namespace Juego_version_1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Anuncio {
+            get {
+                object obj = ResourceManager.GetObject("Anuncio", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BASTOS_giphy {
             get {
                 object obj = ResourceManager.GetObject("BASTOS_giphy", resourceCulture);
@@ -596,6 +606,26 @@ namespace Juego_version_1.Properties {
         internal static System.Drawing.Bitmap copas_giphy {
             get {
                 object obj = ResourceManager.GetObject("copas_giphy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Descarte {
+            get {
+                object obj = ResourceManager.GetObject("Descarte", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Distribucion {
+            get {
+                object obj = ResourceManager.GetObject("Distribucion", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -673,6 +703,16 @@ namespace Juego_version_1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Jugadas {
+            get {
+                object obj = ResourceManager.GetObject("Jugadas", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap lets_get_away_iPhone_wallpapers___3_ {
             get {
                 object obj = ResourceManager.GetObject("lets get away iPhone wallpapers  (3)", resourceCulture);
@@ -713,6 +753,26 @@ namespace Juego_version_1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap objetivo {
+            get {
+                object obj = ResourceManager.GetObject("objetivo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Orden_Valor {
+            get {
+                object obj = ResourceManager.GetObject("Orden_Valor", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap oros_giphy {
             get {
                 object obj = ResourceManager.GetObject("oros_giphy", resourceCulture);
@@ -733,6 +793,16 @@ namespace Juego_version_1.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap registro_bc1 {
+            get {
+                object obj = ResourceManager.GetObject("registro_bc1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap reversocarta {
             get {
                 object obj = ResourceManager.GetObject("reversocarta", resourceCulture);
@@ -746,6 +816,16 @@ namespace Juego_version_1.Properties {
         internal static System.Drawing.Bitmap reversocartah {
             get {
                 object obj = ResourceManager.GetObject("reversocartah", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Señas {
+            get {
+                object obj = ResourceManager.GetObject("Señas", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
