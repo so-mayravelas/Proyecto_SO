@@ -908,6 +908,7 @@ namespace Juego_version_1
         private void IniSe_iconButton2_Click(object sender, EventArgs e)
         {
             ActivarBoton(sender, RGBColors.color2);
+            //Lamaremos a nuestro panel
             panelIniciarSesion.Show();
             
 
@@ -1154,6 +1155,7 @@ namespace Juego_version_1
 
        #region Panel Inciar Sesion 
 
+        //Nos mostrara el mensaje de error de loguin
         private void msgError(string msg)
         {
             MensError_label.Text = "   " + msg;
