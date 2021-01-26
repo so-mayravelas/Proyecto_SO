@@ -38,6 +38,7 @@ namespace Juego_version_1
             this.textBoxChat = new System.Windows.Forms.TextBox();
             this.finjuegopanel1 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
+            this.pictureBox16 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -77,11 +78,13 @@ namespace Juego_version_1
             this.jizquierda_label = new System.Windows.Forms.Label();
             this.jsuperior_label = new System.Windows.Forms.Label();
             this.jderecha_label = new System.Windows.Forms.Label();
-            this.pictureBox16 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.labelP0 = new System.Windows.Forms.Label();
+            this.labelP1 = new System.Windows.Forms.Label();
             this.Chat_panel1.SuspendLayout();
             this.groupBoxChat.SuspendLayout();
             this.finjuegopanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
@@ -105,12 +108,13 @@ namespace Juego_version_1
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).BeginInit();
             this.SuspendLayout();
             // 
             // Chat_panel1
             // 
             this.Chat_panel1.BackColor = System.Drawing.Color.LightBlue;
+            this.Chat_panel1.Controls.Add(this.labelP1);
+            this.Chat_panel1.Controls.Add(this.labelP0);
             this.Chat_panel1.Controls.Add(this.groupBoxChat);
             this.Chat_panel1.Dock = System.Windows.Forms.DockStyle.Right;
             this.Chat_panel1.Location = new System.Drawing.Point(1132, 0);
@@ -210,6 +214,16 @@ namespace Juego_version_1
             this.label5.TabIndex = 24;
             this.label5.Text = "label5";
             this.label5.Visible = false;
+            // 
+            // pictureBox16
+            // 
+            this.pictureBox16.Image = global::Juego_version_1.Properties.Resources.bocata3;
+            this.pictureBox16.Location = new System.Drawing.Point(527, 344);
+            this.pictureBox16.Name = "pictureBox16";
+            this.pictureBox16.Size = new System.Drawing.Size(196, 144);
+            this.pictureBox16.TabIndex = 23;
+            this.pictureBox16.TabStop = false;
+            this.pictureBox16.Visible = false;
             // 
             // label4
             // 
@@ -599,19 +613,27 @@ namespace Juego_version_1
             this.jderecha_label.TabIndex = 6;
             this.jderecha_label.Text = "Derecha";
             // 
-            // pictureBox16
-            // 
-            this.pictureBox16.Image = global::Juego_version_1.Properties.Resources.bocata3;
-            this.pictureBox16.Location = new System.Drawing.Point(527, 344);
-            this.pictureBox16.Name = "pictureBox16";
-            this.pictureBox16.Size = new System.Drawing.Size(196, 144);
-            this.pictureBox16.TabIndex = 23;
-            this.pictureBox16.TabStop = false;
-            this.pictureBox16.Visible = false;
-            // 
             // timer1
             // 
             this.timer1.Interval = 1000;
+            // 
+            // labelP0
+            // 
+            this.labelP0.AutoSize = true;
+            this.labelP0.Location = new System.Drawing.Point(28, 474);
+            this.labelP0.Name = "labelP0";
+            this.labelP0.Size = new System.Drawing.Size(35, 13);
+            this.labelP0.TabIndex = 27;
+            this.labelP0.Text = "label6";
+            // 
+            // labelP1
+            // 
+            this.labelP1.AutoSize = true;
+            this.labelP1.Location = new System.Drawing.Point(29, 506);
+            this.labelP1.Name = "labelP1";
+            this.labelP1.Size = new System.Drawing.Size(35, 13);
+            this.labelP1.TabIndex = 28;
+            this.labelP1.Text = "label7";
             // 
             // FormPartida
             // 
@@ -623,10 +645,12 @@ namespace Juego_version_1
             this.Name = "FormPartida";
             this.Text = "FormPartidas";
             this.Chat_panel1.ResumeLayout(false);
+            this.Chat_panel1.PerformLayout();
             this.groupBoxChat.ResumeLayout(false);
             this.groupBoxChat.PerformLayout();
             this.finjuegopanel1.ResumeLayout(false);
             this.finjuegopanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
@@ -650,7 +674,6 @@ namespace Juego_version_1
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox16)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -709,5 +732,7 @@ namespace Juego_version_1
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictureBox16;
+        private System.Windows.Forms.Label labelP1;
+        private System.Windows.Forms.Label labelP0;
     }
 }

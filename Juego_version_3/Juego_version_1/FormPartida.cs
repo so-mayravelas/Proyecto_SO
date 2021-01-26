@@ -19,6 +19,7 @@ namespace Juego_version_1
     {
         delegate void DelegadoBotones(int i);
         delegate void DelegadoBocatas(string texto, int num);
+        delegate void DelegadoPuntuaciones(int[] puntos);
         Partida partida;
         int apuesta;
         int ronda=0;
@@ -83,7 +84,11 @@ namespace Juego_version_1
             this.finjuegopanel1.Tag = fillg;
             fillg.Show();
         }
-
+        public void puntuaciones(int[] puntos)
+        {
+            DelegadoPuntuaciones pun = new DelegadoPuntuaciones(Puntuaciones);
+            this.Invoke(pun, new object[] { puntos });
+        }
         public void bocatas(string texto,int num)
         {
             DelegadoBocatas db = new DelegadoBocatas(Bocatas);
@@ -140,124 +145,124 @@ namespace Juego_version_1
             {
                 switch (this.partida.DameCarta(jugador, i))
                 {
-                    case 0:
+                    case 1:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory+"Resources\\1_oros.jpg");
                         break;
-                    case 1:
+                    case 2:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\2_oros.jpg");
                         break;
-                    case 2:
+                    case 3:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\3_oros.jpg");
                         break;
-                    case 3:
+                    case 4:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\4_oros.jpg");
                         break;
-                    case 4:
+                    case 5:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\5_oros.jpg");
                         break;
-                    case 5:
+                    case 6:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\6_oros.jpg");
                         break;
-                    case 6:
+                    case 7:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\7_oros.jpg");
                         break;
-                    case 7:
+                    case 8:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\10_oros.jpg");
                         break;
-                    case 8:
+                    case 9:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\11_oros.jpg");
                         break;
-                    case 9:
+                    case 10:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\12_oros.jpg");
                         break;
-                    case 10:
+                    case 11:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\1_bastos.jpg");
                         break;
-                    case 11:
+                    case 12:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\2_bastos.jpg");
                         break;
-                    case 12:
+                    case 13:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\3_bastos.jpg");
                         break;
-                    case 13:
+                    case 14:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\4_bastos.jpg");
                         break;
-                    case 14:
+                    case 15:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\5_bastos.jpg");
                         break;
-                    case 15:
+                    case 16:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\6_bastos.jpg");
                         break;
-                    case 16:
+                    case 17:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\7_bastos.jpg");
                         break;
-                    case 17:
+                    case 18:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\10_bastos.jpg");
                         break;
-                    case 18:
+                    case 19:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\11_bastos.jpg");
                         break;
-                    case 19:
+                    case 20:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\12_bastos.jpg");
                         break;
-                    case 20:
+                    case 21:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\1_espadas.jpg");
                         break;
-                    case 21:
+                    case 22:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\2_espadas.jpg");
                         break;
-                    case 22:
+                    case 23:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\3_espadas.jpg");
                         break;
-                    case 23:
+                    case 24:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\4_espadas.jpg");
                         break;
-                    case 24:
+                    case 25:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\5_espadas.jpg");
                         break;
-                    case 25:
+                    case 26:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\6_espadas.jpg");
                         break;
-                    case 26:
+                    case 27:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\7_espadas.jpg");
                         break;
-                    case 27:
+                    case 28:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\10_espadas.jpg");
                         break;
-                    case 28:
+                    case 29:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\11_espadas.jpg");
                         break;
-                    case 29:
+                    case 30:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\12_espadas.jpg");
                         break;
-                    case 30:
+                    case 31:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\1_copas.jpg");
                         break;
-                    case 31:
+                    case 32:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\2_copas.jpg");
                         break;
-                    case 32:
+                    case 33:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\3_copas.jpg");
                         break;
-                    case 33:
+                    case 34:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\4_copas.jpg");
                         break;
-                    case 34:
+                    case 35:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\5_copas.jpg");
                         break;
-                    case 35:
+                    case 36:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\6_copas.jpg");
                         break;
-                    case 36:
+                    case 37:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\7_copas.jpg");
                         break;
-                    case 37:
+                    case 38:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\10_copas.jpg");
                         break;
-                    case 38:
+                    case 39:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\11_copas.jpg");
                         break;
-                    case 39:
+                    case 40:
                         cartas[i] = Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\12_copas.jpg");
                         break;
                 }
@@ -491,29 +496,29 @@ namespace Juego_version_1
                     break;
                 case 2:
                     apt = apuesta + Convert.ToInt32(hScrollBar1.Value);
-                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/APUESTO/" + apt;
+                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/APUESTO/" + apuesta +"/"+ apt;
                     break;
                 case 3:
                     apt = apuesta + Convert.ToInt32(hScrollBar1.Value);
-                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/APUESTO/" + apt;
+                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/APUESTO/" + apuesta + "/" + apt;
                     break;
                 case 4:
                     mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/SI";
                     break;
                 case 5:
                     apt = apuesta + Convert.ToInt32(hScrollBar1.Value);
-                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/APUESTO/" + apt;
+                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/APUESTO/" + apuesta + "/" + apt;
                     break;
                 case 6:
                     mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/SI";
                     break;
                 case 7:
                     apt = apuesta + Convert.ToInt32(hScrollBar1.Value);
-                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/APUESTO/" + apt;
+                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/APUESTO/" + apuesta + "/" + apt;
                     break;
                 case 8:
                     apt = apuesta + Convert.ToInt32(hScrollBar1.Value);
-                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/APUESTO/" + apt;
+                    mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/APUESTO/" + apuesta + "/" + apt;
                     break;
             }
 
@@ -522,7 +527,11 @@ namespace Juego_version_1
             msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             socket.Send(msg);
         }
-
+        private void Puntuaciones(int[] puntos)
+        {
+            labelP0.Text = "Pareja 0: J:" + puntos[1] + " P:" + puntos[0];
+            labelP1.Text = "Pareja 1: J:" + puntos[3] + " P:" + puntos[2];
+        }
         private void hScrollBar1_ValueChanged(object sender, EventArgs e)
         {
             label1.Text = "Apuesta: " + Convert.ToInt32(hScrollBar1.Value);

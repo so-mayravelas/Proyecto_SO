@@ -229,11 +229,17 @@ namespace Juego_version_1
             hijosForm.Show();
             hijosForm.ValorJugador(partida.ExisteParticipante(MiUsuario));
             hijosForm.ValorPartida(partida);
+            int[] c = { 0, 0, 0, 0 };
+            hijosForm.puntuaciones(c);
 
         }
         public void CambiarBotones(int tipoRonda)
         {
             hijosForm.cambBotones(tipoRonda);
+        }
+        public void puntuaciones(int[] puntos)
+        {
+            hijosForm.puntuaciones(puntos);
         }
         public void valorapuesta(int a)
         {

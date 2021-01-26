@@ -215,7 +215,6 @@ namespace Juego_version_1
                     string caso;
                     int apuesta;
                     int jugador;
-
                     server.Receive(msg);
                     mensajeC = Encoding.ASCII.GetString(msg).Split('\0')[0];
                     mensaje = mensajeC.Split('/');
@@ -297,7 +296,7 @@ namespace Juego_version_1
                                         ThreadStart ts = delegate { CrearForm(Convert.ToInt32(mensaje[2]), server); };
                                         crearForm = new Thread(ts);
                                         crearForm.Start();
-                                        Thread.Sleep(1500);
+                                        Thread.Sleep(2500);
                                         ActualizarPartidasEnForms(Convert.ToInt32(mensaje[2]));
                                         for (int i = 0; i < formularios.Count; i++)
                                             formularios[i].ActualizarJugadores(Conectados);
@@ -314,7 +313,7 @@ namespace Juego_version_1
                                             ThreadStart ts = delegate { CrearForm(Convert.ToInt32(mensaje[2]), server); };
                                             crearForm = new Thread(ts);
                                             crearForm.Start();
-                                            Thread.Sleep(750);
+                                            Thread.Sleep(1500);
                                             DelegadoPreChat DelegadoPC = new DelegadoPreChat(PreparacionChat);
                                             ConectadosGrid.Invoke(DelegadoPC, new object[] { Convert.ToInt32(mensaje[2]) });
                                         }
@@ -351,7 +350,7 @@ namespace Juego_version_1
                                         p.AñadirParticipante(mensaje[6], 3);
                                     }
                                     Partidas[Convert.ToInt32(mensaje[2])] = p;
-                                    Thread.Sleep(600);
+                                    Thread.Sleep(1000);
                                     ActualizarPartidasEnForms(Convert.ToInt32(mensaje[2]));
                                     formularios[Convert.ToInt32(mensaje[2])].ActualizarJugadores(Conectados);
                                     
@@ -494,7 +493,11 @@ namespace Juego_version_1
                                         }
 
                                         formularios[numPartida].Cartas(0);
-                                        break;                                 
+                                        break;
+                                    case 12:
+                                        int[] puntos = { Convert.ToInt32(mensaje[3]), Convert.ToInt32(mensaje[4]), Convert.ToInt32(mensaje[5]), Convert.ToInt32(mensaje[6]) };
+                                        formularios[numPartida].puntuaciones(puntos);
+                                        break;
                                 }
                                 break;
                         }
