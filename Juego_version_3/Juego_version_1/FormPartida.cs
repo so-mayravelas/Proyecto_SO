@@ -413,6 +413,14 @@ namespace Juego_version_1
                         hScrollBar1.Visible = true;
                         label1.Visible = true;
                         break;
+                    case 5:
+                        button3.Visible = true;
+                        button3.Text = "Siguiente Ronda";
+                        button1.Visible = false;
+                        button2.Visible = false;
+                        label1.Visible = false;
+                        hScrollBar1.Visible = false;
+                        break;
                     case -1:
                         button1.Visible = false;
                         button2.Visible = false;
@@ -542,6 +550,9 @@ namespace Juego_version_1
                 case 8:
                     apt = apuesta + Convert.ToInt32(hScrollBar1.Value);
                     mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/APUESTO/" + apuesta + "/" + apt;
+                    break;
+                case 13:
+                    mensaje = "10/" + numPartida + "/13";
                     break;
             }
 

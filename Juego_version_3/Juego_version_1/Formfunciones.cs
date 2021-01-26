@@ -504,6 +504,9 @@ namespace Juego_version_1
                                             formularios[numPartida].CambiarBotones(4);
                                         }
                                         break;
+                                    case 13:
+                                        formularios[numPartida].CambiarBotones(5);
+                                        break;
                                 }
                                 break;
                             case 11:
@@ -575,7 +578,9 @@ namespace Juego_version_1
                                         break;
 
                                     case 13:
+                                        formularios[numPartida].Bocatas("", 16, ronda);
                                         formularios[numPartida].Cartas(1);
+
                                         break;
                                     case 20://Gana la Pareja 0
                                         break;
@@ -727,10 +732,6 @@ namespace Juego_version_1
             groupBoxInvitacion.Visible = false;
         }
 
-        private void ConectadosGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         //para poder hacer el chat 
         //tenemos que pasar el chat entre partidas 
