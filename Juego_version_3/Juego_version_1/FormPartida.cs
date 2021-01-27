@@ -333,10 +333,10 @@ namespace Juego_version_1
             else
             {
                 Image carta=Image.FromFile(System.AppDomain.CurrentDomain.BaseDirectory + "Resources\\reversocarta.jpg");
-                pictureBox20.Image = carta;
+                /*pictureBox20.Image = carta;
                 pictureBox19.Image = carta;
                 pictureBox18.Image = carta;
-                pictureBox17.Image = carta;
+                pictureBox17.Image = carta;*/
 
 
                 pictureBox8.Image = carta;
@@ -344,12 +344,14 @@ namespace Juego_version_1
                 pictureBox6.Image = carta;
                 pictureBox7.Image = carta;
 
+                Thread.Sleep(50);
 
                 pictureBox1.Image = carta;
                 pictureBox2.Image = carta;
                 pictureBox3.Image = carta;
                 pictureBox4.Image = carta;
 
+                Thread.Sleep(50);
 
                 pictureBox15.Image = carta;
                 pictureBox14.Image = carta;
@@ -552,7 +554,7 @@ namespace Juego_version_1
                     mensaje = "10/" + numPartida + "/" + ronda + "/" + jugador + "/APUESTO/" + apuesta + "/" + apt;
                     break;
                 case 13:
-                    mensaje = "10/" + numPartida + "/13";
+                    mensaje = "10/" + numPartida + "/13/" + jugador;
                     break;
             }
 
@@ -670,5 +672,7 @@ namespace Juego_version_1
                 socket.Send(msg);
             }
         }
+
+
     }
 }

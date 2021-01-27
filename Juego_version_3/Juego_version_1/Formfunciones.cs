@@ -344,7 +344,6 @@ namespace Juego_version_1
 
                                         if (mensaje[3] == MiUsuario)
                                         {
-                                            MessageBox.Show("miUsuario==" + mensaje[3]);
                                             ThreadStart ts = delegate { CrearForm(Convert.ToInt32(mensaje[2]), server); };
                                             crearForm = new Thread(ts);
                                             crearForm.Start();
@@ -581,6 +580,9 @@ namespace Juego_version_1
                                         formularios[numPartida].Bocatas("", 16, ronda);
                                         formularios[numPartida].Cartas(1);
 
+                                        break;
+                                    case 14:
+                                         formularios[numPartida].Cartas(2);
                                         break;
                                     case 20://Gana la Pareja 0
                                         break;

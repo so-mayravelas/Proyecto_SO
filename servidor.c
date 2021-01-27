@@ -2921,6 +2921,9 @@ void* AtenderCliente (void* sock)
 				BarajarBaraja(numPartida);
 				Repartir(numPartida);
 				EnviarCartas(numPartida);
+				usleep(50000);
+				sprintf(Respuesta, "11/%d/14", numPartida);
+				EnviarAPatida("",Respuesta, numPartida);
 				usleep(80000);
 				sprintf(Respuesta, "10/%d/0", numPartida);
 				EnviarAMano(Respuesta, numPartida);

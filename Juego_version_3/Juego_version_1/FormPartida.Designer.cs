@@ -31,13 +31,13 @@ namespace Juego_version_1
         {
             this.components = new System.ComponentModel.Container();
             this.Chat_panel1 = new System.Windows.Forms.Panel();
-            this.labelP1 = new System.Windows.Forms.Label();
-            this.labelP0 = new System.Windows.Forms.Label();
             this.groupBoxChat = new System.Windows.Forms.GroupBox();
             this.labelChat = new System.Windows.Forms.Label();
             this.buttonChat = new System.Windows.Forms.Button();
             this.textBoxComentario = new System.Windows.Forms.TextBox();
             this.textBoxChat = new System.Windows.Forms.TextBox();
+            this.labelP1 = new System.Windows.Forms.Label();
+            this.labelP0 = new System.Windows.Forms.Label();
             this.finjuegopanel1 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox16 = new System.Windows.Forms.PictureBox();
@@ -77,9 +77,6 @@ namespace Juego_version_1
             this.Jugador2_label = new System.Windows.Forms.Label();
             this.Jugador4_label = new System.Windows.Forms.Label();
             this.Jugador3_label = new System.Windows.Forms.Label();
-            this.jizquierda_label = new System.Windows.Forms.Label();
-            this.jsuperior_label = new System.Windows.Forms.Label();
-            this.jderecha_label = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.Chat_panel1.SuspendLayout();
             this.groupBoxChat.SuspendLayout();
@@ -113,32 +110,12 @@ namespace Juego_version_1
             // Chat_panel1
             // 
             this.Chat_panel1.BackColor = System.Drawing.Color.LightBlue;
-            this.Chat_panel1.Controls.Add(this.labelP1);
-            this.Chat_panel1.Controls.Add(this.labelP0);
             this.Chat_panel1.Controls.Add(this.groupBoxChat);
             this.Chat_panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.Chat_panel1.Location = new System.Drawing.Point(1132, 0);
+            this.Chat_panel1.Location = new System.Drawing.Point(1005, 0);
             this.Chat_panel1.Name = "Chat_panel1";
-            this.Chat_panel1.Size = new System.Drawing.Size(238, 749);
+            this.Chat_panel1.Size = new System.Drawing.Size(249, 694);
             this.Chat_panel1.TabIndex = 0;
-            // 
-            // labelP1
-            // 
-            this.labelP1.AutoSize = true;
-            this.labelP1.Location = new System.Drawing.Point(29, 506);
-            this.labelP1.Name = "labelP1";
-            this.labelP1.Size = new System.Drawing.Size(35, 13);
-            this.labelP1.TabIndex = 28;
-            this.labelP1.Text = "label7";
-            // 
-            // labelP0
-            // 
-            this.labelP0.AutoSize = true;
-            this.labelP0.Location = new System.Drawing.Point(28, 474);
-            this.labelP0.Name = "labelP0";
-            this.labelP0.Size = new System.Drawing.Size(35, 13);
-            this.labelP0.TabIndex = 27;
-            this.labelP0.Text = "label6";
             // 
             // groupBoxChat
             // 
@@ -189,10 +166,32 @@ namespace Juego_version_1
             this.textBoxChat.Size = new System.Drawing.Size(169, 300);
             this.textBoxChat.TabIndex = 21;
             // 
+            // labelP1
+            // 
+            this.labelP1.AutoSize = true;
+            this.labelP1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
+            this.labelP1.Location = new System.Drawing.Point(31, 586);
+            this.labelP1.Name = "labelP1";
+            this.labelP1.Size = new System.Drawing.Size(70, 25);
+            this.labelP1.TabIndex = 28;
+            this.labelP1.Text = "label7";
+            // 
+            // labelP0
+            // 
+            this.labelP0.AutoSize = true;
+            this.labelP0.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
+            this.labelP0.Location = new System.Drawing.Point(727, 586);
+            this.labelP0.Name = "labelP0";
+            this.labelP0.Size = new System.Drawing.Size(70, 25);
+            this.labelP0.TabIndex = 27;
+            this.labelP0.Text = "label6";
+            // 
             // finjuegopanel1
             // 
             this.finjuegopanel1.BackColor = System.Drawing.Color.SteelBlue;
+            this.finjuegopanel1.Controls.Add(this.labelP1);
             this.finjuegopanel1.Controls.Add(this.label5);
+            this.finjuegopanel1.Controls.Add(this.labelP0);
             this.finjuegopanel1.Controls.Add(this.pictureBox16);
             this.finjuegopanel1.Controls.Add(this.label4);
             this.finjuegopanel1.Controls.Add(this.label3);
@@ -214,14 +213,11 @@ namespace Juego_version_1
             this.finjuegopanel1.Controls.Add(this.Jugador2_label);
             this.finjuegopanel1.Controls.Add(this.Jugador4_label);
             this.finjuegopanel1.Controls.Add(this.Jugador3_label);
-            this.finjuegopanel1.Controls.Add(this.jizquierda_label);
-            this.finjuegopanel1.Controls.Add(this.jsuperior_label);
-            this.finjuegopanel1.Controls.Add(this.jderecha_label);
             this.finjuegopanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.finjuegopanel1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.finjuegopanel1.Location = new System.Drawing.Point(0, 0);
             this.finjuegopanel1.Name = "finjuegopanel1";
-            this.finjuegopanel1.Size = new System.Drawing.Size(1132, 749);
+            this.finjuegopanel1.Size = new System.Drawing.Size(1005, 694);
             this.finjuegopanel1.TabIndex = 1;
             // 
             // label5
@@ -229,7 +225,7 @@ namespace Juego_version_1
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.label5.Font = new System.Drawing.Font("Comic Sans MS", 25.25F);
-            this.label5.Location = new System.Drawing.Point(570, 385);
+            this.label5.Location = new System.Drawing.Point(403, 378);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(115, 47);
             this.label5.TabIndex = 24;
@@ -239,7 +235,7 @@ namespace Juego_version_1
             // pictureBox16
             // 
             this.pictureBox16.Image = global::Juego_version_1.Properties.Resources.bocata3;
-            this.pictureBox16.Location = new System.Drawing.Point(527, 344);
+            this.pictureBox16.Location = new System.Drawing.Point(387, 337);
             this.pictureBox16.Name = "pictureBox16";
             this.pictureBox16.Size = new System.Drawing.Size(196, 144);
             this.pictureBox16.TabIndex = 23;
@@ -251,7 +247,7 @@ namespace Juego_version_1
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.label4.Font = new System.Drawing.Font("Comic Sans MS", 25.25F);
-            this.label4.Location = new System.Drawing.Point(759, 220);
+            this.label4.Location = new System.Drawing.Point(623, 270);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(115, 47);
             this.label4.TabIndex = 22;
@@ -263,7 +259,7 @@ namespace Juego_version_1
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.label3.Font = new System.Drawing.Font("Comic Sans MS", 25.25F);
-            this.label3.Location = new System.Drawing.Point(556, 220);
+            this.label3.Location = new System.Drawing.Point(424, 198);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(115, 47);
             this.label3.TabIndex = 21;
@@ -275,7 +271,7 @@ namespace Juego_version_1
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.label2.Font = new System.Drawing.Font("Comic Sans MS", 25.25F);
-            this.label2.Location = new System.Drawing.Point(303, 220);
+            this.label2.Location = new System.Drawing.Point(235, 260);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(115, 47);
             this.label2.TabIndex = 20;
@@ -285,7 +281,7 @@ namespace Juego_version_1
             // pictureBox12
             // 
             this.pictureBox12.Image = global::Juego_version_1.Properties.Resources.bocata3;
-            this.pictureBox12.Location = new System.Drawing.Point(258, 179);
+            this.pictureBox12.Location = new System.Drawing.Point(217, 227);
             this.pictureBox12.Name = "pictureBox12";
             this.pictureBox12.Size = new System.Drawing.Size(201, 137);
             this.pictureBox12.TabIndex = 19;
@@ -295,7 +291,7 @@ namespace Juego_version_1
             // pictureBox9
             // 
             this.pictureBox9.Image = global::Juego_version_1.Properties.Resources.bocata;
-            this.pictureBox9.Location = new System.Drawing.Point(505, 179);
+            this.pictureBox9.Location = new System.Drawing.Point(412, 150);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(196, 139);
             this.pictureBox9.TabIndex = 18;
@@ -305,9 +301,9 @@ namespace Juego_version_1
             // pictureBox5
             // 
             this.pictureBox5.Image = global::Juego_version_1.Properties.Resources.bocata2;
-            this.pictureBox5.Location = new System.Drawing.Point(723, 179);
+            this.pictureBox5.Location = new System.Drawing.Point(614, 227);
             this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(203, 137);
+            this.pictureBox5.Size = new System.Drawing.Size(191, 137);
             this.pictureBox5.TabIndex = 2;
             this.pictureBox5.TabStop = false;
             this.pictureBox5.Visible = false;
@@ -315,7 +311,7 @@ namespace Juego_version_1
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(849, 672);
+            this.label1.Location = new System.Drawing.Point(849, 641);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 17;
@@ -323,7 +319,7 @@ namespace Juego_version_1
             // 
             // hScrollBar1
             // 
-            this.hScrollBar1.Location = new System.Drawing.Point(790, 698);
+            this.hScrollBar1.Location = new System.Drawing.Point(790, 667);
             this.hScrollBar1.Maximum = 40;
             this.hScrollBar1.Minimum = 2;
             this.hScrollBar1.Name = "hScrollBar1";
@@ -334,7 +330,7 @@ namespace Juego_version_1
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(672, 672);
+            this.button3.Location = new System.Drawing.Point(672, 641);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(90, 43);
             this.button3.TabIndex = 15;
@@ -344,7 +340,7 @@ namespace Juego_version_1
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(518, 672);
+            this.button2.Location = new System.Drawing.Point(518, 641);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(90, 43);
             this.button2.TabIndex = 14;
@@ -354,7 +350,7 @@ namespace Juego_version_1
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(369, 672);
+            this.button1.Location = new System.Drawing.Point(369, 641);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(90, 43);
             this.button1.TabIndex = 2;
@@ -369,7 +365,7 @@ namespace Juego_version_1
             this.panel4.Controls.Add(this.pictureBox18);
             this.panel4.Controls.Add(this.pictureBox19);
             this.panel4.Controls.Add(this.pictureBox20);
-            this.panel4.Location = new System.Drawing.Point(406, 487);
+            this.panel4.Location = new System.Drawing.Point(342, 487);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(378, 148);
             this.panel4.TabIndex = 13;
@@ -425,7 +421,7 @@ namespace Juego_version_1
             this.panel3.Controls.Add(this.pictureBox14);
             this.panel3.Controls.Add(this.pictureBox11);
             this.panel3.Controls.Add(this.pictureBox10);
-            this.panel3.Location = new System.Drawing.Point(932, 150);
+            this.panel3.Location = new System.Drawing.Point(814, 123);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(185, 348);
             this.panel3.TabIndex = 12;
@@ -477,7 +473,7 @@ namespace Juego_version_1
             this.panel2.Controls.Add(this.pictureBox7);
             this.panel2.Controls.Add(this.pictureBox6);
             this.panel2.Controls.Add(this.pictureBox13);
-            this.panel2.Location = new System.Drawing.Point(31, 150);
+            this.panel2.Location = new System.Drawing.Point(31, 123);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(185, 338);
             this.panel2.TabIndex = 11;
@@ -529,7 +525,7 @@ namespace Juego_version_1
             this.Manoj3_panel.Controls.Add(this.pictureBox3);
             this.Manoj3_panel.Controls.Add(this.pictureBox2);
             this.Manoj3_panel.Controls.Add(this.pictureBox1);
-            this.Manoj3_panel.Location = new System.Drawing.Point(393, 3);
+            this.Manoj3_panel.Location = new System.Drawing.Point(329, 3);
             this.Manoj3_panel.Name = "Manoj3_panel";
             this.Manoj3_panel.Size = new System.Drawing.Size(361, 148);
             this.Manoj3_panel.TabIndex = 10;
@@ -592,51 +588,30 @@ namespace Juego_version_1
             // 
             // Jugador2_label
             // 
-            this.Jugador2_label.Location = new System.Drawing.Point(12, 574);
+            this.Jugador2_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
+            this.Jugador2_label.Location = new System.Drawing.Point(58, 509);
             this.Jugador2_label.Name = "Jugador2_label";
-            this.Jugador2_label.Size = new System.Drawing.Size(68, 23);
+            this.Jugador2_label.Size = new System.Drawing.Size(111, 23);
             this.Jugador2_label.TabIndex = 3;
             this.Jugador2_label.Text = "Jugador 2";
             // 
             // Jugador4_label
             // 
-            this.Jugador4_label.Location = new System.Drawing.Point(752, 49);
+            this.Jugador4_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
+            this.Jugador4_label.Location = new System.Drawing.Point(810, 487);
             this.Jugador4_label.Name = "Jugador4_label";
-            this.Jugador4_label.Size = new System.Drawing.Size(76, 23);
+            this.Jugador4_label.Size = new System.Drawing.Size(131, 23);
             this.Jugador4_label.TabIndex = 5;
             this.Jugador4_label.Text = "Jugador 4";
             // 
             // Jugador3_label
             // 
-            this.Jugador3_label.Location = new System.Drawing.Point(88, 26);
+            this.Jugador3_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
+            this.Jugador3_label.Location = new System.Drawing.Point(209, 3);
             this.Jugador3_label.Name = "Jugador3_label";
-            this.Jugador3_label.Size = new System.Drawing.Size(100, 23);
+            this.Jugador3_label.Size = new System.Drawing.Size(115, 23);
             this.Jugador3_label.TabIndex = 1;
             this.Jugador3_label.Text = "Jugador 3";
-            // 
-            // jizquierda_label
-            // 
-            this.jizquierda_label.Location = new System.Drawing.Point(12, 551);
-            this.jizquierda_label.Name = "jizquierda_label";
-            this.jizquierda_label.Size = new System.Drawing.Size(68, 23);
-            this.jizquierda_label.TabIndex = 2;
-            this.jizquierda_label.Text = "Izquierda";
-            // 
-            // jsuperior_label
-            // 
-            this.jsuperior_label.Location = new System.Drawing.Point(88, 3);
-            this.jsuperior_label.Name = "jsuperior_label";
-            this.jsuperior_label.Size = new System.Drawing.Size(70, 23);
-            this.jsuperior_label.TabIndex = 0;
-            this.jsuperior_label.Text = "Superior";
-            // 
-            // jderecha_label
-            // 
-            this.jderecha_label.Location = new System.Drawing.Point(752, 26);
-            this.jderecha_label.Name = "jderecha_label";
-            this.jderecha_label.Size = new System.Drawing.Size(100, 23);
-            this.jderecha_label.TabIndex = 6;
-            this.jderecha_label.Text = "Derecha";
             // 
             // timer1
             // 
@@ -646,13 +621,12 @@ namespace Juego_version_1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1370, 749);
+            this.ClientSize = new System.Drawing.Size(1254, 694);
             this.Controls.Add(this.finjuegopanel1);
             this.Controls.Add(this.Chat_panel1);
             this.Name = "FormPartida";
             this.Text = "FormPartidas";
             this.Chat_panel1.ResumeLayout(false);
-            this.Chat_panel1.PerformLayout();
             this.groupBoxChat.ResumeLayout(false);
             this.groupBoxChat.PerformLayout();
             this.finjuegopanel1.ResumeLayout(false);
@@ -698,9 +672,6 @@ namespace Juego_version_1
         private System.Windows.Forms.Label Jugador2_label;
         private System.Windows.Forms.Label Jugador4_label;
         private System.Windows.Forms.Label Jugador3_label;
-        private System.Windows.Forms.Label jizquierda_label;
-        private System.Windows.Forms.Label jsuperior_label;
-        private System.Windows.Forms.Label jderecha_label;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.PictureBox pictureBox17;
         private System.Windows.Forms.PictureBox pictureBox18;

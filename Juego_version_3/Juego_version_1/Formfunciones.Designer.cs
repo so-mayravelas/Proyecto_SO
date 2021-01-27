@@ -296,6 +296,7 @@
             this.contraseña_textBox2.Location = new System.Drawing.Point(272, 269);
             this.contraseña_textBox2.Multiline = true;
             this.contraseña_textBox2.Name = "contraseña_textBox2";
+            this.contraseña_textBox2.PasswordChar = '·';
             this.contraseña_textBox2.Size = new System.Drawing.Size(243, 33);
             this.contraseña_textBox2.TabIndex = 2;
             this.contraseña_textBox2.Text = "CONTRASEÑA";
@@ -331,7 +332,6 @@
             this.ConectadosGrid.Size = new System.Drawing.Size(99, 150);
             this.ConectadosGrid.TabIndex = 15;
             this.ConectadosGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ConectadosGrid_CellClick);
-            this.ConectadosGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.ConectadosGrid_CellContentClick);
             // 
             // InvitarButton
             // 
