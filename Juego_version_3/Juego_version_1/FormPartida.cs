@@ -45,33 +45,33 @@ namespace Juego_version_1
             else
                 cambBotones(-1);
         }
-        public void ValorPartida(Partida p)
+        public void ValorPartida(Partida p)//seter de partida
         {
             this.partida = p;
         }
-        public void ValorApuesta(int a)
+        public void ValorApuesta(int a)//seter de apuesta
         {
             this.apuesta = a;
         }
-        public void repartir(int numjugador, int[] c)
+        public void repartir(int numjugador, int[] c)//seter de las cartas dentro de la partida
         {
             this.partida.AsignarCartas(numjugador, c);
         }
         
-        public void rondas(int Ronda)
+        public void rondas(int Ronda)//seter de ronda
         {
             this.ronda = Ronda;
         }
-        public int rondaDevol()
+        public int rondaDevol()//geter de ronda
         {
             return this.ronda;    
         }
-        private void FinpartidaButton1_Click(object sender, EventArgs e)
+        private void FinpartidaButton1_Click(object sender, EventArgs e)//Final de la partida
         {
             Application.Exit();
         }
 
-        private void ganar_Button_Click(object sender, EventArgs e)
+        private void ganar_Button_Click(object sender, EventArgs e)//Metodo de Ganador de partida
         {
             AbrirFormfills(new FormFinPartida());
         }
@@ -88,17 +88,17 @@ namespace Juego_version_1
             this.finjuegopanel1.Tag = fillg;
             fillg.Show();
         }
-        public void puntuaciones(int[] puntos)
+        public void puntuaciones(int[] puntos)// delegado de marcador de puntuacion
         {
             DelegadoPuntuaciones pun = new DelegadoPuntuaciones(Puntuaciones);
             this.Invoke(pun, new object[] { puntos });
         }
-        public void bocatas(string texto,int num)
+        public void bocatas(string texto,int num)// delegado de labels de los bocatas
         {
             DelegadoBocatas db = new DelegadoBocatas(Bocatas);
             this.Invoke(db, new object[] { texto, num });
         }
-        private void Bocatas(string texto,int num)
+        private void Bocatas(string texto,int num)// asigna el valor de las labels de los bocatas segun la situacion 
         {
             switch (num-jugador)
             {
@@ -142,7 +142,7 @@ namespace Juego_version_1
             }
             
         }
-        private Image[] Repartir(int jugador)//00-09 oros--10-19-bastos--20-29-espadas--30-39-copas Reparte segun las cartas que toque
+        private Image[] Repartir(int jugador)//00-09 oros--10-19-bastos--20-29-espadas--30-39-copas Reparte segun las cartas que toquen, asignando las imagenes y devolviendolas en un array Image[4]
         {
             Image[] cartas= new Image[4];
             for (int i = 0; i < 4; i++)
@@ -274,7 +274,7 @@ namespace Juego_version_1
 
             return cartas;
         }
-        public void cartasJugador(int inicio)
+        public void cartasJugador(int inicio)// asigna las imagenes a las cartas, si inicio es 0 solo muestra las cartas del jugador, si es 1 muestra las de los otros 3 jugadores, y si es 2 esconde de nuevo las de lo3 jugadores
         {
             int[] pos= { 0,1,2};
             switch (jugador)
@@ -339,17 +339,19 @@ namespace Juego_version_1
                 pictureBox17.Image = carta;*/
 
 
-                pictureBox8.Image = carta;
-                pictureBox13.Image = carta;
-                pictureBox6.Image = carta;
-                pictureBox7.Image = carta;
-
-                Thread.Sleep(50);
 
                 pictureBox1.Image = carta;
                 pictureBox2.Image = carta;
                 pictureBox3.Image = carta;
                 pictureBox4.Image = carta;
+
+                Thread.Sleep(50);
+                carta.RotateFlip(RotateFlipType.Rotate90FlipNone);
+
+                pictureBox8.Image = carta;
+                pictureBox13.Image = carta;
+                pictureBox6.Image = carta;
+                pictureBox7.Image = carta;
 
                 Thread.Sleep(50);
 
@@ -359,12 +361,12 @@ namespace Juego_version_1
                 pictureBox10.Image = carta;
             }
         }
-        public void cambBotones(int tipoRonda)
+        public void cambBotones(int tipoRonda)// deledado para cambiar las etiquetas de los botones segun la ronda
         {
             DelegadoBotones db = new DelegadoBotones(CambiarBotones);
             this.Invoke(db, new object[] { tipoRonda });
         }
-        private void CambiarBotones(int tipoRonda)
+        private void CambiarBotones(int tipoRonda)// judga el tipo de ronda en los cuales los mensajes tiene que ser distintos y segun eso los cambia
         {
                 switch (tipoRonda)
                 {
@@ -433,7 +435,7 @@ namespace Juego_version_1
                 }
             } 
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)//acciones de los botones que son las jugadas
         {
             CambiarBotones(-1);
             string mensaje="";
@@ -563,18 +565,18 @@ namespace Juego_version_1
             msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             socket.Send(msg);
         }
-        private void Puntuaciones(int[] puntos)
+        private void Puntuaciones(int[] puntos)//metodo que cabia el valor de los puntos
         {
             labelP0.Text = "PAREJA 0: Juegos:" + puntos[0] + " Piedras:" + puntos[1];
             labelP1.Text = "PAREJA 1: Juegos:" + puntos[2] + " Piedras:" + puntos[3];
         }
-        private void hScrollBar1_ValueChanged(object sender, EventArgs e)
+        private void hScrollBar1_ValueChanged(object sender, EventArgs e)//metodo que cambia el valor de la label de hscrollbar segun su valor
         {
             int piedras = apuesta + Convert.ToInt32(hScrollBar1.Value);
             label1.Text = "Apuesta: " + piedras;
         }
 
-        private void pictureBox20_Click(object sender, EventArgs e)
+        private void pictureBox20_Click(object sender, EventArgs e)// metodos para seleccionar cartas para el descarte
         {
             if (ronda == 1)
             {
@@ -649,16 +651,16 @@ namespace Juego_version_1
                 }
             }
         }
-        public void ChatDelegado(string usuario, string mensaje)
+        public void ChatDelegado(string usuario, string mensaje)// delegado del chat
         {
             DelegadoChat delegadoCha = new DelegadoChat(ActualizarChat);
             this.Invoke(delegadoCha, new object[] { usuario, mensaje });
         }
-        public void ActualizarChat(string Usuario, string comentario)
+        public void ActualizarChat(string Usuario, string comentario)// metodo llamado por el delegado para cambiar el texto del chat
         {
             textBoxChat.Text = textBoxChat.Text + Usuario + ": " + comentario + Environment.NewLine;
         }
-        private void buttonChat_Click(object sender, EventArgs e)
+        private void buttonChat_Click(object sender, EventArgs e)// boton de enviar del chat que hace que el mensaje se envie y se actualice en pantalla
         {
             if (textBoxComentario.Text != "")
             {
