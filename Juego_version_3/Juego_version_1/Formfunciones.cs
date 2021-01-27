@@ -13,12 +13,6 @@ using FontAwesome.Sharp;
 using System.Runtime.InteropServices;
 
 
-
-
-
-
-
-
 namespace Juego_version_1
 {
     public partial class Formfunciones : Form
@@ -500,7 +494,7 @@ namespace Juego_version_1
         }
         public void SesionIniciada()
         {
-            Consultas_groupBox1.Visible = true;
+            Consultas_groupBox1.Visible = false;
             MessageBox.Show("Has iniciado sesion correctamente");
         }
         //Funcion que actualiza la DataGrid con los Usuarios
@@ -1115,6 +1109,8 @@ namespace Juego_version_1
             }
         }
 
+
+
         private void DarBajar_iconButton6_Click_1(object sender, EventArgs e)
         {
             string mensaje = "20/" + MiUsuario + "/";
@@ -1134,11 +1130,55 @@ namespace Juego_version_1
         {
             panelPantallaJugador.Hide();
         }
-
+        #region BOTONES DE CONSULTAS
         private void Consulta_Mayra_CheckedChanged(object sender, EventArgs e)
         {
 
         }
+
+        private void Consulta1_iconButton2_Click_1(object sender, EventArgs e)
+        {
+            Consultas_groupBox1.Visible = true;
+            label10.Visible = false;
+            TBConsultaAndoni.Visible = false;
+            Consulta_Mayra.Visible = false;
+            Consulta_Andoni.Visible = false;
+            Servicios.Visible = false;
+        }
+
+        private void Consulta2_iconButton2_Click_1(object sender, EventArgs e)
+        {
+            Consultas_groupBox1.Visible = true;
+            label10.Visible = false;
+            TBConsultaAndoni.Visible = false;
+            Servicios.Visible = false;
+            Consulta_Galder.Visible = false;
+            Consulta_Andoni.Visible = false;
+
+
+        }
+
+        private void Consulta3_iconButton3_Click_1(object sender, EventArgs e)
+        {
+            Consultas_groupBox1.Visible = true;
+            label10.Visible = true;
+            TBConsultaAndoni.Visible = true;
+            Consulta_Mayra.Visible = false;
+            Servicios.Visible = false;
+            Consulta_Galder.Visible = false;
+        }
+
+        private void iconButton5_Click(object sender, EventArgs e)
+        {
+            Consultas_groupBox1.Visible = true;
+            Consulta_Galder.Visible = false;
+            label10.Visible = false;
+            TBConsultaAndoni.Visible = false;
+            Consulta_Mayra.Visible = false;
+            Consulta_Andoni.Visible = false;
+
+        }
+        #endregion
 
         private void ContraseñaB_textBox1_Leave(object sender, EventArgs e)
         {

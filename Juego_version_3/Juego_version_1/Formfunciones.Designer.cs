@@ -104,7 +104,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.iconButton5 = new FontAwesome.Sharp.IconButton();
+            this.Servicios_iconButton5 = new FontAwesome.Sharp.IconButton();
+            this.label10 = new System.Windows.Forms.Label();
             this.Consultas_groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ConectadosGrid)).BeginInit();
             this.groupBoxInvitacion.SuspendLayout();
@@ -171,6 +172,7 @@
             // Consultas_groupBox1
             // 
             this.Consultas_groupBox1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.Consultas_groupBox1.Controls.Add(this.label10);
             this.Consultas_groupBox1.Controls.Add(this.Servicios);
             this.Consultas_groupBox1.Controls.Add(this.TBConsultaAndoni);
             this.Consultas_groupBox1.Controls.Add(this.nombre_textBox3);
@@ -179,9 +181,9 @@
             this.Consultas_groupBox1.Controls.Add(this.Consulta_Galder);
             this.Consultas_groupBox1.Controls.Add(this.label2);
             this.Consultas_groupBox1.Controls.Add(this.enviar_button5);
-            this.Consultas_groupBox1.Location = new System.Drawing.Point(229, 424);
+            this.Consultas_groupBox1.Location = new System.Drawing.Point(229, 378);
             this.Consultas_groupBox1.Name = "Consultas_groupBox1";
-            this.Consultas_groupBox1.Size = new System.Drawing.Size(345, 188);
+            this.Consultas_groupBox1.Size = new System.Drawing.Size(365, 223);
             this.Consultas_groupBox1.TabIndex = 8;
             this.Consultas_groupBox1.TabStop = false;
             this.Consultas_groupBox1.Text = "Peticion";
@@ -189,7 +191,7 @@
             // Servicios
             // 
             this.Servicios.AutoSize = true;
-            this.Servicios.Location = new System.Drawing.Point(116, 145);
+            this.Servicios.Location = new System.Drawing.Point(116, 155);
             this.Servicios.Name = "Servicios";
             this.Servicios.Size = new System.Drawing.Size(151, 17);
             this.Servicios.TabIndex = 11;
@@ -199,9 +201,9 @@
             // 
             // TBConsultaAndoni
             // 
-            this.TBConsultaAndoni.Location = new System.Drawing.Point(224, 119);
+            this.TBConsultaAndoni.Location = new System.Drawing.Point(126, 64);
             this.TBConsultaAndoni.Name = "TBConsultaAndoni";
-            this.TBConsultaAndoni.Size = new System.Drawing.Size(119, 20);
+            this.TBConsultaAndoni.Size = new System.Drawing.Size(169, 20);
             this.TBConsultaAndoni.TabIndex = 10;
             // 
             // nombre_textBox3
@@ -214,36 +216,36 @@
             // Consulta_Mayra
             // 
             this.Consulta_Mayra.AutoSize = true;
-            this.Consulta_Mayra.Location = new System.Drawing.Point(116, 91);
+            this.Consulta_Mayra.Location = new System.Drawing.Point(116, 113);
             this.Consulta_Mayra.Name = "Consulta_Mayra";
-            this.Consulta_Mayra.Size = new System.Drawing.Size(179, 17);
+            this.Consulta_Mayra.Size = new System.Drawing.Size(118, 17);
             this.Consulta_Mayra.TabIndex = 7;
             this.Consulta_Mayra.TabStop = true;
-            this.Consulta_Mayra.Text = "Partidas jugadas por el \"usuario\"";
+            this.Consulta_Mayra.Text = "Número de Partidas";
             this.Consulta_Mayra.UseVisualStyleBackColor = true;
             this.Consulta_Mayra.CheckedChanged += new System.EventHandler(this.Consulta_Mayra_CheckedChanged);
             // 
             // Consulta_Andoni
             // 
             this.Consulta_Andoni.AutoSize = true;
-            this.Consulta_Andoni.Location = new System.Drawing.Point(116, 119);
+            this.Consulta_Andoni.Location = new System.Drawing.Point(116, 132);
             this.Consulta_Andoni.Name = "Consulta_Andoni";
-            this.Consulta_Andoni.Size = new System.Drawing.Size(102, 17);
+            this.Consulta_Andoni.Size = new System.Drawing.Size(133, 17);
             this.Consulta_Andoni.TabIndex = 7;
             this.Consulta_Andoni.TabStop = true;
-            this.Consulta_Andoni.Text = "Consulta Andoni";
+            this.Consulta_Andoni.Text = "Partidas Jugadas entre";
             this.Consulta_Andoni.UseVisualStyleBackColor = true;
             // 
             // Consulta_Galder
             // 
             this.Consulta_Galder.AutoSize = true;
             this.Consulta_Galder.Checked = true;
-            this.Consulta_Galder.Location = new System.Drawing.Point(116, 68);
+            this.Consulta_Galder.Location = new System.Drawing.Point(116, 90);
             this.Consulta_Galder.Name = "Consulta_Galder";
-            this.Consulta_Galder.Size = new System.Drawing.Size(100, 17);
+            this.Consulta_Galder.Size = new System.Drawing.Size(118, 17);
             this.Consulta_Galder.TabIndex = 8;
             this.Consulta_Galder.TabStop = true;
-            this.Consulta_Galder.Text = "Consulta Galder";
+            this.Consulta_Galder.Text = "Jugadas con pajera";
             this.Consulta_Galder.UseVisualStyleBackColor = true;
             this.Consulta_Galder.CheckedChanged += new System.EventHandler(this.Consulta_Galder_CheckedChanged);
             // 
@@ -251,19 +253,19 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(23, 25);
+            this.label2.Location = new System.Drawing.Point(16, 30);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 25);
+            this.label2.Size = new System.Drawing.Size(108, 25);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Nombre";
+            this.label2.Text = "Jugador 1";
             // 
             // enviar_button5
             // 
-            this.enviar_button5.Location = new System.Drawing.Point(126, 189);
+            this.enviar_button5.Location = new System.Drawing.Point(126, 184);
             this.enviar_button5.Name = "enviar_button5";
-            this.enviar_button5.Size = new System.Drawing.Size(75, 23);
+            this.enviar_button5.Size = new System.Drawing.Size(92, 23);
             this.enviar_button5.TabIndex = 5;
-            this.enviar_button5.Text = "Enviar";
+            this.enviar_button5.Text = "Consultar";
             this.enviar_button5.UseVisualStyleBackColor = true;
             this.enviar_button5.Click += new System.EventHandler(this.enviar_button5_Click);
             // 
@@ -1037,7 +1039,7 @@
             // panel2_Consultas
             // 
             this.panel2_Consultas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.panel2_Consultas.Controls.Add(this.iconButton5);
+            this.panel2_Consultas.Controls.Add(this.Servicios_iconButton5);
             this.panel2_Consultas.Controls.Add(this.Consulta3_iconButton3);
             this.panel2_Consultas.Controls.Add(this.Consulta2_iconButton2);
             this.panel2_Consultas.Controls.Add(this.Consulta1_iconButton2);
@@ -1063,9 +1065,10 @@
             this.Consulta3_iconButton3.Padding = new System.Windows.Forms.Padding(23, 0, 0, 0);
             this.Consulta3_iconButton3.Size = new System.Drawing.Size(214, 30);
             this.Consulta3_iconButton3.TabIndex = 5;
-            this.Consulta3_iconButton3.Text = "Partidas Jugas";
+            this.Consulta3_iconButton3.Text = "Número de partidas entre";
             this.Consulta3_iconButton3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Consulta3_iconButton3.UseVisualStyleBackColor = true;
+            this.Consulta3_iconButton3.Click += new System.EventHandler(this.Consulta3_iconButton3_Click_1);
             // 
             // Consulta2_iconButton2
             // 
@@ -1082,9 +1085,10 @@
             this.Consulta2_iconButton2.Padding = new System.Windows.Forms.Padding(23, 0, 0, 0);
             this.Consulta2_iconButton2.Size = new System.Drawing.Size(214, 30);
             this.Consulta2_iconButton2.TabIndex = 4;
-            this.Consulta2_iconButton2.Text = "Partidas Jugas Con";
+            this.Consulta2_iconButton2.Text = "Número de Partidas Jugas ";
             this.Consulta2_iconButton2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Consulta2_iconButton2.UseVisualStyleBackColor = true;
+            this.Consulta2_iconButton2.Click += new System.EventHandler(this.Consulta2_iconButton2_Click_1);
             // 
             // Consulta1_iconButton2
             // 
@@ -1101,9 +1105,10 @@
             this.Consulta1_iconButton2.Padding = new System.Windows.Forms.Padding(23, 0, 0, 0);
             this.Consulta1_iconButton2.Size = new System.Drawing.Size(214, 30);
             this.Consulta1_iconButton2.TabIndex = 3;
-            this.Consulta1_iconButton2.Text = "Galder";
+            this.Consulta1_iconButton2.Text = "Parejas  con la que ha jugado";
             this.Consulta1_iconButton2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Consulta1_iconButton2.UseVisualStyleBackColor = true;
+            this.Consulta1_iconButton2.Click += new System.EventHandler(this.Consulta1_iconButton2_Click_1);
             // 
             // Consultas_iconButton2
             // 
@@ -1232,24 +1237,35 @@
             this.label9.Text = "label9";
             this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
-            // iconButton5
+            // Servicios_iconButton5
             // 
-            this.iconButton5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton5.FlatAppearance.BorderSize = 0;
-            this.iconButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton5.ForeColor = System.Drawing.Color.LightGray;
-            this.iconButton5.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconButton5.IconColor = System.Drawing.Color.Black;
-            this.iconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton5.Location = new System.Drawing.Point(0, 90);
-            this.iconButton5.Margin = new System.Windows.Forms.Padding(2);
-            this.iconButton5.Name = "iconButton5";
-            this.iconButton5.Padding = new System.Windows.Forms.Padding(23, 0, 0, 0);
-            this.iconButton5.Size = new System.Drawing.Size(214, 30);
-            this.iconButton5.TabIndex = 6;
-            this.iconButton5.Text = "Número de Consultas Realizadas";
-            this.iconButton5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton5.UseVisualStyleBackColor = true;
+            this.Servicios_iconButton5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Servicios_iconButton5.FlatAppearance.BorderSize = 0;
+            this.Servicios_iconButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Servicios_iconButton5.ForeColor = System.Drawing.Color.LightGray;
+            this.Servicios_iconButton5.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.Servicios_iconButton5.IconColor = System.Drawing.Color.Black;
+            this.Servicios_iconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.Servicios_iconButton5.Location = new System.Drawing.Point(0, 90);
+            this.Servicios_iconButton5.Margin = new System.Windows.Forms.Padding(2);
+            this.Servicios_iconButton5.Name = "Servicios_iconButton5";
+            this.Servicios_iconButton5.Padding = new System.Windows.Forms.Padding(23, 0, 0, 0);
+            this.Servicios_iconButton5.Size = new System.Drawing.Size(214, 30);
+            this.Servicios_iconButton5.TabIndex = 6;
+            this.Servicios_iconButton5.Text = "Número de Consultas Realizadas";
+            this.Servicios_iconButton5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Servicios_iconButton5.UseVisualStyleBackColor = true;
+            this.Servicios_iconButton5.Click += new System.EventHandler(this.iconButton5_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(16, 62);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(108, 25);
+            this.label10.TabIndex = 12;
+            this.label10.Text = "Jugador 2";
             // 
             // Formfunciones
             // 
@@ -1369,7 +1385,8 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private FontAwesome.Sharp.IconButton iconButton5;
+        private FontAwesome.Sharp.IconButton Servicios_iconButton5;
+        private System.Windows.Forms.Label label10;
     }
 }
 
