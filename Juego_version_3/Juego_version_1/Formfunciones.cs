@@ -847,11 +847,7 @@ namespace Juego_version_1
 
 
 #region Funciones para el Formulario Principal 
-        //Para poder arrastrar el formulario 
-        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
-        private extern static void ReleaseCapture();
-        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
-        private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
+        
 
         //Para poder Redimensionar el formulario durante la ejecucion
         private int tolerance = 12;
@@ -905,38 +901,6 @@ namespace Juego_version_1
             //ControlPaint.DrawSizeGrip(e.Graphics,Color.Transparent,sizeGripRectangle);
 
         }
-        //Para cerrar el form
-        private void Cerrar_iconButton1_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-        //para minimizar el form
-
-        //Para los botns de cerrar/max/mins sigan al formulario
-        int lx, ly;
-        int sw, sh;
-
-        //Restaurar
-
-        //Para arrastrar el form desde los paneles
-        private void panelTitulo_MouseMove(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-
-        private void panel1_MouseDown(object sender, MouseEventArgs e)
-        {
-            ReleaseCapture();
-            SendMessage(this.Handle, 0x112, 0xf012, 0);
-        }
-
-        private void Mini_iconButton3_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        //Para maximizar
         #endregion
 
       #region ABRIR FORMULARIOS
@@ -1086,6 +1050,7 @@ namespace Juego_version_1
             // Enviamos al servidor el nombre del usuario
             msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
+
         }
 
         private void Consulta2_iconButton2_Click(object sender, EventArgs e)
@@ -1200,7 +1165,18 @@ namespace Juego_version_1
         private void Consulta_Mayra_CheckedChanged(object sender, EventArgs e)
         {
 
+            Consultas_groupBox1.Visible = true;
+            label10.Visible = false;
+            TBConsultaAndoni.Visible = false;
+            Servicios.Visible = false;
+            Consulta_Galder.Visible = false;
+            Consulta_Andoni.Visible = false;
+            Consulta_Mayra.Visible = true;
+
+
         }
+
+        
 
 
         private void ContraseñaB_textBox1_Leave(object sender, EventArgs e)

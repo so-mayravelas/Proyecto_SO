@@ -32,6 +32,7 @@
             this.Registro_button3 = new System.Windows.Forms.Button();
             this.Iniciar_button4 = new System.Windows.Forms.Button();
             this.Consultas_groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.Servicios = new System.Windows.Forms.RadioButton();
             this.TBConsultaAndoni = new System.Windows.Forms.TextBox();
             this.nombre_textBox3 = new System.Windows.Forms.TextBox();
@@ -60,13 +61,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.panelUsuarioOpcions = new System.Windows.Forms.Panel();
             this.DarBajar_iconButton6 = new FontAwesome.Sharp.IconButton();
-            this.panel_Invitaciones = new System.Windows.Forms.Panel();
-            this.InviRech_iconButton5 = new FontAwesome.Sharp.IconButton();
-            this.InviPend_iconButton4 = new FontAwesome.Sharp.IconButton();
-            this.Invitaciones_iconButton3 = new FontAwesome.Sharp.IconButton();
-            this.PartidasON_iconButton2 = new FontAwesome.Sharp.IconButton();
             this.panel2_Consultas = new System.Windows.Forms.Panel();
-            this.iconButton5 = new FontAwesome.Sharp.IconButton();
+            this.Servicios_iconButton5 = new FontAwesome.Sharp.IconButton();
+            this.iconButton5 = new FontAwesome.Sharp.IconButton();//fffffffffffff
             this.Consulta3_iconButton3 = new FontAwesome.Sharp.IconButton();
             this.Consulta2_iconButton2 = new FontAwesome.Sharp.IconButton();
             this.Consulta1_iconButton2 = new FontAwesome.Sharp.IconButton();
@@ -104,7 +101,6 @@
             this.panelIniciarSesion.SuspendLayout();
             this.panelPantallaJugador.SuspendLayout();
             this.panelUsuarioOpcions.SuspendLayout();
-            this.panel_Invitaciones.SuspendLayout();
             this.panel2_Consultas.SuspendLayout();
             this.panel1_perfil.SuspendLayout();
             this.panelRegistro.SuspendLayout();
@@ -168,12 +164,23 @@
             this.Consultas_groupBox1.Controls.Add(this.Consulta_Galder);
             this.Consultas_groupBox1.Controls.Add(this.label2);
             this.Consultas_groupBox1.Controls.Add(this.enviar_button5);
-            this.Consultas_groupBox1.Location = new System.Drawing.Point(138, 396);
+            this.Consultas_groupBox1.Location = new System.Drawing.Point(250, 131);
+
             this.Consultas_groupBox1.Name = "Consultas_groupBox1";
             this.Consultas_groupBox1.Size = new System.Drawing.Size(345, 188);
             this.Consultas_groupBox1.TabIndex = 8;
             this.Consultas_groupBox1.TabStop = false;
             this.Consultas_groupBox1.Text = "Peticion";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(16, 62);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(108, 25);
+            this.label10.TabIndex = 12;
+            this.label10.Text = "Jugador 2";
             // 
             // Servicios
             // 
@@ -296,7 +303,8 @@
             this.contraseña_textBox2.Location = new System.Drawing.Point(272, 269);
             this.contraseña_textBox2.Multiline = true;
             this.contraseña_textBox2.Name = "contraseña_textBox2";
-            this.contraseña_textBox2.PasswordChar = '·';
+            this.contraseña_textBox2.PasswordChar = '*';
+
             this.contraseña_textBox2.Size = new System.Drawing.Size(243, 33);
             this.contraseña_textBox2.TabIndex = 2;
             this.contraseña_textBox2.Text = "CONTRASEÑA";
@@ -411,23 +419,6 @@
             this.panelFormulario.Size = new System.Drawing.Size(838, 654);
             this.panelFormulario.TabIndex = 2;
             // 
-            // panelIniciarSesion
-            // 
-            this.panelIniciarSesion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.panelIniciarSesion.Controls.Add(this.panelPantallaJugador);
-            this.panelIniciarSesion.Controls.Add(this.MensError_label);
-            this.panelIniciarSesion.Controls.Add(this.label6);
-            this.panelIniciarSesion.Controls.Add(this.contraseña_textBox2);
-            this.panelIniciarSesion.Controls.Add(this.label1);
-            this.panelIniciarSesion.Controls.Add(this.label4);
-            this.panelIniciarSesion.Controls.Add(this.usuario_textBox1);
-            this.panelIniciarSesion.Controls.Add(this.Iniciar_button4);
-            this.panelIniciarSesion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelIniciarSesion.Location = new System.Drawing.Point(0, 0);
-            this.panelIniciarSesion.Name = "panelIniciarSesion";
-            this.panelIniciarSesion.Size = new System.Drawing.Size(838, 654);
-            this.panelIniciarSesion.TabIndex = 27;
-            // 
             // panelPantallaJugador
             // 
             this.panelPantallaJugador.BackColor = System.Drawing.Color.SteelBlue;
@@ -444,17 +435,32 @@
             this.panelPantallaJugador.Name = "panelPantallaJugador";
             this.panelPantallaJugador.Size = new System.Drawing.Size(838, 654);
             this.panelPantallaJugador.TabIndex = 28;
+                      // 
+            this.panelIniciarSesion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.panelIniciarSesion.Controls.Add(this.panelPantallaJugador);
+            this.panelIniciarSesion.Controls.Add(this.MensError_label);
+            this.panelIniciarSesion.Controls.Add(this.label6);
+            this.panelIniciarSesion.Controls.Add(this.contraseña_textBox2);
+            this.panelIniciarSesion.Controls.Add(this.label1);
+            this.panelIniciarSesion.Controls.Add(this.label4);
+            this.panelIniciarSesion.Controls.Add(this.usuario_textBox1);
+            this.panelIniciarSesion.Controls.Add(this.Iniciar_button4);
+            this.panelIniciarSesion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelIniciarSesion.Location = new System.Drawing.Point(0, 0);
+            this.panelIniciarSesion.Name = "panelIniciarSesion";
+            this.panelIniciarSesion.Size = new System.Drawing.Size(838, 654);
+            this.panelIniciarSesion.TabIndex = 27;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("ROG Fonts", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Black;
             this.label9.Location = new System.Drawing.Point(158, 34);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(57, 20);
+            this.label9.Size = new System.Drawing.Size(89, 19);
             this.label9.TabIndex = 31;
             this.label9.Text = "label9";
             this.label9.Click += new System.EventHandler(this.label9_Click);
@@ -463,12 +469,12 @@
             // 
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("ROG Fonts", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
             this.label8.Location = new System.Drawing.Point(16, 34);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(128, 20);
+            this.label8.Size = new System.Drawing.Size(141, 19);
             this.label8.TabIndex = 30;
             this.label8.Text = "BIENVENID@,";
             // 
@@ -477,9 +483,6 @@
             this.panelUsuarioOpcions.AutoScroll = true;
             this.panelUsuarioOpcions.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(7)))), ((int)(((byte)(27)))));
             this.panelUsuarioOpcions.Controls.Add(this.DarBajar_iconButton6);
-            this.panelUsuarioOpcions.Controls.Add(this.panel_Invitaciones);
-            this.panelUsuarioOpcions.Controls.Add(this.Invitaciones_iconButton3);
-            this.panelUsuarioOpcions.Controls.Add(this.PartidasON_iconButton2);
             this.panelUsuarioOpcions.Controls.Add(this.panel2_Consultas);
             this.panelUsuarioOpcions.Controls.Add(this.Consultas_iconButton2);
             this.panelUsuarioOpcions.Controls.Add(this.panel1_perfil);
@@ -491,6 +494,7 @@
             this.panelUsuarioOpcions.Name = "panelUsuarioOpcions";
             this.panelUsuarioOpcions.Size = new System.Drawing.Size(214, 654);
             this.panelUsuarioOpcions.TabIndex = 29;
+            
             // 
             // DarBajar_iconButton6
             // 
@@ -502,7 +506,7 @@
             this.DarBajar_iconButton6.IconColor = System.Drawing.Color.White;
             this.DarBajar_iconButton6.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.DarBajar_iconButton6.IconSize = 20;
-            this.DarBajar_iconButton6.Location = new System.Drawing.Point(0, 448);
+            this.DarBajar_iconButton6.Location = new System.Drawing.Point(0, 292);
             this.DarBajar_iconButton6.Margin = new System.Windows.Forms.Padding(2);
             this.DarBajar_iconButton6.Name = "DarBajar_iconButton6";
             this.DarBajar_iconButton6.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
@@ -514,115 +518,39 @@
             this.DarBajar_iconButton6.UseVisualStyleBackColor = true;
             this.DarBajar_iconButton6.Click += new System.EventHandler(this.DarBajar_iconButton6_Click_1);
             // 
-            // panel_Invitaciones
-            // 
-            this.panel_Invitaciones.Controls.Add(this.InviRech_iconButton5);
-            this.panel_Invitaciones.Controls.Add(this.InviPend_iconButton4);
-            this.panel_Invitaciones.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_Invitaciones.Location = new System.Drawing.Point(0, 358);
-            this.panel_Invitaciones.Margin = new System.Windows.Forms.Padding(2);
-            this.panel_Invitaciones.Name = "panel_Invitaciones";
-            this.panel_Invitaciones.Size = new System.Drawing.Size(214, 90);
-            this.panel_Invitaciones.TabIndex = 6;
-            // 
-            // InviRech_iconButton5
-            // 
-            this.InviRech_iconButton5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.InviRech_iconButton5.FlatAppearance.BorderSize = 0;
-            this.InviRech_iconButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.InviRech_iconButton5.ForeColor = System.Drawing.Color.LightGray;
-            this.InviRech_iconButton5.IconChar = FontAwesome.Sharp.IconChar.UsersSlash;
-            this.InviRech_iconButton5.IconColor = System.Drawing.Color.White;
-            this.InviRech_iconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.InviRech_iconButton5.IconSize = 38;
-            this.InviRech_iconButton5.Location = new System.Drawing.Point(0, 38);
-            this.InviRech_iconButton5.Margin = new System.Windows.Forms.Padding(2);
-            this.InviRech_iconButton5.Name = "InviRech_iconButton5";
-            this.InviRech_iconButton5.Padding = new System.Windows.Forms.Padding(23, 0, 0, 0);
-            this.InviRech_iconButton5.Size = new System.Drawing.Size(214, 37);
-            this.InviRech_iconButton5.TabIndex = 7;
-            this.InviRech_iconButton5.Text = "Rechazadas";
-            this.InviRech_iconButton5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.InviRech_iconButton5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.InviRech_iconButton5.UseVisualStyleBackColor = true;
-            // 
-            // InviPend_iconButton4
-            // 
-            this.InviPend_iconButton4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.InviPend_iconButton4.FlatAppearance.BorderSize = 0;
-            this.InviPend_iconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.InviPend_iconButton4.ForeColor = System.Drawing.Color.LightGray;
-            this.InviPend_iconButton4.IconChar = FontAwesome.Sharp.IconChar.Users;
-            this.InviPend_iconButton4.IconColor = System.Drawing.Color.White;
-            this.InviPend_iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.InviPend_iconButton4.IconSize = 38;
-            this.InviPend_iconButton4.Location = new System.Drawing.Point(0, 0);
-            this.InviPend_iconButton4.Margin = new System.Windows.Forms.Padding(2);
-            this.InviPend_iconButton4.Name = "InviPend_iconButton4";
-            this.InviPend_iconButton4.Padding = new System.Windows.Forms.Padding(23, 0, 0, 0);
-            this.InviPend_iconButton4.Size = new System.Drawing.Size(214, 38);
-            this.InviPend_iconButton4.TabIndex = 6;
-            this.InviPend_iconButton4.Text = "Pendientes";
-            this.InviPend_iconButton4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.InviPend_iconButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.InviPend_iconButton4.UseVisualStyleBackColor = true;
-            // 
-            // Invitaciones_iconButton3
-            // 
-            this.Invitaciones_iconButton3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.Invitaciones_iconButton3.FlatAppearance.BorderSize = 0;
-            this.Invitaciones_iconButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Invitaciones_iconButton3.ForeColor = System.Drawing.Color.Gainsboro;
-            this.Invitaciones_iconButton3.IconChar = FontAwesome.Sharp.IconChar.EnvelopeOpenText;
-            this.Invitaciones_iconButton3.IconColor = System.Drawing.Color.White;
-            this.Invitaciones_iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.Invitaciones_iconButton3.IconSize = 30;
-            this.Invitaciones_iconButton3.Location = new System.Drawing.Point(0, 323);
-            this.Invitaciones_iconButton3.Margin = new System.Windows.Forms.Padding(2);
-            this.Invitaciones_iconButton3.Name = "Invitaciones_iconButton3";
-            this.Invitaciones_iconButton3.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
-            this.Invitaciones_iconButton3.Size = new System.Drawing.Size(214, 35);
-            this.Invitaciones_iconButton3.TabIndex = 5;
-            this.Invitaciones_iconButton3.Text = "INVITACIONES         ";
-            this.Invitaciones_iconButton3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.Invitaciones_iconButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.Invitaciones_iconButton3.UseVisualStyleBackColor = true;
-            // 
-            // PartidasON_iconButton2
-            // 
-            this.PartidasON_iconButton2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.PartidasON_iconButton2.FlatAppearance.BorderSize = 0;
-            this.PartidasON_iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.PartidasON_iconButton2.ForeColor = System.Drawing.Color.Gainsboro;
-            this.PartidasON_iconButton2.IconChar = FontAwesome.Sharp.IconChar.Gamepad;
-            this.PartidasON_iconButton2.IconColor = System.Drawing.Color.White;
-            this.PartidasON_iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.PartidasON_iconButton2.IconSize = 30;
-            this.PartidasON_iconButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.PartidasON_iconButton2.Location = new System.Drawing.Point(0, 274);
-            this.PartidasON_iconButton2.Margin = new System.Windows.Forms.Padding(2);
-            this.PartidasON_iconButton2.Name = "PartidasON_iconButton2";
-            this.PartidasON_iconButton2.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
-            this.PartidasON_iconButton2.Size = new System.Drawing.Size(214, 49);
-            this.PartidasON_iconButton2.TabIndex = 4;
-            this.PartidasON_iconButton2.Text = "PARTIDAS ACTIVAS";
-            this.PartidasON_iconButton2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.PartidasON_iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.PartidasON_iconButton2.UseVisualStyleBackColor = true;
-            // 
             // panel2_Consultas
             // 
             this.panel2_Consultas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(32)))), ((int)(((byte)(39)))));
-            this.panel2_Consultas.Controls.Add(this.iconButton5);
+            this.panel2_Consultas.Controls.Add(this.Servicios_iconButton5);
             this.panel2_Consultas.Controls.Add(this.Consulta3_iconButton3);
             this.panel2_Consultas.Controls.Add(this.Consulta2_iconButton2);
             this.panel2_Consultas.Controls.Add(this.Consulta1_iconButton2);
             this.panel2_Consultas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2_Consultas.Location = new System.Drawing.Point(0, 120);
+            this.panel2_Consultas.Location = new System.Drawing.Point(0, 138);
             this.panel2_Consultas.Margin = new System.Windows.Forms.Padding(2);
             this.panel2_Consultas.Name = "panel2_Consultas";
             this.panel2_Consultas.Size = new System.Drawing.Size(214, 154);
             this.panel2_Consultas.TabIndex = 2;
+            // 
+            // Servicios_iconButton5
+            // 
+            this.Servicios_iconButton5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.Servicios_iconButton5.FlatAppearance.BorderSize = 0;
+            this.Servicios_iconButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Servicios_iconButton5.ForeColor = System.Drawing.Color.LightGray;
+            this.Servicios_iconButton5.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.Servicios_iconButton5.IconColor = System.Drawing.Color.Black;
+            this.Servicios_iconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.Servicios_iconButton5.Location = new System.Drawing.Point(0, 90);
+            this.Servicios_iconButton5.Margin = new System.Windows.Forms.Padding(2);
+            this.Servicios_iconButton5.Name = "Servicios_iconButton5";
+            this.Servicios_iconButton5.Padding = new System.Windows.Forms.Padding(23, 0, 0, 0);
+            this.Servicios_iconButton5.Size = new System.Drawing.Size(214, 30);
+            this.Servicios_iconButton5.TabIndex = 6;
+            this.Servicios_iconButton5.Text = "Número de Consultas Realizadas";
+            this.Servicios_iconButton5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.Servicios_iconButton5.UseVisualStyleBackColor = true;
+            this.Servicios_iconButton5.Click += new System.EventHandler(this.iconButton5_Click);
             // 
             // iconButton5
             // 
@@ -711,11 +639,11 @@
             this.Consultas_iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.Consultas_iconButton2.IconSize = 30;
             this.Consultas_iconButton2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.Consultas_iconButton2.Location = new System.Drawing.Point(0, 85);
+            this.Consultas_iconButton2.Location = new System.Drawing.Point(0, 96);
             this.Consultas_iconButton2.Margin = new System.Windows.Forms.Padding(2);
             this.Consultas_iconButton2.Name = "Consultas_iconButton2";
             this.Consultas_iconButton2.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
-            this.Consultas_iconButton2.Size = new System.Drawing.Size(214, 35);
+            this.Consultas_iconButton2.Size = new System.Drawing.Size(214, 42);
             this.Consultas_iconButton2.TabIndex = 2;
             this.Consultas_iconButton2.Text = "CONSULTAS";
             this.Consultas_iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -935,12 +863,241 @@
             // 
             // label3
             // 
+            this.panel1_perfil.Controls.Add(this.label7);
+            this.panel1_perfil.Controls.Add(this.iconButton1);
+            this.panel1_perfil.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1_perfil.Location = new System.Drawing.Point(0, 0);
+            this.panel1_perfil.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1_perfil.Name = "panel1_perfil";
+            this.panel1_perfil.Size = new System.Drawing.Size(214, 96);
+            this.panel1_perfil.TabIndex = 3;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(87, 21);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(35, 13);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "label7";
+            // 
+            // iconButton1
+
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label3.Location = new System.Drawing.Point(3, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(445, 29);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "              Crea tu cuenta y empieza a jugar";
+            // 
+            // panelMenu
+
+            // 
+            this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(41)))), ((int)(((byte)(68)))));
+            this.panelMenu.Controls.Add(this.Conectar_iconButton1);
+            this.panelMenu.Controls.Add(this.Desconectar_iconButton1);
+            this.panelMenu.Controls.Add(this.Instr_iconButton4);
+            this.panelMenu.Controls.Add(this.Conectar_button1);
+            this.panelMenu.Controls.Add(this.fq_iconButton3);
+            this.panelMenu.Controls.Add(this.IniSe_iconButton2);
+            this.panelMenu.Controls.Add(this.panel1);
+            this.panelMenu.Controls.Add(this.Registrarse_iconButton1);
+            this.panelMenu.Controls.Add(this.Desconectar_button2);
+            this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelMenu.Location = new System.Drawing.Point(0, 0);
+            this.panelMenu.Margin = new System.Windows.Forms.Padding(2);
+            this.panelMenu.Name = "panelMenu";
+            this.panelMenu.Size = new System.Drawing.Size(167, 654);
+            this.panelMenu.TabIndex = 27;
+            this.panelMenu.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            // 
+            // Exit_FPusericonButton1
+            // 
+            this.Exit_FPusericonButton1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.Exit_FPusericonButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Exit_FPusericonButton1.IconChar = FontAwesome.Sharp.IconChar.SignOutAlt;
+            this.Exit_FPusericonButton1.IconColor = System.Drawing.Color.White;
+            this.Exit_FPusericonButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.Exit_FPusericonButton1.IconSize = 45;
+            this.Exit_FPusericonButton1.Location = new System.Drawing.Point(0, 604);
+            this.Exit_FPusericonButton1.Margin = new System.Windows.Forms.Padding(2);
+            this.Exit_FPusericonButton1.Name = "Exit_FPusericonButton1";
+            this.Exit_FPusericonButton1.Size = new System.Drawing.Size(214, 50);
+            this.Exit_FPusericonButton1.TabIndex = 0;
+            this.Exit_FPusericonButton1.Text = "SALIR ";
+            this.Exit_FPusericonButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.Exit_FPusericonButton1.UseVisualStyleBackColor = true;
+            this.Exit_FPusericonButton1.Click += new System.EventHandler(this.Exit_FPusericonButton1_Click);
+            // 
+            // MensError_label
+            // 
+            this.MensError_label.AutoSize = true;
+            this.MensError_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.MensError_label.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MensError_label.ForeColor = System.Drawing.Color.DimGray;
+            this.MensError_label.Location = new System.Drawing.Point(269, 325);
+            this.MensError_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.MensError_label.Name = "MensError_label";
+            this.MensError_label.Size = new System.Drawing.Size(116, 16);
+            this.MensError_label.TabIndex = 14;
+            this.MensError_label.Text = "Mensaje de Error";
+            this.MensError_label.Visible = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("ROG Fonts", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(308, 54);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(148, 42);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "LOGIN";
+            // 
+            // panelRegistro
+            // 
+            this.panelRegistro.BackColor = System.Drawing.Color.MistyRose;
+            this.panelRegistro.BackgroundImage = global::Juego_version_1.Properties.Resources.registro_bc1;
+            this.panelRegistro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelRegistro.Controls.Add(this.iconButton4);
+            this.panelRegistro.Controls.Add(this.ContraseñaB_textBox1);
+            this.panelRegistro.Controls.Add(this.linkLabel1);
+            this.panelRegistro.Controls.Add(this.contraseñaA_textBox2);
+            this.panelRegistro.Controls.Add(this.iconButton2);
+            this.panelRegistro.Controls.Add(this.iconButton3);
+            this.panelRegistro.Controls.Add(this.usuario1_textBox1);
+            this.panelRegistro.Controls.Add(this.panel3);
+            this.panelRegistro.Controls.Add(this.Registro_button3);
+            this.panelRegistro.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelRegistro.Location = new System.Drawing.Point(0, 0);
+            this.panelRegistro.Name = "panelRegistro";
+            this.panelRegistro.Size = new System.Drawing.Size(838, 654);
+            this.panelRegistro.TabIndex = 26;
+            // 
+            // iconButton4
+            // 
+            this.iconButton4.AutoSize = true;
+            this.iconButton4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.iconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.Lock;
+            this.iconButton4.IconColor = System.Drawing.Color.Maroon;
+            this.iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton4.IconSize = 30;
+            this.iconButton4.Location = new System.Drawing.Point(216, 318);
+            this.iconButton4.Name = "iconButton4";
+            this.iconButton4.Size = new System.Drawing.Size(38, 38);
+            this.iconButton4.TabIndex = 12;
+            this.iconButton4.UseVisualStyleBackColor = true;
+            // 
+            // ContraseñaB_textBox1
+            // 
+            this.ContraseñaB_textBox1.BackColor = System.Drawing.Color.Snow;
+            this.ContraseñaB_textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ContraseñaB_textBox1.Font = new System.Drawing.Font("ROG Fonts", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ContraseñaB_textBox1.ForeColor = System.Drawing.Color.DimGray;
+            this.ContraseñaB_textBox1.Location = new System.Drawing.Point(250, 318);
+            this.ContraseñaB_textBox1.Multiline = true;
+            this.ContraseñaB_textBox1.Name = "ContraseñaB_textBox1";
+            this.ContraseñaB_textBox1.Size = new System.Drawing.Size(263, 38);
+            this.ContraseñaB_textBox1.TabIndex = 11;
+            this.ContraseñaB_textBox1.Text = "    REPETIR PASSWORD";
+            this.ContraseñaB_textBox1.Enter += new System.EventHandler(this.ContraseñaB_textBox1_Enter);
+            this.ContraseñaB_textBox1.Leave += new System.EventHandler(this.ContraseñaB_textBox1_Leave);
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(30)))), ((int)(((byte)(255)))));
+            this.linkLabel1.Location = new System.Drawing.Point(212, 487);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(160, 19);
+            this.linkLabel1.TabIndex = 6;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Ya tengo cuenta en Mus";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // contraseñaA_textBox2
+            // 
+            this.contraseñaA_textBox2.BackColor = System.Drawing.Color.Snow;
+            this.contraseñaA_textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.contraseñaA_textBox2.Font = new System.Drawing.Font("ROG Fonts", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contraseñaA_textBox2.ForeColor = System.Drawing.Color.DimGray;
+            this.contraseñaA_textBox2.Location = new System.Drawing.Point(250, 259);
+            this.contraseñaA_textBox2.Multiline = true;
+            this.contraseñaA_textBox2.Name = "contraseñaA_textBox2";
+            this.contraseñaA_textBox2.Size = new System.Drawing.Size(263, 38);
+            this.contraseñaA_textBox2.TabIndex = 8;
+            this.contraseñaA_textBox2.Text = "    PASSWORD";
+            this.contraseñaA_textBox2.Enter += new System.EventHandler(this.contraseñaA_textBox2_Enter);
+            this.contraseñaA_textBox2.Leave += new System.EventHandler(this.contraseñaA_textBox2_Leave);
+            // 
+            // iconButton2
+            // 
+            this.iconButton2.AutoSize = true;
+            this.iconButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.Lock;
+            this.iconButton2.IconColor = System.Drawing.Color.Maroon;
+            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton2.IconSize = 30;
+            this.iconButton2.Location = new System.Drawing.Point(216, 259);
+            this.iconButton2.Name = "iconButton2";
+            this.iconButton2.Size = new System.Drawing.Size(38, 38);
+            this.iconButton2.TabIndex = 10;
+            this.iconButton2.UseVisualStyleBackColor = true;
+            // 
+            // iconButton3
+            // 
+            this.iconButton3.AutoSize = true;
+            this.iconButton3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.iconButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.UserAlt;
+            this.iconButton3.IconColor = System.Drawing.Color.DarkGreen;
+            this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton3.IconSize = 30;
+            this.iconButton3.Location = new System.Drawing.Point(216, 200);
+            this.iconButton3.Name = "iconButton3";
+            this.iconButton3.Size = new System.Drawing.Size(38, 38);
+            this.iconButton3.TabIndex = 9;
+            this.iconButton3.UseVisualStyleBackColor = true;
+            // 
+            // usuario1_textBox1
+            // 
+            this.usuario1_textBox1.BackColor = System.Drawing.Color.Snow;
+            this.usuario1_textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.usuario1_textBox1.Font = new System.Drawing.Font("ROG Fonts", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usuario1_textBox1.ForeColor = System.Drawing.Color.DimGray;
+            this.usuario1_textBox1.Location = new System.Drawing.Point(250, 200);
+            this.usuario1_textBox1.Multiline = true;
+            this.usuario1_textBox1.Name = "usuario1_textBox1";
+            this.usuario1_textBox1.Size = new System.Drawing.Size(263, 38);
+            this.usuario1_textBox1.TabIndex = 7;
+            this.usuario1_textBox1.Text = "      Nombre de jugador";
+            this.usuario1_textBox1.Enter += new System.EventHandler(this.usuario1_textBox1_Enter);
+            this.usuario1_textBox1.Leave += new System.EventHandler(this.usuario1_textBox1_Leave_1);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(74)))), ((int)(((byte)(64)))));
+            this.panel3.Controls.Add(this.label3);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(838, 60);
+            this.panel3.TabIndex = 5;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("ROG Fonts", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label3.Location = new System.Drawing.Point(3, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(682, 29);
             this.label3.TabIndex = 0;
             this.label3.Text = "              Crea tu cuenta y empieza a jugar";
             // 
@@ -962,7 +1119,7 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(167, 654);
             this.panelMenu.TabIndex = 27;
-            this.panelMenu.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+           
             // 
             // Conectar_iconButton1
             // 
@@ -1142,7 +1299,6 @@
             this.panelPantallaJugador.ResumeLayout(false);
             this.panelPantallaJugador.PerformLayout();
             this.panelUsuarioOpcions.ResumeLayout(false);
-            this.panel_Invitaciones.ResumeLayout(false);
             this.panel2_Consultas.ResumeLayout(false);
             this.panel1_perfil.ResumeLayout(false);
             this.panel1_perfil.PerformLayout();
@@ -1205,11 +1361,6 @@
         private System.Windows.Forms.Panel panelIniciarSesion;
         private System.Windows.Forms.Panel panelUsuarioOpcions;
         private FontAwesome.Sharp.IconButton DarBajar_iconButton6;
-        private System.Windows.Forms.Panel panel_Invitaciones;
-        private FontAwesome.Sharp.IconButton InviRech_iconButton5;
-        private FontAwesome.Sharp.IconButton InviPend_iconButton4;
-        private FontAwesome.Sharp.IconButton Invitaciones_iconButton3;
-        private FontAwesome.Sharp.IconButton PartidasON_iconButton2;
         private System.Windows.Forms.Panel panel2_Consultas;
         private FontAwesome.Sharp.IconButton Consulta3_iconButton3;
         private FontAwesome.Sharp.IconButton Consulta2_iconButton2;
