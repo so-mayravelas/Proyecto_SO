@@ -142,7 +142,7 @@ namespace Juego_version_1
             }
             
         }
-        private Image[] Repartir(int jugador)//00-09 oros--10-19-bastos--20-29-espadas--30-39-copas
+        private Image[] Repartir(int jugador)//00-09 oros--10-19-bastos--20-29-espadas--30-39-copas Reparte segun las cartas que toque
         {
             Image[] cartas= new Image[4];
             for (int i = 0; i < 4; i++)

@@ -189,33 +189,39 @@ namespace Juego_version_1
 
             if (Consulta_Galder.Checked == true && loged==true)
             {
-                // Realizamos la consulta escogida
-                mensaje = "3/" + Convert.ToString(nombre_textBox3.Text);
-                // Enviamos al servidor el nombre del usuario
-                msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                if (conectado == true)
-                    server.Send(msg);
+                if (nombre_textBox3.Text != "" )
+                {
+                    // Realizamos la consulta escogida
+                    mensaje = "3/" + Convert.ToString(nombre_textBox3.Text);
+                    // Enviamos al servidor el nombre del usuario
+                    msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                    if (conectado == true)
+                        server.Send(msg);
+                }
             }
 
             else if (Consulta_Mayra.Checked == true && loged == true)
             {
-                // Quiere realizar la consulta escogida
-                mensaje = "4/" + Convert.ToString(nombre_textBox3.Text);
-                // Enviamos al servidor el nombre del usuario
-                msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                server.Send(msg);
-
+                if (nombre_textBox3.Text != "" )
+                {
+                    // Quiere realizar la consulta escogida
+                    mensaje = "4/" + Convert.ToString(nombre_textBox3.Text);
+                    // Enviamos al servidor el nombre del usuario
+                    msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                    server.Send(msg);
+                }
             }
 
             else if (Consulta_Andoni.Checked == true && loged == true)
             {
                 // Quiere realizar la consulta escogida
-                mensaje = "5/" + Convert.ToString(nombre_textBox3.Text) + "/" + Convert.ToString(TBConsultaAndoni.Text);
-                // Enviamos al servidor los nombres de usuario
-                msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-                if (conectado == true)
-                    server.Send(msg);
-
+                if (nombre_textBox3.Text!="" || TBConsultaAndoni.Text != ""){
+                    mensaje = "5/" + Convert.ToString(nombre_textBox3.Text) + "/" + Convert.ToString(TBConsultaAndoni.Text);
+                    // Enviamos al servidor los nombres de usuario
+                    msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                    if (conectado == true)
+                        server.Send(msg);
+                }
             }
 
             else if (Servicios.Checked==true && loged == true)
@@ -611,7 +617,7 @@ namespace Juego_version_1
         }
         public void SesionIniciada()
         {
-            Consultas_groupBox1.Visible = true;
+            //Consultas_groupBox1.Visible = true;
             MessageBox.Show("Has iniciado sesion correctamente");
         }
         //Funcion que actualiza la DataGrid con los Usuarios
@@ -702,7 +708,7 @@ namespace Juego_version_1
 
                 Partida p = new Partida();
                 p.PonID(numPartida);
-                p.AñadirParticipante(miusuario, numPartida);
+                p.AñadirParticipante(miusuario, 0);
                 Partidas.Add(p);
 
         }
@@ -847,7 +853,11 @@ namespace Juego_version_1
 
 
 #region Funciones para el Formulario Principal 
-        
+        //Para poder arrastrar el formulario 
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hwnd, int wmsg, int wparam, int lparam);
 
         //Para poder Redimensionar el formulario durante la ejecucion
         private int tolerance = 12;
@@ -901,6 +911,38 @@ namespace Juego_version_1
             //ControlPaint.DrawSizeGrip(e.Graphics,Color.Transparent,sizeGripRectangle);
 
         }
+        //Para cerrar el form
+        private void Cerrar_iconButton1_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        //para minimizar el form
+
+        //Para los botns de cerrar/max/mins sigan al formulario
+        int lx, ly;
+        int sw, sh;
+
+        //Restaurar
+
+        //Para arrastrar el form desde los paneles
+        private void panelTitulo_MouseMove(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void Mini_iconButton3_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        //Para maximizar
         #endregion
 
       #region ABRIR FORMULARIOS
@@ -1050,7 +1092,6 @@ namespace Juego_version_1
             // Enviamos al servidor el nombre del usuario
             msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
             server.Send(msg);
-
         }
 
         private void Consulta2_iconButton2_Click(object sender, EventArgs e)
@@ -1072,10 +1113,7 @@ namespace Juego_version_1
             server.Send(msg);
         }
 
-        private void fq_iconButton3_Click(object sender, EventArgs e)
-        {
-
-        }
+ 
 
         private void Instr_iconButton4_Click(object sender, EventArgs e)
         {
@@ -1152,31 +1190,13 @@ namespace Juego_version_1
             Desconectar_button2.PerformClick();
         }
 
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void Exit_FPusericonButton1_Click(object sender, EventArgs e)
         {
             panelPantallaJugador.Hide();
         }
 
-        private void Consulta_Mayra_CheckedChanged(object sender, EventArgs e)
-        {
 
-            Consultas_groupBox1.Visible = true;
-            label10.Visible = false;
-            TBConsultaAndoni.Visible = false;
-            Servicios.Visible = false;
-            Consulta_Galder.Visible = false;
-            Consulta_Andoni.Visible = false;
-            Consulta_Mayra.Visible = true;
-
-
-        }
-
-        
 
 
         private void ContraseñaB_textBox1_Leave(object sender, EventArgs e)
@@ -1188,11 +1208,52 @@ namespace Juego_version_1
                 ContraseñaB_textBox1.UseSystemPasswordChar = false;
             }
         }
+        private void Consulta1_iconButton2_Click_1(object sender, EventArgs e)
+        {
+            Consultas_groupBox1.Visible = true;
+            label10.Visible = false;
+            TBConsultaAndoni.Visible = false;
+            Consulta_Mayra.Visible = false;
+            Consulta_Andoni.Visible = false;
+            Servicios.Visible = false;
+        }
+        private void Consulta2_iconButton2_Click_1(object sender, EventArgs e)
+        {
+            Consultas_groupBox1.Visible = true;
+            label10.Visible = false;
+            TBConsultaAndoni.Visible = false;
+            Servicios.Visible = false;
+            Consulta_Galder.Visible = false;
+            Consulta_Andoni.Visible = false;
+            Consulta_Mayra.Visible = true;
 
+
+        }
+        private void Consulta3_iconButton3_Click_1(object sender, EventArgs e)
+        {
+            Consultas_groupBox1.Visible = true;
+            label10.Visible = true;
+            TBConsultaAndoni.Visible = true;
+            Consulta_Mayra.Visible = false;
+            Servicios.Visible = false;
+            Consulta_Galder.Visible = false;
+        }
+
+
+        private void Servicios_iconButton5_Click(object sender, EventArgs e)
+        {
+            Consultas_groupBox1.Visible = true;
+            Consulta_Galder.Visible = false;
+            label10.Visible = false;
+            TBConsultaAndoni.Visible = false;
+            Consulta_Mayra.Visible = false;
+            Consulta_Andoni.Visible = false;
+
+        }
         #endregion
 
 
-       #region Panel Inciar Sesion 
+        #region Panel Inciar Sesion 
 
         private void msgError(string msg)
         {

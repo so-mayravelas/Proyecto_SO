@@ -1,4 +1,7 @@
-﻿namespace Juego_version_1
+﻿using System.Windows.Forms;
+using FontAwesome.Sharp;
+
+namespace Juego_version_1
 {
     partial class Formfunciones
     {
@@ -32,7 +35,7 @@
             this.Registro_button3 = new System.Windows.Forms.Button();
             this.Iniciar_button4 = new System.Windows.Forms.Button();
             this.Consultas_groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.Servicios = new System.Windows.Forms.RadioButton();
             this.TBConsultaAndoni = new System.Windows.Forms.TextBox();
             this.nombre_textBox3 = new System.Windows.Forms.TextBox();
@@ -63,7 +66,6 @@
             this.DarBajar_iconButton6 = new FontAwesome.Sharp.IconButton();
             this.panel2_Consultas = new System.Windows.Forms.Panel();
             this.Servicios_iconButton5 = new FontAwesome.Sharp.IconButton();
-            this.iconButton5 = new FontAwesome.Sharp.IconButton();//fffffffffffff
             this.Consulta3_iconButton3 = new FontAwesome.Sharp.IconButton();
             this.Consulta2_iconButton2 = new FontAwesome.Sharp.IconButton();
             this.Consulta1_iconButton2 = new FontAwesome.Sharp.IconButton();
@@ -93,6 +95,8 @@
             this.IniSe_iconButton2 = new FontAwesome.Sharp.IconButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Registrarse_iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.label10 = new System.Windows.Forms.Label();
+            this.iconButton5 = new FontAwesome.Sharp.IconButton();
             this.Consultas_groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ConectadosGrid)).BeginInit();
             this.groupBoxInvitacion.SuspendLayout();
@@ -156,6 +160,7 @@
             // Consultas_groupBox1
             // 
             this.Consultas_groupBox1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.Consultas_groupBox1.Controls.Add(this.label11);
             this.Consultas_groupBox1.Controls.Add(this.Servicios);
             this.Consultas_groupBox1.Controls.Add(this.TBConsultaAndoni);
             this.Consultas_groupBox1.Controls.Add(this.nombre_textBox3);
@@ -165,27 +170,26 @@
             this.Consultas_groupBox1.Controls.Add(this.label2);
             this.Consultas_groupBox1.Controls.Add(this.enviar_button5);
             this.Consultas_groupBox1.Location = new System.Drawing.Point(250, 131);
-
             this.Consultas_groupBox1.Name = "Consultas_groupBox1";
-            this.Consultas_groupBox1.Size = new System.Drawing.Size(345, 188);
+            this.Consultas_groupBox1.Size = new System.Drawing.Size(345, 225);
             this.Consultas_groupBox1.TabIndex = 8;
             this.Consultas_groupBox1.TabStop = false;
             this.Consultas_groupBox1.Text = "Peticion";
             // 
-            // label10
+            // label11
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(16, 62);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(108, 25);
-            this.label10.TabIndex = 12;
-            this.label10.Text = "Jugador 2";
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(2, 59);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(108, 25);
+            this.label11.TabIndex = 12;
+            this.label11.Text = "Jugador 2";
             // 
             // Servicios
             // 
             this.Servicios.AutoSize = true;
-            this.Servicios.Location = new System.Drawing.Point(116, 145);
+            this.Servicios.Location = new System.Drawing.Point(116, 164);
             this.Servicios.Name = "Servicios";
             this.Servicios.Size = new System.Drawing.Size(151, 17);
             this.Servicios.TabIndex = 11;
@@ -195,7 +199,7 @@
             // 
             // TBConsultaAndoni
             // 
-            this.TBConsultaAndoni.Location = new System.Drawing.Point(224, 119);
+            this.TBConsultaAndoni.Location = new System.Drawing.Point(126, 59);
             this.TBConsultaAndoni.Name = "TBConsultaAndoni";
             this.TBConsultaAndoni.Size = new System.Drawing.Size(119, 20);
             this.TBConsultaAndoni.TabIndex = 10;
@@ -210,19 +214,18 @@
             // Consulta_Mayra
             // 
             this.Consulta_Mayra.AutoSize = true;
-            this.Consulta_Mayra.Location = new System.Drawing.Point(116, 91);
+            this.Consulta_Mayra.Location = new System.Drawing.Point(116, 113);
             this.Consulta_Mayra.Name = "Consulta_Mayra";
             this.Consulta_Mayra.Size = new System.Drawing.Size(179, 17);
             this.Consulta_Mayra.TabIndex = 7;
             this.Consulta_Mayra.TabStop = true;
             this.Consulta_Mayra.Text = "Partidas jugadas por el \"usuario\"";
             this.Consulta_Mayra.UseVisualStyleBackColor = true;
-            this.Consulta_Mayra.CheckedChanged += new System.EventHandler(this.Consulta_Mayra_CheckedChanged);
             // 
             // Consulta_Andoni
             // 
             this.Consulta_Andoni.AutoSize = true;
-            this.Consulta_Andoni.Location = new System.Drawing.Point(116, 119);
+            this.Consulta_Andoni.Location = new System.Drawing.Point(116, 141);
             this.Consulta_Andoni.Name = "Consulta_Andoni";
             this.Consulta_Andoni.Size = new System.Drawing.Size(102, 17);
             this.Consulta_Andoni.TabIndex = 7;
@@ -234,7 +237,7 @@
             // 
             this.Consulta_Galder.AutoSize = true;
             this.Consulta_Galder.Checked = true;
-            this.Consulta_Galder.Location = new System.Drawing.Point(116, 68);
+            this.Consulta_Galder.Location = new System.Drawing.Point(116, 90);
             this.Consulta_Galder.Name = "Consulta_Galder";
             this.Consulta_Galder.Size = new System.Drawing.Size(100, 17);
             this.Consulta_Galder.TabIndex = 8;
@@ -247,15 +250,15 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(23, 25);
+            this.label2.Location = new System.Drawing.Point(2, 24);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 25);
+            this.label2.Size = new System.Drawing.Size(108, 25);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Nombre";
+            this.label2.Text = "Jugador 1";
             // 
             // enviar_button5
             // 
-            this.enviar_button5.Location = new System.Drawing.Point(126, 189);
+            this.enviar_button5.Location = new System.Drawing.Point(126, 194);
             this.enviar_button5.Name = "enviar_button5";
             this.enviar_button5.Size = new System.Drawing.Size(75, 23);
             this.enviar_button5.TabIndex = 5;
@@ -304,7 +307,6 @@
             this.contraseña_textBox2.Multiline = true;
             this.contraseña_textBox2.Name = "contraseña_textBox2";
             this.contraseña_textBox2.PasswordChar = '*';
-
             this.contraseña_textBox2.Size = new System.Drawing.Size(243, 33);
             this.contraseña_textBox2.TabIndex = 2;
             this.contraseña_textBox2.Text = "CONTRASEÑA";
@@ -391,7 +393,7 @@
             this.groupBoxInvitacion.Controls.Add(this.buttonAceptar);
             this.groupBoxInvitacion.Controls.Add(this.labelInvitacion);
             this.groupBoxInvitacion.Controls.Add(this.listaClientes);
-            this.groupBoxInvitacion.Location = new System.Drawing.Point(409, 34);
+            this.groupBoxInvitacion.Location = new System.Drawing.Point(432, 3);
             this.groupBoxInvitacion.Name = "groupBoxInvitacion";
             this.groupBoxInvitacion.Size = new System.Drawing.Size(163, 182);
             this.groupBoxInvitacion.TabIndex = 20;
@@ -419,6 +421,23 @@
             this.panelFormulario.Size = new System.Drawing.Size(838, 654);
             this.panelFormulario.TabIndex = 2;
             // 
+            // panelIniciarSesion
+            // 
+            this.panelIniciarSesion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
+            this.panelIniciarSesion.Controls.Add(this.panelPantallaJugador);
+            this.panelIniciarSesion.Controls.Add(this.MensError_label);
+            this.panelIniciarSesion.Controls.Add(this.label6);
+            this.panelIniciarSesion.Controls.Add(this.contraseña_textBox2);
+            this.panelIniciarSesion.Controls.Add(this.label1);
+            this.panelIniciarSesion.Controls.Add(this.label4);
+            this.panelIniciarSesion.Controls.Add(this.usuario_textBox1);
+            this.panelIniciarSesion.Controls.Add(this.Iniciar_button4);
+            this.panelIniciarSesion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelIniciarSesion.Location = new System.Drawing.Point(0, 0);
+            this.panelIniciarSesion.Name = "panelIniciarSesion";
+            this.panelIniciarSesion.Size = new System.Drawing.Size(838, 654);
+            this.panelIniciarSesion.TabIndex = 27;
+            // 
             // panelPantallaJugador
             // 
             this.panelPantallaJugador.BackColor = System.Drawing.Color.SteelBlue;
@@ -435,46 +454,30 @@
             this.panelPantallaJugador.Name = "panelPantallaJugador";
             this.panelPantallaJugador.Size = new System.Drawing.Size(838, 654);
             this.panelPantallaJugador.TabIndex = 28;
-                      // 
-            this.panelIniciarSesion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.panelIniciarSesion.Controls.Add(this.panelPantallaJugador);
-            this.panelIniciarSesion.Controls.Add(this.MensError_label);
-            this.panelIniciarSesion.Controls.Add(this.label6);
-            this.panelIniciarSesion.Controls.Add(this.contraseña_textBox2);
-            this.panelIniciarSesion.Controls.Add(this.label1);
-            this.panelIniciarSesion.Controls.Add(this.label4);
-            this.panelIniciarSesion.Controls.Add(this.usuario_textBox1);
-            this.panelIniciarSesion.Controls.Add(this.Iniciar_button4);
-            this.panelIniciarSesion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelIniciarSesion.Location = new System.Drawing.Point(0, 0);
-            this.panelIniciarSesion.Name = "panelIniciarSesion";
-            this.panelIniciarSesion.Size = new System.Drawing.Size(838, 654);
-            this.panelIniciarSesion.TabIndex = 27;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("ROG Fonts", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Black;
             this.label9.Location = new System.Drawing.Point(158, 34);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(89, 19);
+            this.label9.Size = new System.Drawing.Size(57, 20);
             this.label9.TabIndex = 31;
             this.label9.Text = "label9";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("ROG Fonts", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
             this.label8.Location = new System.Drawing.Point(16, 34);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(141, 19);
+            this.label8.Size = new System.Drawing.Size(128, 20);
             this.label8.TabIndex = 30;
             this.label8.Text = "BIENVENID@,";
             // 
@@ -494,7 +497,6 @@
             this.panelUsuarioOpcions.Name = "panelUsuarioOpcions";
             this.panelUsuarioOpcions.Size = new System.Drawing.Size(214, 654);
             this.panelUsuarioOpcions.TabIndex = 29;
-            
             // 
             // DarBajar_iconButton6
             // 
@@ -550,26 +552,7 @@
             this.Servicios_iconButton5.Text = "Número de Consultas Realizadas";
             this.Servicios_iconButton5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Servicios_iconButton5.UseVisualStyleBackColor = true;
-            this.Servicios_iconButton5.Click += new System.EventHandler(this.iconButton5_Click);
-            // 
-            // iconButton5
-            // 
-            this.iconButton5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton5.FlatAppearance.BorderSize = 0;
-            this.iconButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton5.ForeColor = System.Drawing.Color.LightGray;
-            this.iconButton5.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconButton5.IconColor = System.Drawing.Color.Black;
-            this.iconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton5.Location = new System.Drawing.Point(0, 90);
-            this.iconButton5.Margin = new System.Windows.Forms.Padding(2);
-            this.iconButton5.Name = "iconButton5";
-            this.iconButton5.Padding = new System.Windows.Forms.Padding(23, 0, 0, 0);
-            this.iconButton5.Size = new System.Drawing.Size(214, 30);
-            this.iconButton5.TabIndex = 6;
-            this.iconButton5.Text = "Número de Consultas Realizadas";
-            this.iconButton5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton5.UseVisualStyleBackColor = true;
+            this.Servicios_iconButton5.Click += new System.EventHandler(this.Servicios_iconButton5_Click);
             // 
             // Consulta3_iconButton3
             // 
@@ -589,6 +572,7 @@
             this.Consulta3_iconButton3.Text = "Partidas Jugas";
             this.Consulta3_iconButton3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Consulta3_iconButton3.UseVisualStyleBackColor = true;
+            this.Consulta3_iconButton3.Click += new System.EventHandler(this.Consulta3_iconButton3_Click);
             // 
             // Consulta2_iconButton2
             // 
@@ -608,6 +592,7 @@
             this.Consulta2_iconButton2.Text = "Partidas Jugas Con";
             this.Consulta2_iconButton2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Consulta2_iconButton2.UseVisualStyleBackColor = true;
+            this.Consulta2_iconButton2.Click += new System.EventHandler(this.Consulta2_iconButton2_Click);
             // 
             // Consulta1_iconButton2
             // 
@@ -627,6 +612,7 @@
             this.Consulta1_iconButton2.Text = "Galder";
             this.Consulta1_iconButton2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.Consulta1_iconButton2.UseVisualStyleBackColor = true;
+            this.Consulta1_iconButton2.Click += new System.EventHandler(this.Consulta1_iconButton2_Click_1);
             // 
             // Consultas_iconButton2
             // 
@@ -657,7 +643,7 @@
             this.panel1_perfil.Location = new System.Drawing.Point(0, 0);
             this.panel1_perfil.Margin = new System.Windows.Forms.Padding(2);
             this.panel1_perfil.Name = "panel1_perfil";
-            this.panel1_perfil.Size = new System.Drawing.Size(214, 85);
+            this.panel1_perfil.Size = new System.Drawing.Size(214, 96);
             this.panel1_perfil.TabIndex = 3;
             // 
             // label7
@@ -863,26 +849,6 @@
             // 
             // label3
             // 
-            this.panel1_perfil.Controls.Add(this.label7);
-            this.panel1_perfil.Controls.Add(this.iconButton1);
-            this.panel1_perfil.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1_perfil.Location = new System.Drawing.Point(0, 0);
-            this.panel1_perfil.Margin = new System.Windows.Forms.Padding(2);
-            this.panel1_perfil.Name = "panel1_perfil";
-            this.panel1_perfil.Size = new System.Drawing.Size(214, 96);
-            this.panel1_perfil.TabIndex = 3;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(87, 21);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 13);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "label7";
-            // 
-            // iconButton1
-
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
@@ -893,7 +859,6 @@
             this.label3.Text = "              Crea tu cuenta y empieza a jugar";
             // 
             // panelMenu
-
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(41)))), ((int)(((byte)(68)))));
             this.panelMenu.Controls.Add(this.Conectar_iconButton1);
@@ -912,214 +877,6 @@
             this.panelMenu.Size = new System.Drawing.Size(167, 654);
             this.panelMenu.TabIndex = 27;
             this.panelMenu.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
-            // 
-            // Exit_FPusericonButton1
-            // 
-            this.Exit_FPusericonButton1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Exit_FPusericonButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Exit_FPusericonButton1.IconChar = FontAwesome.Sharp.IconChar.SignOutAlt;
-            this.Exit_FPusericonButton1.IconColor = System.Drawing.Color.White;
-            this.Exit_FPusericonButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.Exit_FPusericonButton1.IconSize = 45;
-            this.Exit_FPusericonButton1.Location = new System.Drawing.Point(0, 604);
-            this.Exit_FPusericonButton1.Margin = new System.Windows.Forms.Padding(2);
-            this.Exit_FPusericonButton1.Name = "Exit_FPusericonButton1";
-            this.Exit_FPusericonButton1.Size = new System.Drawing.Size(214, 50);
-            this.Exit_FPusericonButton1.TabIndex = 0;
-            this.Exit_FPusericonButton1.Text = "SALIR ";
-            this.Exit_FPusericonButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.Exit_FPusericonButton1.UseVisualStyleBackColor = true;
-            this.Exit_FPusericonButton1.Click += new System.EventHandler(this.Exit_FPusericonButton1_Click);
-            // 
-            // MensError_label
-            // 
-            this.MensError_label.AutoSize = true;
-            this.MensError_label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(54)))), ((int)(((byte)(75)))));
-            this.MensError_label.Font = new System.Drawing.Font("MS Reference Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MensError_label.ForeColor = System.Drawing.Color.DimGray;
-            this.MensError_label.Location = new System.Drawing.Point(269, 325);
-            this.MensError_label.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.MensError_label.Name = "MensError_label";
-            this.MensError_label.Size = new System.Drawing.Size(116, 16);
-            this.MensError_label.TabIndex = 14;
-            this.MensError_label.Text = "Mensaje de Error";
-            this.MensError_label.Visible = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("ROG Fonts", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(308, 54);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(148, 42);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "LOGIN";
-            // 
-            // panelRegistro
-            // 
-            this.panelRegistro.BackColor = System.Drawing.Color.MistyRose;
-            this.panelRegistro.BackgroundImage = global::Juego_version_1.Properties.Resources.registro_bc1;
-            this.panelRegistro.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panelRegistro.Controls.Add(this.iconButton4);
-            this.panelRegistro.Controls.Add(this.ContraseñaB_textBox1);
-            this.panelRegistro.Controls.Add(this.linkLabel1);
-            this.panelRegistro.Controls.Add(this.contraseñaA_textBox2);
-            this.panelRegistro.Controls.Add(this.iconButton2);
-            this.panelRegistro.Controls.Add(this.iconButton3);
-            this.panelRegistro.Controls.Add(this.usuario1_textBox1);
-            this.panelRegistro.Controls.Add(this.panel3);
-            this.panelRegistro.Controls.Add(this.Registro_button3);
-            this.panelRegistro.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelRegistro.Location = new System.Drawing.Point(0, 0);
-            this.panelRegistro.Name = "panelRegistro";
-            this.panelRegistro.Size = new System.Drawing.Size(838, 654);
-            this.panelRegistro.TabIndex = 26;
-            // 
-            // iconButton4
-            // 
-            this.iconButton4.AutoSize = true;
-            this.iconButton4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.iconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.Lock;
-            this.iconButton4.IconColor = System.Drawing.Color.Maroon;
-            this.iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton4.IconSize = 30;
-            this.iconButton4.Location = new System.Drawing.Point(216, 318);
-            this.iconButton4.Name = "iconButton4";
-            this.iconButton4.Size = new System.Drawing.Size(38, 38);
-            this.iconButton4.TabIndex = 12;
-            this.iconButton4.UseVisualStyleBackColor = true;
-            // 
-            // ContraseñaB_textBox1
-            // 
-            this.ContraseñaB_textBox1.BackColor = System.Drawing.Color.Snow;
-            this.ContraseñaB_textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ContraseñaB_textBox1.Font = new System.Drawing.Font("ROG Fonts", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ContraseñaB_textBox1.ForeColor = System.Drawing.Color.DimGray;
-            this.ContraseñaB_textBox1.Location = new System.Drawing.Point(250, 318);
-            this.ContraseñaB_textBox1.Multiline = true;
-            this.ContraseñaB_textBox1.Name = "ContraseñaB_textBox1";
-            this.ContraseñaB_textBox1.Size = new System.Drawing.Size(263, 38);
-            this.ContraseñaB_textBox1.TabIndex = 11;
-            this.ContraseñaB_textBox1.Text = "    REPETIR PASSWORD";
-            this.ContraseñaB_textBox1.Enter += new System.EventHandler(this.ContraseñaB_textBox1_Enter);
-            this.ContraseñaB_textBox1.Leave += new System.EventHandler(this.ContraseñaB_textBox1_Leave);
-            // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Microsoft YaHei UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(30)))), ((int)(((byte)(255)))));
-            this.linkLabel1.Location = new System.Drawing.Point(212, 487);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(160, 19);
-            this.linkLabel1.TabIndex = 6;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Ya tengo cuenta en Mus";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
-            // contraseñaA_textBox2
-            // 
-            this.contraseñaA_textBox2.BackColor = System.Drawing.Color.Snow;
-            this.contraseñaA_textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.contraseñaA_textBox2.Font = new System.Drawing.Font("ROG Fonts", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.contraseñaA_textBox2.ForeColor = System.Drawing.Color.DimGray;
-            this.contraseñaA_textBox2.Location = new System.Drawing.Point(250, 259);
-            this.contraseñaA_textBox2.Multiline = true;
-            this.contraseñaA_textBox2.Name = "contraseñaA_textBox2";
-            this.contraseñaA_textBox2.Size = new System.Drawing.Size(263, 38);
-            this.contraseñaA_textBox2.TabIndex = 8;
-            this.contraseñaA_textBox2.Text = "    PASSWORD";
-            this.contraseñaA_textBox2.Enter += new System.EventHandler(this.contraseñaA_textBox2_Enter);
-            this.contraseñaA_textBox2.Leave += new System.EventHandler(this.contraseñaA_textBox2_Leave);
-            // 
-            // iconButton2
-            // 
-            this.iconButton2.AutoSize = true;
-            this.iconButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.Lock;
-            this.iconButton2.IconColor = System.Drawing.Color.Maroon;
-            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton2.IconSize = 30;
-            this.iconButton2.Location = new System.Drawing.Point(216, 259);
-            this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Size = new System.Drawing.Size(38, 38);
-            this.iconButton2.TabIndex = 10;
-            this.iconButton2.UseVisualStyleBackColor = true;
-            // 
-            // iconButton3
-            // 
-            this.iconButton3.AutoSize = true;
-            this.iconButton3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.iconButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.UserAlt;
-            this.iconButton3.IconColor = System.Drawing.Color.DarkGreen;
-            this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton3.IconSize = 30;
-            this.iconButton3.Location = new System.Drawing.Point(216, 200);
-            this.iconButton3.Name = "iconButton3";
-            this.iconButton3.Size = new System.Drawing.Size(38, 38);
-            this.iconButton3.TabIndex = 9;
-            this.iconButton3.UseVisualStyleBackColor = true;
-            // 
-            // usuario1_textBox1
-            // 
-            this.usuario1_textBox1.BackColor = System.Drawing.Color.Snow;
-            this.usuario1_textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.usuario1_textBox1.Font = new System.Drawing.Font("ROG Fonts", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.usuario1_textBox1.ForeColor = System.Drawing.Color.DimGray;
-            this.usuario1_textBox1.Location = new System.Drawing.Point(250, 200);
-            this.usuario1_textBox1.Multiline = true;
-            this.usuario1_textBox1.Name = "usuario1_textBox1";
-            this.usuario1_textBox1.Size = new System.Drawing.Size(263, 38);
-            this.usuario1_textBox1.TabIndex = 7;
-            this.usuario1_textBox1.Text = "      Nombre de jugador";
-            this.usuario1_textBox1.Enter += new System.EventHandler(this.usuario1_textBox1_Enter);
-            this.usuario1_textBox1.Leave += new System.EventHandler(this.usuario1_textBox1_Leave_1);
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(74)))), ((int)(((byte)(64)))));
-            this.panel3.Controls.Add(this.label3);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(838, 60);
-            this.panel3.TabIndex = 5;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("ROG Fonts", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.label3.Location = new System.Drawing.Point(3, 9);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(682, 29);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "              Crea tu cuenta y empieza a jugar";
-            // 
-            // panelMenu
-            // 
-            this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(41)))), ((int)(((byte)(68)))));
-            this.panelMenu.Controls.Add(this.Conectar_iconButton1);
-            this.panelMenu.Controls.Add(this.Desconectar_iconButton1);
-            this.panelMenu.Controls.Add(this.Instr_iconButton4);
-            this.panelMenu.Controls.Add(this.Conectar_button1);
-            this.panelMenu.Controls.Add(this.fq_iconButton3);
-            this.panelMenu.Controls.Add(this.IniSe_iconButton2);
-            this.panelMenu.Controls.Add(this.panel1);
-            this.panelMenu.Controls.Add(this.Registrarse_iconButton1);
-            this.panelMenu.Controls.Add(this.Desconectar_button2);
-            this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelMenu.Location = new System.Drawing.Point(0, 0);
-            this.panelMenu.Margin = new System.Windows.Forms.Padding(2);
-            this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(167, 654);
-            this.panelMenu.TabIndex = 27;
-           
             // 
             // Conectar_iconButton1
             // 
@@ -1221,7 +978,6 @@
             this.fq_iconButton3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.fq_iconButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.fq_iconButton3.UseVisualStyleBackColor = true;
-            this.fq_iconButton3.Click += new System.EventHandler(this.fq_iconButton3_Click);
             // 
             // IniSe_iconButton2
             // 
@@ -1275,6 +1031,35 @@
             this.Registrarse_iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.Registrarse_iconButton1.UseVisualStyleBackColor = true;
             this.Registrarse_iconButton1.Click += new System.EventHandler(this.Registrarse_iconButton1_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(16, 62);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(108, 25);
+            this.label10.TabIndex = 12;
+            this.label10.Text = "Jugador 2";
+            // 
+            // iconButton5
+            // 
+            this.iconButton5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.iconButton5.FlatAppearance.BorderSize = 0;
+            this.iconButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton5.ForeColor = System.Drawing.Color.LightGray;
+            this.iconButton5.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconButton5.IconColor = System.Drawing.Color.Black;
+            this.iconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton5.Location = new System.Drawing.Point(0, 90);
+            this.iconButton5.Margin = new System.Windows.Forms.Padding(2);
+            this.iconButton5.Name = "iconButton5";
+            this.iconButton5.Padding = new System.Windows.Forms.Padding(23, 0, 0, 0);
+            this.iconButton5.Size = new System.Drawing.Size(214, 30);
+            this.iconButton5.TabIndex = 6;
+            this.iconButton5.Text = "Número de Consultas Realizadas";
+            this.iconButton5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton5.UseVisualStyleBackColor = true;
             // 
             // Formfunciones
             // 
@@ -1340,6 +1125,7 @@
         private FontAwesome.Sharp.IconButton Instr_iconButton4;
         private FontAwesome.Sharp.IconButton fq_iconButton3;
         private FontAwesome.Sharp.IconButton IniSe_iconButton2;
+        private IconButton Servicios_iconButton5;
         private System.Windows.Forms.Panel panel1;
         private FontAwesome.Sharp.IconButton Registrarse_iconButton1;
         private FontAwesome.Sharp.IconButton Conectar_iconButton1;
@@ -1375,8 +1161,10 @@
         public System.Windows.Forms.TextBox contraseña_textBox2;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
+        private Label label10;
         private System.Windows.Forms.Label label7;
         private FontAwesome.Sharp.IconButton iconButton5;
+        private Label label11;
     }
 }
 
