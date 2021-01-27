@@ -308,7 +308,7 @@ int SumarPuntos(int numPartida, int Pareja, int Puntos)
 				sprintf(mensaje,"11/%d/12/%d/%d/%d/%d",numPartida,milistaPartidas.partidas[numPartida].Puntos[0],milistaPartidas.partidas[numPartida].Puntos[1],milistaPartidas.partidas[numPartida].Puntos[2],milistaPartidas.partidas[numPartida].Puntos[3]);
 				printf("Notificacion: %s\n", mensaje);
 				EnviarAPatida("", mensaje , numPartida);
-				usleep(80000);
+				usleep(100000);
 				return -10;
 			}
 			else
@@ -316,14 +316,14 @@ int SumarPuntos(int numPartida, int Pareja, int Puntos)
 				sprintf(mensaje,"11/%d/12/%d/%d/%d/%d",numPartida,milistaPartidas.partidas[numPartida].Puntos[0],milistaPartidas.partidas[numPartida].Puntos[1],milistaPartidas.partidas[numPartida].Puntos[2],milistaPartidas.partidas[numPartida].Puntos[3]);
 				printf("Notificacion: %s\n", mensaje);
 				EnviarAPatida("", mensaje , numPartida);
-				usleep(80000);
+				usleep(100000);
 				return -11;
 			}
 		}
 		sprintf(mensaje,"11/%d/12/%d/%d/%d/%d",numPartida,milistaPartidas.partidas[numPartida].Puntos[0],milistaPartidas.partidas[numPartida].Puntos[1],milistaPartidas.partidas[numPartida].Puntos[2],milistaPartidas.partidas[numPartida].Puntos[3]);
 		printf("Notificacion: %s\n", mensaje);
 		EnviarAPatida("", mensaje , numPartida);
-		usleep(80000);
+		usleep(100000);
 		return -1;
 	}
 	else
@@ -334,7 +334,7 @@ int SumarPuntos(int numPartida, int Pareja, int Puntos)
 		sprintf(mensaje,"11/%d/12/%d/%d/%d/%d",numPartida,milistaPartidas.partidas[numPartida].Puntos[0],milistaPartidas.partidas[numPartida].Puntos[1],milistaPartidas.partidas[numPartida].Puntos[2],milistaPartidas.partidas[numPartida].Puntos[3]);
 		printf("Notificacion: %s\n", mensaje);
 		EnviarAPatida("", mensaje , numPartida);
-		usleep(80000);
+		usleep(100000);
 		return 0;
 	}
 }
@@ -353,7 +353,7 @@ int Puntos(int numPartida, int jugador, int ronda)
 			sprintf(mensaje,"11/%d/12/%d/%d/%d/%d",numPartida,milistaPartidas.partidas[numPartida].Puntos[0],milistaPartidas.partidas[numPartida].Puntos[1],milistaPartidas.partidas[numPartida].Puntos[2],milistaPartidas.partidas[numPartida].Puntos[3]);
 			printf("Notificacion: %s\n", mensaje);
 			EnviarAPatida("", mensaje , numPartida);
-			usleep(80000);
+			usleep(100000);
 			return 0;
 		}
 		else
@@ -365,7 +365,7 @@ int Puntos(int numPartida, int jugador, int ronda)
 		sprintf(mensaje,"11/%d/12/%d/%d/%d/%d",numPartida,milistaPartidas.partidas[numPartida].Puntos[0],milistaPartidas.partidas[numPartida].Puntos[1],milistaPartidas.partidas[numPartida].Puntos[2],milistaPartidas.partidas[numPartida].Puntos[3]);
 		printf("Notificacion: %s\n", mensaje);
 		EnviarAPatida("", mensaje , numPartida);
-		usleep(80000);
+		usleep(100000);
 		return 0;
 	}
 	
@@ -2100,14 +2100,14 @@ void* AtenderCliente (void* sock)
 					EnviarAPatida("", Respuesta, numPartida);//Notificamos a los jugadores lo que ha decidido
 					sprintf(Respuesta, "10/%d/2/P", numPartida);
 					printf("Respuesta: %s\n", Respuesta);
-					usleep(80000);
+					usleep(100000);
 					EnviarAMano(Respuesta, numPartida);
 				}
 				else
 				{
 					sprintf(Respuesta, "11/%d/0/%d/MUS", numPartida, jugador);
 					EnviarAPatida("", Respuesta, numPartida);//Notificamos a los jugadores lo que ha decidido
-					usleep(80000);
+					usleep(100000);
 					if (jugador!=DamejugadorPosicion(numPartida,3))
 					{
 						sprintf(Respuesta, "10/%d/0", numPartida);
@@ -2132,10 +2132,10 @@ void* AtenderCliente (void* sock)
 				}
 				sprintf(Respuesta, "11/%d/1/%d/%d", numPartida, jugador, numCartas);
 				EnviarAPatida("", Respuesta, numPartida);//Notificamos a los jugadores lo que ha decidido
-				usleep(50000);
+				usleep(100000);
 				sprintf(Respuesta, "11/%d/10/%d/%d/%d/%d/%d", numPartida, jugador, milistaPartidas.partidas[numPartida].jugadores[jugador].Cartas[0],milistaPartidas.partidas[numPartida].jugadores[jugador].Cartas[1],milistaPartidas.partidas[numPartida].jugadores[jugador].Cartas[2],milistaPartidas.partidas[numPartida].jugadores[jugador].Cartas[3]);
 				EnviarAPatida("", Respuesta, numPartida);//Notificamos a los jugadores lo que ha decidido
-				usleep(50000);
+				usleep(100000);
 
 				if (jugador!=DamejugadorPosicion(numPartida,3))
 				{
@@ -2155,7 +2155,7 @@ void* AtenderCliente (void* sock)
 				{
 					sprintf(Respuesta, "11/%d/2/%d/PASA", numPartida, jugador);
 					EnviarAPatida("", Respuesta, numPartida);
-					usleep(80000);
+					usleep(100000);
 					if (jugador!=DamejugadorPosicion(numPartida,3))
 					{
 						sprintf(Respuesta, "10/%d/2/P", numPartida);
@@ -2167,7 +2167,7 @@ void* AtenderCliente (void* sock)
 						EnviarAPatida("", Respuesta, numPartida);
 						Apostar(numPartida,1,0);
 						printf ("Respuesta: %s\n", Respuesta);
-						usleep(80000);
+						usleep(100000);
 						sprintf(Respuesta, "10/%d/3/P", numPartida);
 						EnviarAMano(Respuesta, numPartida);
 						printf ("Respuesta: %s\n", Respuesta);
@@ -2185,7 +2185,7 @@ void* AtenderCliente (void* sock)
 					int Apuesta = atoi(p);
 					sprintf(Respuesta, "11/%d/2/%d/%d", numPartida, jugador, Apuesta);
 					EnviarAPatida("", Respuesta, numPartida);
-					usleep(80000);
+					usleep(100000);
 					sprintf(Respuesta, "10/%d/2/A/%d", numPartida, Apuesta);
 					if (jugador == DamejugadorPosicion(numPartida,0) || jugador == DamejugadorPosicion(numPartida,2))
 						EnviarSiguienteJugador(numPartida, Respuesta, DamejugadorPosicion(numPartida,0));
@@ -2199,7 +2199,7 @@ void* AtenderCliente (void* sock)
 					sprintf(Respuesta, "11/%d/2/%d/QUIERE", numPartida, jugador);
 					Apostar(numPartida, 1, Apuesta);
 					EnviarAPatida("", Respuesta, numPartida);
-					usleep(80000);
+					usleep(100000);
 					sprintf(Respuesta, "10/%d/3/P", numPartida);
 					EnviarAMano(Respuesta, numPartida);
 				}
@@ -2209,7 +2209,7 @@ void* AtenderCliente (void* sock)
 					int Apuesta = atoi(p);
 					sprintf(Respuesta, "11/%d/2/%d/NO QUIRE", numPartida, jugador);
 					EnviarAPatida("", Respuesta, numPartida);
-					usleep(80000);
+					usleep(100000);
 					if(jugador!=DamejugadorPosicion(numPartida,0) && jugador!=DamejugadorPosicion(numPartida,1))
 					{
 						int p = Puntos(numPartida,jugador,1);
@@ -2225,10 +2225,10 @@ void* AtenderCliente (void* sock)
 							EnviarAPatida("", Respuesta, numPartida);
 							InicioPartida(numPartida , 1);
 							PasarMano(numPartida);
-							usleep(80000);
+							usleep(100000);
 							sprintf(Respuesta, "10/%d/13", numPartida);
 							EnviarAMano(Respuesta, numPartida);
-							usleep(80000);
+							usleep(100000);
 						}
 						else if(p==-10)
 						{
@@ -2258,7 +2258,7 @@ void* AtenderCliente (void* sock)
 				{
 					sprintf(Respuesta, "11/%d/3/%d/PASA", numPartida, jugador);
 					EnviarAPatida("", Respuesta, numPartida);
-					usleep(80000);
+					usleep(100000);
 					if (jugador!=DamejugadorPosicion(numPartida,3))
 					{
 						sprintf(Respuesta, "10/%d/3/P", numPartida);
@@ -2269,7 +2269,7 @@ void* AtenderCliente (void* sock)
 						sprintf(Respuesta, "11/%d/3/%d/SE FUE", numPartida, jugador);
 						EnviarAPatida("", Respuesta, numPartida);
 						Apostar(numPartida,2,0);
-						usleep(80000);
+						usleep(100000);
 						sprintf(Respuesta, "10/%d/4", numPartida);
 						EnviarAMano(Respuesta, numPartida);
 					}
@@ -2286,7 +2286,7 @@ void* AtenderCliente (void* sock)
 					int Apuesta = atoi(p);
 					sprintf(Respuesta, "11/%d/3/%d/%d", numPartida, jugador, Apuesta);
 					EnviarAPatida("", Respuesta, numPartida);
-					usleep(50000);
+					usleep(100000);
 					sprintf(Respuesta, "10/%d/3/A/%d", numPartida, Apuesta);
 					if (jugador == DamejugadorPosicion(numPartida,0) || jugador ==DamejugadorPosicion(numPartida,2))
 						EnviarSiguienteJugador(numPartida, Respuesta, DamejugadorPosicion(numPartida,0));
@@ -2299,7 +2299,7 @@ void* AtenderCliente (void* sock)
 					int Apuesta = atoi(p);
 					sprintf(Respuesta, "11/%d/3/%d/QUIERE", numPartida, jugador);
 					Apostar(numPartida, 2, Apuesta);
-					usleep(50000);
+					usleep(100000);
 					EnviarAPatida("", Respuesta, numPartida);
 					sprintf(Respuesta, "10/%d/4", numPartida);
 					EnviarAMano(Respuesta, numPartida);
@@ -2310,7 +2310,7 @@ void* AtenderCliente (void* sock)
 					int Apuesta = atoi(p);
 					sprintf(Respuesta, "11/%d/3/%d/NO QUIRE", numPartida, jugador);
 					EnviarAPatida("", Respuesta, numPartida);
-					usleep(50000);
+					usleep(100000);
 					if(jugador!=DamejugadorPosicion(numPartida,0) && jugador!=DamejugadorPosicion(numPartida,1))
 					{
 						int p = Puntos(numPartida,jugador,2);
@@ -2326,10 +2326,10 @@ void* AtenderCliente (void* sock)
 							EnviarAPatida("", Respuesta, numPartida);
 							InicioPartida(numPartida , 1);
 							PasarMano(numPartida);
-							usleep(80000);
+							usleep(100000);
 							sprintf(Respuesta, "10/%d/13", numPartida);
 							EnviarAMano(Respuesta, numPartida);
-							usleep(80000);
+							usleep(100000);
 						}
 						else if(p==-10)
 						{
@@ -2360,7 +2360,7 @@ void* AtenderCliente (void* sock)
 						sprintf(Respuesta, "11/%d/4/%d/PARES NO", numPartida, jugador);
 						EnviarAPatida("", Respuesta, numPartida);//Notificamos a los jugadores lo que ha decidido
 						HayPares(numPartida,jugador,0);
-						usleep(50000);
+						usleep(100000);
 						if (jugador==DamejugadorPosicion(numPartida,3))
 						{
 							int h = hayPares(numPartida);
@@ -2388,7 +2388,7 @@ void* AtenderCliente (void* sock)
 						sprintf(Respuesta, "11/%d/4/%d/PARES SI", numPartida, jugador);
 						EnviarAPatida("", Respuesta, numPartida);//Notificamos a los jugadores lo que ha decidido
 						HayPares(numPartida,jugador,1);
-						usleep(50000);
+						usleep(100000);
 						if (jugador==DamejugadorPosicion(numPartida,3))
 						{
 							int h = hayPares(numPartida);
@@ -2418,7 +2418,7 @@ void* AtenderCliente (void* sock)
 				{
 					sprintf(Respuesta, "11/%d/5/%d/PASA", numPartida, jugador);
 					EnviarAPatida("", Respuesta, numPartida);
-					usleep(50000);
+					usleep(100000);
 					if (jugador!=DamejugadorPosicion(numPartida,3))
 					{
 						sprintf(Respuesta, "10/%d/5/P", numPartida);
@@ -2429,7 +2429,7 @@ void* AtenderCliente (void* sock)
 						sprintf(Respuesta, "11/%d/5/%d/SE FUE", numPartida, jugador);
 						EnviarAPatida("", Respuesta, numPartida);
 						Apostar(numPartida,3,0);
-						usleep(50000);
+						usleep(100000);
 						sprintf(Respuesta, "10/%d/6", numPartida);
 						EnviarAMano(Respuesta, numPartida);
 					}
@@ -2446,7 +2446,7 @@ void* AtenderCliente (void* sock)
 					int Apuesta = atoi(p);
 					sprintf(Respuesta, "11/%d/5/%d/%d", numPartida, jugador, Apuesta);
 					EnviarAPatida("", Respuesta, numPartida);
-					usleep(50000);
+					usleep(100000);
 					sprintf(Respuesta, "10/%d/5/A/%d", numPartida, Apuesta);
 					if (jugador == DamejugadorPosicion(numPartida,0) || jugador ==DamejugadorPosicion(numPartida,2))
 						EnviarSiguienteJugador(numPartida, Respuesta, DamejugadorPosicion(numPartida,0));
@@ -2460,7 +2460,7 @@ void* AtenderCliente (void* sock)
 					sprintf(Respuesta, "11/%d/5/%d/QUIERE", numPartida, jugador);
 					Apostar(numPartida, 3, Apuesta);
 					EnviarAPatida("", Respuesta, numPartida);
-					usleep(50000);
+					usleep(100000);
 					sprintf(Respuesta, "10/%d/6", numPartida);
 					EnviarAMano(Respuesta, numPartida);
 				}
@@ -2470,7 +2470,7 @@ void* AtenderCliente (void* sock)
 					int Apuesta = atoi(p);
 					sprintf(Respuesta, "11/%d/5/%d/NO QUIRE", numPartida, jugador);
 					EnviarAPatida("", Respuesta, numPartida);
-					usleep(50000);
+					usleep(100000);
 					if(jugador!=DamejugadorPosicion(numPartida,0) && jugador!=DamejugadorPosicion(numPartida,1))
 					{
 						int p = Puntos(numPartida,jugador,3);
@@ -2486,10 +2486,10 @@ void* AtenderCliente (void* sock)
 							EnviarAPatida("", Respuesta, numPartida);
 							InicioPartida(numPartida , 1);
 							PasarMano(numPartida);
-							usleep(80000);
+							usleep(100000);
 							sprintf(Respuesta, "10/%d/13", numPartida);
 							EnviarAMano(Respuesta, numPartida);
-							usleep(80000);
+							usleep(100000);
 						}
 						else if(p==-10)
 						{
@@ -2520,7 +2520,7 @@ void* AtenderCliente (void* sock)
 					sprintf(Respuesta, "11/%d/6/%d/JUEGO NO", numPartida, jugador);
 					EnviarAPatida("", Respuesta, numPartida);
 					HayJuego(numPartida,jugador,0);
-					usleep(80000);
+					usleep(100000);
 					if (jugador==DamejugadorPosicion(numPartida,3))
 					{
 						int h = hayJuego(numPartida);
@@ -2553,10 +2553,10 @@ void* AtenderCliente (void* sock)
 								EnviarAPatida("", Respuesta, numPartida);
 								InicioPartida(numPartida , 1);
 								PasarMano(numPartida);
-								usleep(80000);
+								usleep(100000);
 								sprintf(Respuesta, "10/%d/13", numPartida);
 								EnviarAMano(Respuesta, numPartida);
-								usleep(80000);
+								usleep(100000);
 							}
 						}
 					}
@@ -2571,7 +2571,7 @@ void* AtenderCliente (void* sock)
 					sprintf(Respuesta, "11/%d/6/%d/JUEGO SI", numPartida, jugador);
 					EnviarAPatida("", Respuesta, numPartida);//Notificamos a los jugadores lo que ha decidido
 					HayJuego(numPartida,jugador,1);
-					usleep(80000);
+					usleep(100000);
 					if (jugador==DamejugadorPosicion(numPartida,3))
 					{
 						int h = hayJuego(numPartida);
@@ -2599,10 +2599,10 @@ void* AtenderCliente (void* sock)
 								EnviarAPatida("", Respuesta, numPartida);
 								InicioPartida(numPartida , 1);
 								PasarMano(numPartida);
-								usleep(80000);
+								usleep(100000);
 								sprintf(Respuesta, "10/%d/13", numPartida);
 								EnviarAMano(Respuesta, numPartida);
-								usleep(80000);
+								usleep(100000);
 							}
 						}
 					}
@@ -2620,7 +2620,7 @@ void* AtenderCliente (void* sock)
 				{
 					sprintf(Respuesta, "11/%d/7/%d/PASA", numPartida, jugador);
 					EnviarAPatida("", Respuesta, numPartida);
-					usleep(50000);
+					usleep(100000);
 					if (jugador!=DamejugadorPosicion(numPartida,3))
 					{
 						sprintf(Respuesta, "10/%d/7/P", numPartida);
@@ -2631,7 +2631,7 @@ void* AtenderCliente (void* sock)
 						sprintf(Respuesta, "11/%d/7/%d/SE FUE", numPartida, jugador);
 						EnviarAPatida("", Respuesta, numPartida);
 						Apostar(numPartida,4,0);
-						usleep(50000);
+						usleep(100000);
 						int p = ContarPuntos(numPartida);
 						if(p==-10)
 						{
@@ -2649,10 +2649,10 @@ void* AtenderCliente (void* sock)
 							EnviarAPatida("", Respuesta, numPartida);
 							InicioPartida(numPartida , 1);
 							PasarMano(numPartida);
-							usleep(80000);
+							usleep(100000);
 							sprintf(Respuesta, "10/%d/13", numPartida);
 							EnviarAMano(Respuesta, numPartida);
-							usleep(80000);
+							usleep(100000);
 						}
 					}
 				}
@@ -2668,7 +2668,7 @@ void* AtenderCliente (void* sock)
 					int Apuesta = atoi(p);
 					sprintf(Respuesta, "11/%d/7/%d/%d", numPartida, jugador, Apuesta);
 					EnviarAPatida("", Respuesta, numPartida);
-					usleep(50000);
+					usleep(100000);
 					sprintf(Respuesta, "10/%d/7/A/%d", numPartida, Apuesta);
 					if (jugador == DamejugadorPosicion(numPartida,0) || jugador ==DamejugadorPosicion(numPartida,2))
 						EnviarSiguienteJugador(numPartida, Respuesta, DamejugadorPosicion(numPartida,0));
@@ -2682,7 +2682,7 @@ void* AtenderCliente (void* sock)
 					sprintf(Respuesta, "11/%d/7/%d/QUIERE", numPartida, jugador);
 					Apostar(numPartida, 4, Apuesta);
 					EnviarAPatida("", Respuesta, numPartida);
-					usleep(50000);
+					usleep(100000);
 					int p = ContarPuntos(numPartida);
 					if(p==-10)
 					{
@@ -2700,10 +2700,10 @@ void* AtenderCliente (void* sock)
 						EnviarAPatida("", Respuesta, numPartida);
 						InicioPartida(numPartida , 1);
 						PasarMano(numPartida);
-						usleep(80000);
+						usleep(100000);
 						sprintf(Respuesta, "10/%d/13", numPartida);
 						EnviarAMano(Respuesta, numPartida);
-						usleep(80000);
+						usleep(100000);
 					}
 				}
 				else
@@ -2712,7 +2712,7 @@ void* AtenderCliente (void* sock)
 					int Apuesta = atoi(p);
 					sprintf(Respuesta, "11/%d/7/%d/NO QUIRE", numPartida, jugador);
 					EnviarAPatida("", Respuesta, numPartida);
-					usleep(50000);
+					usleep(100000);
 					if(jugador!=DamejugadorPosicion(numPartida,0) && jugador!=DamejugadorPosicion(numPartida,1))
 					{
 						int p = Puntos(numPartida,jugador,4);
@@ -2736,10 +2736,10 @@ void* AtenderCliente (void* sock)
 								EnviarAPatida("", Respuesta, numPartida);
 								InicioPartida(numPartida , 1);
 								PasarMano(numPartida);
-								usleep(80000);
+								usleep(100000);
 								sprintf(Respuesta, "10/%d/13", numPartida);
 								EnviarAMano(Respuesta, numPartida);
-								usleep(80000);
+								usleep(100000);
 								
 							}
 						}
@@ -2771,7 +2771,7 @@ void* AtenderCliente (void* sock)
 				{
 					sprintf(Respuesta, "11/%d/8/%d/PASA", numPartida, jugador);
 					EnviarAPatida("", Respuesta, numPartida);
-					usleep(50000);
+					usleep(100000);
 					if (jugador!=DamejugadorPosicion(numPartida,3))
 					{
 						sprintf(Respuesta, "10/%d/8/P", numPartida);
@@ -2781,7 +2781,7 @@ void* AtenderCliente (void* sock)
 					{
 						sprintf(Respuesta, "11/%d/8/%d/SE FUE", numPartida, jugador);
 						EnviarAPatida("", Respuesta, numPartida);
-						usleep(50000);
+						usleep(100000);
 						Apostar(numPartida,5,0);
 						int p = ContarPuntos(numPartida);
 						if(p==-10)
@@ -2800,10 +2800,10 @@ void* AtenderCliente (void* sock)
 							EnviarAPatida("", Respuesta, numPartida);
 							InicioPartida(numPartida , 1);
 							PasarMano(numPartida);
-							usleep(80000);
+							usleep(100000);
 							sprintf(Respuesta, "10/%d/13", numPartida);
 							EnviarAMano(Respuesta, numPartida);
-							usleep(80000);
+							usleep(100000);
 							
 						}
 					}
@@ -2820,7 +2820,7 @@ void* AtenderCliente (void* sock)
 					int Apuesta = atoi(p);
 					sprintf(Respuesta, "11/%d/8/%d/%d", numPartida, jugador, Apuesta);
 					EnviarAPatida("", Respuesta, numPartida);
-					usleep(50000);
+					usleep(100000);
 					sprintf(Respuesta, "10/%d/8/A/%d", numPartida, Apuesta);
 					if (jugador == DamejugadorPosicion(numPartida,0) || jugador ==DamejugadorPosicion(numPartida,2))
 						EnviarSiguienteJugador(numPartida, Respuesta, DamejugadorPosicion(numPartida,0));
@@ -2834,7 +2834,7 @@ void* AtenderCliente (void* sock)
 					sprintf(Respuesta, "11/%d/8/%d/QUIERE", numPartida, jugador);
 					Apostar(numPartida, 5, Apuesta);
 					EnviarAPatida("", Respuesta, numPartida);
-					usleep(50000);
+					usleep(100000);
 					int p = ContarPuntos(numPartida);
 					if(p==-10)
 					{
@@ -2852,10 +2852,10 @@ void* AtenderCliente (void* sock)
 						EnviarAPatida("", Respuesta, numPartida);
 						InicioPartida(numPartida , 1);
 						PasarMano(numPartida);
-						usleep(80000);
+						usleep(100000);
 						sprintf(Respuesta, "10/%d/13", numPartida);
 						EnviarAMano(Respuesta, numPartida);
-						usleep(80000);
+						usleep(100000);
 						
 					}
 				}
@@ -2865,7 +2865,7 @@ void* AtenderCliente (void* sock)
 					int Apuesta = atoi(p);
 					sprintf(Respuesta, "11/%d/8/%d/NO QUIRE", numPartida, jugador);
 					EnviarAPatida("", Respuesta, numPartida);
-					usleep(50000);
+					usleep(100000);
 					if(jugador!=DamejugadorPosicion(numPartida,0) && jugador!=DamejugadorPosicion(numPartida,1))
 					{
 						int p = Puntos(numPartida,jugador,5);
@@ -2889,10 +2889,10 @@ void* AtenderCliente (void* sock)
 								EnviarAPatida("", Respuesta, numPartida);
 								InicioPartida(numPartida , 1);
 								PasarMano(numPartida);
-								usleep(80000);
+								usleep(100000);
 								sprintf(Respuesta, "10/%d/13", numPartida);
 								EnviarAMano(Respuesta, numPartida);
-								usleep(80000);
+								usleep(100000);
 								
 							}
 						}
@@ -2921,10 +2921,10 @@ void* AtenderCliente (void* sock)
 				BarajarBaraja(numPartida);
 				Repartir(numPartida);
 				EnviarCartas(numPartida);
-				usleep(50000);
+				usleep(100000);
 				sprintf(Respuesta, "11/%d/14", numPartida);
 				EnviarAPatida("",Respuesta, numPartida);
-				usleep(80000);
+				usleep(100000);
 				sprintf(Respuesta, "10/%d/0", numPartida);
 				EnviarAMano(Respuesta, numPartida);
 				break;

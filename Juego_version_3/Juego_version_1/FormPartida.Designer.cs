@@ -180,7 +180,7 @@ namespace Juego_version_1
             // 
             this.labelP0.AutoSize = true;
             this.labelP0.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
-            this.labelP0.Location = new System.Drawing.Point(727, 586);
+            this.labelP0.Location = new System.Drawing.Point(692, 586);
             this.labelP0.Name = "labelP0";
             this.labelP0.Size = new System.Drawing.Size(70, 25);
             this.labelP0.TabIndex = 27;
