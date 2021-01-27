@@ -1073,37 +1073,34 @@ namespace Juego_version_1
 
         private void Consulta1_iconButton2_Click(object sender, EventArgs e)
         {
-            string mensaje;
-            byte[] msg;
-            // Realizamos la consulta escogida
-            mensaje = "3/" + Convert.ToString(nombre_textBox3.Text);
-            // Enviamos al servidor el nombre del usuario
-            msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            if (conectado == true)
-                server.Send(msg);
+            Consultas_groupBox1.Visible = true;
+            label11.Visible = false;
+            TBConsultaAndoni.Visible = false;
+            Consulta_Mayra.Visible = false;
+            Consulta_Andoni.Visible = false;
+            Servicios.Visible = false;
         }
 
         private void Consulta3_iconButton3_Click(object sender, EventArgs e)
         {
-            string mensaje;
-            byte[] msg;
-            // Quiere realizar la consulta escogida
-            mensaje = "4/" + Convert.ToString(nombre_textBox3.Text);
-            // Enviamos al servidor el nombre del usuario
-            msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            server.Send(msg);
+            Consultas_groupBox1.Visible = true;
+            label11.Visible = true;
+            TBConsultaAndoni.Visible = true;
+            Consulta_Andoni.Visible = true;
+            Consulta_Mayra.Visible = false;
+            Servicios.Visible = false;
+            Consulta_Galder.Visible = false;
         }
 
         private void Consulta2_iconButton2_Click(object sender, EventArgs e)
         {
-            string mensaje;
-            byte[] msg;
-            // Quiere realizar la consulta escogida
-            mensaje = "5/" + Convert.ToString(nombre_textBox3.Text) + "/" + Convert.ToString(TBConsultaAndoni.Text);
-            // Enviamos al servidor los nombres de usuario
-            msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            if (conectado == true)
-                server.Send(msg);
+            Consultas_groupBox1.Visible = true;
+            Consulta_Mayra.Visible = true;
+            label11.Visible = false;
+            TBConsultaAndoni.Visible = false;
+            Servicios.Visible = false;
+            Consulta_Galder.Visible = false;
+            Consulta_Andoni.Visible = false;
         }
 
         private void DarBajar_iconButton6_Click(object sender, EventArgs e)
@@ -1211,7 +1208,8 @@ namespace Juego_version_1
         private void Consulta1_iconButton2_Click_1(object sender, EventArgs e)
         {
             Consultas_groupBox1.Visible = true;
-            label10.Visible = false;
+            Consulta_Galder.Visible = true;
+            label11.Visible = false;
             TBConsultaAndoni.Visible = false;
             Consulta_Mayra.Visible = false;
             Consulta_Andoni.Visible = false;
@@ -1220,7 +1218,7 @@ namespace Juego_version_1
         private void Consulta2_iconButton2_Click_1(object sender, EventArgs e)
         {
             Consultas_groupBox1.Visible = true;
-            label10.Visible = false;
+            label11.Visible = false;
             TBConsultaAndoni.Visible = false;
             Servicios.Visible = false;
             Consulta_Galder.Visible = false;
@@ -1232,7 +1230,7 @@ namespace Juego_version_1
         private void Consulta3_iconButton3_Click_1(object sender, EventArgs e)
         {
             Consultas_groupBox1.Visible = true;
-            label10.Visible = true;
+            label11.Visible = true;
             TBConsultaAndoni.Visible = true;
             Consulta_Mayra.Visible = false;
             Servicios.Visible = false;
@@ -1243,8 +1241,9 @@ namespace Juego_version_1
         private void Servicios_iconButton5_Click(object sender, EventArgs e)
         {
             Consultas_groupBox1.Visible = true;
+            Servicios.Visible = true;
             Consulta_Galder.Visible = false;
-            label10.Visible = false;
+            label11.Visible = false;
             TBConsultaAndoni.Visible = false;
             Consulta_Mayra.Visible = false;
             Consulta_Andoni.Visible = false;
