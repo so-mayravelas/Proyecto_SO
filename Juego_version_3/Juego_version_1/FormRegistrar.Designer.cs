@@ -30,11 +30,11 @@ namespace Juego_version_1
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Registrar_button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
             this.Contraseña2_textBox1 = new System.Windows.Forms.TextBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.Registrar_button1 = new System.Windows.Forms.Button();
             this.contraseña1_textBox2 = new System.Windows.Forms.TextBox();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -57,6 +57,22 @@ namespace Juego_version_1
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 54);
             this.panel1.TabIndex = 1;
+            // 
+            // Registrar_button1
+            // 
+            this.Registrar_button1.FlatAppearance.BorderSize = 0;
+            this.Registrar_button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(74)))), ((int)(((byte)(64)))));
+            this.Registrar_button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Teal;
+            this.Registrar_button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Registrar_button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Registrar_button1.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.Registrar_button1.Location = new System.Drawing.Point(65, 413);
+            this.Registrar_button1.Name = "Registrar_button1";
+            this.Registrar_button1.Size = new System.Drawing.Size(297, 40);
+            this.Registrar_button1.TabIndex = 3;
+            this.Registrar_button1.Text = "CONFIRMAR";
+            this.Registrar_button1.UseVisualStyleBackColor = true;
+            this.Registrar_button1.Click += new System.EventHandler(this.Registrar_button1_Click);
             // 
             // panel2
             // 
@@ -93,11 +109,12 @@ namespace Juego_version_1
             // 
             this.Contraseña2_textBox1.BackColor = System.Drawing.Color.Snow;
             this.Contraseña2_textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Contraseña2_textBox1.Font = new System.Drawing.Font("ROG Fonts", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Contraseña2_textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Contraseña2_textBox1.ForeColor = System.Drawing.Color.DimGray;
             this.Contraseña2_textBox1.Location = new System.Drawing.Point(55, 217);
             this.Contraseña2_textBox1.Multiline = true;
             this.Contraseña2_textBox1.Name = "Contraseña2_textBox1";
+            this.Contraseña2_textBox1.PasswordChar = '·';
             this.Contraseña2_textBox1.Size = new System.Drawing.Size(263, 38);
             this.Contraseña2_textBox1.TabIndex = 6;
             this.Contraseña2_textBox1.Text = "  REPETIR  PASSWORD";
@@ -117,31 +134,16 @@ namespace Juego_version_1
             this.linkLabel1.Text = "Ya tengo cuenta en Mus";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
-            // Registrar_button1
-            // 
-            this.Registrar_button1.FlatAppearance.BorderSize = 0;
-            this.Registrar_button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(74)))), ((int)(((byte)(64)))));
-            this.Registrar_button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Teal;
-            this.Registrar_button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Registrar_button1.Font = new System.Drawing.Font("ROG Fonts", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Registrar_button1.ForeColor = System.Drawing.SystemColors.InfoText;
-            this.Registrar_button1.Location = new System.Drawing.Point(65, 413);
-            this.Registrar_button1.Name = "Registrar_button1";
-            this.Registrar_button1.Size = new System.Drawing.Size(297, 40);
-            this.Registrar_button1.TabIndex = 3;
-            this.Registrar_button1.Text = "CONFIRMAR";
-            this.Registrar_button1.UseVisualStyleBackColor = true;
-            this.Registrar_button1.Click += new System.EventHandler(this.Registrar_button1_Click);
-            // 
             // contraseña1_textBox2
             // 
             this.contraseña1_textBox2.BackColor = System.Drawing.Color.Snow;
             this.contraseña1_textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.contraseña1_textBox2.Font = new System.Drawing.Font("ROG Fonts", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.contraseña1_textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.contraseña1_textBox2.ForeColor = System.Drawing.Color.DimGray;
             this.contraseña1_textBox2.Location = new System.Drawing.Point(55, 159);
             this.contraseña1_textBox2.Multiline = true;
             this.contraseña1_textBox2.Name = "contraseña1_textBox2";
+            this.contraseña1_textBox2.PasswordChar = '·';
             this.contraseña1_textBox2.Size = new System.Drawing.Size(263, 38);
             this.contraseña1_textBox2.TabIndex = 2;
             this.contraseña1_textBox2.Text = "    PASSWORD";
@@ -176,11 +178,11 @@ namespace Juego_version_1
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("ROG Fonts", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.749999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.label1.Location = new System.Drawing.Point(3, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(315, 16);
+            this.label1.Size = new System.Drawing.Size(202, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Crea tu cuenta y empieza a jugar";
             // 
@@ -203,7 +205,7 @@ namespace Juego_version_1
             // 
             this.usuario1_textBox1.BackColor = System.Drawing.Color.Snow;
             this.usuario1_textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.usuario1_textBox1.Font = new System.Drawing.Font("ROG Fonts", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usuario1_textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.usuario1_textBox1.ForeColor = System.Drawing.Color.DimGray;
             this.usuario1_textBox1.Location = new System.Drawing.Point(55, 93);
             this.usuario1_textBox1.Multiline = true;

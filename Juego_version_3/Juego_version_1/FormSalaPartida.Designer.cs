@@ -78,6 +78,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.SteelBlue;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.45F);
             this.label1.Location = new System.Drawing.Point(176, 94);
             this.label1.Name = "label1";
@@ -88,6 +89,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.SteelBlue;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.45F);
             this.label2.Location = new System.Drawing.Point(878, 94);
             this.label2.Name = "label2";
@@ -98,6 +100,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.SteelBlue;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.45F);
             this.label3.Location = new System.Drawing.Point(176, 393);
             this.label3.Name = "label3";
@@ -108,6 +111,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.SteelBlue;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.45F);
             this.label5.Location = new System.Drawing.Point(878, 393);
             this.label5.Name = "label5";
@@ -118,6 +122,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.SteelBlue;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.85F);
             this.label4.Location = new System.Drawing.Point(164, 43);
             this.label4.Name = "label4";
@@ -128,6 +133,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.SteelBlue;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.85F);
             this.label6.Location = new System.Drawing.Point(847, 43);
             this.label6.Name = "label6";
@@ -175,6 +181,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.SteelBlue;
             this.panel1.Controls.Add(this.panelJug1);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.label14);
@@ -204,6 +211,7 @@
             // 
             // panel3
             // 
+            this.panel3.BackColor = System.Drawing.Color.SteelBlue;
             this.panel3.Controls.Add(this.panelJug3);
             this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.label7);
@@ -263,6 +271,7 @@
             // 
             // panel5
             // 
+            this.panel5.BackColor = System.Drawing.Color.SteelBlue;
             this.panel5.Controls.Add(this.panelJug2);
             this.panel5.Controls.Add(this.button3);
             this.panel5.Controls.Add(this.label9);
@@ -322,6 +331,7 @@
             // 
             // panel7
             // 
+            this.panel7.BackColor = System.Drawing.Color.SteelBlue;
             this.panel7.Controls.Add(this.panelJug4);
             this.panel7.Controls.Add(this.button4);
             this.panel7.Controls.Add(this.label11);
@@ -391,7 +401,8 @@
             // 
             // panel2
             // 
-            this.panel2.Location = new System.Drawing.Point(2, 0);
+            this.panel2.BackColor = System.Drawing.Color.SteelBlue;
+            this.panel2.Location = new System.Drawing.Point(1, 2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1239, 715);
             this.panel2.TabIndex = 20;
@@ -399,6 +410,7 @@
             // 
             // FormSalaPartida
             // 
+            this.BackColor = System.Drawing.Color.SteelBlue;
             this.ClientSize = new System.Drawing.Size(1231, 715);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.panel7);

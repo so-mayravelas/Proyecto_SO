@@ -32,14 +32,14 @@ namespace Juego_version_1
         private static Mutex mut = new Mutex();
         int num, idpartidainvitacion, iseleccionado = 0;
         bool loged = false, conectado = false;
-       
-        
+        List<String> Conectados = new List<String>();
+
+
         public Formfunciones()
         {         
             InitializeComponent();
             Consultas_groupBox1.Visible = false;
             groupBoxInvitacion.Visible = false;
-            groupBoxChat.Visible = false;
             OcultarRegistro();
             BordeBotones();
             //CheckForIllegalCrossThreadCalls = false;
@@ -47,7 +47,7 @@ namespace Juego_version_1
             //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
             //al que deseamos conectarnos
             IPAddress direc = IPAddress.Parse("192.168.56.102");
-            IPEndPoint ipep = new IPEndPoint(direc, 9050);
+            IPEndPoint ipep = new IPEndPoint(direc, 9020);
             Consultas_groupBox1.Visible = false;
 
             //Creamos el socket 
@@ -77,7 +77,7 @@ namespace Juego_version_1
             //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
             //al que deseamos conectarnos
             IPAddress direc = IPAddress.Parse("192.168.56.102");
-            IPEndPoint ipep = new IPEndPoint(direc, 9050);
+            IPEndPoint ipep = new IPEndPoint(direc, 9020);
 
             //Creamos el socket 
             server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
@@ -190,6 +190,7 @@ namespace Juego_version_1
                 if (conectado == true)
                     server.Send(msg);
             }
+
             else if (Consulta_Mayra.Checked == true && loged == true)
             {
                 // Quiere realizar la consulta escogida
@@ -199,6 +200,7 @@ namespace Juego_version_1
                 server.Send(msg);
 
             }
+
             else if (Consulta_Andoni.Checked == true && loged == true)
             {
                 // Quiere realizar la consulta escogida
@@ -247,7 +249,6 @@ namespace Juego_version_1
                     mensaje = mensajeC.Split('/');
                     if (mensaje[0] != "")
                     {
-                        MessageBox.Show("El mensaje es:" + mensajeC);
                         identificador = Convert.ToInt32(mensaje[0]);
                         switch (identificador)
                         {
@@ -300,7 +301,6 @@ namespace Juego_version_1
                                 MessageBox.Show(mensaje[1]);
                                 break;
                             case 7://Lista clientes
-                                List<String> Conectados = new List<String>();
                                 Conectados.Clear();
                                 for (int i = 1; i < mensaje.Length && mensaje[i] != ""; i++)
                                 {
@@ -310,6 +310,8 @@ namespace Juego_version_1
 
                                 DelegadoGrid delegadoDG = new DelegadoGrid(RellenarDataGrid);
                                 ConectadosGrid.Invoke(delegadoDG, new object[] {Conectados});
+                                for(int i=0;i<formularios.Count;i++)
+                                formularios[i].ActualizarJugadores(Conectados);
                                 break;
                             case 8://Invitaciones
                                 int subidentificador = Convert.ToInt32(mensaje[1]);
@@ -323,8 +325,10 @@ namespace Juego_version_1
                                         ThreadStart ts = delegate { CrearForm(Convert.ToInt32(mensaje[2]), server); };
                                         crearForm = new Thread(ts);
                                         crearForm.Start();
-                                        Thread.Sleep(150);
+                                        Thread.Sleep(2500);
                                         ActualizarPartidasEnForms(Convert.ToInt32(mensaje[2]));
+                                        for (int i = 0; i < formularios.Count; i++)
+                                            formularios[i].ActualizarJugadores(Conectados);
                                     }
                                 }
                                 else if (subidentificador == 2)
@@ -334,18 +338,13 @@ namespace Juego_version_1
 
                                         if (mensaje[3] == MiUsuario)
                                         {
-                                            MessageBox.Show("miUsuario==" + mensaje[3]);
                                             ThreadStart ts = delegate { CrearForm(Convert.ToInt32(mensaje[2]), server); };
                                             crearForm = new Thread(ts);
                                             crearForm.Start();
-                                            Thread.Sleep(100);
+                                            Thread.Sleep(1500);
                                         }
 
-                                        AñadirAPartida(mensaje[3], Convert.ToInt32(mensaje[2]));
-                                        ActualizarPartidasEnForms(Convert.ToInt32(mensaje[2]));
 
-                                        DelegadoPreChat DelegadoPC = new DelegadoPreChat(PreparacionChat);
-                                        ConectadosGrid.Invoke(DelegadoPC, new object[] { Convert.ToInt32(mensaje[2]) });
                                     }
                                     else
                                     {
@@ -377,7 +376,10 @@ namespace Juego_version_1
                                         p.AñadirParticipante(mensaje[6], 3);
                                     }
                                     Partidas[Convert.ToInt32(mensaje[2])] = p;
+                                    Thread.Sleep(1000);
                                     ActualizarPartidasEnForms(Convert.ToInt32(mensaje[2]));
+                                    formularios[Convert.ToInt32(mensaje[2])].ActualizarJugadores(Conectados);
+                                    
                                 }
                                 else if (subidentificador == 7)
                                 {
@@ -399,59 +401,106 @@ namespace Juego_version_1
                                 break;
 
                             case 9:
-                                    DelegadoChat delegadoCha = new DelegadoChat(ActualizarChat);
-                                    ConectadosGrid.Invoke(delegadoCha, new object[] { mensaje[2], mensaje[3] });
+                                //DelegadoChat delegadoCha = new DelegadoChat(ActualizarChat);
+                                //ConectadosGrid.Invoke(delegadoCha, new object[] { mensaje[2], mensaje[3] });
+                                numPartida = Convert.ToInt32(mensaje[1]);
+                                formularios[numPartida].ActualizarChat(mensaje[2], mensaje[3]);
                                 break;
                             case 10:
                                 numPartida = Convert.ToInt32(mensaje[1]);
                                 ronda = Convert.ToInt32(mensaje[2]);
-                                caso = mensaje[3];
+                                formularios[numPartida].Bocatas("", 16, ronda);
+                                formularios[numPartida].Ronda(ronda);
                                 switch (ronda)
                                 {
 
                                     case 0:
-                                        if (caso == "P")
-                                        {
-                                            formularios[numPartida].CambiarBotones(0);
-                                        }
-                                        else
-                                        {
-                                            formularios[numPartida].CambiarBotones(1);
-                                        }
+                                        formularios[numPartida].CambiarBotones(0);
                                         break;
                                     case 1:
+                                        formularios[numPartida].CambiarBotones(1);
+                                        break;
                                     case 2:
-                                        apuesta = Convert.ToInt32(caso);
-                                        if (apuesta == 0)
+                                        if (mensaje[3] == "P")
                                         {
+                                            apuesta = 0;
+                                            formularios[numPartida].valorapuesta(apuesta);
                                             formularios[numPartida].CambiarBotones(3);
                                         }
                                         else
                                         {
+                                            apuesta = Convert.ToInt32(mensaje[4]);
+                                            formularios[numPartida].valorapuesta(apuesta);
                                             formularios[numPartida].CambiarBotones(4);
                                         }
                                         break;
                                     case 3:
-                                    case 4:
-                                        apuesta = Convert.ToInt32(mensaje[4]);
-                                        if (caso == "P")
+                                        if (mensaje[3] == "P")
                                         {
-                                            formularios[numPartida].CambiarBotones(1);
+                                            apuesta = 0;
+                                            formularios[numPartida].valorapuesta(apuesta);
+                                            formularios[numPartida].CambiarBotones(3);
+
                                         }
                                         else
                                         {
-                                            if (apuesta == 0)
-                                            {
-                                                formularios[numPartida].CambiarBotones(3);
-                                            }
-                                            else
-                                            {
-                                                formularios[numPartida].CambiarBotones(4);
-                                            }
+                                            apuesta = Convert.ToInt32(mensaje[4]);
+                                            formularios[numPartida].valorapuesta(apuesta);
+                                            formularios[numPartida].CambiarBotones(4);
                                         }
                                         break;
+                                    case 4:
+                                        formularios[numPartida].CambiarBotones(2);
+                                        break;
+                                    case 5:
+                                        if (mensaje[3] == "P")
+                                        {
+                                            apuesta = 0;
+                                            formularios[numPartida].valorapuesta(apuesta);
+                                            formularios[numPartida].CambiarBotones(3);
+                                        }
+                                        else
+                                        {
+                                            apuesta = Convert.ToInt32(mensaje[4]);
+                                            formularios[numPartida].valorapuesta(apuesta);
+                                            formularios[numPartida].CambiarBotones(4);
+                                        }
+                                        break;
+                                    case 6:
+                                        formularios[numPartida].CambiarBotones(2);
+                                        break;
+                                    case 7:
+                                        if (mensaje[3] == "P")
+                                        {
+                                            apuesta = 0;
+                                            formularios[numPartida].valorapuesta(apuesta);
+                                            formularios[numPartida].CambiarBotones(3);
+                                        }
+                                        else
+                                        {
+                                            apuesta = Convert.ToInt32(mensaje[4]);
+                                            formularios[numPartida].valorapuesta(apuesta);
+                                            formularios[numPartida].CambiarBotones(4);
+                                        }
+                                        break;
+                                    case 8:
+                                        if (mensaje[3] == "P")
+                                        {
+                                            apuesta = 0;
+                                            formularios[numPartida].valorapuesta(apuesta);
+                                            formularios[numPartida].CambiarBotones(3);
+                                        }
+                                        else
+                                        {
+                                            apuesta = Convert.ToInt32(mensaje[4]);
+                                            formularios[numPartida].valorapuesta(apuesta);
+                                            formularios[numPartida].CambiarBotones(4);
+                                        }
+                                        break;
+                                    case 13:
+                                        formularios[numPartida].CambiarBotones(5);
+                                        break;
                                 }
-
                                 break;
                             case 11:
                                 numPartida = Convert.ToInt32(mensaje[1]);
@@ -459,21 +508,83 @@ namespace Juego_version_1
                                 switch (ronda)
                                 {
                                     case 0:
-                                    case 3:
-                                    case 4:
-                                        caso = mensaje[3];
-                                        jugador = Convert.ToInt32(mensaje[4]);
-                                        formularios[numPartida].Bocatas(mensaje[5], jugador);
+                                        jugador = Convert.ToInt32(mensaje[3]);
+                                        formularios[numPartida].Bocatas(mensaje[4], jugador, ronda);
                                         break;
                                     case 1:
+                                        jugador = Convert.ToInt32(mensaje[3]);
+                                        formularios[numPartida].Bocatas("Descarto "+mensaje[4], jugador,ronda);
+                                        break;
                                     case 2:
                                         jugador = Convert.ToInt32(mensaje[3]);
-                                        formularios[numPartida].Bocatas(mensaje[4], jugador);
+                                        formularios[numPartida].Bocatas(mensaje[4], jugador, ronda);
+                                        break;
+                                    case 3:
+                                        jugador = Convert.ToInt32(mensaje[3]);
+                                        formularios[numPartida].Bocatas(mensaje[4], jugador, ronda);
+                                        break;
+                                    case 4:
+                                        caso = mensaje[3];
+                                        jugador = Convert.ToInt32(mensaje[3]);
+                                        formularios[numPartida].Bocatas(mensaje[4], jugador, ronda);
+                                        break;
+
+                                    case 10:
+                                        int[] cartaS = { Convert.ToInt32(mensaje[4]), Convert.ToInt32(mensaje[5]), Convert.ToInt32(mensaje[6]), Convert.ToInt32(mensaje[7]) };
+                                        formularios[numPartida].Repartir(Convert.ToInt32(mensaje[3]), cartaS);
+                                        //formularios[numPartida].Cartas(2);
+                                        formularios[numPartida].Cartas(0);
+                                        break;
+                                    case 5:
+                                        caso = mensaje[3];
+                                        jugador = Convert.ToInt32(mensaje[3]);
+                                        formularios[numPartida].Bocatas(mensaje[4], jugador, ronda);
+                                        break;
+                                    case 6:
+                                        caso = mensaje[3];
+                                        jugador = Convert.ToInt32(mensaje[3]);
+                                        formularios[numPartida].Bocatas(mensaje[4], jugador, ronda);
+                                        break;
+                                    case 7:
+                                        caso = mensaje[3];
+                                        jugador = Convert.ToInt32(mensaje[3]);
+                                        formularios[numPartida].Bocatas(mensaje[4], jugador, ronda);
+                                        break;
+                                    case 8:
+                                        caso = mensaje[3];
+                                        jugador = Convert.ToInt32(mensaje[3]);
+                                        formularios[numPartida].Bocatas(mensaje[4], jugador, ronda);
+
+                                        break;
+                                    case 11:
+                                        for (int i = 0; i < 4; i++)
+                                        {
+                                            int[] cartas = { Convert.ToInt32(mensaje[3+i*4]), Convert.ToInt32(mensaje[4 + i * 4]), Convert.ToInt32(mensaje[5 + i * 4]), Convert.ToInt32(mensaje[6 + i * 4]) };
+                                            formularios[numPartida].Repartir(i, cartas);
+                                        }
+                                        //formularios[numPartida].Cartas(2);
+                                        formularios[numPartida].Cartas(0);
+                                        break;
+                                    case 12:
+                                        int[] puntos = { Convert.ToInt32(mensaje[3]), Convert.ToInt32(mensaje[4]), Convert.ToInt32(mensaje[5]), Convert.ToInt32(mensaje[6]) };
+                                        formularios[numPartida].puntuaciones(puntos);
+                                        break;
+
+                                    case 13:
+                                        formularios[numPartida].Bocatas("", 16, ronda);
+                                        formularios[numPartida].Cartas(1);
+
+                                        break;
+                                    case 14:
+                                         formularios[numPartida].Cartas(2);
+                                        break;
+                                    case 20://Gana la Pareja 0
+                                        break;
+                                    case 21://Gana la Pareja 1
+
                                         break;
                                 }
-                                
                                 break;
-
                         }
                     }
                 }
@@ -602,8 +713,6 @@ namespace Juego_version_1
             if (conectado == true)
                 server.Send(msg);
             groupBoxInvitacion.Visible = false;
-            groupBoxChat.Visible = true;
-            PreparacionChat(idpartidainvitacion);
 
         }
 
@@ -619,35 +728,9 @@ namespace Juego_version_1
             groupBoxInvitacion.Visible = false;
         }
 
-        private void ConectadosGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
 
         //para poder hacer el chat 
         //tenemos que pasar el chat entre partidas 
-        private void buttonChat_Click(object sender, EventArgs e)
-        {
-            string mensaje;
-            byte[] msg;
-            mensaje = "9/" + Convert.ToString(idpartidainvitacion) + "/" + MiUsuario + "/" + Convert.ToString(textBoxComentario.Text);
-            textBoxChat.Text = MiUsuario + ": " + Convert.ToString(textBoxComentario.Text) + Environment.NewLine;
-            // Enviamos al servidor los nombres de usuario
-            msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
-            if (conectado == true)
-                server.Send(msg);
-        }
-
-        public void PreparacionChat(int ID)
-        {
-            groupBoxChat.Visible = true;
-            labelChat.Text = "Partida: " + Convert.ToString(ID);
-        }
-
-        public void ActualizarChat(string Usuario, string comentario)
-        {
-            textBoxChat.Text = textBoxChat.Text+ Usuario + ": " + comentario + Environment.NewLine;
-        }
 
 
         //Lista de botones 
@@ -828,13 +911,7 @@ namespace Juego_version_1
         int sw, sh;
 
         //Restaurar
-        private void Rests_iconButton1_Click(object sender, EventArgs e)
-        {
-            Rests_iconButton1.Visible = false;
-            Maxi_iconButton2.Visible = true;
-            this.Size = new Size(sw, sh);
-            this.Location = new Point(lx, ly);
-        }
+
         //Para arrastrar el form desde los paneles
         private void panelTitulo_MouseMove(object sender, MouseEventArgs e)
         {
@@ -854,19 +931,6 @@ namespace Juego_version_1
         }
 
         //Para maximizar
-        private void Maxi_iconButton2_Click(object sender, EventArgs e)
-        {
-
-            lx = this.Location.X;
-            ly = this.Location.Y;
-            sw = this.Size.Width;
-            sh = this.Size.Height;
-            Rests_iconButton1.Visible = true;
-            Maxi_iconButton2.Visible = false;
-            this.Size = Screen.PrimaryScreen.WorkingArea.Size;
-            this.Location = Screen.PrimaryScreen.WorkingArea.Location;
-        }
-
         #endregion
 
       #region ABRIR FORMULARIOS
@@ -984,7 +1048,6 @@ namespace Juego_version_1
             Desconectar_button2.Visible = false;
             Iniciar_button4.Visible = false;
             InvitarButton.Visible = false;
-            groupBoxChat.Visible = false;
             groupBoxInvitacion.Visible = false;
             Consultas_groupBox1.Visible = false;
             contraseña_textBox2.Visible = false;
@@ -1135,7 +1198,6 @@ namespace Juego_version_1
         {
 
         }
-
         private void Consulta1_iconButton2_Click_1(object sender, EventArgs e)
         {
             Consultas_groupBox1.Visible = true;

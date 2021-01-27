@@ -11,6 +11,8 @@ namespace Juego_version_1
         //Definimos una lista de FlightPlans tipo Lists<>
         string[] Participantes= { "", "", "", "" };
         int ID_Partida;
+        int[] Puntuaciones = { 0, 0, 0, 0 };
+        int[,] Cartas = { { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 }, { 0, 0, 0, 0 } };
         int Count = 0;
  
         public void AñadirParticipante(string participante,int pos)
@@ -28,6 +30,13 @@ namespace Juego_version_1
                 
             }
         }
+        public void AsignarCartas(int jugador, int[] c)
+        {
+            for(int i=0; i<4; i++)
+            {
+                Cartas[jugador, i] = c[i];
+            }
+        }
         public void QuitarParticipante(string participante)
         {
             for (int i = 0; i < Count; i++)
@@ -40,7 +49,10 @@ namespace Juego_version_1
         public string DameParticipante(int i) {
             return Participantes[i];
         }
-
+        public int DameCarta(int jugador,int carta)
+        {
+            return this.Cartas[jugador,carta];
+        }
         public int DameNum()
         {
             return Count;
