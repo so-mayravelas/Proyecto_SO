@@ -78,7 +78,7 @@ namespace Juego_version_1
         }
 
 
-        private void Conectar_button1_Click(object sender, EventArgs e)
+        private void Conectar_button1_Click(object sender, EventArgs e)// boton para conectar con el servidor (obsoleto)
         {
             //Creamos un IPEndPoint con el ip del servidor y puerto del servidor 
             //al que deseamos conectarnos
@@ -107,7 +107,7 @@ namespace Juego_version_1
 
 
         //Nos desconectamos del servidor
-        private void Desconectar_button2_Click(object sender, EventArgs e)
+        private void Desconectar_button2_Click(object sender, EventArgs e)//boton para desconectar con el servidor (obsoleto)
         {
             // Se terminó el servicio. 
             string mensaje = "0/";
@@ -128,7 +128,7 @@ namespace Juego_version_1
             this.BackColor = Color.Silver;
         }
         //Para que un usuario se pueda registrar
-        private void Registro_button3_Click(object sender, EventArgs e)
+        private void Registro_button3_Click(object sender, EventArgs e)//boton que te permite registrarte en la base de datos
         {
             #region Datos Validos 
 
@@ -154,7 +154,7 @@ namespace Juego_version_1
         }
 
         //Si ya estamos registardos o nos acabos de registra ya podemos ingresar ya estaremso dados de alta en la BBDD
-        private void Iniciar_button4_Click(object sender, EventArgs e)
+        private void Iniciar_button4_Click(object sender, EventArgs e)//boton que te permite logearte con tus datos en el juego
         {
             #region Validar Datos
             if (usuario_textBox1.Text != "USUARIO")
@@ -182,7 +182,7 @@ namespace Juego_version_1
 
         }
 
-        private void enviar_button5_Click(object sender, EventArgs e)
+        private void enviar_button5_Click(object sender, EventArgs e)//boton para enviar peticiones de base de datos, comprueba la condicion y se es posible
         {
             string mensaje;
             byte[] msg;
@@ -241,7 +241,7 @@ namespace Juego_version_1
             }
             
         }
-        private void AtenderServidor()
+        private void AtenderServidor()// metodo que atiendo el servidor de manera continua en un thread separado. Todas las peticiones que llegan del servidor tienen que pasar por aqui y luego ser renviadas a los forms correspondientes.
         {
             if (conectado == true)
             {
@@ -602,7 +602,7 @@ namespace Juego_version_1
                 }
             }
         }
-        public void CrearForm(int numPartida, Socket sock)
+        public void CrearForm(int numPartida, Socket sock)//
         {
             FormSalaPartida frm = new FormSalaPartida(numPartida,sock,MiUsuario);
             formularios.Add(frm);
@@ -703,7 +703,7 @@ namespace Juego_version_1
                 }
             }
         }
-        public void CrearPartida(String miusuario, int numPartida)
+        public void CrearPartida(String miusuario, int numPartida)// crea la partida y la añade a una lista de partidas
         {
 
                 Partida p = new Partida();
@@ -712,7 +712,7 @@ namespace Juego_version_1
                 Partidas.Add(p);
 
         }
-        private void buttonAceptar_Click(object sender, EventArgs e)
+        private void buttonAceptar_Click(object sender, EventArgs e)//boton para aceptar un oferta de partida
         {
 
             string mensaje;
@@ -728,7 +728,7 @@ namespace Juego_version_1
 
         }
 
-        private void buttonRechazar_Click(object sender, EventArgs e)
+        private void buttonRechazar_Click(object sender, EventArgs e)//boton para rechazar una oferta de partida
         {
             string mensaje;
             byte[] msg;
@@ -748,7 +748,7 @@ namespace Juego_version_1
         //Lista de botones 
 
 
-        private void Conectar_iconButton1_Click(object sender, EventArgs e)
+        private void Conectar_iconButton1_Click(object sender, EventArgs e)// boton para conectar con el servidor 
         {
             ActivarBoton(sender, RGBColors.color5);
             #region Conectar con el servidor por el boton
@@ -779,7 +779,7 @@ namespace Juego_version_1
 
         }
 
-        private void Desconectar_iconButton1_Click(object sender, EventArgs e)
+        private void Desconectar_iconButton1_Click(object sender, EventArgs e)// boton para desconectarse del servidor
         {
             // Se terminó el servicio. 
             string mensaje = "0/";
@@ -801,7 +801,7 @@ namespace Juego_version_1
 
         }
 
-        private void Registrarse_iconButton1_Click(object sender, EventArgs e)
+        private void Registrarse_iconButton1_Click(object sender, EventArgs e)//boton para registrarse en el servidor
         {
             ActivarBoton(sender, RGBColors.color1);
             panelRegistro.Show();
@@ -810,7 +810,7 @@ namespace Juego_version_1
 
         }
 
-        private void FormFunciones_Load(object sender, EventArgs e)
+        private void FormFunciones_Load(object sender, EventArgs e)//carga form funciones ocultando el login
         {
             this.Hide();
 
@@ -912,7 +912,7 @@ namespace Juego_version_1
 
         }
         //Para cerrar el form
-        private void Cerrar_iconButton1_Click(object sender, EventArgs e)
+        private void Cerrar_iconButton1_Click(object sender, EventArgs e)//boton que cierra el formulario (al final no implementado)
         {
             Application.Exit();
         }
@@ -1071,7 +1071,7 @@ namespace Juego_version_1
 
         }
 
-        private void Consulta1_iconButton2_Click(object sender, EventArgs e)
+        private void Consulta1_iconButton2_Click(object sender, EventArgs e)//botones que muestran el panel para poder hacer las consultas, cada boton su consulta.
         {
             string mensaje;
             byte[] msg;
@@ -1106,7 +1106,7 @@ namespace Juego_version_1
                 server.Send(msg);
         }
 
-        private void DarBajar_iconButton6_Click(object sender, EventArgs e)
+        private void DarBajar_iconButton6_Click(object sender, EventArgs e)// te permite eliminar tu cuenta de la base de datos para que no quede constacia
         {
             string baja = "20/";
             byte[] msg = System.Text.Encoding.ASCII.GetBytes(baja);
@@ -1115,13 +1115,13 @@ namespace Juego_version_1
 
  
 
-        private void Instr_iconButton4_Click(object sender, EventArgs e)
+        private void Instr_iconButton4_Click(object sender, EventArgs e)// boton que te muestra las intrucciones para que puedas jugar al juego
         {
             ActivarBoton(sender, RGBColors.color4);
             AbrirFormulario<FormIntrucciones>();
         }
 
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)//botones de que cambian la visibilidad de los paneles para sar de registro a login y viceversa
         {
             
             panelIniciarSesion.Show();
